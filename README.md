@@ -19,8 +19,6 @@ The JavaScript SDK can be accessed via `<script>` tag in your HTML. Set the src 
 
 #### Building The SDK Locally
 
-(remove for public sdk?)
-
 ~~~
 npm install
 npm run build
@@ -109,7 +107,3 @@ You can get the status of the webcast using status variable. See example below
 You can remove the webcast from the DOM by calling destroy method.
 
 `webcast.destroy();`
-
-#### Link to JavaDoc Documentation
-
-https://d3pkniilvcs60x.cloudfront.net/docs/modules.html
