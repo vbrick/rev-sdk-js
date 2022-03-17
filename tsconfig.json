@@ -1,0 +1,35 @@
+{
+	"compilerOptions": {
+		"target": "es2015",
+		"module": "esnext",
+		"moduleResolution": "node",
+		"sourceMap": true,
+		"declaration": true,
+		"declarationDir": "./dist",
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"lib": [ "es2015", "dom", "es7", "es2017", "es2018", "es2019" ],
+		// "noEmit": true,
+		"noImplicitAny": false,
+		"suppressImplicitAnyIndexErrors": true,
+		"baseUrl": ".",
+		"paths": {
+
+		},
+		// "allowJs": true, giving build error. investigate later
+		"allowUnreachableCode": false,
+		"skipLibCheck": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"incremental": false,
+		"resolveJsonModule": true,
+		// "outDir": "./out-tsc/app",
+		// "declaration": false
+	},
+	"include": [
+		"src/index.ts",
+	],
+	"exclude": [
+		"node_modules/"
+	]
+}
