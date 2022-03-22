@@ -3,8 +3,7 @@
 This is Vbrick's JavaScript SDK library that enables you to embed Vbrick Rev webcasts on your website, portal, or any web-based application using JavaScript code. The SDK currently supports interaction with the webcast video player. We will support full webcast features including slides, chats, Q&A, polls, VOD functionality, etc via this SDK in the future.
 
 ##### Documentation
-- [IVbrickApi](docs/modules/IVbrickApi.md)
-- [index](docs/modules/index.md)
+- [API Reference](docs/modules/index.md)
 
 #### Accessing the SDK
 
@@ -19,8 +18,6 @@ The JavaScript SDK can be accessed via `<script>` tag in your HTML. Set the src 
 ~~~
 
 #### Building The SDK Locally
-
-(remove for public sdk?)
 
 ~~~
 npm install
@@ -110,7 +107,3 @@ You can get the status of the webcast using status variable. See example below
 You can remove the webcast from the DOM by calling destroy method.
 
 `webcast.destroy();`
-
-#### Link to JavaDoc Documentation
-
-https://d3pkniilvcs60x.cloudfront.net/docs/modules.html
