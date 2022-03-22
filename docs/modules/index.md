@@ -57,7 +57,7 @@ Embedding a webcast:
 //In HTML:  <div id="webcast-embed"></div>
 
 const webcastId = '0d252797-6db7-44dc-aced-25a6843d529c';
-revSd.embedWebcast('#webcast-embed', webcastId, {
+revSdk.embedWebcast('#webcast-embed', webcastId, {
     showVideo: true,
     token
 });

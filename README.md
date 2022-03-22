@@ -32,7 +32,7 @@ On your web page, you can insert an embedded webcast using an empty div tag. You
 #### Initializing the SDK
 You can initialize the SDK as shown below
 
-`revEmbed.defaults({baseUrl: 'https://<<YOUR_REV_URL>>' });`
+`revSdk.defaults({baseUrl: 'https://<<YOUR_REV_URL>>' });`
 
 #### Invoking Webcast
 Embedding a webcast requires you to pass the following parameters to the embedWebast function
@@ -107,3 +107,11 @@ You can get the status of the webcast using status variable. See example below
 You can remove the webcast from the DOM by calling destroy method.
 
 `webcast.destroy();`
+
+
+#### Upgrading from rev-embed-sdk
+There are a few breaking changes if you are updating from rev-embed-sdk:
+
+Export was renamed from `revEmbed` to `revSdk`
+The library URL was changed to `https://<<YOUR_REV_URL>>/dist/rev-sdk.js`
+The NPM package was renamed to `@vbrick/rev-sdk`
