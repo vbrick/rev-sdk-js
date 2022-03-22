@@ -36,7 +36,7 @@ URL for Rev
 
 #### Defined in
 
-IVbrickApi.ts:23
+IVbrickApi.ts:42
 
 ___
 
@@ -52,7 +52,7 @@ An optional class to be set on the iframe.
 
 #### Defined in
 
-IVbrickApi.ts:28
+IVbrickApi.ts:47
 
 ___
 
@@ -68,7 +68,7 @@ Height of the iframe. Default is "100%"
 
 #### Defined in
 
-IVbrickApi.ts:38
+IVbrickApi.ts:57
 
 ___
 
@@ -84,7 +84,7 @@ If true, enable logging messages in the browser console.
 
 #### Defined in
 
-IVbrickApi.ts:43
+IVbrickApi.ts:62
 
 ___
 
@@ -96,13 +96,13 @@ Optional, default is true.
 
 #### Defined in
 
-IVbrickApi.ts:50
+IVbrickApi.ts:69
 
 ___
 
 ### token
 
-• **token**: [`IVbrickAPIToken`](IVbrickApi.IVbrickAPIToken.md)
+• **token**: [`TVbrickAPIToken`](../modules/IVbrickApi.md#tvbrickapitoken)
 
 #### Inherited from
 
@@ -110,7 +110,7 @@ ___
 
 #### Defined in
 
-IVbrickApi.ts:18
+IVbrickApi.ts:37
 
 ___
 
@@ -126,4 +126,4 @@ Width of the iframe. Default is "100%"
 
 #### Defined in
 
-IVbrickApi.ts:33
+IVbrickApi.ts:52

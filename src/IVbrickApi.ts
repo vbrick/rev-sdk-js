@@ -5,13 +5,21 @@ export { PlayerStatus } from './PlayerStatus';
 
 export interface IVbrickAPIToken {
 	type: TokenType;
+
+	/**
+	 * String containing the token value
+	 */
 	value: string;
+
+	/**
+	 * The issuer for the token
+	 */
 	issuer: string;
 }
 
 export enum TokenType {
 	JWT = 'JWT',
-	OAUTH = 'OAUTH'
+	ACCESS_TOKEN = 'AccessToken'
 }
 
 export interface IVbrickEmbedConfig {
@@ -64,11 +72,11 @@ export interface IVbrickVideoConfig extends IVbrickEmbedConfig {
 	hideCaptions?: boolean;
 	forcedCaptions?: boolean;
 	hideSettings?: boolean;
-	hideFullscreen: boolean;
+	hideFullscreen?: boolean;
 
 
 	/**
-	 * Starts the video at specified timestamp. must be in the format hh:mm:ss.sss
+	 * Starts the video at specified timestamp. must be in the format ##m##s. For example 00m30s.
 	 */
 	startAt?: string;
 
@@ -85,11 +93,11 @@ export interface IVbrickVideoConfig extends IVbrickEmbedConfig {
 
 }
 
-export interface IVbrickVideoEmbed {
+export interface IVbrickVideoEmbed extends IVbrickBaseEmbed {
 
 }
 
-export interface IVbrickWebcast extends IVbrickBaseEmbed {
+export interface IVbrickWebcastEmbed extends IVbrickBaseEmbed {
 
 	/**
 	 * Indicates whether the webcast is started, or broadcasting.
@@ -131,6 +139,11 @@ export interface IVbrickWebcast extends IVbrickBaseEmbed {
 export interface IVbrickBaseEmbed {
 
 	/**
+	 * Fires when the video metadata is loaded
+	 */
+	on(event: 'videoLoaded', listener: (event: any) => void): void;
+
+	/**
 	 * Fired if the player volume changes
 	 * @param volume number between 0 and 1
 	 */
@@ -157,7 +170,7 @@ export interface IVbrickBaseEmbed {
 	 * @param enabled true if the captions are on
 	 * @param language The displayed language for caption text
 	 */
-	on(event: 'captionsChanged', listener: (event: { enabled: boolean, language: string }) => void): void;
+	on(event: 'captionsChanged', listener: (event: ICaptionSettings) => void): void;
 
 	/**
 	 * Fired when the playback speed changes. Only available for prerecorded video on demand.
@@ -185,4 +198,15 @@ export interface IVbrickBaseEmbed {
 	 * Removes the embedded content from the DOM.
 	 */
 	 destroy(): void;
+}
+
+export interface ICaptionSettings {
+	enabled: boolean;
+	language: string;
+}
+
+export interface IVideoInfo {
+	id: string;
+	title: string;
+	description: string;
 }

@@ -24,9 +24,12 @@ export class EventBus {
 		this.shouldLog = !!config.log;
 	}
 
-	public on(event: string, fn: IListener) {
+
+	public on(event: string, fn: IListener): () => void {
 		const handlers = this.getHandlers(event);
 		handlers.push(fn);
+
+		return () => this.off(event, fn);
 	}
 
 	public awaitEvent(event: string, failEvent?: string, timeout: number = 30000): Promise<any> {
@@ -58,7 +61,7 @@ export class EventBus {
 		}
 	}
 
-	public publish(event: string, msg: any): void {
+	public publish(event: string, msg?: any): void {
 		this.shouldLog && console.log('rev client posting message. ', event);
 		this.win.postMessage({
 			app: 'vbrick',

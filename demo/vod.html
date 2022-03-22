@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<style>
+			#embed {
+				height: 600px;
+				margin: 20px;
+			}
+
+			form > div, form > button {
+				margin: 10px 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Video Embed Test</h1>
+		<div id="embed"></div>
+
+		<div>
+			<form>
+				<div>
+					<label for="videoId">Video Id:</label>
+					<input type="text" id="videoId" name="videoId">
+				</div>
+				<div>
+					<label for="accessToken">Auth Token:</label>
+					<input type="text" id="accessToken" name="accessToken">
+				</div>
+				<div>
+					<label for="baseUrl">Rev URL:</label>
+					<input type="text" id="baseUrl" name="baseUrl">
+				</div>
+				<button type="submit">Reload</button>
+			</form>
+
+			<h5>Messages</h5>
+			<ul id="logMessages"> </ul>
+		</div>
+
+		<script src="/dist/rev-sdk.js"> </script>
+		<script type="module" src="demo.js"></script>
+		<script type="module" src="vod.js"></script>
+	</body>
+</html>
