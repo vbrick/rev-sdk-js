@@ -8,8 +8,6 @@
  * @packageDocumentation
  */
 
-//TODO: lazy load
-import './polyfill-impl';
-
-export { embedWebcast, defaults } from './VbrickApi';
-
+export { setDefaultConfig } from './Config';
+export { embedWebcast } from './EmbedWebcast';
+export { embedVideo } from './EmbedVideo';

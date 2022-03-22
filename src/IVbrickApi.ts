@@ -64,11 +64,11 @@ export interface IVbrickVideoConfig extends IVbrickEmbedConfig {
 	hideCaptions?: boolean;
 	forcedCaptions?: boolean;
 	hideSettings?: boolean;
-	hideFullscreen: boolean;
+	hideFullscreen?: boolean;
 
 
 	/**
-	 * Starts the video at specified timestamp. must be in the format hh:mm:ss.sss
+	 * Starts the video at specified timestamp. must be in the format ##m##s. For example 00m30s.
 	 */
 	startAt?: string;
 

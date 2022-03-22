@@ -1,7 +1,8 @@
 import { IVbrickAPIToken, IVbrickWebcastConfig, TokenType } from './IVbrickApi';
 
 let promise: Promise<IVbrickAPIToken>;
-export function initializeToken(webcastId: string, config: IVbrickWebcastConfig): Promise<IVbrickAPIToken> {
+
+export function initializeWebcastToken(webcastId: string, config: IVbrickWebcastConfig): Promise<IVbrickAPIToken> {
 	if(!promise) {
 		promise = getToken(webcastId, config);
 	}

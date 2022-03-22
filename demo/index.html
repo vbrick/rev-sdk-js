@@ -14,6 +14,7 @@
 		</style>
 	</head>
 	<body>
+		<h1>Webcast Embed Test</h1>
 		<div id="embed"></div>
 
 		<div>
@@ -68,7 +69,7 @@
 				window.location.search = "";
 			}
 
-			const webcast = revSdk.embedWebcast('#embed', webcastId, {
+			const webcast = revEmbed.embedWebcast('#embed', webcastId, {
 				showVideo: true,
 				log: true,
 				token,

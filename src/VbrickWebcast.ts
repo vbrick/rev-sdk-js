@@ -1,11 +1,8 @@
-import { IVbrickWebcast, IVbrickWebcastConfig, WebcastStatus } from './IVbrickApi';
-import { EventBus, IListener } from './EventBus';
-import { initializeToken } from './auth';
+import { IVbrickAPIToken, IVbrickWebcast, IVbrickWebcastConfig, WebcastStatus } from './IVbrickApi';
+import { VbrickEmbed } from './VbrickEmbed';
+import { initializeWebcastToken } from './auth';
 
-export class VbrickWebcast implements IVbrickWebcast {
-
-	private iframe: HTMLIFrameElement;
-	private eventBus: EventBus;
+export class VbrickWebcast extends VbrickEmbed implements IVbrickWebcast{
 
 	private _status: WebcastStatus;
 	public get status() {
@@ -14,68 +11,24 @@ export class VbrickWebcast implements IVbrickWebcast {
 
 	constructor(
 		private readonly webcastId: string,
-		private readonly config: IVbrickWebcastConfig,
-		private readonly container: HTMLElement
+		config: IVbrickWebcastConfig,
+		container: HTMLElement
 	) {
-
-		this.iframe = this.render();
-		this.eventBus = new EventBus(this.iframe, this.config);
-
-		const shouldLog = !!config.log;
-
-
-		Promise.all([
-			initializeToken(this.webcastId, this.config),
-			this.eventBus.awaitEvent('load', 'error')
-		])
-			.then(([token])=> {
-				this.eventBus.publish('authenticated', { token });
-				return this.eventBus.awaitEvent('webcastLoaded');
-			})
-			.then(data => {
-				this._status = data.status;
-
-				['webcastStarted', 'broadcastStarted', 'broadcastStopped', 'webcastEnded'].forEach(event => {
-					this.eventBus.on(event, data => this._status = data.status);
-				});
-			})
-			.catch(err => {
-				shouldLog && console.error('Webcast initialization error: ', err);
-
-				this.eventBus.publishError('Error loading webcast', err);
-			});
+		super( `${config.baseUrl}/embed/webcast/${webcastId}?tk`, config, container);
 	}
 
-	public on(event: string, listener: IListener): void {
-		this.eventBus.on(event, listener);
+	protected initializeToken(): Promise<IVbrickAPIToken> {
+		return initializeWebcastToken(this.webcastId, this.config);
 	}
 
-	public off(event: string, listener: IListener): void {
-		this.eventBus.off(event, listener);
-	}
+	protected initializeEmbed(): void {
+		['webcastStarted', 'broadcastStarted', 'broadcastStopped', 'webcastEnded'].forEach(event => {
+			this.eventBus.on(event, data => this._status = data.status);
+		});
 
-	public render(): HTMLIFrameElement {
-		const iframe = document.createElement('iframe');
-		iframe.setAttribute('frameborder', '0');
-		iframe.setAttribute('allowFullScreen', '')
-		iframe.allow = 'autoplay';
-		iframe.width = this.config.width || '100%';
-		iframe.height = this.config.height || '100%';
-		iframe.src = `${this.config.baseUrl}/embed/webcast/${this.webcastId}?tk`;
-
-		if(this.config.className) {
-			iframe.className = this.config.className;
-		}
-
-		this.container.appendChild(iframe);
-
-		return iframe;
-	}
-
-	public destroy(): void {
-		this.iframe.remove();
-		this.iframe = null;
-		this.eventBus.destroy();
+		this.eventBus.awaitEvent('webcastLoaded').then(data => {
+			this._status = data.status;
+		});
 	}
 
 }
