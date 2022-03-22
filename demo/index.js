@@ -2,32 +2,33 @@
 console.log('Demo, API: ', window.revSdk);
 
 const queryParams = getQueryParams();
-const videoId = getParameterByName('videoId');
-const authToken = getParameterByName('authToken');
+const webcastId = getParameterByName('webcastId');
+const jwtToken = getParameterByName('jwtToken');
 const baseUrl = getParameterByName('baseUrl');
 
 const token = {
-	type: 'AuthToken',
-	issuer: 'vbrick',
-	value: authToken
+	type: 'JWT',
+	issuer: 'vbrick_rev',
+	value: jwtToken
 };
 
-console.log({ videoId, token, baseUrl });
+console.log({ webcastId, jwtToken, baseUrl });
 
-document.getElementById('videoId').value = videoId;
-document.getElementById('authToken').value = authToken;
+document.getElementById('webcastId').value = webcastId;
+document.getElementById('jwtToken').value = jwtToken;
 document.getElementById('baseUrl').value = baseUrl;
 document.querySelector('form').addEventListener('submit', reload);
 
 function reload(e) {
 	e.preventDefault();
-	setCookie('videoId', document.getElementById('videoId').value);
-	setCookie('authToken', document.getElementById('authToken').value);
+	setCookie('webcastId', document.getElementById('webcastId').value);
+	setCookie('jwtToken', document.getElementById('jwtToken').value);
 	setCookie('baseUrl', document.getElementById('baseUrl').value);
 	window.location.search = "";
 }
 
-const video = revSdk.embedVideo('#embed', videoId, {
+const webcast = revEmbed.embedWebcast('#embed', webcastId, {
+	showVideo: true,
 	log: true,
 	token,
 	baseUrl
@@ -37,13 +38,14 @@ const statusEl = document.getElementById('status');
 const logEl = document.getElementById('logMessages');
 
 
-['error', 'load', 'videoLoaded', 'volumeChanged']
-	.forEach(e => video.on(e, data => {
+['error', 'load', 'webcastLoaded', 'webcastStarted', 'broadcastStarted', 'broadcastStopped', 'webcastEnded']
+	.forEach(e => webcast.on(e, data => {
 		const li = document.createElement('li');
 		li.innerHTML = `${new Date().toLocaleTimeString()} ${event}:${stringifyJson(data)}`;
 		logEl.appendChild(li);
 	}));
 
+window.setInterval(() => statusEl.innerHTML = webcast.status || 'undefined', 1000);
 
 function setCookie(cookie, value) {
 	document.cookie = `${cookie}=${encodeURIComponent(value)};expires=${ new Date('9999-01-01').toUTCString()}`;
@@ -91,4 +93,3 @@ function stringifyJson(data) {
 		: value
 	);
 }
-
