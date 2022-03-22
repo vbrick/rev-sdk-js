@@ -1,16 +1,15 @@
 @vbrick/rev-sdk / [Modules](modules.md)
 
-# Rev Embed SDK
+# Rev JavaScript SDK
 
-Vbrick's embed SDK is a JavaScript library that enables you to embed Vbrick Rev webcasts on your website, portal, or any web-based application using JavaScript code. The SDK currently supports interaction with the webcast video player. We will support full webcast features including slides, chats, Q&A, polls, VOD functionality, etc via this SDK in the future.
+This is Vbrick's JavaScript SDK library that enables you to embed Vbrick Rev webcasts on your website, portal, or any web-based application using JavaScript code. The SDK currently supports interaction with the webcast video player. We will support full webcast features including slides, chats, Q&A, polls, VOD functionality, etc via this SDK in the future.
 
 ##### Documentation
-- [IVbrickApi](docs/modules/IVbrickApi.md)
-- [index](docs/modules/index.md)
+- [API Reference](docs/modules/index.md)
 
 #### Accessing the SDK
 
-The embed SDK can be accessed via `<script>` tag in your HTML. Set the src attribute to `https://<<YOUR_REV_URL>>/dist/rev-sdk.js` or import for ES6 module.
+The JavaScript SDK can be accessed via `<script>` tag in your HTML. Set the src attribute to `https://<<YOUR_REV_URL>>/dist/rev-sdk.js` or import for ES6 module.
 
 ~~~
 <script src="<<REV URL>>/dist/rev-sdk.js"></script>
@@ -21,8 +20,6 @@ The embed SDK can be accessed via `<script>` tag in your HTML. Set the src attri
 ~~~
 
 #### Building The SDK Locally
-
-(remove for public sdk?)
 
 ~~~
 npm install
@@ -37,7 +34,7 @@ On your web page, you can insert an embedded webcast using an empty div tag. You
 #### Initializing the SDK
 You can initialize the SDK as shown below
 
-`revEmbed.defaults({baseUrl: 'https://<<YOUR_REV_URL>>' });`
+`revSdk.defaults({baseUrl: 'https://<<YOUR_REV_URL>>' });`
 
 #### Invoking Webcast
 Embedding a webcast requires you to pass the following parameters to the embedWebast function
@@ -113,6 +110,9 @@ You can remove the webcast from the DOM by calling destroy method.
 
 `webcast.destroy();`
 
-#### Link to JavaDoc Documentation
+#### Upgrading from rev-embed-sdk
+There are a few breaking changes if you are updating from rev-embed-sdk:
 
-https://d3pkniilvcs60x.cloudfront.net/docs/modules.html
+Export was renamed from `revEmbed` to `revSdk`
+The library URL was changed to `https://<<YOUR_REV_URL>>/dist/rev-sdk.js`
+The NPM package was renamed to `@vbrick/rev-sdk`
