@@ -5,6 +5,7 @@ export abstract class VbrickEmbed {
 
 	protected readonly iframe: HTMLIFrameElement;
 	protected readonly eventBus: EventBus;
+	private init: Promise<any>;
 
 	constructor(
 		iframeUrl: string,
@@ -15,20 +16,26 @@ export abstract class VbrickEmbed {
 		this.iframe = this.render(iframeUrl);
 		this.eventBus = new EventBus(this.iframe, this.config);
 
-		const shouldLog = !!config.log;
+	}
 
-		Promise.all([
+	/**
+	 * Indicates the embedded content was initialized and authenticated.
+	 * If there was a problem loading the content, or a problem with the token, the promise will be rejected.
+	 */
+	public initialize(): Promise<any> {
+		return this.init ?? (this.init = Promise.all([
 			this.initializeToken(),
 			this.eventBus.awaitEvent('load', 'error')
 		])
 			.then(([token])=> {
+				console.log('embed loaded, authenticating');
 				this.eventBus.publish('authenticated', { token });
 			})
 			.catch(err => {
-				shouldLog && console.error('Embed initialization error: ', err);
+				this.config.log && console.error('Embed initialization error: ', err);
 
-				this.eventBus.publishError('Error loading webcast', err);
-			});
+				this.eventBus.publishError('Error loading embed content', err);
+			}));
 	}
 
 	protected abstract initializeToken(): Promise<any>;
@@ -64,5 +71,6 @@ export abstract class VbrickEmbed {
 	public destroy(): void {
 		this.iframe.remove();
 		this.eventBus.destroy();
+		this.init = null;
 	}
 }

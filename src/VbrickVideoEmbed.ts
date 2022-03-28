@@ -12,7 +12,7 @@ export class VbrickVideoEmbed extends VbrickEmbed implements IVbrickVideoEmbed {
 	}
 
 	protected initializeToken(): Promise<any> {
-		return Promise.resolve();
+		return Promise.resolve(this.config.token);
 	}
 	protected initializeEmbed(): void {
 		throw new Error('Method not implemented.');

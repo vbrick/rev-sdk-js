@@ -3,26 +3,26 @@ console.log('Demo, API: ', window.revSdk);
 
 const queryParams = getQueryParams();
 const videoId = getParameterByName('videoId');
-const authToken = getParameterByName('authToken');
+const accessToken = getParameterByName('accessToken');
 const baseUrl = getParameterByName('baseUrl');
 
 const token = {
-	type: 'AuthToken',
+	type: 'AccessToken',
 	issuer: 'vbrick',
-	value: authToken
+	accessToken
 };
 
 console.log({ videoId, token, baseUrl });
 
 document.getElementById('videoId').value = videoId;
-document.getElementById('authToken').value = authToken;
+document.getElementById('accessToken').value = accessToken;
 document.getElementById('baseUrl').value = baseUrl;
 document.querySelector('form').addEventListener('submit', reload);
 
 function reload(e) {
 	e.preventDefault();
 	setCookie('videoId', document.getElementById('videoId').value);
-	setCookie('authToken', document.getElementById('authToken').value);
+	setCookie('accessToken', document.getElementById('accessToken').value);
 	setCookie('baseUrl', document.getElementById('baseUrl').value);
 	window.location.search = "";
 }
@@ -36,14 +36,12 @@ const video = revSdk.embedVideo('#embed', videoId, {
 const statusEl = document.getElementById('status');
 const logEl = document.getElementById('logMessages');
 
-
 ['error', 'load', 'videoLoaded', 'volumeChanged']
 	.forEach(e => video.on(e, data => {
 		const li = document.createElement('li');
-		li.innerHTML = `${new Date().toLocaleTimeString()} ${event}:${stringifyJson(data)}`;
+		li.innerHTML = `${new Date().toLocaleTimeString()} ${e}:${stringifyJson(data)}`;
 		logEl.appendChild(li);
 	}));
-
 
 function setCookie(cookie, value) {
 	document.cookie = `${cookie}=${encodeURIComponent(value)};expires=${ new Date('9999-01-01').toUTCString()}`;

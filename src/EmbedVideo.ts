@@ -11,5 +11,7 @@ export function embedVideo(
 	const el = lookupElement(element);
 	const cfg = resolveConfig(config) as IVbrickVideoConfig;
 
-	return new VbrickVideoEmbed(videoId, cfg, el);
+	const video = new VbrickVideoEmbed(videoId, cfg, el);
+	video.initialize();
+	return video;
 }
