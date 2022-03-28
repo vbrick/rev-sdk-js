@@ -27,7 +27,7 @@ function reload(e) {
 	window.location.search = "";
 }
 
-const webcast = revEmbed.embedWebcast('#embed', webcastId, {
+const webcast = revSdk.embedWebcast('#embed', webcastId, {
 	showVideo: true,
 	log: true,
 	token,
@@ -36,7 +36,6 @@ const webcast = revEmbed.embedWebcast('#embed', webcastId, {
 
 const statusEl = document.getElementById('status');
 const logEl = document.getElementById('logMessages');
-
 
 ['error', 'load', 'webcastLoaded', 'webcastStarted', 'broadcastStarted', 'broadcastStopped', 'webcastEnded']
 	.forEach(e => webcast.on(e, data => {

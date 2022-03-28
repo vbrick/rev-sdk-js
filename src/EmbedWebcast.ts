@@ -32,6 +32,8 @@ export function embedWebcast(
 	const el = lookupElement(element);
 	const cfg = resolveConfig(config) as IVbrickWebcastConfig;
 
-	return new VbrickWebcast(webcastId, cfg, el);
+	const webcast = new VbrickWebcast(webcastId, cfg, el);
+	webcast.initialize();
+	return webcast;
 }
 

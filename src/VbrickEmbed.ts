@@ -3,19 +3,15 @@ import { IVbrickEmbedConfig } from './IVbrickApi';
 
 export abstract class VbrickEmbed {
 
-	protected readonly iframe: HTMLIFrameElement;
-	protected readonly eventBus: EventBus;
+	protected iframe: HTMLIFrameElement;
+	protected eventBus: EventBus;
 	private init: Promise<any>;
 
 	constructor(
-		iframeUrl: string,
+		protected readonly iframeUrl: string,
 		protected readonly config: IVbrickEmbedConfig,
 		protected readonly container: HTMLElement
 	) {
-
-		this.iframe = this.render(iframeUrl);
-		this.eventBus = new EventBus(this.iframe, this.config);
-
 	}
 
 	/**
@@ -23,7 +19,13 @@ export abstract class VbrickEmbed {
 	 * If there was a problem loading the content, or a problem with the token, the promise will be rejected.
 	 */
 	public initialize(): Promise<any> {
-		return this.init ?? (this.init = Promise.all([
+		if(this.init) {
+			return this.init;
+		}
+		this.iframe = this.render();
+		this.eventBus = new EventBus(this.iframe, this.config);
+
+		this.init = Promise.all([
 			this.initializeToken(),
 			this.eventBus.awaitEvent('load', 'error')
 		])
@@ -35,7 +37,9 @@ export abstract class VbrickEmbed {
 				this.config.log && console.error('Embed initialization error: ', err);
 
 				this.eventBus.publishError('Error loading embed content', err);
-			}));
+			});
+
+		return this.init;
 	}
 
 	protected abstract initializeToken(): Promise<any>;
@@ -49,14 +53,14 @@ export abstract class VbrickEmbed {
 		this.eventBus.off(event, listener);
 	}
 
-	private render(url: string): HTMLIFrameElement {
+	private render(): HTMLIFrameElement {
 		const iframe = document.createElement('iframe');
 		iframe.setAttribute('frameborder', '0');
 		iframe.setAttribute('allowFullScreen', '')
 		iframe.allow = 'autoplay';
 		iframe.width = this.config.width || '100%';
 		iframe.height = this.config.height || '100%';
-		iframe.src = url;
+		iframe.src = this.iframeUrl;
 
 		if(this.config.className) {
 			iframe.className = this.config.className;
