@@ -36,7 +36,7 @@ const video = revSdk.embedVideo('#embed', videoId, {
 const statusEl = document.getElementById('status');
 const logEl = document.getElementById('logMessages');
 
-['error', 'load', 'videoLoaded', 'volumeChanged']
+['error', 'load', 'videoLoaded', 'volumeChanged', 'captionsChanged', 'seeked']
 	.forEach(e => video.on(e, data => {
 		const li = document.createElement('li');
 		li.innerHTML = `${new Date().toLocaleTimeString()} ${e}:${stringifyJson(data)}`;
