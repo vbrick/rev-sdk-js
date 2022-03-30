@@ -1,4 +1,4 @@
-[@vbrick/rev-sdk](../README.md) / [Modules](../modules.md) / [IVbrickApi](../modules/IVbrickApi.md) / PlayerStatus
+[@vbrick/rev-sdk](../README.md) / [IVbrickApi](../modules/IVbrickApi.md) / PlayerStatus
 
 # Enumeration: PlayerStatus
 
@@ -23,7 +23,7 @@
 
 #### Defined in
 
-PlayerStatus.ts:5
+[PlayerStatus.ts:5](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/PlayerStatus.ts#L5)
 
 ___
 
@@ -33,7 +33,7 @@ ___
 
 #### Defined in
 
-PlayerStatus.ts:7
+[PlayerStatus.ts:7](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/PlayerStatus.ts#L7)
 
 ___
 
@@ -43,7 +43,7 @@ ___
 
 #### Defined in
 
-PlayerStatus.ts:2
+[PlayerStatus.ts:2](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/PlayerStatus.ts#L2)
 
 ___
 
@@ -53,7 +53,7 @@ ___
 
 #### Defined in
 
-PlayerStatus.ts:4
+[PlayerStatus.ts:4](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/PlayerStatus.ts#L4)
 
 ___
 
@@ -63,7 +63,7 @@ ___
 
 #### Defined in
 
-PlayerStatus.ts:3
+[PlayerStatus.ts:3](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/PlayerStatus.ts#L3)
 
 ___
 
@@ -73,4 +73,4 @@ ___
 
 #### Defined in
 
-PlayerStatus.ts:6
+[PlayerStatus.ts:6](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/PlayerStatus.ts#L6)

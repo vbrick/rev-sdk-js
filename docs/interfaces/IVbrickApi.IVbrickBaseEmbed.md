@@ -1,4 +1,4 @@
-[@vbrick/rev-sdk](../README.md) / [Modules](../modules.md) / [IVbrickApi](../modules/IVbrickApi.md) / IVbrickBaseEmbed
+[@vbrick/rev-sdk](../README.md) / [IVbrickApi](../modules/IVbrickApi.md) / IVbrickBaseEmbed
 
 # Interface: IVbrickBaseEmbed
 
@@ -32,7 +32,7 @@ Removes the embedded content from the DOM.
 
 #### Defined in
 
-IVbrickApi.ts:187
+[IVbrickApi.ts:187](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L187)
 
 ___
 
@@ -55,7 +55,7 @@ Removes an event listener
 
 #### Defined in
 
-IVbrickApi.ts:182
+[IVbrickApi.ts:182](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L182)
 
 ___
 
@@ -78,7 +78,7 @@ Fired if the player volume changes
 
 #### Defined in
 
-IVbrickApi.ts:137
+[IVbrickApi.ts:137](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L137)
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -97,7 +97,7 @@ Fired when the player status changes
 
 #### Defined in
 
-IVbrickApi.ts:148
+[IVbrickApi.ts:148](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L148)
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -116,7 +116,7 @@ Fired when the captions are toggled, or the language changes
 
 #### Defined in
 
-IVbrickApi.ts:160
+[IVbrickApi.ts:160](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L160)
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -135,7 +135,7 @@ Fired when the playback speed changes. Only available for prerecorded video on d
 
 #### Defined in
 
-IVbrickApi.ts:167
+[IVbrickApi.ts:167](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L167)
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -154,7 +154,7 @@ Fired when the user seeks in the video player
 
 #### Defined in
 
-IVbrickApi.ts:172
+[IVbrickApi.ts:172](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L172)
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -173,4 +173,4 @@ Fired if there is an error
 
 #### Defined in
 
-IVbrickApi.ts:177
+[IVbrickApi.ts:177](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L177)

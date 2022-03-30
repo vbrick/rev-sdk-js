@@ -8,7 +8,7 @@ const baseUrl = getParameterByName('baseUrl');
 
 const token = {
 	type: 'JWT',
-	issuer: 'vbrick_rev',
+	issuer: 'rev',
 	value: jwtToken
 };
 

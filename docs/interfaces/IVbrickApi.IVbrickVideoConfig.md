@@ -1,4 +1,4 @@
-[@vbrick/rev-sdk](../README.md) / [Modules](../modules.md) / [IVbrickApi](../modules/IVbrickApi.md) / IVbrickVideoConfig
+[@vbrick/rev-sdk](../README.md) / [IVbrickApi](../modules/IVbrickApi.md) / IVbrickVideoConfig
 
 # Interface: IVbrickVideoConfig
 
@@ -44,7 +44,7 @@ Branding Settings. Accent color to use in the player, in HTML #rrggbb format
 
 #### Defined in
 
-IVbrickApi.ts:83
+[IVbrickApi.ts:83](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L83)
 
 ___
 
@@ -54,7 +54,7 @@ ___
 
 #### Defined in
 
-IVbrickApi.ts:59
+[IVbrickApi.ts:59](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L59)
 
 ___
 
@@ -70,7 +70,7 @@ URL for Rev
 
 #### Defined in
 
-IVbrickApi.ts:23
+[IVbrickApi.ts:23](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L23)
 
 ___
 
@@ -86,7 +86,7 @@ An optional class to be set on the iframe.
 
 #### Defined in
 
-IVbrickApi.ts:28
+[IVbrickApi.ts:28](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L28)
 
 ___
 
@@ -96,7 +96,7 @@ ___
 
 #### Defined in
 
-IVbrickApi.ts:65
+[IVbrickApi.ts:65](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L65)
 
 ___
 
@@ -112,7 +112,7 @@ Height of the iframe. Default is "100%"
 
 #### Defined in
 
-IVbrickApi.ts:38
+[IVbrickApi.ts:38](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L38)
 
 ___
 
@@ -122,7 +122,7 @@ ___
 
 #### Defined in
 
-IVbrickApi.ts:64
+[IVbrickApi.ts:64](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L64)
 
 ___
 
@@ -132,17 +132,17 @@ ___
 
 #### Defined in
 
-IVbrickApi.ts:61
+[IVbrickApi.ts:61](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L61)
 
 ___
 
 ### hideFullscreen
 
-• **hideFullscreen**: `boolean`
+• `Optional` **hideFullscreen**: `boolean`
 
 #### Defined in
 
-IVbrickApi.ts:67
+[IVbrickApi.ts:67](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L67)
 
 ___
 
@@ -152,7 +152,7 @@ ___
 
 #### Defined in
 
-IVbrickApi.ts:62
+[IVbrickApi.ts:62](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L62)
 
 ___
 
@@ -162,7 +162,7 @@ ___
 
 #### Defined in
 
-IVbrickApi.ts:63
+[IVbrickApi.ts:63](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L63)
 
 ___
 
@@ -172,7 +172,7 @@ ___
 
 #### Defined in
 
-IVbrickApi.ts:66
+[IVbrickApi.ts:66](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L66)
 
 ___
 
@@ -188,7 +188,7 @@ If true, enable logging messages in the browser console.
 
 #### Defined in
 
-IVbrickApi.ts:43
+[IVbrickApi.ts:43](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L43)
 
 ___
 
@@ -200,7 +200,7 @@ Branding Settings. Logo image URL
 
 #### Defined in
 
-IVbrickApi.ts:78
+[IVbrickApi.ts:78](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L78)
 
 ___
 
@@ -210,7 +210,7 @@ ___
 
 #### Defined in
 
-IVbrickApi.ts:60
+[IVbrickApi.ts:60](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L60)
 
 ___
 
@@ -222,7 +222,7 @@ Plays the video in a popup window. If false(default) the video plays directly in
 
 #### Defined in
 
-IVbrickApi.ts:57
+[IVbrickApi.ts:57](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L57)
 
 ___
 
@@ -230,11 +230,11 @@ ___
 
 • `Optional` **startAt**: `string`
 
-Starts the video at specified timestamp. must be in the format hh:mm:ss.sss
+Starts the video at specified timestamp. must be in the format ##m##s. For example 00m30s.
 
 #### Defined in
 
-IVbrickApi.ts:73
+[IVbrickApi.ts:73](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L73)
 
 ___
 
@@ -248,7 +248,7 @@ ___
 
 #### Defined in
 
-IVbrickApi.ts:18
+[IVbrickApi.ts:18](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L18)
 
 ___
 
@@ -264,4 +264,4 @@ Width of the iframe. Default is "100%"
 
 #### Defined in
 
-IVbrickApi.ts:33
+[IVbrickApi.ts:33](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L33)

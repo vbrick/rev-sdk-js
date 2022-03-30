@@ -1,4 +1,4 @@
-[@vbrick/rev-sdk](../README.md) / [Modules](../modules.md) / [IVbrickApi](../modules/IVbrickApi.md) / IVbrickWebcast
+[@vbrick/rev-sdk](../README.md) / [IVbrickApi](../modules/IVbrickApi.md) / IVbrickWebcast
 
 # Interface: IVbrickWebcast
 
@@ -32,7 +32,7 @@ Indicates whether the webcast is started, or broadcasting.
 
 #### Defined in
 
-IVbrickApi.ts:97
+[IVbrickApi.ts:97](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L97)
 
 ## Methods
 
@@ -52,7 +52,7 @@ Removes the embedded content from the DOM.
 
 #### Defined in
 
-IVbrickApi.ts:187
+[IVbrickApi.ts:187](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L187)
 
 ___
 
@@ -79,7 +79,7 @@ Removes an event listener
 
 #### Defined in
 
-IVbrickApi.ts:182
+[IVbrickApi.ts:182](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L182)
 
 ___
 
@@ -106,7 +106,7 @@ Register an event handler. Events are fired at different lifecycle stages of the
 
 #### Defined in
 
-IVbrickApi.ts:104
+[IVbrickApi.ts:104](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L104)
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -129,7 +129,7 @@ Fired when the webcast starts broadcasting.
 
 #### Defined in
 
-IVbrickApi.ts:109
+[IVbrickApi.ts:109](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L109)
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -152,7 +152,7 @@ Fired when the webcast stops broadcasting.
 
 #### Defined in
 
-IVbrickApi.ts:114
+[IVbrickApi.ts:114](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L114)
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -177,7 +177,7 @@ isPreProduction: boolean, Indicates that the webcast is running in pre-productio
 
 #### Defined in
 
-IVbrickApi.ts:121
+[IVbrickApi.ts:121](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L121)
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -200,4 +200,4 @@ Fired when the webcast ends.
 
 #### Defined in
 
-IVbrickApi.ts:126
+[IVbrickApi.ts:126](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L126)

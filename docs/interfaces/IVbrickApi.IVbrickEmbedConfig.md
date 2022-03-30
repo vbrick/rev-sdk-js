@@ -1,4 +1,4 @@
-[@vbrick/rev-sdk](../README.md) / [Modules](../modules.md) / [IVbrickApi](../modules/IVbrickApi.md) / IVbrickEmbedConfig
+[@vbrick/rev-sdk](../README.md) / [IVbrickApi](../modules/IVbrickApi.md) / IVbrickEmbedConfig
 
 # Interface: IVbrickEmbedConfig
 
@@ -33,7 +33,7 @@ URL for Rev
 
 #### Defined in
 
-IVbrickApi.ts:23
+[IVbrickApi.ts:23](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L23)
 
 ___
 
@@ -45,7 +45,7 @@ An optional class to be set on the iframe.
 
 #### Defined in
 
-IVbrickApi.ts:28
+[IVbrickApi.ts:28](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L28)
 
 ___
 
@@ -57,7 +57,7 @@ Height of the iframe. Default is "100%"
 
 #### Defined in
 
-IVbrickApi.ts:38
+[IVbrickApi.ts:38](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L38)
 
 ___
 
@@ -69,7 +69,7 @@ If true, enable logging messages in the browser console.
 
 #### Defined in
 
-IVbrickApi.ts:43
+[IVbrickApi.ts:43](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L43)
 
 ___
 
@@ -79,7 +79,7 @@ ___
 
 #### Defined in
 
-IVbrickApi.ts:18
+[IVbrickApi.ts:18](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L18)
 
 ___
 
@@ -91,4 +91,4 @@ Width of the iframe. Default is "100%"
 
 #### Defined in
 
-IVbrickApi.ts:33
+[IVbrickApi.ts:33](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L33)

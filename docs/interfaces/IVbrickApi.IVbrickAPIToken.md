@@ -1,4 +1,4 @@
-[@vbrick/rev-sdk](../README.md) / [Modules](../modules.md) / [IVbrickApi](../modules/IVbrickApi.md) / IVbrickAPIToken
+[@vbrick/rev-sdk](../README.md) / [IVbrickApi](../modules/IVbrickApi.md) / IVbrickAPIToken
 
 # Interface: IVbrickAPIToken
 
@@ -20,7 +20,7 @@
 
 #### Defined in
 
-IVbrickApi.ts:9
+[IVbrickApi.ts:9](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L9)
 
 ___
 
@@ -30,7 +30,7 @@ ___
 
 #### Defined in
 
-IVbrickApi.ts:7
+[IVbrickApi.ts:7](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L7)
 
 ___
 
@@ -40,4 +40,4 @@ ___
 
 #### Defined in
 
-IVbrickApi.ts:8
+[IVbrickApi.ts:8](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L8)

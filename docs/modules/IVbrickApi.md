@@ -1,4 +1,4 @@
-[@vbrick/rev-sdk](../README.md) / [Modules](../modules.md) / IVbrickApi
+[@vbrick/rev-sdk](../README.md) / IVbrickApi
 
 # Module: IVbrickApi
 

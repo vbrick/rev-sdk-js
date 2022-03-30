@@ -1,4 +1,4 @@
-[@vbrick/rev-sdk](../README.md) / [Modules](../modules.md) / index
+[@vbrick/rev-sdk](../README.md) / index
 
 # Module: index
 
@@ -12,36 +12,31 @@ This library allows for embedding and interacting with Rev content.
 
 ### Functions
 
-- [defaults](index.md#defaults)
+- [embedVideo](index.md#embedvideo)
 - [embedWebcast](index.md#embedwebcast)
+- [setDefaultConfig](index.md#setdefaultconfig)
 
 ## Functions
 
-### defaults
+### embedVideo
 
-▸ **defaults**(`configuration`): `void`
-
-Assign default configuration values that will be applied to future api calls.
-
-**`example`**
-Presetting a rev URL:
-```
-vbrickEmbed.defaults({ baseUrl: 'https://rev1.site.com' })
-```
+▸ **embedVideo**(`element`, `videoId`, `config`): `VbrickVideoEmbed`
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `configuration` | `Partial`<[`IVbrickWebcastConfig`](../interfaces/IVbrickApi.IVbrickWebcastConfig.md)\> | A configuration object. |
+| Name | Type |
+| :------ | :------ |
+| `element` | `string` \| `HTMLElement` |
+| `videoId` | `string` |
+| `config` | [`IVbrickVideoConfig`](../interfaces/IVbrickApi.IVbrickVideoConfig.md) |
 
 #### Returns
 
-`void`
+`VbrickVideoEmbed`
 
 #### Defined in
 
-VbrickApi.ts:18
+[EmbedVideo.ts:6](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/EmbedVideo.ts#L6)
 
 ___
 
@@ -79,4 +74,32 @@ An [`IVbrickWebcastConfig`](../interfaces/IVbrickApi.IVbrickWebcastConfig.md) ob
 
 #### Defined in
 
-VbrickApi.ts:42
+[EmbedWebcast.ts:26](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/EmbedWebcast.ts#L26)
+
+___
+
+### setDefaultConfig
+
+▸ **setDefaultConfig**(`configuration`): `void`
+
+Assign default configuration values that will be applied to future api calls.
+
+**`example`**
+Presetting a rev URL:
+```
+vbrickEmbed.setDefaultConfig({ baseUrl: 'https://rev1.site.com' })
+```
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `configuration` | `Partial`<`TConfig`\> | A configuration object. |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+[Config.ts:19](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/Config.ts#L19)

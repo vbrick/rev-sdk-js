@@ -1,4 +1,4 @@
-[@vbrick/rev-sdk](../README.md) / [Modules](../modules.md) / [IVbrickApi](../modules/IVbrickApi.md) / TokenType
+[@vbrick/rev-sdk](../README.md) / [IVbrickApi](../modules/IVbrickApi.md) / TokenType
 
 # Enumeration: TokenType
 
@@ -19,7 +19,7 @@
 
 #### Defined in
 
-IVbrickApi.ts:13
+[IVbrickApi.ts:13](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L13)
 
 ___
 
@@ -29,4 +29,4 @@ ___
 
 #### Defined in
 
-IVbrickApi.ts:14
+[IVbrickApi.ts:14](https://github.com/vbrick/rev-sdk-js/blob/21b09fe/src/IVbrickApi.ts#L14)
