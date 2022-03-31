@@ -42,7 +42,7 @@ export function defaults(configuration: Partial<IVbrickWebcastConfig>) {
 export function embedWebcast(
 	element: HTMLElement | string,
 	webcastId: string,
-	config: IVbrickWebcastConfig
+	config: IVbrickWebcastConfig = {}
 ): IVbrickWebcast {
 
 	const el: HTMLElement = element instanceof HTMLElement ? element : document.querySelector(element);
