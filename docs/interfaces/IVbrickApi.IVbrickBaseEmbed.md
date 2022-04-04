@@ -1,4 +1,4 @@
-[@vbrick/rev-sdk](../README.md) / [Modules](../modules.md) / [IVbrickApi](../modules/IVbrickApi.md) / IVbrickBaseEmbed
+[@vbrick/rev-sdk](../README.md) / [IVbrickApi](../modules/IVbrickApi.md) / IVbrickBaseEmbed
 
 # Interface: IVbrickBaseEmbed
 
@@ -34,7 +34,7 @@ Removes the embedded content from the DOM.
 
 #### Defined in
 
-IVbrickApi.ts:211
+[IVbrickApi.ts:200](https://github.com/vbrick/rev-sdk-js/blob/d1cd6e7/src/IVbrickApi.ts#L200)
 
 ___
 
@@ -57,7 +57,7 @@ Removes an event listener
 
 #### Defined in
 
-IVbrickApi.ts:206
+[IVbrickApi.ts:195](https://github.com/vbrick/rev-sdk-js/blob/d1cd6e7/src/IVbrickApi.ts#L195)
 
 ___
 
@@ -80,7 +80,7 @@ Fires when the video metadata is loaded
 
 #### Defined in
 
-IVbrickApi.ts:155
+[IVbrickApi.ts:144](https://github.com/vbrick/rev-sdk-js/blob/d1cd6e7/src/IVbrickApi.ts#L144)
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -99,7 +99,7 @@ Fired if the player volume changes
 
 #### Defined in
 
-IVbrickApi.ts:161
+[IVbrickApi.ts:150](https://github.com/vbrick/rev-sdk-js/blob/d1cd6e7/src/IVbrickApi.ts#L150)
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -118,7 +118,7 @@ Fired when the player status changes
 
 #### Defined in
 
-IVbrickApi.ts:172
+[IVbrickApi.ts:161](https://github.com/vbrick/rev-sdk-js/blob/d1cd6e7/src/IVbrickApi.ts#L161)
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -137,7 +137,7 @@ Fired when the captions are toggled, or the language changes
 
 #### Defined in
 
-IVbrickApi.ts:184
+[IVbrickApi.ts:173](https://github.com/vbrick/rev-sdk-js/blob/d1cd6e7/src/IVbrickApi.ts#L173)
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -156,7 +156,7 @@ Fired when the playback speed changes. Only available for prerecorded video on d
 
 #### Defined in
 
-IVbrickApi.ts:191
+[IVbrickApi.ts:180](https://github.com/vbrick/rev-sdk-js/blob/d1cd6e7/src/IVbrickApi.ts#L180)
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -175,7 +175,7 @@ Fired when the user seeks in the video player
 
 #### Defined in
 
-IVbrickApi.ts:196
+[IVbrickApi.ts:185](https://github.com/vbrick/rev-sdk-js/blob/d1cd6e7/src/IVbrickApi.ts#L185)
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -194,4 +194,4 @@ Fired if there is an error
 
 #### Defined in
 
-IVbrickApi.ts:201
+[IVbrickApi.ts:190](https://github.com/vbrick/rev-sdk-js/blob/d1cd6e7/src/IVbrickApi.ts#L190)

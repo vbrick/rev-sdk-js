@@ -1,4 +1,4 @@
-[@vbrick/rev-sdk](../README.md) / [Modules](../modules.md) / [IVbrickApi](../modules/IVbrickApi.md) / IVideoInfo
+[@vbrick/rev-sdk](../README.md) / [IVbrickApi](../modules/IVbrickApi.md) / IVideoInfo
 
 # Interface: IVideoInfo
 
@@ -20,7 +20,7 @@
 
 #### Defined in
 
-IVbrickApi.ts:222
+[IVbrickApi.ts:211](https://github.com/vbrick/rev-sdk-js/blob/d1cd6e7/src/IVbrickApi.ts#L211)
 
 ___
 
@@ -30,7 +30,7 @@ ___
 
 #### Defined in
 
-IVbrickApi.ts:220
+[IVbrickApi.ts:209](https://github.com/vbrick/rev-sdk-js/blob/d1cd6e7/src/IVbrickApi.ts#L209)
 
 ___
 
@@ -40,4 +40,4 @@ ___
 
 #### Defined in
 
-IVbrickApi.ts:221
+[IVbrickApi.ts:210](https://github.com/vbrick/rev-sdk-js/blob/d1cd6e7/src/IVbrickApi.ts#L210)

@@ -1,4 +1,4 @@
-[@vbrick/rev-sdk](../README.md) / [Modules](../modules.md) / [IVbrickApi](../modules/IVbrickApi.md) / ICaptionSettings
+[@vbrick/rev-sdk](../README.md) / [IVbrickApi](../modules/IVbrickApi.md) / ICaptionSettings
 
 # Interface: ICaptionSettings
 
@@ -19,7 +19,7 @@
 
 #### Defined in
 
-IVbrickApi.ts:215
+[IVbrickApi.ts:204](https://github.com/vbrick/rev-sdk-js/blob/d1cd6e7/src/IVbrickApi.ts#L204)
 
 ___
 
@@ -29,4 +29,4 @@ ___
 
 #### Defined in
 
-IVbrickApi.ts:216
+[IVbrickApi.ts:205](https://github.com/vbrick/rev-sdk-js/blob/d1cd6e7/src/IVbrickApi.ts#L205)
