@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node --max_old_space_size=4096 node_modules/webpack/bin/webpack --config ./webpack.config.js --progress",
     "build:watch": "node --max_old_space_size=4096 node_modules/webpack/bin/webpack --config ./webpack.config.js --progress --watch",
-    "doc": "npx typedoc"
+    "doc": "npx typedoc --readme none"
   },
   "author": "",
   "license": "MIT",

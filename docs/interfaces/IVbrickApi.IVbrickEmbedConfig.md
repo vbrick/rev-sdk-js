@@ -1,4 +1,4 @@
-[@vbrick/rev-sdk](../README.md) / [Modules](../modules.md) / [IVbrickApi](../modules/IVbrickApi.md) / IVbrickEmbedConfig
+[@vbrick/rev-sdk](../README.md) / [IVbrickApi](../modules/IVbrickApi.md) / IVbrickEmbedConfig
 
 # Interface: IVbrickEmbedConfig
 
@@ -33,7 +33,7 @@ URL for Rev
 
 #### Defined in
 
-IVbrickApi.ts:42
+[IVbrickApi.ts:31](https://github.com/vbrick/rev-sdk-js/blob/d1cd6e7/src/IVbrickApi.ts#L31)
 
 ___
 
@@ -45,7 +45,7 @@ An optional class to be set on the iframe.
 
 #### Defined in
 
-IVbrickApi.ts:47
+[IVbrickApi.ts:36](https://github.com/vbrick/rev-sdk-js/blob/d1cd6e7/src/IVbrickApi.ts#L36)
 
 ___
 
@@ -57,7 +57,7 @@ Height of the iframe. Default is "100%"
 
 #### Defined in
 
-IVbrickApi.ts:57
+[IVbrickApi.ts:46](https://github.com/vbrick/rev-sdk-js/blob/d1cd6e7/src/IVbrickApi.ts#L46)
 
 ___
 
@@ -69,17 +69,17 @@ If true, enable logging messages in the browser console.
 
 #### Defined in
 
-IVbrickApi.ts:62
+[IVbrickApi.ts:51](https://github.com/vbrick/rev-sdk-js/blob/d1cd6e7/src/IVbrickApi.ts#L51)
 
 ___
 
 ### token
 
-• **token**: [`TVbrickAPIToken`](../modules/IVbrickApi.md#tvbrickapitoken)
+• **token**: [`IVbrickAPIToken`](IVbrickApi.IVbrickAPIToken.md)
 
 #### Defined in
 
-IVbrickApi.ts:37
+[IVbrickApi.ts:26](https://github.com/vbrick/rev-sdk-js/blob/d1cd6e7/src/IVbrickApi.ts#L26)
 
 ___
 
@@ -91,4 +91,4 @@ Width of the iframe. Default is "100%"
 
 #### Defined in
 
-IVbrickApi.ts:52
+[IVbrickApi.ts:41](https://github.com/vbrick/rev-sdk-js/blob/d1cd6e7/src/IVbrickApi.ts#L41)

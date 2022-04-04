@@ -1,4 +1,4 @@
-[@vbrick/rev-sdk](../README.md) / [Modules](../modules.md) / index
+[@vbrick/rev-sdk](../README.md) / index
 
 # Module: index
 
@@ -36,7 +36,7 @@ This library allows for embedding and interacting with Rev content.
 
 #### Defined in
 
-EmbedVideo.ts:6
+[EmbedVideo.ts:6](https://github.com/vbrick/rev-sdk-js/blob/d1cd6e7/src/EmbedVideo.ts#L6)
 
 ___
 
@@ -74,7 +74,7 @@ An [`IVbrickWebcastConfig`](../interfaces/IVbrickApi.IVbrickWebcastConfig.md) ob
 
 #### Defined in
 
-EmbedWebcast.ts:26
+[EmbedWebcast.ts:26](https://github.com/vbrick/rev-sdk-js/blob/d1cd6e7/src/EmbedWebcast.ts#L26)
 
 ___
 
@@ -102,4 +102,4 @@ vbrickEmbed.setDefaultConfig({ baseUrl: 'https://rev1.site.com' })
 
 #### Defined in
 
-Config.ts:19
+[Config.ts:20](https://github.com/vbrick/rev-sdk-js/blob/d1cd6e7/src/Config.ts#L20)
