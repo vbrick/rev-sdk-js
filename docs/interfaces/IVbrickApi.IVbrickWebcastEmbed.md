@@ -1,26 +1,26 @@
-[@vbrick/rev-sdk](../README.md) / [Modules](../modules.md) / [IVbrickApi](../modules/IVbrickApi.md) / IVbrickWebcast
+[@vbrick/rev-sdk](../README.md) / [Modules](../modules.md) / [IVbrickApi](../modules/IVbrickApi.md) / IVbrickWebcastEmbed
 
-# Interface: IVbrickWebcast
+# Interface: IVbrickWebcastEmbed
 
-[IVbrickApi](../modules/IVbrickApi.md).IVbrickWebcast
+[IVbrickApi](../modules/IVbrickApi.md).IVbrickWebcastEmbed
 
 ## Hierarchy
 
 - [`IVbrickBaseEmbed`](IVbrickApi.IVbrickBaseEmbed.md)
 
-  ↳ **`IVbrickWebcast`**
+  ↳ **`IVbrickWebcastEmbed`**
 
 ## Table of contents
 
 ### Properties
 
-- [status](IVbrickApi.IVbrickWebcast.md#status)
+- [status](IVbrickApi.IVbrickWebcastEmbed.md#status)
 
 ### Methods
 
-- [destroy](IVbrickApi.IVbrickWebcast.md#destroy)
-- [off](IVbrickApi.IVbrickWebcast.md#off)
-- [on](IVbrickApi.IVbrickWebcast.md#on)
+- [destroy](IVbrickApi.IVbrickWebcastEmbed.md#destroy)
+- [off](IVbrickApi.IVbrickWebcastEmbed.md#off)
+- [on](IVbrickApi.IVbrickWebcastEmbed.md#on)
 
 ## Properties
 
@@ -32,7 +32,7 @@ Indicates whether the webcast is started, or broadcasting.
 
 #### Defined in
 
-IVbrickApi.ts:97
+IVbrickApi.ts:116
 
 ## Methods
 
@@ -52,7 +52,7 @@ Removes the embedded content from the DOM.
 
 #### Defined in
 
-IVbrickApi.ts:187
+IVbrickApi.ts:211
 
 ___
 
@@ -79,7 +79,7 @@ Removes an event listener
 
 #### Defined in
 
-IVbrickApi.ts:182
+IVbrickApi.ts:206
 
 ___
 
@@ -106,7 +106,7 @@ Register an event handler. Events are fired at different lifecycle stages of the
 
 #### Defined in
 
-IVbrickApi.ts:104
+IVbrickApi.ts:123
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -129,7 +129,7 @@ Fired when the webcast starts broadcasting.
 
 #### Defined in
 
-IVbrickApi.ts:109
+IVbrickApi.ts:128
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -152,7 +152,7 @@ Fired when the webcast stops broadcasting.
 
 #### Defined in
 
-IVbrickApi.ts:114
+IVbrickApi.ts:133
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -177,7 +177,7 @@ isPreProduction: boolean, Indicates that the webcast is running in pre-productio
 
 #### Defined in
 
-IVbrickApi.ts:121
+IVbrickApi.ts:140
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -200,4 +200,4 @@ Fired when the webcast ends.
 
 #### Defined in
 
-IVbrickApi.ts:126
+IVbrickApi.ts:145

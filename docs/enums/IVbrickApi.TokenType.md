@@ -8,10 +8,20 @@
 
 ### Enumeration members
 
+- [ACCESS\_TOKEN](IVbrickApi.TokenType.md#access_token)
 - [JWT](IVbrickApi.TokenType.md#jwt)
-- [OAUTH](IVbrickApi.TokenType.md#oauth)
 
 ## Enumeration members
+
+### ACCESS\_TOKEN
+
+• **ACCESS\_TOKEN** = `"AccessToken"`
+
+#### Defined in
+
+IVbrickApi.ts:33
+
+___
 
 ### JWT
 
@@ -19,14 +29,4 @@
 
 #### Defined in
 
-IVbrickApi.ts:13
-
-___
-
-### OAUTH
-
-• **OAUTH** = `"OAUTH"`
-
-#### Defined in
-
-IVbrickApi.ts:14
+IVbrickApi.ts:32

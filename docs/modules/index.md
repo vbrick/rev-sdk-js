@@ -12,42 +12,37 @@ This library allows for embedding and interacting with Rev content.
 
 ### Functions
 
-- [defaults](index.md#defaults)
+- [embedVideo](index.md#embedvideo)
 - [embedWebcast](index.md#embedwebcast)
+- [setDefaultConfig](index.md#setdefaultconfig)
 
 ## Functions
 
-### defaults
+### embedVideo
 
-▸ **defaults**(`configuration`): `void`
-
-Assign default configuration values that will be applied to future api calls.
-
-**`example`**
-Presetting a rev URL:
-```
-vbrickEmbed.defaults({ baseUrl: 'https://rev1.site.com' })
-```
+▸ **embedVideo**(`element`, `videoId`, `config`): `VbrickVideoEmbed`
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `configuration` | `Partial`<[`IVbrickWebcastConfig`](../interfaces/IVbrickApi.IVbrickWebcastConfig.md)\> | A configuration object. |
+| Name | Type |
+| :------ | :------ |
+| `element` | `string` \| `HTMLElement` |
+| `videoId` | `string` |
+| `config` | [`IVbrickVideoConfig`](../interfaces/IVbrickApi.IVbrickVideoConfig.md) |
 
 #### Returns
 
-`void`
+`VbrickVideoEmbed`
 
 #### Defined in
 
-VbrickApi.ts:18
+EmbedVideo.ts:6
 
 ___
 
 ### embedWebcast
 
-▸ **embedWebcast**(`element`, `webcastId`, `config`): [`IVbrickWebcast`](../interfaces/IVbrickApi.IVbrickWebcast.md)
+▸ **embedWebcast**(`element`, `webcastId`, `config`): [`IVbrickWebcastEmbed`](../interfaces/IVbrickApi.IVbrickWebcastEmbed.md)
 
 Embeds a webcast on the page
 
@@ -73,10 +68,38 @@ revSdk.embedWebcast('#webcast-embed', webcastId, {
 
 #### Returns
 
-[`IVbrickWebcast`](../interfaces/IVbrickApi.IVbrickWebcast.md)
+[`IVbrickWebcastEmbed`](../interfaces/IVbrickApi.IVbrickWebcastEmbed.md)
 
 An [`IVbrickWebcastConfig`](../interfaces/IVbrickApi.IVbrickWebcastConfig.md) object
 
 #### Defined in
 
-VbrickApi.ts:42
+EmbedWebcast.ts:26
+
+___
+
+### setDefaultConfig
+
+▸ **setDefaultConfig**(`configuration`): `void`
+
+Assign default configuration values that will be applied to future api calls.
+
+**`example`**
+Presetting a rev URL:
+```
+vbrickEmbed.setDefaultConfig({ baseUrl: 'https://rev1.site.com' })
+```
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `configuration` | `Partial`<`TConfig`\> | A configuration object. |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+Config.ts:19

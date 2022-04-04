@@ -8,7 +8,9 @@
 
 - **`IVbrickBaseEmbed`**
 
-  ↳ [`IVbrickWebcast`](IVbrickApi.IVbrickWebcast.md)
+  ↳ [`IVbrickVideoEmbed`](IVbrickApi.IVbrickVideoEmbed.md)
+
+  ↳ [`IVbrickWebcastEmbed`](IVbrickApi.IVbrickWebcastEmbed.md)
 
 ## Table of contents
 
@@ -32,7 +34,7 @@ Removes the embedded content from the DOM.
 
 #### Defined in
 
-IVbrickApi.ts:187
+IVbrickApi.ts:211
 
 ___
 
@@ -55,11 +57,30 @@ Removes an event listener
 
 #### Defined in
 
-IVbrickApi.ts:182
+IVbrickApi.ts:206
 
 ___
 
 ### on
+
+▸ **on**(`event`, `listener`): `void`
+
+Fires when the video metadata is loaded
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `event` | ``"videoLoaded"`` |
+| `listener` | (`event`: `any`) => `void` |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+IVbrickApi.ts:155
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -78,7 +99,7 @@ Fired if the player volume changes
 
 #### Defined in
 
-IVbrickApi.ts:137
+IVbrickApi.ts:161
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -97,7 +118,7 @@ Fired when the player status changes
 
 #### Defined in
 
-IVbrickApi.ts:148
+IVbrickApi.ts:172
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -108,7 +129,7 @@ Fired when the captions are toggled, or the language changes
 | Name | Type |
 | :------ | :------ |
 | `event` | ``"captionsChanged"`` |
-| `listener` | (`event`: { `enabled`: `boolean` ; `language`: `string`  }) => `void` |
+| `listener` | (`event`: [`ICaptionSettings`](IVbrickApi.ICaptionSettings.md)) => `void` |
 
 #### Returns
 
@@ -116,7 +137,7 @@ Fired when the captions are toggled, or the language changes
 
 #### Defined in
 
-IVbrickApi.ts:160
+IVbrickApi.ts:184
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -135,7 +156,7 @@ Fired when the playback speed changes. Only available for prerecorded video on d
 
 #### Defined in
 
-IVbrickApi.ts:167
+IVbrickApi.ts:191
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -154,7 +175,7 @@ Fired when the user seeks in the video player
 
 #### Defined in
 
-IVbrickApi.ts:172
+IVbrickApi.ts:196
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -173,4 +194,4 @@ Fired if there is an error
 
 #### Defined in
 
-IVbrickApi.ts:177
+IVbrickApi.ts:201
