@@ -3,20 +3,27 @@
 This is Vbrick's JavaScript SDK library that enables you to embed Vbrick Rev webcasts on your website, portal, or any web-based application using JavaScript code. The SDK currently supports interaction with the webcast video player. We will support full webcast features including slides, chats, Q&A, polls, VOD functionality, etc via this SDK in the future.
 
 ##### Documentation
-- [API Reference](docs/modules/index.md)
+- [API Module Reference](/docs/modules/index.md)
+- [API Enumerations and Interfaces Reference](/docs/modules/IVbrickApi.md)
 
 #### Accessing the SDK
 
 The JavaScript SDK can be accessed via `<script>` tag in your HTML. Set the src attribute to `https://<<YOUR_REV_URL>>/dist/rev-sdk.js` or import for ES6 module.
 
-If you use npm, then you can run `npm install @vbrick/rev-sdk`
 
 ~~~
-<script src="<<REV URL>>/dist/rev-sdk.js"></script>
+<script src="https://<<YOUR_REV_URL>>/dist/rev-sdk.js"></script>
 
 <script type="module">
-  import revSdk from "<<YOUR_REV URL>>/dist/rev-sdk.js";
+  import revSdk from "https://<<YOUR_REV_URL>>/dist/rev-sdk.js";
 </script>
+~~~
+
+#### Install using npm
+
+If you use npm, then you can run
+~~~
+npm install @vbrick/rev-sdk
 ~~~
 
 #### Building The SDK Locally
