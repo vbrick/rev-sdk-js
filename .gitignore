@@ -1,4 +1,4 @@
 node_modules/
-dist/
+#dist/  #dist folder is checked in for gh-pages
 .npmrc
 *.pem
