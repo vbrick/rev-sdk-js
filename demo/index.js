@@ -2,36 +2,93 @@ import { init, stringifyJson } from './demo.js';
 
 console.log('Demo, API: ', window.revSdk);
 
-let formValues = init('webcast', {
-	webcastId: '',
+/** @type {import("../dist/IVbrickApi").IVbrickBaseEmbed} */
+let currentEmbed;
+
+let formValues = init({
+	sourceUrl: '',
 	baseUrl: '',
-	jwtToken: '',
-	accessToken: '',
-	issuer: 'vbrick_rev'
+	videoId: '',
+	webcastId: '',
+	embedType: 'vod',
+	tokenType: 'AccessToken',
+	tokenValue: '',
+	issuer: 'vbrick',
+	config: '{}'
+}, formValues => {
+	embedContent(formValues)
 });
 
-const token = {
-	type: formValues.jwtToken ? 'JWT' : 'AccessToken',
-	issuer: formValues.issuer,
-	value: formValues.jwtToken || formValues.accessToken
-};
+const sharedEvents = ['error', 'load', 'volumeChanged', 'captionsChanged', 'playerStatusChanged'];
+
+const vodEvents = ['videoLoaded', 'seeked'];
+
+const webcastEvents = ['webcastLoaded', 'webcastStarted', 'webcastEnded',
+'broadcastStarted', 'broadcastStopped']
+
+function embedContent(payload) {
+	const {
+		baseUrl,
+		webcastId,
+		videoId,
+		config
+	} = payload;
+
+	if (currentEmbed) {
+		currentEmbed.destroy();
+	}
+
+	const isVod = !!videoId;
+	
+	const embedConfig = {
+		showVideo: true,
+		log: true,
+		baseUrl,
+		...config
+	};
+
+	const embed = isVod
+		? revSdk.embedVideo('#embed', videoId, embedConfig)
+		: revSdk.embedWebcast('#embed', webcastId, embedConfig);
+
+	currentEmbed = embed;
+	globalThis.currentEmbed = currentEmbed;
+
+	const listenEvents = [
+		...sharedEvents,
+		...(isVod
+			? vodEvents
+			: webcastEvents
+		)
+	];
+	addLogging(embed, listenEvents);
+
+	trackStatus(embed, 'status');
+}
 
 
-const webcast = revSdk.embedWebcast('#embed', formValues.webcastId, {
-	showVideo: true,
-	log: true,
-	token,
-	baseUrl: formValues.baseUrl
-});
 
-const statusEl = document.getElementById('status');
-const logEl = document.getElementById('logMessages');
+function addLogging(embedObj, events) {
+	const logEl = document.getElementById('logMessages');
 
-['error', 'load', 'webcastLoaded', 'webcastStarted', 'broadcastStarted', 'broadcastStopped', 'webcastEnded', 'volumeChanged', 'captionsChanged', 'playerStatusChanged']
-	.forEach(e => webcast.on(e, data => {
-		const li = document.createElement('li');
-		li.innerHTML = `${new Date().toLocaleTimeString()} ${e}:${stringifyJson(data)}`;
-		logEl.appendChild(li);
-	}));
+	for (let eventName of events) {
+		embedObj.on(eventName, data => {
+			const li = document.createElement('li');
+			li.innerHTML = `${new Date().toLocaleTimeString()} ${eventName}:${stringifyJson(data)}`;
+			logEl.appendChild(li);
+		});
+	}
+}
 
-window.setInterval(() => statusEl.innerHTML = webcast.status || 'undefined', 1000);
+function trackStatus(embedObj, property = 'status') {
+	const statusEl = document.getElementById('status');
+	function updateStatus() {
+		// cancel updates if reload called
+		if (currentEmbed !== embedObj) {
+			return;
+		}
+		statusEl.innerHTML = embedObj[property] || 'undefined';
+		setTimeout(updateStatus, 1000);
+	}
+	updateStatus();
+}
