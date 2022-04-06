@@ -112,7 +112,7 @@ export function stringifyJson(data) {
 	return JSON.stringify(data, (key, value) => value instanceof Error
 		? e.toString() + '\n' + e.stack.toString()
 		: value
-	);
+	, 2);
 }
 
 function setCookie(cookie, value, isTransient) {
@@ -143,9 +143,14 @@ function readParams(defaults) {
 }
 
 function readFormData(form) {
-	return Array.from(form.elements)
-		.filter(el => el.name && (el.type !== 'radio' || el.checked))
-		.reduce((acc, el) => Object.assign(acc, {[el.name]: el.value}), {});
+	return Array.from(form.elements).reduce((acc, el) => {
+		if(el.name) {
+			if (el.type != 'radio' || (el.type == 'radio' && el.checked)) {
+				acc[el.name] = el.value;
+			}
+		}
+		return acc;
+	}, {});
 }
 
 function writeFormData(form, values) {
