@@ -1,24 +1,24 @@
-[@vbrick/rev-sdk](../README.md) / [IVbrickApi](../modules/IVbrickApi.md) / IVbrickBaseEmbed
+[@vbrick/rev-sdk](../README.md) / [embed/IVbrickApi](../modules/embed_IVbrickApi.md) / IVbrickBaseEmbed
 
 # Interface: IVbrickBaseEmbed
 
-[IVbrickApi](../modules/IVbrickApi.md).IVbrickBaseEmbed
+[embed/IVbrickApi](../modules/embed_IVbrickApi.md).IVbrickBaseEmbed
 
 ## Hierarchy
 
 - **`IVbrickBaseEmbed`**
 
-  ↳ [`IVbrickVideoEmbed`](IVbrickApi.IVbrickVideoEmbed.md)
+  ↳ [`IVbrickVideoEmbed`](embed_IVbrickApi.IVbrickVideoEmbed.md)
 
-  ↳ [`IVbrickWebcastEmbed`](IVbrickApi.IVbrickWebcastEmbed.md)
+  ↳ [`IVbrickWebcastEmbed`](embed_IVbrickApi.IVbrickWebcastEmbed.md)
 
 ## Table of contents
 
 ### Methods
 
-- [destroy](IVbrickApi.IVbrickBaseEmbed.md#destroy)
-- [off](IVbrickApi.IVbrickBaseEmbed.md#off)
-- [on](IVbrickApi.IVbrickBaseEmbed.md#on)
+- [destroy](embed_IVbrickApi.IVbrickBaseEmbed.md#destroy)
+- [off](embed_IVbrickApi.IVbrickBaseEmbed.md#off)
+- [on](embed_IVbrickApi.IVbrickBaseEmbed.md#on)
 
 ## Methods
 
@@ -34,7 +34,7 @@ Removes the embedded content from the DOM.
 
 #### Defined in
 
-[IVbrickApi.ts:200](https://github.com/vbrick/rev-sdk-js/blob/d1cd6e7/src/IVbrickApi.ts#L200)
+embed/IVbrickApi.ts:146
 
 ___
 
@@ -57,7 +57,7 @@ Removes an event listener
 
 #### Defined in
 
-[IVbrickApi.ts:195](https://github.com/vbrick/rev-sdk-js/blob/d1cd6e7/src/IVbrickApi.ts#L195)
+embed/IVbrickApi.ts:141
 
 ___
 
@@ -80,7 +80,7 @@ Fires when the video metadata is loaded
 
 #### Defined in
 
-[IVbrickApi.ts:144](https://github.com/vbrick/rev-sdk-js/blob/d1cd6e7/src/IVbrickApi.ts#L144)
+embed/IVbrickApi.ts:90
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -99,7 +99,7 @@ Fired if the player volume changes
 
 #### Defined in
 
-[IVbrickApi.ts:150](https://github.com/vbrick/rev-sdk-js/blob/d1cd6e7/src/IVbrickApi.ts#L150)
+embed/IVbrickApi.ts:96
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -110,7 +110,7 @@ Fired when the player status changes
 | Name | Type |
 | :------ | :------ |
 | `event` | ``"playerStatusChanged"`` |
-| `listener` | (`event`: { `status`: [`PlayerStatus`](../enums/IVbrickApi.PlayerStatus.md)  }) => `void` |
+| `listener` | (`event`: { `status`: [`PlayerStatus`](../enums/embed_PlayerStatus.PlayerStatus.md)  }) => `void` |
 
 #### Returns
 
@@ -118,7 +118,7 @@ Fired when the player status changes
 
 #### Defined in
 
-[IVbrickApi.ts:161](https://github.com/vbrick/rev-sdk-js/blob/d1cd6e7/src/IVbrickApi.ts#L161)
+embed/IVbrickApi.ts:107
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -129,7 +129,7 @@ Fired when the captions are toggled, or the language changes
 | Name | Type |
 | :------ | :------ |
 | `event` | ``"captionsChanged"`` |
-| `listener` | (`event`: [`ICaptionSettings`](IVbrickApi.ICaptionSettings.md)) => `void` |
+| `listener` | (`event`: [`ICaptionSettings`](embed_IVbrickApi.ICaptionSettings.md)) => `void` |
 
 #### Returns
 
@@ -137,7 +137,7 @@ Fired when the captions are toggled, or the language changes
 
 #### Defined in
 
-[IVbrickApi.ts:173](https://github.com/vbrick/rev-sdk-js/blob/d1cd6e7/src/IVbrickApi.ts#L173)
+embed/IVbrickApi.ts:119
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -156,7 +156,7 @@ Fired when the playback speed changes. Only available for prerecorded video on d
 
 #### Defined in
 
-[IVbrickApi.ts:180](https://github.com/vbrick/rev-sdk-js/blob/d1cd6e7/src/IVbrickApi.ts#L180)
+embed/IVbrickApi.ts:126
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -175,7 +175,7 @@ Fired when the user seeks in the video player
 
 #### Defined in
 
-[IVbrickApi.ts:185](https://github.com/vbrick/rev-sdk-js/blob/d1cd6e7/src/IVbrickApi.ts#L185)
+embed/IVbrickApi.ts:131
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -194,4 +194,4 @@ Fired if there is an error
 
 #### Defined in
 
-[IVbrickApi.ts:190](https://github.com/vbrick/rev-sdk-js/blob/d1cd6e7/src/IVbrickApi.ts#L190)
+embed/IVbrickApi.ts:136

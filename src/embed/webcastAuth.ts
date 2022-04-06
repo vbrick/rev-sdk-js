@@ -1,15 +1,15 @@
-import { IVbrickAPIToken, IVbrickWebcastConfig, TokenType } from './IVbrickApi';
+import { TokenType, VbrickSDKConfig, VbrickSDKToken } from "../VbrickSDK";
 
-let promise: Promise<IVbrickAPIToken>;
+let promise: Promise<VbrickSDKToken>;
 
-export function initializeWebcastToken(webcastId: string, config: IVbrickWebcastConfig): Promise<IVbrickAPIToken> {
+export function initializeWebcastToken(webcastId: string, config: VbrickSDKConfig): Promise<VbrickSDKToken> {
 	if(!promise) {
 		promise = getToken(webcastId, config);
 	}
 	return promise;
 }
 
-function getToken(webcastId: string, config: IVbrickWebcastConfig): Promise<any> {
+function getToken(webcastId: string, config: VbrickSDKConfig): Promise<any> {
 	const token = config.token.value;
 
 	if(config.token.type === TokenType.ACCESS_TOKEN) {

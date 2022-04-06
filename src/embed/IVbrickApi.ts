@@ -3,98 +3,44 @@ import { PlayerStatus } from './PlayerStatus';
 export { WebcastStatus } from './WebcastStatus';
 export { PlayerStatus } from './PlayerStatus';
 
-export interface IVbrickAPIToken {
-	type: TokenType;
-
-	/**
-	 * String containing the token value
-	 */
-	value: string;
-
-	/**
-	 * The issuer for the token
-	 */
-	issuer: string;
-}
-
-export enum TokenType {
-	JWT = 'JWT',
-	ACCESS_TOKEN = 'AccessToken'
-}
-
-export interface IVbrickEmbedConfig {
-	token: IVbrickAPIToken;
-
-	/**
-	 * URL for Rev
-	 */
-	baseUrl: string;
-
-	/**
-	 * An optional class to be set on the iframe.
-	 */
-	className: string;
-
-	/**
-	 * Width of the iframe. Default is "100%"
-	 */
-	width: string;
-
-	/**
-	 * Height of the iframe. Default is "100%"
-	 */
-	height: string;
-
-	/**
-	 * If true, enable logging messages in the browser console.
-	 */
-	log?: boolean
-}
-
-export interface IVbrickWebcastConfig extends IVbrickEmbedConfig {
-	/**
-	 * Optional, default is true.
-	 */
-	showVideo?: boolean;
-}
-
-export interface IVbrickVideoConfig extends IVbrickEmbedConfig {
-	/**
-	 * Plays the video in a popup window. If false(default) the video plays directly in the embed element.
-	 */
-	popOut?: boolean;
-
-	autoplay?: boolean;
-	playInLoop?: boolean;
-	hideChapters?: boolean;
-	hideOverlayControls?: boolean;
-	hidePlayControls?: boolean;
-	hideCaptions?: boolean;
-	forcedCaptions?: boolean;
-	hideSettings?: boolean;
-	hideFullscreen?: boolean;
-
-
-	/**
-	 * Starts the video at specified timestamp. must be in the format ##m##s. For example 00m30s.
-	 */
-	startAt?: string;
-
-	/**
-	 * Branding Settings. Logo image URL
-	 */
-	logoUrl?: string;
-
-	/**
-	 * Branding Settings. Accent color to use in the player, in HTML #rrggbb format
-	 */
-	accentColor?: string;
-
-
-}
 
 export interface IVbrickVideoEmbed extends IVbrickBaseEmbed {
 
+		/**
+	 * video playing, buffering, etc
+	 */
+	readonly playerStatus: PlayerStatus;
+
+	 /**
+	 * Player Volume. 0-1
+	 */
+	readonly volume: number;
+
+	/**
+	 * Whether captions are enabled, and selected language
+	 */
+	readonly captions: ICaptionSettings;
+
+	/**
+	 * Contains metadata for the video
+	 */
+	readonly videoInfo: any;
+
+	/**
+	 * Plays the video if it is paused.
+	 */
+	play(): void;
+
+	/**
+	 * Pauses the video if it is playing.
+	 */
+	pause(): void;
+
+	/**
+	 * Sets player volume
+	 * @param volume {number} 0-1
+	 */
+	setVolume(volume: number): void;
 }
 
 export interface IVbrickWebcastEmbed extends IVbrickBaseEmbed {

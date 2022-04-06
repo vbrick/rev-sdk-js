@@ -1,6 +1,7 @@
-import { IVbrickAPIToken, IVbrickWebcastEmbed, IVbrickWebcastConfig, WebcastStatus } from './IVbrickApi';
+import { VbrickSDKConfig, VbrickSDKToken } from '../VbrickSDK';
+import { IVbrickWebcastEmbed, WebcastStatus } from './IVbrickApi';
 import { VbrickEmbed } from './VbrickEmbed';
-import { initializeWebcastToken } from './auth';
+import { initializeWebcastToken } from './webcastAuth';
 
 export class VbrickWebcastEmbed extends VbrickEmbed implements IVbrickWebcastEmbed {
 
@@ -11,13 +12,13 @@ export class VbrickWebcastEmbed extends VbrickEmbed implements IVbrickWebcastEmb
 
 	constructor(
 		private readonly webcastId: string,
-		config: IVbrickWebcastConfig,
+		config: VbrickSDKConfig,
 		container: HTMLElement
 	) {
 		super(new URL(`/embed/webcast/${webcastId}${config.token ? '?tk' : ''}`, config.baseUrl).toString(), config, container);
 	}
 
-	protected initializeToken(): Promise<IVbrickAPIToken> {
+	protected initializeToken(): Promise<VbrickSDKToken> {
 		return initializeWebcastToken(this.webcastId, this.config);
 	}
 
