@@ -87,7 +87,9 @@ function formToSettings() {
 			isTransient = true;
 			break;
 		case 'tokenType':
-			token.type = value;
+            if (el.checked) {
+				token.type = value;
+            }
 			break;
 		case 'issuer':
 			token.issuer = value;

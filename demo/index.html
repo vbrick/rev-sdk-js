@@ -1,107 +1,137 @@
 <!DOCTYPE html>
 
 <html>
-	<head>
-		<style>
-			#embed {
-				height: 400px;
-				margin: 20px;
-			}
 
-			form {
-				max-width: 48em;
-				margin: 0 auto;
-			}
+<head>
+	<style>
+		#embed {
+			height: 400px;
+			width: 700px;
+			margin: 20px;
+		}
 
-			form > div, form > button {
-				margin: 10px 20px;
-			}
-			form > div {
-				display: grid;
-				grid-template-columns: minmax(12ex, 1fr) 3fr;
-			}
-			.radio-grid {
-				display: grid;
-				grid-template-columns: max-content auto;
-				column-gap: 20px;
-			}
-			.buttons {
-				grid-column-start: 2;
-				display: grid;
-				gap: 20px;
-				grid-template-columns: repeat(2, 1fr);
-			}
-			.buttons > button {
-				padding: 3px 20px;
-			}
-		</style>
-	</head>
-	<body>
-		<h1>Vbrick Rev Embedding Demo</h1>
-		<div id="embed"></div>
+		form {
+			max-width: 48em;
+			margin: 0 auto;
+		}
 
-		<div>
-			<form>
-				<div>
-					<label for="sourceUrl">Source URL:</label>
-					<input type="text" id="sourceUrl" name="sourceUrl" placeholder="embed, sharevideo or link to Rev webcast or video">
-				</div>
-				<div>
-					<label for="baseUrl">Base URL:</label>
-					<input type="text" id="baseUrl" name="baseUrl" placeholder="https://YOUR_REV_TENANT_URL">
-				</div>
-				<div>
-					<label for="embedType">Embed Type</label>
-					<div class="radio-grid">
-						<label><input type="radio" name="embedType" value="vod" checked>VOD</label><span></span>
-						<label><input type="radio" name="embedType" value="webcast">Webcast</label><span></span>
-					</div>
-				</div>
-				<div>
-					<label id="videoId" for="videoId">Video Id:</label>
-					<input type="text" id="videoId" name="videoId" placeholder="00000000-0000-0000-0000-000000000000">
-				</div>
-				<div>
-					<label id="webcastId" for="webcastId">Webcast Id:</label>
-					<input type="text" id="webcastId" name="webcastId" placeholder="00000000-0000-0000-0000-000000000000" disabled>
-				</div>
-				<div>
-					<span>Token Type:</span>
-					<div class="radio-grid">
-						<label><input type="radio" name="tokenType" value="AccessToken" checked>Access Token</label>
-						<em>(generated via the <a href="https://revdocs.vbrick.com/reference/authenticateuser" target="revdocs">API Key</a>, <a href="https://revdocs.vbrick.com/reference/loginuser" target="revdocs">Username</a> or <a href="https://revdocs.vbrick.com/reference/token" target="revdocs">OAuth</a> authentication APIs)</em>
-						
-						<label><input type="radio" name="tokenType" value="JWT">JWT</label>
-						<em>(generated via the <a href="https://revdocs.vbrick.com/reference/createguestwebcastuser" target="revdocs">Guest Registration</a> or JWT APIs)</em>
-					</div>
-				</div>
-				<div>
-					<label for="tokenValue">Token Value:</label>
-					<input type="text" id="tokenValue" name="tokenValue" placeholder="JWT or Access Token value">
-				</div>
-				<div>
-					<label for="issuer">Token Issuer:</label>
-					<input type="text" id="issuer" name="issuer" readonly disabled>
-				</div>
-				<div>
-					<label for="config">Config:</label>
-					<textarea id="config" name="config" placeholder="Additional config settings in JSON format"></textarea>
-				</div>
-				<div>
-					<div class="buttons">
-						<button type="reset">Clear Form</button>
-						<button type="submit">Render</button>
-					</div>
-				</div>
-			</form>
-			<h5>Webcast Status:</h5> <span id="status"></span></b>
+		form>div,
+		form>button {
+			margin: 10px 20px;
+		}
 
-			<h5>Messages</h5>
-			<ul id="logMessages"> </ul>
+		form>div {
+			display: grid;
+			grid-template-columns: minmax(12ex, 1fr) 3fr;
+		}
+
+		.radio-grid {
+			display: grid;
+			grid-template-columns: max-content auto;
+			column-gap: 20px;
+		}
+
+		.buttons {
+			grid-column-start: 2;
+			display: grid;
+			gap: 20px;
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		.buttons>button {
+			padding: 3px 20px;
+		}
+
+		#demo {
+			display: flex;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Vbrick Rev Embedding Demo</h1>
+	<div id="demo">
+
+		<div id="video">
+			<div id="embed"></div>
 		</div>
+		<div id="controls">
+			<div>
+				<form>
+					<div>
+						<label for="sourceUrl">Source URL:</label>
+						<input type="text" id="sourceUrl" name="sourceUrl"
+							placeholder="embed, sharevideo or link to Rev webcast or video" onkeyup='saveValue(this);'>
+					</div>
+					<div>
+						<label for="baseUrl">Base URL:</label>
+						<input type="text" id="baseUrl" name="baseUrl" placeholder="https://YOUR_REV_TENANT_URL">
+					</div>
+					<div>
+						<label for="embedType">Embed Type</label>
+						<div class="radio-grid">
+							<label><input type="radio" name="embedType" value="vod" checked>VOD</label><span></span>
+							<label><input type="radio" name="embedType" value="webcast">Webcast</label><span></span>
+						</div>
+					</div>
+					<div>
+						<label id="videoId" for="videoId">Video Id:</label>
+						<input type="text" id="videoId" name="videoId"
+							placeholder="00000000-0000-0000-0000-000000000000">
+					</div>
+					<div>
+						<label id="webcastId" for="webcastId">Webcast Id:</label>
+						<input type="text" id="webcastId" name="webcastId"
+							placeholder="00000000-0000-0000-0000-000000000000" disabled>
+					</div>
+					<div>
+						<span>Token Type:</span>
+						<div class="radio-grid">
+							<label><input type="radio" name="tokenType" value="AccessToken" checked>Access Token</label>
+							<em>(generated via the <a href="https://revdocs.vbrick.com/reference/authenticateuser"
+									target="revdocs">API Key</a>, <a
+									href="https://revdocs.vbrick.com/reference/loginuser" target="revdocs">Username</a>
+								or <a href="https://revdocs.vbrick.com/reference/token" target="revdocs">OAuth</a>
+								authentication APIs)</em>
 
-		<script src="../dist/rev-sdk.js"> </script>
-		<script type="module" src="demo.js"></script>
-		<script type="module" src="index.js"></script>
-	</body>
+							<label><input type="radio" name="tokenType" value="JWT">JWT</label>
+							<em>(generated via the <a href="https://revdocs.vbrick.com/reference/createguestwebcastuser"
+									target="revdocs">Guest Registration</a> or JWT APIs)</em>
+						</div>
+					</div>
+					<div>
+						<label for="tokenValue">Token Value:</label>
+						<input type="text" id="tokenValue" name="tokenValue" placeholder="JWT or Access Token value">
+					</div>
+					<div>
+						<label for="issuer">Token Issuer:</label>
+						<input type="text" id="issuer" name="issuer" readonly disabled>
+					</div>
+					<div>
+						<label for="config">Config:</label>
+						<textarea id="config" name="config"
+							placeholder="Additional config settings in JSON format"></textarea>
+					</div>
+					<div>
+						<div class="buttons">
+							<button type="reset">Clear Form</button>
+							<button type="submit">Render</button>
+						</div>
+					</div>
+				</form>
+				<h5>Webcast Status:</h5> <span id="status"></span></b>
+
+			</div>
+		</div>
+	</div>
+	<div id="messages">
+		<h5>Messages</h5>
+		<ul id="logMessages"> </ul>
+	</div>
+
+	<script src="../dist/rev-sdk.js"> </script>
+	<script type="module" src="demo.js"></script>
+	<script type="module" src="index.js"></script>
+</body>
+
 </html>
