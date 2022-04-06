@@ -27,18 +27,20 @@ export function init(formDefaults, onSubmit = (payload) => console.log('Submit',
 	
 	
 	if (formValues.sourceUrl) {
-		handleSourceUrl(formValues.sourceUrl);
-	} else {
-		writeForm(formValues);
+		const newValues = sourceUrlToFormValues(formValues.sourceUrl, formValues.baseUrl);
+		Object.assign(formValues, newValues);
 	}
+	
+	writeForm(formValues);
 
 	form.addEventListener('change', evt => {
 		switch (evt.target.name) {
 			case 'tokenType':
-				updateFormFields(form);
+				updateDependentFields(form);
 				return;
 			case 'sourceUrl':
-				handleSourceUrl(form.elements.sourceUrl.value);
+				const newValues = sourceUrlToFormValues(form.elements.sourceUrl.value, form.elements.baseUrl.value);
+				writeForm(newValues);
 				break;
 			
 		}
@@ -87,9 +89,9 @@ function formToSettings() {
 			isTransient = true;
 			break;
 		case 'tokenType':
-            if (el.checked) {
+			if (el.checked) {
 				token.type = value;
-            }
+			}
 			break;
 		case 'issuer':
 			token.issuer = value;
@@ -116,52 +118,57 @@ function formToSettings() {
 	return payload;
 }
 
-function handleSourceUrl(sourceUrl) {
+function sourceUrlToFormValues(sourceUrl, currentBaseUrl) {
 	const settings = parseRevUrl(sourceUrl);
+	const {
+		baseUrl,
+		videoId,
+		webcastId
+	} = settings;
+
 	// check if full URL
-	const isEmbeddable = settings.videoId || settings.webcastId;
+	const isEmbeddable = !!videoId || !!webcastId;
 	if (!isEmbeddable) {
 		return;
 	}
-	/** @type {DemoForm} */
-	const formValues = {
-		sourceUrl,
-		baseUrl: settings.baseUrl,
-		videoId: settings.videoId,
-		webcastId: settings.webcastId,
-		embedType: settings.videoId ? 'vod' : 'webcast'
-	};
+
 	let {
 		token,
 		...config
 	} = settings.config;
 
-	// force token reset if switching accounts
-	if (!token && form.elements.baseUrl.value !== formValues.baseUrl) {
-		token = {
-			type: 'AccessToken',
-			value: '',
-			issuer: 'vbrick'
-		};
+	/** @type {DemoForm} */
+	const formValues = {
+		sourceUrl,
+		baseUrl,
+		embedType: videoId ? 'vod' : 'webcast'
+	};
+	if (videoId) {
+		formValues.videoId = videoId;
+	} else {
+		formValues.webcastId = webcastId;
 	}
+
+	const isSameDomain = currentBaseUrl === formValues.baseUrl;
+
 	if (token) {
 		formValues.tokenType = token.type;
 		formValues.tokenValue = token.value;
 		formValues.issuer = token.issuer;
-	} else {
-		// if changing URL then clear token out
-		if (form.elements.baseUrl.value !== formValues.baseUrl) {
-			token.type = 'AccessToken';
-			
-		}
+	} else if (!isSameDomain) {
+		// force token reset if switching accounts
+		formValues.tokenType = 'AccessToken';
+		formValues.tokenValue = '';
+		formValues.issuer = 'vbrick';
 	}
+
 	if (Object.keys(config).length > 0) {
 		formValues.config = stringifyJson(config);
 	}
-	writeForm(formValues);
+	return formValues;
 }
 
-function updateFormFields(form) {
+function updateDependentFields(form) {
 	const isVOD = form.elements.embedType.value === 'vod';
 	form.elements.webcastId.disabled = isVOD;
 	form.elements.videoId.disabled = !isVOD;
@@ -192,7 +199,7 @@ function setCookie(cookie, value, isTransient) {
 
 function getCookie(name) {
 	let value = '; ' + document.cookie;
-	let parts = value.split(`; refsdk-${name}=`);
+	let parts = value.split(`; revsdk-${name}=`);
 	if (parts.length === 2) {
 		return decodeURIComponent(parts.pop().split(';').shift());
 	}
