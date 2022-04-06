@@ -1,11 +1,18 @@
-import { init, stringifyJson } from './demo.js';
+import { init, formToSettings, stringifyJson } from './demo.js';
 
 console.log('Demo, API: ', window.revSdk);
 
 /** @type {import("../dist/IVbrickApi").IVbrickBaseEmbed} */
 let currentEmbed;
 
-let formValues = init({
+function onSubmit(formValues) {
+	const isVod = !!formValues.videoId;
+	document.body.classList.toggle('vod', isVod);
+	console.log('Rendering video with settings', formValues);
+	embedContent(formValues)
+}
+
+let initialValues = init({
 	sourceUrl: '',
 	baseUrl: '',
 	videoId: '',
@@ -15,9 +22,11 @@ let formValues = init({
 	tokenValue: '',
 	issuer: 'vbrick',
 	config: '{}'
-}, formValues => {
-	embedContent(formValues)
-});
+}, onSubmit);
+
+if (initialValues.baseUrl && (initialValues.videoId || initialValues.webcastId)) {
+	setTimeout(() => onSubmit(formToSettings()), 0);
+}
 
 const sharedEvents = ['error', 'load', 'volumeChanged', 'captionsChanged', 'playerStatusChanged'];
 
@@ -31,6 +40,7 @@ function embedContent(payload) {
 		baseUrl,
 		webcastId,
 		videoId,
+		embedType,
 		config
 	} = payload;
 
@@ -63,7 +73,9 @@ function embedContent(payload) {
 	];
 	addLogging(embed, listenEvents);
 
-	trackStatus(embed, 'status');
+	if (!isVod) {
+		trackStatus(embed, 'status');
+	}
 }
 
 
@@ -74,7 +86,7 @@ function addLogging(embedObj, events) {
 	for (let eventName of events) {
 		embedObj.on(eventName, data => {
 			const li = document.createElement('li');
-			li.innerHTML = `${new Date().toLocaleTimeString()} ${eventName}:${stringifyJson(data)}`;
+			li.innerHTML = `<span>${new Date().toLocaleTimeString()} ${eventName}:</span><code>${stringifyJson(data)}</code>`;
 			logEl.appendChild(li);
 		});
 	}

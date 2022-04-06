@@ -67,7 +67,7 @@ export function init(formDefaults, onSubmit = (payload) => console.log('Submit',
 	return formValues;
 }
 
-function formToSettings() {
+export function formToSettings() {
 	/** @type {ParsedRevUrl} */
 	const payload = {
 		config: {}
@@ -89,9 +89,11 @@ function formToSettings() {
 			isTransient = true;
 			break;
 		case 'tokenType':
-			if (el.checked) {
-				token.type = value;
+			// skip non-selected radio button
+			if (!el.checked) {
+				continue;
 			}
+			token.type = value;
 			break;
 		case 'issuer':
 			token.issuer = value;
@@ -122,8 +124,8 @@ function sourceUrlToFormValues(sourceUrl, currentBaseUrl) {
 	const settings = parseRevUrl(sourceUrl);
 	const {
 		baseUrl,
-		videoId,
-		webcastId
+		videoId = '',
+		webcastId = ''
 	} = settings;
 
 	// check if full URL
@@ -141,13 +143,10 @@ function sourceUrlToFormValues(sourceUrl, currentBaseUrl) {
 	const formValues = {
 		sourceUrl,
 		baseUrl,
+		videoId,
+		webcastId,
 		embedType: videoId ? 'vod' : 'webcast'
 	};
-	if (videoId) {
-		formValues.videoId = videoId;
-	} else {
-		formValues.webcastId = webcastId;
-	}
 
 	const isSameDomain = currentBaseUrl === formValues.baseUrl;
 

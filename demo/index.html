@@ -7,12 +7,12 @@
 		#embed {
 			height: 400px;
 			width: 700px;
-			margin: 20px;
+			margin: 20px auto;
 		}
 
 		form {
-			max-width: 48em;
-			margin: 0 auto;
+			max-width: 700px;
+			margin: 20px auto;
 		}
 
 		form>div,
@@ -45,9 +45,27 @@
 		#demo {
 			display: flex;
 			flex-wrap: wrap;
+			justify-content: center;
 		}
 		#status, #logMessages {
 			font-family: monospace;
+			list-style-type: none;
+			padding-left: 0;
+		}
+		#logMessages > li {
+			display: grid;
+			grid-template-columns: 32ex auto;
+		}
+		#logMessages > li > code {
+			word-break: break-all;
+			hyphens: auto;
+		}
+		#messages > header {
+			display: grid;
+			grid-auto-flow: column;
+		}
+		.vod .webcast-only {
+			display: none;
 		}
 	</style>
 </head>
@@ -65,7 +83,7 @@
 					<div>
 						<label for="sourceUrl">Source URL:</label>
 						<input type="text" id="sourceUrl" name="sourceUrl"
-							placeholder="embed, sharevideo or link to Rev webcast or video" onkeyup='saveValue(this);'>
+							placeholder="embed, sharevideo or link to Rev webcast or video">
 					</div>
 					<div>
 						<label for="baseUrl">Base URL:</label>
@@ -123,13 +141,15 @@
 						</div>
 					</div>
 				</form>
-				<h5>Webcast Status:</h5> <span id="status"></span></b>
-
 			</div>
 		</div>
 	</div>
 	<div id="messages">
-		<h5>Messages</h5>
+		<header>
+			<h5>Messages</h5>
+			
+			<h5 class="webcast-only">Webcast Status: <span id="status"></span></h5>
+		</header>
 		<ul id="logMessages"> </ul>
 	</div>
 
