@@ -41,7 +41,16 @@ On your web page, you can insert an embedded webcast using an empty div tag. You
 #### Initializing the SDK
 You can initialize the SDK as shown below
 
-`revSdk.defaults({baseUrl: 'https://<<YOUR_REV_URL>>' });`
+```
+const webcast = revSdk.embedWebcast('#embed', formValues.webcastId, {
+	showVideo: true,
+	log: true,
+	token,
+	baseUrl: formValues.baseUrl
+});
+```
+
+The webcast will appear inside the target div called "embed" in the example above. 
 
 #### Invoking Webcast
 Embedding a webcast requires you to pass the following parameters to the embedWebast function
@@ -117,6 +126,31 @@ You can remove the webcast from the DOM by calling destroy method.
 
 `webcast.destroy();`
 
+#### Embedding a Video
+You can embed a video just like a webcast using an empty div tag.
+
+`<div id="embed"></div>`
+
+Use the embedVideo method to display the video on your web page:
+
+```
+const video = revSdk.embedVideo('#embed', formValues.videoId, {
+	log: true,
+	token,
+	baseUrl: formValues.baseUrl
+});
+```
+
+Use the .on method to watch for events about the video:
+
+```
+['error', 'load', 'videoLoaded', 'volumeChanged', 'captionsChanged', 'seeked', 'playerStatusChanged']
+	.forEach(e => video.on(e, data => {
+		const li = document.createElement('li');
+		li.innerHTML = `${new Date().toLocaleTimeString()} ${e}:${stringifyJson(data)}`;
+		logEl.appendChild(li);
+	}));
+  ```
 
 #### Upgrading from rev-embed-sdk
 There are a few breaking changes if you are updating from rev-embed-sdk:
