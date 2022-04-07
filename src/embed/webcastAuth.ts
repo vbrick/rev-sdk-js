@@ -10,15 +10,15 @@ export function initializeWebcastToken(webcastId: string, config: VbrickSDKConfi
 }
 
 function getToken(webcastId: string, config: VbrickSDKConfig): Promise<any> {
-	const token = config.token.value;
 
-	if(config.token.type === TokenType.ACCESS_TOKEN) {
+	if(config.token?.type !== TokenType.ACCESS_TOKEN) {
 		return Promise.resolve({
-			accessToken: config.token.value
+			accessToken: config.token?.value
 		});
 	}
 
 	const issuer = config.token.issuer;
+	const token = config.token.value;
 
 	return fetch(`${config.baseUrl}/external/auth/jwt/${webcastId}`, {
 			method: 'POST',

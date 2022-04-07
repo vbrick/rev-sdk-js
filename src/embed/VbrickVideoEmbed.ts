@@ -70,6 +70,10 @@ export class VbrickVideoEmbed extends VbrickEmbed implements IVbrickVideoEmbed {
 	}
 
 	protected initializeToken(): Promise<any> {
+		if(!this.config.token) {
+			return Promise.resolve()
+		}
+
 		if(this.config.token.type !== TokenType.ACCESS_TOKEN) {
 			return Promise.reject('Unsupported token type');
 		}
@@ -93,8 +97,7 @@ export class VbrickVideoEmbed extends VbrickEmbed implements IVbrickVideoEmbed {
 }
 
 function getEmbedUrl(id: string, config: VbrickEmbedConfig): string {
-	return [
-		[`${config.baseUrl}/embed?`, true],
+	const query = [
 		['tk', !!config.token],
 		['id', id],
 		['accent', config.accentColor],
@@ -116,4 +119,6 @@ function getEmbedUrl(id: string, config: VbrickEmbedConfig): string {
 			`${key}=${encodeURIComponent(value)}`)
 		.filter(Boolean)
 		.join('&');
+
+	return `${config.baseUrl}/embed?${query}`;
 }

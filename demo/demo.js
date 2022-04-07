@@ -1,7 +1,3 @@
-
-let queryParams;
-let form;
-
 /**
  * @typedef {object} DemoForm
  * @property {string} sourceUrl
@@ -15,151 +11,86 @@ let form;
  * @property {string} config
  */
 
-export function init(formDefaults, onSubmit = (payload) => console.log('Submit', payload)) {
-	queryParams = getQueryParams();
-	form = document.querySelector('form');
+const queryParams = Object.fromEntries( new URLSearchParams(window.location.search));
 
-	const formValues = readForm(formDefaults);
+/**
+ * Initializes the demo form
+ * @param {any} formDefaults
+ * @param {(config: any) => void} render
+ */
+export function init(formDefaults, render) {
+	const form = document.querySelector('form');
 
-	if (typeof formValues.config === 'object') {
-		formValues.config = stringifyJson(formValues.config);
-	}
-	
-	
-	if (formValues.sourceUrl) {
-		handleSourceUrl(formValues.sourceUrl);
-	} else {
-		writeForm(formValues);
+	const formValues = readParams(formDefaults);
+	writeFormData(form, formValues);
+
+	if(queryParams.sourceUrl) {
+		onSourceUrlChanged(form, queryParams.sourceUrl);
 	}
 
 	form.addEventListener('change', evt => {
 		switch (evt.target.name) {
 			case 'tokenType':
-				updateFormFields(form);
+				onTokenTypeChanged(form);
 				return;
 			case 'sourceUrl':
-				handleSourceUrl(form.elements.sourceUrl.value);
+				onSourceUrlChanged(form, form.elements.sourceUrl.value);
 				break;
-			
-		}
-		if (evt.target.name !== 'tokenType') {
-			return;
 		}
 	});
 
 	form.addEventListener('submit', (e) => {
 		e.preventDefault();
-		
-		const payload = formToSettings();
-		
-		onSubmit(payload);
+		renderInternal();
 	});
 
 	form.addEventListener('reset', (e) => {
-		// also clear cookies
-		Object.keys(formDefaults).forEach(k => {
-			setCookie(k, formDefaults);
-		});
-	})
+		const data = readParams(formDefaults);
+		writeFormData(form, data);
+		renderInternal();
+	});
 
-	return formValues;
+	setTimeout(renderInternal, 1000);
+
+	function renderInternal() {
+		const data = readFormData(form);
+		storeParams(data);
+		render(getConfig(data));
+	}
 }
 
-function formToSettings() {
-	/** @type {ParsedRevUrl} */
-	const payload = {
-		config: {}
+function getConfig(formData) {
+	const {
+		config,
+		tokenValue, tokenType, tokenIssuer,
+		sourceUrl,
+		...data
+	} = formData
+
+	return {
+		...tryParse(config),
+		...data,
+		token: tokenValue && {
+			type: tokenType,
+			value: tokenValue,
+			issuer: tokenIssuer
+		}
 	};
-	const token = {};
-
-	for (let el of form.elements) {
-		const key = el.name;
-		const value = el.value;
-		let isTransient = false;
-
-		if (!key) {
-			continue;
-		}
-
-		switch (key) {
-		case 'tokenValue':
-			token.value = value;
-			isTransient = true;
-			break;
-		case 'tokenType':
-			token.type = value;
-			break;
-		case 'issuer':
-			token.issuer = value;
-			break;
-		case 'config':
-			try {
-				payload.config = value
-					? JSON.parse(value)
-					: {};
-			} catch (err) {}
-			break;
-		case sourceUrl:
-			isTransient = true;
-			// don't pass to embedding
-			break;
-		default:
-			payload[key] = value;
-		}
-		setCookie(key, value, isTransient);
-	}
-	if (token.value) {
-		payload.config.token = token;
-	}
-	return payload;
 }
 
-function handleSourceUrl(sourceUrl) {
+function onSourceUrlChanged(form, sourceUrl) {
 	const settings = parseRevUrl(sourceUrl);
-	// check if full URL
-	const isEmbeddable = settings.videoId || settings.webcastId;
-	if (!isEmbeddable) {
+	if (!settings.videoId && !settings.webcastId) {
 		return;
 	}
-	/** @type {DemoForm} */
-	const formValues = {
-		sourceUrl,
-		baseUrl: settings.baseUrl,
-		videoId: settings.videoId,
-		webcastId: settings.webcastId,
-		embedType: settings.videoId ? 'vod' : 'webcast'
-	};
-	let {
-		token,
-		...config
-	} = settings.config;
 
-	// force token reset if switching accounts
-	if (!token && form.elements.baseUrl.value !== formValues.baseUrl) {
-		token = {
-			type: 'AccessToken',
-			value: '',
-			issuer: 'vbrick'
-		};
-	}
-	if (token) {
-		formValues.tokenType = token.type;
-		formValues.tokenValue = token.value;
-		formValues.issuer = token.issuer;
-	} else {
-		// if changing URL then clear token out
-		if (form.elements.baseUrl.value !== formValues.baseUrl) {
-			token.type = 'AccessToken';
-			
-		}
-	}
-	if (Object.keys(config).length > 0) {
-		formValues.config = stringifyJson(config);
-	}
-	writeForm(formValues);
+	writeFormData(form, {
+		sourceUrl,
+		...settings,
+	});
 }
 
-function updateFormFields(form) {
+function onTokenTypeChanged(form) {
 	const isVOD = form.elements.embedType.value === 'vod';
 	form.elements.webcastId.disabled = isVOD;
 	form.elements.videoId.disabled = !isVOD;
@@ -185,28 +116,39 @@ function setCookie(cookie, value, isTransient) {
 	const expires = isTransient
 		? new Date(Date.now() + ONE_DAY)
 		: new Date('9999-01-01')
-	document.cookie = `revsdk-${cookie}=${encodeURIComponent(value)};expires=${expires.toUTCString()}`;
+	document.cookie = `${cookie}=${encodeURIComponent(value)};expires=${expires.toUTCString()}`;
 }
 
 function getCookie(name) {
 	let value = '; ' + document.cookie;
-	let parts = value.split(`; refsdk-${name}=`);
+	let parts = value.split(`; ${name}=`);
 	if (parts.length === 2) {
 		return decodeURIComponent(parts.pop().split(';').shift());
 	}
-}
-
-function getQueryParams() {
-	return Object.fromEntries(
-		new URLSearchParams(window.location.search)
-	);
 }
 
 function getParameterByName(name) {
 	return queryParams[name] || getCookie(name) || '';
 }
 
-function writeForm(values) {
+function readParams(defaults) {
+	return Object.keys(defaults).reduce((acc, k) => {
+		acc[k] = getParameterByName(k) || defaults[k];
+		return acc;
+	}, {});
+}
+
+function readFormData(form) {
+	return Array.from(form.elements).reduce((acc, el) => {
+		if(el.name) {
+			acc[el.name] = el.value;
+		}
+		return acc;
+	}, {});
+}
+
+
+function writeFormData(form, values) {
 	Object.entries(values).forEach(([k, value]) => {
 		const el = form.elements[k];
 		if (el) {
@@ -215,11 +157,10 @@ function writeForm(values) {
 	});
 }
 
-function readForm(defaults) {
-	return Object.keys(defaults).reduce((acc, k) => {
-		acc[k] = getParameterByName(k) || defaults[k];
-		return acc;
-	}, {});
+function storeParams(formData) {
+	Object.entries(formData).forEach(([k, value]) => {
+		setCookie(k, value);
+	});
 }
 
 /**
@@ -227,7 +168,7 @@ function readForm(defaults) {
  */
 /**
  * attempt to parse a URL (or <iframe src=...> embed code) referencing a Rev webcast or vod)
- * @param {string | URL} url 
+ * @param {string | URL} url
  * @returns {ParsedRevUrl}
  */
 export function parseRevUrl(url) {
@@ -242,10 +183,10 @@ export function parseRevUrl(url) {
 	} catch (err) {
 		return {
 			isValid: false,
-			config: {}
+			config: '{}'
 		};
 	}
-	
+
 	const {
 		searchParams,
 		pathname,
@@ -257,7 +198,7 @@ export function parseRevUrl(url) {
 	const result = {
 		isValid: true,
 		baseUrl,
-		config: {}
+		config: '{}'
 	};
 
 	// matches an id in the url path
@@ -271,17 +212,9 @@ export function parseRevUrl(url) {
 		// embed code url
 		result.webcastId = guidInPath;
 	} else if (pathname.includes('public/events')) {
-		// public event guest registration link
-		Object.assign(result, {
-
-		})
 		result.webcastId = guidInPath;
-		result.config.token = {
-			type: 'JWT',
-			issuer: 'vbrick_rev',
-			value: searchParams.get('token')
-		};
-	} else if (hash) {
+	}
+	else if (hash) {
 		const contentMatch = /\/(?<area>videos|events)\/(?<id>[0-9a-f-]{36})/.exec(hash);
 		if (contentMatch) {
 			const { id, area } = contentMatch.groups;
@@ -296,7 +229,7 @@ export function parseRevUrl(url) {
 		// just base URL passed
 	}
 
-	// add additional config options passed 
+	// add additional config options passed
 	const queryConfigMap = {
 		accent: 'accentColor',
 		autoplay: 'autoplay',
@@ -311,14 +244,29 @@ export function parseRevUrl(url) {
 		placeholder: 'popOut',
 		startAt: 'startAt'
 	};
-	for (let [key, value] of searchParams) {
+	const config = Object.entries(searchParams).reduce((config, [key, value]) => {
 		const configKey = queryConfigMap[key];
 		if (configKey) {
-			result.config[configKey] = value === ''
-				? true
-				: value;
+			config[configKey] = value === '' ? true : value;
 		}
+		return config;
+	}, {});
+
+	result.config = stringifyJson(config);
+	result.embedType = result.videoId ? 'vod' : 'webcast';
+
+	if(result.webcastId) {
+		result.tokenType = 'JWT';
+		result.tokenIssuer = 'vbrick_rev';
+		result.tokenValue = searchParams.get('token')
 	}
 
 	return result;
+}
+
+function tryParse(json) {
+	try{
+		return JSON.parse(json);
+	}
+	catch(e) {}
 }
