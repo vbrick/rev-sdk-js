@@ -19,7 +19,7 @@ export class EventBus {
 		this.win = iframe.contentWindow;
 		this.msgListener = this.handleMessage.bind(this);
 
-		window.addEventListener('message', this.msgListener);
+		globalThis.addEventListener('message', this.msgListener);
 		this.baseUrl = config.baseUrl;
 		this.shouldLog = !!config.log;
 	}
@@ -108,6 +108,6 @@ export class EventBus {
 	}
 
 	public destroy(): void {
-		this.win.removeEventListener('message', this.msgListener);
+		globalThis.removeEventListener('message', this.msgListener);
 	}
 }
