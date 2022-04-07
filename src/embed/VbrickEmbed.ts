@@ -1,5 +1,5 @@
-import { VbrickSDKConfig } from '../VbrickSDK';
 import { EventBus, IListener } from './EventBus';
+import { VbrickEmbedConfig } from './VbrickEmbedConfig';
 import { getLogger, ILogger } from '../Log';
 
 /**
@@ -15,7 +15,7 @@ export abstract class VbrickEmbed {
 
 	constructor(
 		protected readonly iframeUrl: string,
-		protected readonly config: VbrickSDKConfig,
+		protected readonly config: VbrickEmbedConfig,
 		protected readonly container: HTMLElement
 	) {
 		this.logger = getLogger(this.config);
