@@ -95,7 +95,7 @@ export class EventBus {
 	}
 
 	private callHandlers(event: string, data: any): void {
-		const handlers = this.getHandlers(event);
+		const handlers = Array.from(this.getHandlers(event));
 		handlers.forEach(h => h(data));
 	}
 
