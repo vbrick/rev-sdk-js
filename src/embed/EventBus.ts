@@ -9,6 +9,7 @@ export class EventBus {
 	private msgListener: (e: MessageEvent) => void;
 	private readonly baseUrl: string;
 	private readonly shouldLog: boolean;
+	private isDestroyed: boolean = false;
 
 	private eventHandlers: { [e: string]: IListener[] } = {};
 
@@ -49,7 +50,10 @@ export class EventBus {
 				this.on(failEvent, onErr);
 			}
 
-			const timer = setTimeout(() => onErr(event + ': timeout'), timeout);
+			const timer = setTimeout(() => {
+				if (this.isDestroyed) { return; }
+				onErr(event + ': timeout')
+			}, timeout);
 		});
 	}
 
@@ -108,6 +112,8 @@ export class EventBus {
 	}
 
 	public destroy(): void {
+		if (this.isDestroyed) { return; }
+		this.isDestroyed = true;
 		globalThis.removeEventListener('message', this.msgListener);
 	}
 }
