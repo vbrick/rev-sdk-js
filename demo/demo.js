@@ -68,13 +68,15 @@ function getConfig(formData) {
 	} = formData
 
 	return {
-		...tryParse(config),
 		...data,
-		token: tokenValue && {
-			type: tokenType,
-			value: tokenValue,
-			issuer: tokenIssuer
-		}
+		config: {
+			...tryParse(config),
+			token: tokenValue && {
+				type: tokenType,
+				value: tokenValue,
+				issuer: tokenIssuer
+			}
+		},
 	};
 }
 
@@ -139,14 +141,10 @@ function readParams(defaults) {
 }
 
 function readFormData(form) {
-	return Array.from(form.elements).reduce((acc, el) => {
-		if(el.name) {
-			acc[el.name] = el.value;
-		}
-		return acc;
-	}, {});
+	return Array.from(form.elements)
+		.filter(el => el.name && (el.type !== 'radio' || el.checked))
+		.reduce((acc, el) => Object.assign(acc, {[el.name]: el.value}), {});
 }
-
 
 function writeFormData(form, values) {
 	Object.entries(values).forEach(([k, value]) => {
