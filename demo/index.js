@@ -47,6 +47,7 @@ function embedContent(payload) {
 		? revSdk.embedVideo('#embed', videoId, embedConfig)
 		: revSdk.embedWebcast('#embed', webcastId, embedConfig);
 
+	globalThis.vbrickPlayer = currentEmbed;
 
 	const logEl = document.getElementById('logMessages');
 	const statusEl = document.getElementById('status');
@@ -59,3 +60,5 @@ function embedContent(payload) {
 
 	statusInterval = window.setInterval(() => statusEl.innerHTML = currentEmbed.status || 'undefined', 1000);
 }
+
+console.log('Welcome to the Vbrick SDK Embed Test page. When rendered the current video player instance is set to window.vbrickPlayer');

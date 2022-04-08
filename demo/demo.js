@@ -62,7 +62,9 @@ export function init(formDefaults, render) {
 function getConfig(formData) {
 	const {
 		config,
-		tokenValue, tokenType, tokenIssuer,
+		tokenValue: value,
+		tokenType: type,
+		issuer,
 		sourceUrl,
 		...data
 	} = formData
@@ -71,11 +73,7 @@ function getConfig(formData) {
 		...data,
 		config: {
 			...tryParse(config),
-			token: tokenValue && {
-				type: tokenType,
-				value: tokenValue,
-				issuer: tokenIssuer
-			}
+			token: value && { type, value, issuer }
 		},
 	};
 }
@@ -149,7 +147,7 @@ function readFormData(form) {
 function writeFormData(form, values) {
 	Object.entries(values).forEach(([k, value]) => {
 		const el = form.elements[k];
-		if (el) {
+		if (el && el.type !== 'radio') {
 			el.value = value || '';
 		}
 	});
@@ -255,7 +253,7 @@ export function parseRevUrl(url) {
 
 	if(result.webcastId) {
 		result.tokenType = 'JWT';
-		result.tokenIssuer = 'vbrick_rev';
+		result.issuer = 'vbrick_rev';
 		result.tokenValue = searchParams.get('token')
 	}
 
