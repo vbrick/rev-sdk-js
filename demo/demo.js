@@ -147,10 +147,16 @@ function readFormData(form) {
 function writeFormData(form, values) {
 	Object.entries(values).forEach(([k, value]) => {
 		const el = form.elements[k];
-		if (el && el.type !== 'radio') {
+		if (!el) {
+			return;
+		}
+		if (el.type === 'radio') {
+			el.checked = el.value === value;
+		} else {
 			el.value = value || '';
 		}
 	});
+	onTokenTypeChanged(form);
 }
 
 function storeParams(formData) {
