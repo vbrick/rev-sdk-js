@@ -1,7 +1,12 @@
-import { IVbrickVideoEmbed, IVbrickVideoConfig, ICaptionSettings, TokenType } from './IVbrickApi';
+import { TokenType } from '../VbrickSDK';
+import { IVbrickVideoEmbed, ICaptionSettings } from './IVbrickApi';
 import { PlayerStatus } from './PlayerStatus';
 import { VbrickEmbed } from './VbrickEmbed';
+import { VbrickEmbedConfig } from './VbrickEmbedConfig';
 
+/**
+ * Internal class used to model an embedded video
+ */
 export class VbrickVideoEmbed extends VbrickEmbed implements IVbrickVideoEmbed {
 
 	 /**
@@ -36,8 +41,8 @@ export class VbrickVideoEmbed extends VbrickEmbed implements IVbrickVideoEmbed {
 
 
 	constructor(
-		private readonly videoId: string,
-		config: IVbrickVideoConfig,
+		videoId: string,
+		config: VbrickEmbedConfig,
 		container: HTMLElement
 	) {
 		super(getEmbedUrl(videoId, config), config, container);
@@ -65,6 +70,10 @@ export class VbrickVideoEmbed extends VbrickEmbed implements IVbrickVideoEmbed {
 	}
 
 	protected initializeToken(): Promise<any> {
+		if(!this.config.token) {
+			return Promise.resolve()
+		}
+
 		if(this.config.token.type !== TokenType.ACCESS_TOKEN) {
 			return Promise.reject('Unsupported token type');
 		}
@@ -87,9 +96,8 @@ export class VbrickVideoEmbed extends VbrickEmbed implements IVbrickVideoEmbed {
 	}
 }
 
-function getEmbedUrl(id: string, config: IVbrickVideoConfig): string {
-	return [
-		[`${config.baseUrl}/embed?`, true],
+function getEmbedUrl(id: string, config: VbrickEmbedConfig): string {
+	const query = [
 		['tk', !!config.token],
 		['id', id],
 		['accent', config.accentColor],
@@ -111,4 +119,6 @@ function getEmbedUrl(id: string, config: IVbrickVideoConfig): string {
 			`${key}=${encodeURIComponent(value)}`)
 		.filter(Boolean)
 		.join('&');
+
+	return `${config.baseUrl}/embed?${query}`;
 }

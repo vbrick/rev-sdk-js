@@ -1,5 +1,3 @@
-import { IVbrickEmbedConfig } from "./IVbrickApi";
-
 export function isString (val: any): boolean {
 	return Object.prototype.toString.call(val) === '[object String]';
 }

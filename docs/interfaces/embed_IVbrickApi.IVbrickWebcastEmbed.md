@@ -1,38 +1,42 @@
-[@vbrick/rev-sdk](../README.md) / [IVbrickApi](../modules/IVbrickApi.md) / IVbrickWebcastEmbed
+[@vbrick/rev-sdk](../README.md) / [embed/IVbrickApi](../modules/embed_IVbrickApi.md) / IVbrickWebcastEmbed
 
 # Interface: IVbrickWebcastEmbed
 
-[IVbrickApi](../modules/IVbrickApi.md).IVbrickWebcastEmbed
+[embed/IVbrickApi](../modules/embed_IVbrickApi.md).IVbrickWebcastEmbed
 
 ## Hierarchy
 
-- [`IVbrickBaseEmbed`](IVbrickApi.IVbrickBaseEmbed.md)
+- [`IVbrickBaseEmbed`](embed_IVbrickApi.IVbrickBaseEmbed.md)
 
   ↳ **`IVbrickWebcastEmbed`**
+
+## Implemented by
+
+- [`VbrickWebcastEmbed`](../classes/embed_VbrickWebcastEmbed.VbrickWebcastEmbed.md)
 
 ## Table of contents
 
 ### Properties
 
-- [status](IVbrickApi.IVbrickWebcastEmbed.md#status)
+- [status](embed_IVbrickApi.IVbrickWebcastEmbed.md#status)
 
 ### Methods
 
-- [destroy](IVbrickApi.IVbrickWebcastEmbed.md#destroy)
-- [off](IVbrickApi.IVbrickWebcastEmbed.md#off)
-- [on](IVbrickApi.IVbrickWebcastEmbed.md#on)
+- [destroy](embed_IVbrickApi.IVbrickWebcastEmbed.md#destroy)
+- [off](embed_IVbrickApi.IVbrickWebcastEmbed.md#off)
+- [on](embed_IVbrickApi.IVbrickWebcastEmbed.md#on)
 
 ## Properties
 
 ### status
 
-• `Readonly` **status**: [`WebcastStatus`](../enums/IVbrickApi.WebcastStatus.md)
+• `Readonly` **status**: [`WebcastStatus`](../enums/embed_WebcastStatus.WebcastStatus.md)
 
 Indicates whether the webcast is started, or broadcasting.
 
 #### Defined in
 
-[IVbrickApi.ts:105](https://github.com/vbrick/rev-sdk-js/blob/d1cd6e7/src/IVbrickApi.ts#L105)
+embed/IVbrickApi.ts:51
 
 ## Methods
 
@@ -48,11 +52,11 @@ Removes the embedded content from the DOM.
 
 #### Inherited from
 
-[IVbrickBaseEmbed](IVbrickApi.IVbrickBaseEmbed.md).[destroy](IVbrickApi.IVbrickBaseEmbed.md#destroy)
+[IVbrickBaseEmbed](embed_IVbrickApi.IVbrickBaseEmbed.md).[destroy](embed_IVbrickApi.IVbrickBaseEmbed.md#destroy)
 
 #### Defined in
 
-[IVbrickApi.ts:200](https://github.com/vbrick/rev-sdk-js/blob/d1cd6e7/src/IVbrickApi.ts#L200)
+embed/IVbrickApi.ts:146
 
 ___
 
@@ -75,11 +79,11 @@ Removes an event listener
 
 #### Inherited from
 
-[IVbrickBaseEmbed](IVbrickApi.IVbrickBaseEmbed.md).[off](IVbrickApi.IVbrickBaseEmbed.md#off)
+[IVbrickBaseEmbed](embed_IVbrickApi.IVbrickBaseEmbed.md).[off](embed_IVbrickApi.IVbrickBaseEmbed.md#off)
 
 #### Defined in
 
-[IVbrickApi.ts:195](https://github.com/vbrick/rev-sdk-js/blob/d1cd6e7/src/IVbrickApi.ts#L195)
+embed/IVbrickApi.ts:141
 
 ___
 
@@ -102,11 +106,11 @@ Register an event handler. Events are fired at different lifecycle stages of the
 
 #### Overrides
 
-[IVbrickBaseEmbed](IVbrickApi.IVbrickBaseEmbed.md).[on](IVbrickApi.IVbrickBaseEmbed.md#on)
+[IVbrickBaseEmbed](embed_IVbrickApi.IVbrickBaseEmbed.md).[on](embed_IVbrickApi.IVbrickBaseEmbed.md#on)
 
 #### Defined in
 
-[IVbrickApi.ts:112](https://github.com/vbrick/rev-sdk-js/blob/d1cd6e7/src/IVbrickApi.ts#L112)
+embed/IVbrickApi.ts:58
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -125,11 +129,11 @@ Fired when the webcast starts broadcasting.
 
 #### Overrides
 
-[IVbrickBaseEmbed](IVbrickApi.IVbrickBaseEmbed.md).[on](IVbrickApi.IVbrickBaseEmbed.md#on)
+[IVbrickBaseEmbed](embed_IVbrickApi.IVbrickBaseEmbed.md).[on](embed_IVbrickApi.IVbrickBaseEmbed.md#on)
 
 #### Defined in
 
-[IVbrickApi.ts:117](https://github.com/vbrick/rev-sdk-js/blob/d1cd6e7/src/IVbrickApi.ts#L117)
+embed/IVbrickApi.ts:63
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -148,11 +152,11 @@ Fired when the webcast stops broadcasting.
 
 #### Overrides
 
-[IVbrickBaseEmbed](IVbrickApi.IVbrickBaseEmbed.md).[on](IVbrickApi.IVbrickBaseEmbed.md#on)
+[IVbrickBaseEmbed](embed_IVbrickApi.IVbrickBaseEmbed.md).[on](embed_IVbrickApi.IVbrickBaseEmbed.md#on)
 
 #### Defined in
 
-[IVbrickApi.ts:122](https://github.com/vbrick/rev-sdk-js/blob/d1cd6e7/src/IVbrickApi.ts#L122)
+embed/IVbrickApi.ts:68
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -173,11 +177,11 @@ isPreProduction: boolean, Indicates that the webcast is running in pre-productio
 
 #### Overrides
 
-[IVbrickBaseEmbed](IVbrickApi.IVbrickBaseEmbed.md).[on](IVbrickApi.IVbrickBaseEmbed.md#on)
+[IVbrickBaseEmbed](embed_IVbrickApi.IVbrickBaseEmbed.md).[on](embed_IVbrickApi.IVbrickBaseEmbed.md#on)
 
 #### Defined in
 
-[IVbrickApi.ts:129](https://github.com/vbrick/rev-sdk-js/blob/d1cd6e7/src/IVbrickApi.ts#L129)
+embed/IVbrickApi.ts:75
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -196,8 +200,8 @@ Fired when the webcast ends.
 
 #### Overrides
 
-[IVbrickBaseEmbed](IVbrickApi.IVbrickBaseEmbed.md).[on](IVbrickApi.IVbrickBaseEmbed.md#on)
+[IVbrickBaseEmbed](embed_IVbrickApi.IVbrickBaseEmbed.md).[on](embed_IVbrickApi.IVbrickBaseEmbed.md#on)
 
 #### Defined in
 
-[IVbrickApi.ts:134](https://github.com/vbrick/rev-sdk-js/blob/d1cd6e7/src/IVbrickApi.ts#L134)
+embed/IVbrickApi.ts:80
