@@ -7,7 +7,7 @@
  * @property {'webcast' | 'vod'} embedType
  * @property {'JWT' | 'AccessToken'} tokenType
  * @property {string} tokenValue
- * @property {string} issuer
+ * @property {string} tokenIssuer
  * @property {string} config
  */
 
@@ -62,7 +62,9 @@ export function init(formDefaults, render) {
 function getConfig(formData) {
 	const {
 		config,
-		tokenValue, tokenType, tokenIssuer,
+		tokenValue,
+		tokenType,
+		tokenIssuer,
 		sourceUrl,
 		...data
 	} = formData
@@ -98,7 +100,7 @@ function onTokenTypeChanged(form) {
 	form.elements.videoId.disabled = !isVOD;
 
 	const isJWT = form.elements.tokenType.value === 'JWT';
-	form.elements.issuer.value = isJWT
+	form.elements.tokenIssuer.value = isJWT
 		? 'vbrick_rev'
 		: 'vbrick';
 }
@@ -149,10 +151,16 @@ function readFormData(form) {
 function writeFormData(form, values) {
 	Object.entries(values).forEach(([k, value]) => {
 		const el = form.elements[k];
-		if (el) {
+		if (!el) {
+			return;
+		}
+		if (el.type === 'radio') {
+			el.checked = el.value === value;
+		} else {
 			el.value = value || '';
 		}
 	});
+	onTokenTypeChanged(form);
 }
 
 function storeParams(formData) {
