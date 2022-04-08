@@ -7,7 +7,7 @@
  * @property {'webcast' | 'vod'} embedType
  * @property {'JWT' | 'AccessToken'} tokenType
  * @property {string} tokenValue
- * @property {string} issuer
+ * @property {string} tokenIssuer
  * @property {string} config
  */
 
@@ -62,9 +62,9 @@ export function init(formDefaults, render) {
 function getConfig(formData) {
 	const {
 		config,
-		tokenValue: value,
-		tokenType: type,
-		issuer,
+		tokenValue,
+		tokenType,
+		tokenIssuer,
 		sourceUrl,
 		...data
 	} = formData
@@ -73,7 +73,11 @@ function getConfig(formData) {
 		...data,
 		config: {
 			...tryParse(config),
-			token: value && { type, value, issuer }
+			token: tokenValue && {
+				type: tokenType,
+				value: tokenValue,
+				issuer: tokenIssuer
+			}
 		},
 	};
 }
@@ -96,7 +100,7 @@ function onTokenTypeChanged(form) {
 	form.elements.videoId.disabled = !isVOD;
 
 	const isJWT = form.elements.tokenType.value === 'JWT';
-	form.elements.issuer.value = isJWT
+	form.elements.tokenIssuer.value = isJWT
 		? 'vbrick_rev'
 		: 'vbrick';
 }
@@ -259,7 +263,7 @@ export function parseRevUrl(url) {
 
 	if(result.webcastId) {
 		result.tokenType = 'JWT';
-		result.issuer = 'vbrick_rev';
+		result.tokenIssuer = 'vbrick_rev';
 		result.tokenValue = searchParams.get('token')
 	}
 
