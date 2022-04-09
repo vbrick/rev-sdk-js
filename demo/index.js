@@ -54,8 +54,8 @@ function embedContent(payload) {
 
 	logEvents.forEach(e => currentEmbed.on(e, data => {
 		const li = document.createElement('li');
-		li.innerHTML = `${new Date().toLocaleTimeString()} ${e}:${stringifyJson(data)}`;
-		logEl.appendChild(li);
+		li.innerHTML = `${new Date().toLocaleTimeString()} ${e}:<pre>${stringifyJson(data)}</pre>`;
+		logEl.insertBefore(li, logEl.firstChild)
 	}));
 
 	statusInterval = window.setInterval(() => statusEl.innerHTML = currentEmbed.status || 'undefined', 1000);

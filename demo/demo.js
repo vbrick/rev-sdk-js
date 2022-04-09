@@ -112,7 +112,7 @@ export function stringifyJson(data) {
 	return JSON.stringify(data, (key, value) => value instanceof Error
 		? e.toString() + '\n' + e.stack.toString()
 		: value
-	);
+	, 2);
 }
 
 function setCookie(cookie, value, isTransient) {
