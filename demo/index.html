@@ -11,7 +11,7 @@
 		}
 
 		form {
-			max-width: 48em;
+			max-width: 52em;
 			margin: 0 auto;
 		}
 
@@ -55,7 +55,7 @@
 
 		<div id="controls">
 			<div>
-				<form>
+				<form id="demoform">
 					<div>
 						<label for="sourceUrl">Source URL:</label>
 						<input type="text" id="sourceUrl" name="sourceUrl"
@@ -68,8 +68,8 @@
 					<div>
 						<label for="embedType">Embed Type</label>
 						<div class="radio-grid">
-							<label><input type="radio" name="embedType" value="vod" checked>VOD</label><span></span>
-							<label><input type="radio" name="embedType" value="webcast">Webcast</label><span></span>
+							<label><input type="radio" name="embedType" value="vod" checked>VOD</label>
+							<label><input type="radio" name="embedType" value="webcast">Webcast</label>
 						</div>
 					</div>
 					<div>
@@ -121,8 +121,8 @@
 					<b>Status: </b><span id="status"></span>
 				</div>
 				<div>
-					<input type="button" name="Play" value="Play" onclick="window.vbrickPlayer.play()" />
-					<input type="button" name="Pause" value="Pause" onclick="window.vbrickPlayer.pause()" />
+					<input type="button" name="Play" value="Play" onclick="window.vbrickEmbed.play()" />
+					<input type="button" name="Pause" value="Pause" onclick="window.vbrickEmbed.pause()" />
 				</div>
 			</div>
 		</div>
