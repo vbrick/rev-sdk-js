@@ -34,7 +34,7 @@ function embedContent(payload) {
 		window.clearInterval(statusInterval);
 	}
 
-	const isVod = document.querySelector('input[name="embedType"]:checked').value == 'vod';
+	const isVod = document.forms["demoform"].elements['embedType'].value == 'vod';
 
 	const embedConfig = {
 		showVideo: true,
