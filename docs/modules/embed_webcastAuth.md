@@ -27,4 +27,4 @@
 
 #### Defined in
 
-embed/webcastAuth.ts:5
+[embed/webcastAuth.ts:5](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/webcastAuth.ts#L5)

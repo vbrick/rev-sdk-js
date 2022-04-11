@@ -65,7 +65,7 @@ Internal class used to model an embedded video
 | Name | Type |
 | :------ | :------ |
 | `videoId` | `string` |
-| `config` | [`VbrickSDKConfig`](../interfaces/VbrickSDK.VbrickSDKConfig.md) |
+| `config` | [`VbrickEmbedConfig`](../interfaces/embed_VbrickEmbedConfig.VbrickEmbedConfig.md) |
 | `container` | `HTMLElement` |
 
 #### Overrides
@@ -74,7 +74,7 @@ Internal class used to model an embedded video
 
 #### Defined in
 
-embed/VbrickVideoEmbed.ts:42
+[embed/VbrickVideoEmbed.ts:43](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/VbrickVideoEmbed.ts#L43)
 
 ## Properties
 
@@ -84,7 +84,7 @@ embed/VbrickVideoEmbed.ts:42
 
 #### Defined in
 
-embed/VbrickVideoEmbed.ts:33
+[embed/VbrickVideoEmbed.ts:34](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/VbrickVideoEmbed.ts#L34)
 
 ___
 
@@ -94,7 +94,7 @@ ___
 
 #### Defined in
 
-embed/VbrickVideoEmbed.ts:17
+[embed/VbrickVideoEmbed.ts:18](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/VbrickVideoEmbed.ts#L18)
 
 ___
 
@@ -104,13 +104,13 @@ ___
 
 #### Defined in
 
-embed/VbrickVideoEmbed.ts:25
+[embed/VbrickVideoEmbed.ts:26](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/VbrickVideoEmbed.ts#L26)
 
 ___
 
 ### config
 
-• `Protected` `Readonly` **config**: [`VbrickSDKConfig`](../interfaces/VbrickSDK.VbrickSDKConfig.md)
+• `Protected` `Readonly` **config**: [`VbrickEmbedConfig`](../interfaces/embed_VbrickEmbedConfig.VbrickEmbedConfig.md)
 
 #### Inherited from
 
@@ -138,7 +138,7 @@ ___
 
 #### Defined in
 
-embed/VbrickEmbed.ts:11
+[embed/VbrickEmbed.ts:11](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/VbrickEmbed.ts#L11)
 
 ___
 
@@ -152,7 +152,7 @@ ___
 
 #### Defined in
 
-embed/VbrickEmbed.ts:10
+[embed/VbrickEmbed.ts:10](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/VbrickEmbed.ts#L10)
 
 ___
 
@@ -176,7 +176,7 @@ ___
 
 #### Defined in
 
-embed/VbrickEmbed.ts:14
+[embed/VbrickEmbed.ts:14](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/VbrickEmbed.ts#L14)
 
 ___
 
@@ -190,7 +190,7 @@ ___
 
 #### Defined in
 
-embed/VbrickEmbed.ts:13
+[embed/VbrickEmbed.ts:13](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/VbrickEmbed.ts#L13)
 
 ___
 
@@ -206,7 +206,7 @@ Contains metadata for the video
 
 #### Defined in
 
-embed/VbrickVideoEmbed.ts:38
+[embed/VbrickVideoEmbed.ts:39](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/VbrickVideoEmbed.ts#L39)
 
 ## Accessors
 
@@ -226,7 +226,7 @@ Whether captions are enabled, and selected language
 
 #### Defined in
 
-embed/VbrickVideoEmbed.ts:30
+[embed/VbrickVideoEmbed.ts:31](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/VbrickVideoEmbed.ts#L31)
 
 ___
 
@@ -246,7 +246,7 @@ video playing, buffering, etc
 
 #### Defined in
 
-embed/VbrickVideoEmbed.ts:14
+[embed/VbrickVideoEmbed.ts:15](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/VbrickVideoEmbed.ts#L15)
 
 ___
 
@@ -266,7 +266,7 @@ Player Volume. 0-1
 
 #### Defined in
 
-embed/VbrickVideoEmbed.ts:22
+[embed/VbrickVideoEmbed.ts:23](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/VbrickVideoEmbed.ts#L23)
 
 ## Methods
 
@@ -290,7 +290,7 @@ Removes the embedded content from the DOM.
 
 #### Defined in
 
-embed/VbrickVideoEmbed.ts:87
+[embed/VbrickVideoEmbed.ts:92](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/VbrickVideoEmbed.ts#L92)
 
 ___
 
@@ -311,7 +311,7 @@ If there was a problem loading the content, or a problem with the token, the pro
 
 #### Defined in
 
-embed/VbrickEmbed.ts:28
+[embed/VbrickEmbed.ts:28](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/VbrickEmbed.ts#L28)
 
 ___
 
@@ -329,7 +329,7 @@ ___
 
 #### Defined in
 
-embed/VbrickVideoEmbed.ts:81
+[embed/VbrickVideoEmbed.ts:86](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/VbrickVideoEmbed.ts#L86)
 
 ___
 
@@ -347,7 +347,7 @@ ___
 
 #### Defined in
 
-embed/VbrickVideoEmbed.ts:71
+[embed/VbrickVideoEmbed.ts:72](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/VbrickVideoEmbed.ts#L72)
 
 ___
 
@@ -378,7 +378,7 @@ Removes an event listener
 
 #### Defined in
 
-embed/VbrickEmbed.ts:60
+[embed/VbrickEmbed.ts:60](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/VbrickEmbed.ts#L60)
 
 ___
 
@@ -409,7 +409,7 @@ Fires when the video metadata is loaded
 
 #### Defined in
 
-embed/VbrickEmbed.ts:56
+[embed/VbrickEmbed.ts:56](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/VbrickEmbed.ts#L56)
 
 ___
 
@@ -429,7 +429,7 @@ Pauses the video if it is playing.
 
 #### Defined in
 
-embed/VbrickVideoEmbed.ts:59
+[embed/VbrickVideoEmbed.ts:60](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/VbrickVideoEmbed.ts#L60)
 
 ___
 
@@ -449,7 +449,7 @@ Plays the video if it is paused.
 
 #### Defined in
 
-embed/VbrickVideoEmbed.ts:53
+[embed/VbrickVideoEmbed.ts:54](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/VbrickVideoEmbed.ts#L54)
 
 ___
 
@@ -475,4 +475,4 @@ Sets player volume
 
 #### Defined in
 
-embed/VbrickVideoEmbed.ts:67
+[embed/VbrickVideoEmbed.ts:68](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/VbrickVideoEmbed.ts#L68)
