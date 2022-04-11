@@ -14,6 +14,7 @@
 
 - [baseUrl](embed_EventBus.EventBus.md#baseurl)
 - [eventHandlers](embed_EventBus.EventBus.md#eventhandlers)
+- [isDestroyed](embed_EventBus.EventBus.md#isdestroyed)
 - [msgListener](embed_EventBus.EventBus.md#msglistener)
 - [shouldLog](embed_EventBus.EventBus.md#shouldlog)
 - [win](embed_EventBus.EventBus.md#win)
@@ -45,7 +46,7 @@
 
 #### Defined in
 
-embed/EventBus.ts:15
+[embed/EventBus.ts:16](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/EventBus.ts#L16)
 
 ## Properties
 
@@ -55,7 +56,7 @@ embed/EventBus.ts:15
 
 #### Defined in
 
-embed/EventBus.ts:10
+[embed/EventBus.ts:10](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/EventBus.ts#L10)
 
 ___
 
@@ -69,7 +70,17 @@ ___
 
 #### Defined in
 
-embed/EventBus.ts:13
+[embed/EventBus.ts:14](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/EventBus.ts#L14)
+
+___
+
+### isDestroyed
+
+• `Private` **isDestroyed**: `boolean` = `false`
+
+#### Defined in
+
+[embed/EventBus.ts:12](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/EventBus.ts#L12)
 
 ___
 
@@ -93,7 +104,7 @@ ___
 
 #### Defined in
 
-embed/EventBus.ts:9
+[embed/EventBus.ts:9](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/EventBus.ts#L9)
 
 ___
 
@@ -103,7 +114,7 @@ ___
 
 #### Defined in
 
-embed/EventBus.ts:11
+[embed/EventBus.ts:11](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/EventBus.ts#L11)
 
 ___
 
@@ -113,7 +124,7 @@ ___
 
 #### Defined in
 
-embed/EventBus.ts:8
+[embed/EventBus.ts:8](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/EventBus.ts#L8)
 
 ## Methods
 
@@ -135,7 +146,7 @@ embed/EventBus.ts:8
 
 #### Defined in
 
-embed/EventBus.ts:35
+[embed/EventBus.ts:36](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/EventBus.ts#L36)
 
 ___
 
@@ -156,7 +167,7 @@ ___
 
 #### Defined in
 
-embed/EventBus.ts:97
+[embed/EventBus.ts:101](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/EventBus.ts#L101)
 
 ___
 
@@ -170,7 +181,7 @@ ___
 
 #### Defined in
 
-embed/EventBus.ts:110
+[embed/EventBus.ts:114](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/EventBus.ts#L114)
 
 ___
 
@@ -190,7 +201,7 @@ ___
 
 #### Defined in
 
-embed/EventBus.ts:102
+[embed/EventBus.ts:106](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/EventBus.ts#L106)
 
 ___
 
@@ -210,7 +221,7 @@ ___
 
 #### Defined in
 
-embed/EventBus.ts:82
+[embed/EventBus.ts:86](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/EventBus.ts#L86)
 
 ___
 
@@ -231,7 +242,7 @@ ___
 
 #### Defined in
 
-embed/EventBus.ts:56
+[embed/EventBus.ts:60](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/EventBus.ts#L60)
 
 ___
 
@@ -258,7 +269,7 @@ ___
 
 #### Defined in
 
-embed/EventBus.ts:28
+[embed/EventBus.ts:29](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/EventBus.ts#L29)
 
 ___
 
@@ -279,7 +290,7 @@ ___
 
 #### Defined in
 
-embed/EventBus.ts:64
+[embed/EventBus.ts:68](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/EventBus.ts#L68)
 
 ___
 
@@ -300,4 +311,4 @@ ___
 
 #### Defined in
 
-embed/EventBus.ts:73
+[embed/EventBus.ts:77](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/EventBus.ts#L77)

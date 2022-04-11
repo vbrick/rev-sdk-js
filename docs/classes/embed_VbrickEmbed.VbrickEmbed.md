@@ -52,18 +52,18 @@ Base class for embedded content.
 | Name | Type |
 | :------ | :------ |
 | `iframeUrl` | `string` |
-| `config` | [`VbrickSDKConfig`](../interfaces/VbrickSDK.VbrickSDKConfig.md) |
+| `config` | [`VbrickEmbedConfig`](../interfaces/embed_VbrickEmbedConfig.VbrickEmbedConfig.md) |
 | `container` | `HTMLElement` |
 
 #### Defined in
 
-embed/VbrickEmbed.ts:16
+[embed/VbrickEmbed.ts:16](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/VbrickEmbed.ts#L16)
 
 ## Properties
 
 ### config
 
-• `Protected` `Readonly` **config**: [`VbrickSDKConfig`](../interfaces/VbrickSDK.VbrickSDKConfig.md)
+• `Protected` `Readonly` **config**: [`VbrickEmbedConfig`](../interfaces/embed_VbrickEmbedConfig.VbrickEmbedConfig.md)
 
 ___
 
@@ -79,7 +79,7 @@ ___
 
 #### Defined in
 
-embed/VbrickEmbed.ts:11
+[embed/VbrickEmbed.ts:11](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/VbrickEmbed.ts#L11)
 
 ___
 
@@ -89,7 +89,7 @@ ___
 
 #### Defined in
 
-embed/VbrickEmbed.ts:10
+[embed/VbrickEmbed.ts:10](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/VbrickEmbed.ts#L10)
 
 ___
 
@@ -105,7 +105,7 @@ ___
 
 #### Defined in
 
-embed/VbrickEmbed.ts:12
+[embed/VbrickEmbed.ts:12](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/VbrickEmbed.ts#L12)
 
 ___
 
@@ -115,7 +115,7 @@ ___
 
 #### Defined in
 
-embed/VbrickEmbed.ts:14
+[embed/VbrickEmbed.ts:14](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/VbrickEmbed.ts#L14)
 
 ___
 
@@ -125,7 +125,7 @@ ___
 
 #### Defined in
 
-embed/VbrickEmbed.ts:13
+[embed/VbrickEmbed.ts:13](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/VbrickEmbed.ts#L13)
 
 ## Methods
 
@@ -139,7 +139,7 @@ embed/VbrickEmbed.ts:13
 
 #### Defined in
 
-embed/VbrickEmbed.ts:82
+[embed/VbrickEmbed.ts:82](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/VbrickEmbed.ts#L82)
 
 ___
 
@@ -156,7 +156,7 @@ If there was a problem loading the content, or a problem with the token, the pro
 
 #### Defined in
 
-embed/VbrickEmbed.ts:28
+[embed/VbrickEmbed.ts:28](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/VbrickEmbed.ts#L28)
 
 ___
 
@@ -170,7 +170,7 @@ ___
 
 #### Defined in
 
-embed/VbrickEmbed.ts:54
+[embed/VbrickEmbed.ts:54](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/VbrickEmbed.ts#L54)
 
 ___
 
@@ -184,7 +184,7 @@ ___
 
 #### Defined in
 
-embed/VbrickEmbed.ts:53
+[embed/VbrickEmbed.ts:53](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/VbrickEmbed.ts#L53)
 
 ___
 
@@ -205,7 +205,7 @@ ___
 
 #### Defined in
 
-embed/VbrickEmbed.ts:60
+[embed/VbrickEmbed.ts:60](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/VbrickEmbed.ts#L60)
 
 ___
 
@@ -226,7 +226,7 @@ ___
 
 #### Defined in
 
-embed/VbrickEmbed.ts:56
+[embed/VbrickEmbed.ts:56](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/VbrickEmbed.ts#L56)
 
 ___
 
@@ -240,4 +240,4 @@ ___
 
 #### Defined in
 
-embed/VbrickEmbed.ts:64
+[embed/VbrickEmbed.ts:64](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/VbrickEmbed.ts#L64)

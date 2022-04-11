@@ -28,4 +28,4 @@
 
 #### Defined in
 
-embed/EmbedVideo.ts:15
+[embed/EmbedVideo.ts:15](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/EmbedVideo.ts#L15)
