@@ -129,8 +129,6 @@ You can remove the webcast from the DOM by calling destroy method.
 | .       | Private | OAuth Access Token |
 | .       |        | JWT |
 | .       | Trusted Public | Guest Access Token |
-| .       | Private | OAuth Access Token |
-| .       |        | JWT |
 
 
 
