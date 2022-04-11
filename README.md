@@ -117,6 +117,23 @@ You can remove the webcast from the DOM by calling destroy method.
 
 `webcast.destroy();`
 
+#### Ways to Authenticate
+
+| Embed Type | Authentication | Token |
+| --- | --- | --- |
+| VOD | Public  | *None* |
+| .   | Private | Login Access Token |
+| .   | . | OAuth Access Token |
+| .   | . | JWT |
+| Webcast | Public | *None* |
+| .       | Private | OAuth Access Token |
+| .       |        | JWT |
+| .       | Trusted Public | Guest Access Token |
+| .       | Private | OAuth Access Token |
+| .       |        | JWT |
+
+
+
 
 #### Upgrading from rev-embed-sdk
 There are a few breaking changes if you are updating from rev-embed-sdk:
