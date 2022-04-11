@@ -121,13 +121,16 @@ You can remove the webcast from the DOM by calling destroy method.
 
 | Embed Type | Authentication | Token |
 | --- | --- | --- |
-| VOD | Public  | *None* |
-| .   | Private | Login Access Token |
-| .   | . | OAuth Access Token |
-| .   | . | JWT |
+| Video | Public  | *None* |
+| .   | Private | API Login Access Token |
+| .   | . | User Login Access Token |
+| .   | . | OAuth API Access Token |
+| .   | . | OAuth User Access Token |
 | Webcast | Public | *None* |
-| .       | Private | OAuth Access Token |
-| .       |        | JWT |
+| .       | Private | OAuth API Access Token |
+| .       | .       | OAuth User Access Token |
+| .       | .       | API Login Access Token |
+| .       | .       | User Login Access Token |
 | .       | Trusted Public | Guest Access Token |
 
 
