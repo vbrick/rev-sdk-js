@@ -36,6 +36,9 @@ export function init(formDefaults, render) {
 			case 'sourceUrl':
 				onSourceUrlChanged(form, form.elements.sourceUrl.value);
 				break;
+			case 'embedType':
+				onEmbedTypeChanged(form);
+				break;
 		}
 	});
 
@@ -95,14 +98,18 @@ function onSourceUrlChanged(form, sourceUrl) {
 }
 
 function onTokenTypeChanged(form) {
-	const isVOD = form.elements.embedType.value === 'vod';
-	form.elements.webcastId.disabled = isVOD;
-	form.elements.videoId.disabled = !isVOD;
+	onEmbedTypeChanged(form);
 
 	const isJWT = form.elements.tokenType.value === 'JWT';
 	form.elements.tokenIssuer.value = isJWT
 		? 'vbrick_rev'
 		: 'vbrick';
+}
+
+function onEmbedTypeChanged(form) {
+	const isVOD = form.elements.embedType.value === 'vod';
+	form.elements.webcastId.disabled = isVOD;
+	form.elements.videoId.disabled = !isVOD;
 }
 
 export function stringifyJson(data) {
