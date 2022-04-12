@@ -117,6 +117,35 @@ You can remove the webcast from the DOM by calling destroy method.
 
 `webcast.destroy();`
 
+#### Embedding a Video
+You can embed a video just like a webcast using an empty div tag.
+
+`<div id="embed"></div>`
+
+Use the embedVideo method to display the video on your web page:
+
+```
+const vbrickEmbed = revSdk.embedVideo('#embed', '01234567-89AB-CDEF-0123-456789ABCDEF', {
+	log: true,
+	token,
+	baseUrl: formValues.baseUrl
+});
+```
+
+Use the .on method to watch for events about the video:
+
+```
+vbrickEmbed.on('videoLoaded', data => {
+		console.log(`Video loaded: ${JSON.stringify(data)}`);
+});
+```
+
+##### Control the player using external commands:
+
+```
+vbrickEmbed.play();
+vbrickEmbed.pause();
+```
 
 #### Upgrading from rev-embed-sdk
 There are a few breaking changes if you are updating from rev-embed-sdk:
