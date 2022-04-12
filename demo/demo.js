@@ -117,7 +117,7 @@ export function stringifyJson(data, minify) {
 		return '';
 	}
 	return JSON.stringify(data, (key, value) => value instanceof Error
-		? e.toString() + '\n' + e.stack.toString()
+		? value.toString() + '\n' + value.stack.toString()
 		: value
 	, minify ? 0 : 2);
 }
@@ -210,6 +210,8 @@ export function parseRevUrl(url) {
 
 	/** @type {ParsedRevUrl} */
 	const result = {
+		webcastId: '',
+		videoId: '',
 		isValid: true,
 		baseUrl,
 		config: '{}'
@@ -269,10 +271,12 @@ export function parseRevUrl(url) {
 	result.config = stringifyJson(config, true);
 	result.embedType = result.videoId ? 'vod' : 'webcast';
 
-	if(result.webcastId) {
-		result.tokenType = 'JWT';
-		result.tokenIssuer = 'vbrick_rev';
-		result.tokenValue = searchParams.get('token')
+	if(searchParams.get('token')) {
+		result.tokenValue = searchParams.get('token');
+		if(result.webcastId) {
+			result.tokenType = 'JWT';
+			result.tokenIssuer = 'vbrick_rev';
+		}
 	}
 
 	return result;

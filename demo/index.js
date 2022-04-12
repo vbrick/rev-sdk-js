@@ -13,7 +13,7 @@ init({
 	embedType: 'vod',
 	tokenType: 'AccessToken',
 	tokenValue: '',
-	issuer: 'vbrick',
+	tokenIssuer: 'vbrick',
 	config: '{}'
 }, embedContent);
 
