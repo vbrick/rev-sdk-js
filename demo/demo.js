@@ -112,14 +112,14 @@ function onEmbedTypeChanged(form) {
 	form.elements.videoId.disabled = !isVOD;
 }
 
-export function stringifyJson(data) {
+export function stringifyJson(data, minify) {
 	if (!data) {
 		return '';
 	}
 	return JSON.stringify(data, (key, value) => value instanceof Error
-		? e.toString() + '\n' + e.stack.toString()
+		? value.toString() + '\n' + value.stack.toString()
 		: value
-	, 2);
+	, minify ? 0 : 2);
 }
 
 function setCookie(cookie, value, isTransient) {
@@ -185,9 +185,10 @@ function storeParams(formData) {
  * @returns {ParsedRevUrl}
  */
 export function parseRevUrl(url) {
+	url = url.trim();
 	// attempt to read src parameter if embed code is pasted in
-	if (`${url}`.startsWith('<iframe')) {
-		url = url.replace('.+src="([^"]+)".+', '$1');
+	if (url.startsWith('<')) {
+		url = url.match(/src="([^"]+)"/)?.[1];
 	}
 
 	let urlObj;
@@ -209,6 +210,8 @@ export function parseRevUrl(url) {
 
 	/** @type {ParsedRevUrl} */
 	const result = {
+		webcastId: '',
+		videoId: '',
 		isValid: true,
 		baseUrl,
 		config: '{}'
@@ -257,7 +260,7 @@ export function parseRevUrl(url) {
 		placeholder: 'popOut',
 		startAt: 'startAt'
 	};
-	const config = Object.entries(searchParams).reduce((config, [key, value]) => {
+	const config = Array.from(searchParams.entries()).reduce((config, [key, value]) => {
 		const configKey = queryConfigMap[key];
 		if (configKey) {
 			config[configKey] = value === '' ? true : value;
@@ -265,13 +268,15 @@ export function parseRevUrl(url) {
 		return config;
 	}, {});
 
-	result.config = stringifyJson(config);
+	result.config = stringifyJson(config, true);
 	result.embedType = result.videoId ? 'vod' : 'webcast';
 
-	if(result.webcastId) {
-		result.tokenType = 'JWT';
-		result.tokenIssuer = 'vbrick_rev';
-		result.tokenValue = searchParams.get('token')
+	if(searchParams.get('token')) {
+		result.tokenValue = searchParams.get('token');
+		if(result.webcastId) {
+			result.tokenType = 'JWT';
+			result.tokenIssuer = 'vbrick_rev';
+		}
 	}
 
 	return result;

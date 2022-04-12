@@ -11,7 +11,7 @@ export function initializeWebcastToken(webcastId: string, config: VbrickSDKConfi
 
 function getToken(webcastId: string, config: VbrickSDKConfig): Promise<any> {
 
-	if(config.token?.type !== TokenType.ACCESS_TOKEN) {
+	if(config.token?.type !== TokenType.JWT) {
 		return Promise.resolve({
 			accessToken: config.token?.value
 		});
