@@ -11,7 +11,7 @@ let defaultConfig: any = {
  * @example
  * Presetting a rev URL:
  * ```
- * vbrickEmbed.setDefaultConfig({ baseUrl: 'https://rev1.site.com' })
+ * revSdk.setDefaultConfig({ baseUrl: 'https://rev1.site.com' })
  * ```
  */
  export function setDefaultConfig(configuration: Partial<VbrickSDKConfig>): void {

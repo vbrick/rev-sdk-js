@@ -4,7 +4,6 @@ console.log('Demo, API: ', window.revSdk);
 
 /** @type {import("../dist/IVbrickApi").IVbrickBaseEmbed} */
 let currentEmbed;
-let statusInterval;
 
 init({
 	sourceUrl: '',
@@ -21,21 +20,14 @@ init({
 const logEvents = ['error', 'load', 'volumeChanged', 'captionsChanged', 'playerStatusChanged', 'videoLoaded', 'seeked',
 	'webcastLoaded', 'webcastStarted', 'webcastEnded', 'broadcastStarted', 'broadcastStopped'];
 
-function embedContent(payload) {
-	const {
-		baseUrl,
-		webcastId,
-		videoId,
-		config
-	} = payload;
+function embedContent({
+	baseUrl,
+	webcastId,
+	videoId,
+	config
+}) {
 
-	if (currentEmbed) {
-		currentEmbed.destroy();
-		window.clearInterval(statusInterval);
-	}
-
-	const isVod = document.forms["demoform"].elements['embedType'].value == 'vod';
-
+	const isVod = !!videoId;
 	const embedConfig = {
 		showVideo: true,
 		log: true,
@@ -43,6 +35,7 @@ function embedContent(payload) {
 		...config
 	};
 
+	currentEmbed?.destroy();
 	currentEmbed = isVod
 		? revSdk.embedVideo('#embed', videoId, embedConfig)
 		: revSdk.embedWebcast('#embed', webcastId, embedConfig);
@@ -51,14 +44,19 @@ function embedContent(payload) {
 
 	const logEl = document.getElementById('logMessages');
 	const statusEl = document.getElementById('status');
+	const playerStatusEl = document.getElementById('playerStatus');
 
 	logEvents.forEach(e => currentEmbed.on(e, data => {
 		const li = document.createElement('li');
 		li.innerHTML = `${new Date().toLocaleTimeString()} ${e}:<pre>${stringifyJson(data)}</pre>`;
-		logEl.insertBefore(li, logEl.firstChild)
+		logEl.insertBefore(li, logEl.firstChild);
+		updateStatus();
 	}));
 
-	statusInterval = window.setInterval(() => statusEl.innerHTML = currentEmbed.status || 'undefined', 1000);
+	function updateStatus() {
+		statusEl.innerHTML = currentEmbed.status || 'undefined';
+		playerStatusEl.innerHTML = currentEmbed.playerStatus || 'undefined';
+	}
 }
 
 console.log('Welcome to the Vbrick SDK Embed Test page. When rendered the current video player instance is set to window.vbrickEmbed');
