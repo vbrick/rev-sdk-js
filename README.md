@@ -140,17 +140,11 @@ vbrickEmbed.on('videoLoaded', data => {
 });
 ```
 
-##### Make the player available globally:
-
-```
-globalThis.vbrickEmbed = currentEmbed;
-```
-
 ##### Control the player using external commands:
 
 ```
-window.vbrickEmbed.play();
-window.vbrickEmbed.pause();
+vbrickEmbed.play();
+vbrickEmbed.pause();
 ```
 
 #### Upgrading from rev-embed-sdk
