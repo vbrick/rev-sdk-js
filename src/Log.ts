@@ -1,18 +1,12 @@
-import { IVbrickEmbedConfig } from './IVbrickApi';
-
-let enableLogging = false;
+import { VbrickSDKConfig } from "./VbrickSDK";
 
 export interface ILogger {
 	log(message?: any, ...optionalParams: any[]): void;
 	error(message?: any, ...optionalParams: any[]): void;
 }
 
-export function init(cfg: IVbrickEmbedConfig): void {
-	enableLogging = !!cfg.log;
-}
-
-export function getLogger(): ILogger {
-	return enableLogging ? console : {
+export function getLogger(cfg: VbrickSDKConfig): ILogger {
+	return cfg.log ? console : {
 		log: noop,
 		error: noop
 	};

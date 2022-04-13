@@ -1,5 +1,7 @@
 {
-	"entryPoints": ["src/index.ts", "src/IVbrickApi.ts"],
+	"entryPoints": ["src/"],
+	"entryPointStrategy": "expand",
 	"out": "docs",
-	"plugin": "typedoc-plugin-markdown"
+	"plugin": "typedoc-plugin-markdown",
+	"gitRemote": "upstream"
 }
