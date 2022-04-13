@@ -27,7 +27,7 @@
 
 #### Defined in
 
-Config.ts:24
+[Config.ts:24](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/Config.ts#L24)
 
 ___
 
@@ -40,7 +40,7 @@ Assign default configuration values that will be applied to future api calls.
 **`example`**
 Presetting a rev URL:
 ```
-vbrickEmbed.setDefaultConfig({ baseUrl: 'https://rev1.site.com' })
+revSdk.setDefaultConfig({ baseUrl: 'https://rev1.site.com' })
 ```
 
 #### Parameters
@@ -55,4 +55,4 @@ vbrickEmbed.setDefaultConfig({ baseUrl: 'https://rev1.site.com' })
 
 #### Defined in
 
-Config.ts:17
+[Config.ts:17](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/Config.ts#L17)

@@ -36,7 +36,7 @@ Indicates whether the webcast is started, or broadcasting.
 
 #### Defined in
 
-embed/IVbrickApi.ts:51
+[embed/IVbrickApi.ts:51](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/IVbrickApi.ts#L51)
 
 ## Methods
 
@@ -56,7 +56,7 @@ Removes the embedded content from the DOM.
 
 #### Defined in
 
-embed/IVbrickApi.ts:146
+[embed/IVbrickApi.ts:146](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/IVbrickApi.ts#L146)
 
 ___
 
@@ -83,7 +83,7 @@ Removes an event listener
 
 #### Defined in
 
-embed/IVbrickApi.ts:141
+[embed/IVbrickApi.ts:141](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/IVbrickApi.ts#L141)
 
 ___
 
@@ -110,7 +110,7 @@ Register an event handler. Events are fired at different lifecycle stages of the
 
 #### Defined in
 
-embed/IVbrickApi.ts:58
+[embed/IVbrickApi.ts:58](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/IVbrickApi.ts#L58)
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -133,7 +133,7 @@ Fired when the webcast starts broadcasting.
 
 #### Defined in
 
-embed/IVbrickApi.ts:63
+[embed/IVbrickApi.ts:63](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/IVbrickApi.ts#L63)
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -156,7 +156,7 @@ Fired when the webcast stops broadcasting.
 
 #### Defined in
 
-embed/IVbrickApi.ts:68
+[embed/IVbrickApi.ts:68](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/IVbrickApi.ts#L68)
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -181,7 +181,7 @@ isPreProduction: boolean, Indicates that the webcast is running in pre-productio
 
 #### Defined in
 
-embed/IVbrickApi.ts:75
+[embed/IVbrickApi.ts:75](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/IVbrickApi.ts#L75)
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -204,4 +204,4 @@ Fired when the webcast ends.
 
 #### Defined in
 
-embed/IVbrickApi.ts:80
+[embed/IVbrickApi.ts:80](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/IVbrickApi.ts#L80)

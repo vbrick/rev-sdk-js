@@ -2,5 +2,6 @@
 	"entryPoints": ["src/"],
 	"entryPointStrategy": "expand",
 	"out": "docs",
-	"plugin": "typedoc-plugin-markdown"
+	"plugin": "typedoc-plugin-markdown",
+	"gitRemote": "upstream"
 }
