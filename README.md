@@ -1,6 +1,6 @@
 # Rev JavaScript SDK
 
-This is Vbrick's JavaScript SDK library that enables you to embed Vbrick Rev webcasts and videos on your website, portal, or any web-based application using JavaScript code. The SDK currently supports interaction with the webcast and video player. We will support full webcast and video features including slides, chats, Q&A, polls, and other video functionality, etc via this SDK in the future.
+This is Vbrick's JavaScript SDK library that enables you to embed Vbrick Rev webcasts and videos (also known as Video on Demand or VOD) on your website, portal, or any web-based application using JavaScript code. The SDK currently supports interaction with the webcast and video player. We will support full webcast and video features including slides, chats, Q&A, polls, and other video functionality, etc via this SDK in the future.
 
 ##### Documentation
 - [API Reference](/docs/README.md)
@@ -8,7 +8,6 @@ This is Vbrick's JavaScript SDK library that enables you to embed Vbrick Rev web
 #### Accessing the SDK
 
 The JavaScript SDK can be accessed via `<script>` tag in your HTML. Set the src attribute to `https://<<YOUR_REV_URL>>/dist/rev-sdk.js` or import for ES6 module.
-
 
 ~~~
 <script src="https://<<YOUR_REV_URL>>/dist/rev-sdk.js"></script>
@@ -32,7 +31,7 @@ npm install
 npm run build
 ~~~
 
-#### Embedding a Webcast
+## Embedding a Webcast
 On your web page, you can insert an embedded webcast using an empty div tag. You will have to reference the div id when you interact with the SDK.
 
 `<div id="embed"></div>`
@@ -116,7 +115,7 @@ You can remove the webcast from the DOM by calling destroy method.
 
 `webcast.destroy();`
 
-#### Embedding a Video
+## Embedding a Video
 You can embed a video just like a webcast using an empty div tag.
 
 `<div id="embed"></div>`
@@ -144,7 +143,13 @@ vbrickEmbed.on('videoLoaded', data => {
 ```
 vbrickEmbed.play();
 vbrickEmbed.pause();
+vbrickEmbed.setVolume(5);
 ```
+
+#### Removing Video
+You can remove the video from the DOM by calling destroy method.
+
+`vbrickEmbed.destroy();`
 
 #### Upgrading from rev-embed-sdk
 There are a few breaking changes if you are updating from rev-embed-sdk:
