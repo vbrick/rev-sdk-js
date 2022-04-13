@@ -19,7 +19,7 @@
 
 #### Defined in
 
-VbrickSDK.ts:4
+[VbrickSDK.ts:4](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/VbrickSDK.ts#L4)
 
 ___
 
@@ -29,4 +29,4 @@ ___
 
 #### Defined in
 
-VbrickSDK.ts:3
+[VbrickSDK.ts:3](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/VbrickSDK.ts#L3)

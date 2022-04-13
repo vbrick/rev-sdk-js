@@ -55,7 +55,7 @@
 | Name | Type |
 | :------ | :------ |
 | `webcastId` | `string` |
-| `config` | [`VbrickSDKConfig`](../interfaces/VbrickSDK.VbrickSDKConfig.md) |
+| `config` | [`VbrickEmbedConfig`](../interfaces/embed_VbrickEmbedConfig.VbrickEmbedConfig.md) |
 | `container` | `HTMLElement` |
 
 #### Overrides
@@ -64,7 +64,7 @@
 
 #### Defined in
 
-embed/VbrickWebcastEmbed.ts:13
+[embed/VbrickWebcastEmbed.ts:15](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/VbrickWebcastEmbed.ts#L15)
 
 ## Properties
 
@@ -74,13 +74,13 @@ embed/VbrickWebcastEmbed.ts:13
 
 #### Defined in
 
-embed/VbrickWebcastEmbed.ts:8
+[embed/VbrickWebcastEmbed.ts:10](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/VbrickWebcastEmbed.ts#L10)
 
 ___
 
 ### config
 
-• `Protected` `Readonly` **config**: [`VbrickSDKConfig`](../interfaces/VbrickSDK.VbrickSDKConfig.md)
+• `Protected` `Readonly` **config**: [`VbrickEmbedConfig`](../interfaces/embed_VbrickEmbedConfig.VbrickEmbedConfig.md)
 
 #### Inherited from
 
@@ -108,7 +108,7 @@ ___
 
 #### Defined in
 
-embed/VbrickEmbed.ts:11
+[embed/VbrickEmbed.ts:11](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/VbrickEmbed.ts#L11)
 
 ___
 
@@ -122,7 +122,7 @@ ___
 
 #### Defined in
 
-embed/VbrickEmbed.ts:10
+[embed/VbrickEmbed.ts:10](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/VbrickEmbed.ts#L10)
 
 ___
 
@@ -146,7 +146,7 @@ ___
 
 #### Defined in
 
-embed/VbrickEmbed.ts:14
+[embed/VbrickEmbed.ts:14](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/VbrickEmbed.ts#L14)
 
 ___
 
@@ -160,7 +160,7 @@ ___
 
 #### Defined in
 
-embed/VbrickEmbed.ts:13
+[embed/VbrickEmbed.ts:13](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/VbrickEmbed.ts#L13)
 
 ## Accessors
 
@@ -180,7 +180,7 @@ Indicates whether the webcast is started, or broadcasting.
 
 #### Defined in
 
-embed/VbrickWebcastEmbed.ts:9
+[embed/VbrickWebcastEmbed.ts:11](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/VbrickWebcastEmbed.ts#L11)
 
 ## Methods
 
@@ -204,7 +204,7 @@ Removes the embedded content from the DOM.
 
 #### Defined in
 
-embed/VbrickEmbed.ts:82
+[embed/VbrickEmbed.ts:82](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/VbrickEmbed.ts#L82)
 
 ___
 
@@ -225,7 +225,7 @@ If there was a problem loading the content, or a problem with the token, the pro
 
 #### Defined in
 
-embed/VbrickEmbed.ts:28
+[embed/VbrickEmbed.ts:28](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/VbrickEmbed.ts#L28)
 
 ___
 
@@ -243,7 +243,7 @@ ___
 
 #### Defined in
 
-embed/VbrickWebcastEmbed.ts:25
+[embed/VbrickWebcastEmbed.ts:27](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/VbrickWebcastEmbed.ts#L27)
 
 ___
 
@@ -261,7 +261,7 @@ ___
 
 #### Defined in
 
-embed/VbrickWebcastEmbed.ts:21
+[embed/VbrickWebcastEmbed.ts:23](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/VbrickWebcastEmbed.ts#L23)
 
 ___
 
@@ -292,7 +292,7 @@ Removes an event listener
 
 #### Defined in
 
-embed/VbrickEmbed.ts:60
+[embed/VbrickEmbed.ts:60](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/VbrickEmbed.ts#L60)
 
 ___
 
@@ -323,4 +323,4 @@ Register an event handler. Events are fired at different lifecycle stages of the
 
 #### Defined in
 
-embed/VbrickEmbed.ts:56
+[embed/VbrickEmbed.ts:56](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/VbrickEmbed.ts#L56)

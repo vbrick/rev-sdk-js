@@ -15,6 +15,7 @@
 - [embed/IVbrickApi](modules/embed_IVbrickApi.md)
 - [embed/PlayerStatus](modules/embed_PlayerStatus.md)
 - [embed/VbrickEmbed](modules/embed_VbrickEmbed.md)
+- [embed/VbrickEmbedConfig](modules/embed_VbrickEmbedConfig.md)
 - [embed/VbrickVideoEmbed](modules/embed_VbrickVideoEmbed.md)
 - [embed/VbrickWebcastEmbed](modules/embed_VbrickWebcastEmbed.md)
 - [embed/WebcastStatus](modules/embed_WebcastStatus.md)
