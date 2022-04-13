@@ -19,7 +19,7 @@
 
 #### Defined in
 
-[embed/IVbrickApi.ts:150](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/IVbrickApi.ts#L150)
+[embed/IVbrickApi.ts:150](https://github.com/vbrick/rev-sdk-js/blob/e732619/src/embed/IVbrickApi.ts#L150)
 
 ___
 
@@ -29,4 +29,4 @@ ___
 
 #### Defined in
 
-[embed/IVbrickApi.ts:151](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/IVbrickApi.ts#L151)
+[embed/IVbrickApi.ts:151](https://github.com/vbrick/rev-sdk-js/blob/e732619/src/embed/IVbrickApi.ts#L151)

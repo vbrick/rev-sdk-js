@@ -23,7 +23,7 @@
 
 #### Defined in
 
-[embed/PlayerStatus.ts:5](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/PlayerStatus.ts#L5)
+[embed/PlayerStatus.ts:5](https://github.com/vbrick/rev-sdk-js/blob/e732619/src/embed/PlayerStatus.ts#L5)
 
 ___
 
@@ -33,7 +33,7 @@ ___
 
 #### Defined in
 
-[embed/PlayerStatus.ts:7](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/PlayerStatus.ts#L7)
+[embed/PlayerStatus.ts:7](https://github.com/vbrick/rev-sdk-js/blob/e732619/src/embed/PlayerStatus.ts#L7)
 
 ___
 
@@ -43,7 +43,7 @@ ___
 
 #### Defined in
 
-[embed/PlayerStatus.ts:2](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/PlayerStatus.ts#L2)
+[embed/PlayerStatus.ts:2](https://github.com/vbrick/rev-sdk-js/blob/e732619/src/embed/PlayerStatus.ts#L2)
 
 ___
 
@@ -53,7 +53,7 @@ ___
 
 #### Defined in
 
-[embed/PlayerStatus.ts:4](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/PlayerStatus.ts#L4)
+[embed/PlayerStatus.ts:4](https://github.com/vbrick/rev-sdk-js/blob/e732619/src/embed/PlayerStatus.ts#L4)
 
 ___
 
@@ -63,7 +63,7 @@ ___
 
 #### Defined in
 
-[embed/PlayerStatus.ts:3](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/PlayerStatus.ts#L3)
+[embed/PlayerStatus.ts:3](https://github.com/vbrick/rev-sdk-js/blob/e732619/src/embed/PlayerStatus.ts#L3)
 
 ___
 
@@ -73,4 +73,4 @@ ___
 
 #### Defined in
 
-[embed/PlayerStatus.ts:6](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/PlayerStatus.ts#L6)
+[embed/PlayerStatus.ts:6](https://github.com/vbrick/rev-sdk-js/blob/e732619/src/embed/PlayerStatus.ts#L6)

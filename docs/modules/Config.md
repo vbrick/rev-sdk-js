@@ -27,7 +27,7 @@
 
 #### Defined in
 
-[Config.ts:24](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/Config.ts#L24)
+[Config.ts:24](https://github.com/vbrick/rev-sdk-js/blob/e732619/src/Config.ts#L24)
 
 ___
 
@@ -55,4 +55,4 @@ vbrickEmbed.setDefaultConfig({ baseUrl: 'https://rev1.site.com' })
 
 #### Defined in
 
-[Config.ts:17](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/Config.ts#L17)
+[Config.ts:17](https://github.com/vbrick/rev-sdk-js/blob/e732619/src/Config.ts#L17)

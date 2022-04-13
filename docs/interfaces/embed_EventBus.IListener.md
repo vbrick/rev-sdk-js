@@ -22,4 +22,4 @@
 
 #### Defined in
 
-[embed/EventBus.ts:4](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/EventBus.ts#L4)
+[embed/EventBus.ts:4](https://github.com/vbrick/rev-sdk-js/blob/e732619/src/embed/EventBus.ts#L4)
