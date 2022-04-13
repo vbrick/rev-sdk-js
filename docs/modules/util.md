@@ -27,7 +27,7 @@
 
 #### Defined in
 
-[util.ts:1](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/util.ts#L1)
+[util.ts:1](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/util.ts#L1)
 
 ___
 
@@ -47,4 +47,4 @@ ___
 
 #### Defined in
 
-[util.ts:5](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/util.ts#L5)
+[util.ts:5](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/util.ts#L5)

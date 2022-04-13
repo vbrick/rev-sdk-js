@@ -44,4 +44,4 @@ An {@linkcode IVbrickWebcastConfig} object
 
 #### Defined in
 
-[embed/EmbedWebcast.ts:27](https://github.com/vbrick/rev-sdk-js/blob/c8dd2aa/src/embed/EmbedWebcast.ts#L27)
+[embed/EmbedWebcast.ts:27](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/EmbedWebcast.ts#L27)
