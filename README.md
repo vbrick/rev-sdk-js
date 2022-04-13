@@ -3,8 +3,7 @@
 This is Vbrick's JavaScript SDK library that enables you to embed Vbrick Rev webcasts and videos on your website, portal, or any web-based application using JavaScript code. The SDK currently supports interaction with the webcast and video player. We will support full webcast and video features including slides, chats, Q&A, polls, and other video functionality, etc via this SDK in the future.
 
 ##### Documentation
-- [API Module Reference](/docs/modules/index.md)
-- [API Enumerations and Interfaces Reference](/docs/modules/IVbrickApi.md)
+- [API Reference](/docs/README.md)
 
 #### Accessing the SDK
 
