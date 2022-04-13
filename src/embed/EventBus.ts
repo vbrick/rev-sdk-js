@@ -1,4 +1,4 @@
-import { IVbrickWebcastConfig } from "./IVbrickApi";
+import { VbrickSDKConfig } from "src/VbrickSDK";
 
 export interface IListener {
 	(e: any): void;
@@ -9,12 +9,13 @@ export class EventBus {
 	private msgListener: (e: MessageEvent) => void;
 	private readonly baseUrl: string;
 	private readonly shouldLog: boolean;
+	private isDestroyed: boolean = false;
 
 	private eventHandlers: { [e: string]: IListener[] } = {};
 
 	constructor(
 		iframe: HTMLIFrameElement,
-		config: IVbrickWebcastConfig
+		config: VbrickSDKConfig
 	){
 		this.win = iframe.contentWindow;
 		this.msgListener = this.handleMessage.bind(this);
@@ -49,7 +50,10 @@ export class EventBus {
 				this.on(failEvent, onErr);
 			}
 
-			const timer = setTimeout(() => onErr(event + ': timeout'), timeout);
+			const timer = setTimeout(() => {
+				if (this.isDestroyed) { return; }
+				onErr(event + ': timeout')
+			}, timeout);
 		});
 	}
 
@@ -85,17 +89,17 @@ export class EventBus {
 		if(e.origin !== this.baseUrl ||
 			data.app !== 'vbrick' ||
 			!data.event) {
-			this.shouldLog && console.log('rev client dropping inbound message. ', e.data);
+			this.shouldLog && console.log('rev SDK dropping inbound message. ', e.data);
 			return;
 		}
 
-		this.shouldLog && console.log('rev client inbound message. ', e.data);
+		this.shouldLog && console.log('rev SDK inbound message. ', e.data);
 
 		this.callHandlers(data.event, data.msg);
 	}
 
 	private callHandlers(event: string, data: any): void {
-		const handlers = this.getHandlers(event);
+		const handlers = Array.from(this.getHandlers(event));
 		handlers.forEach(h => h(data));
 	}
 
@@ -108,6 +112,8 @@ export class EventBus {
 	}
 
 	public destroy(): void {
+		if (this.isDestroyed) { return; }
+		this.isDestroyed = true;
 		globalThis.removeEventListener('message', this.msgListener);
 	}
 }

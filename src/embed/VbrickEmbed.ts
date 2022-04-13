@@ -1,19 +1,24 @@
 import { EventBus, IListener } from './EventBus';
-import { IVbrickEmbedConfig } from './IVbrickApi';
-import { getLogger } from './Log';
+import { VbrickEmbedConfig } from './VbrickEmbedConfig';
+import { getLogger, ILogger } from '../Log';
 
+/**
+ * Base class for embedded content.
+ */
 export abstract class VbrickEmbed {
 
 	protected iframe: HTMLIFrameElement;
 	protected eventBus: EventBus;
 	private init: Promise<any>;
 	protected unsubscribes: Array<() => void>;
+	protected logger: ILogger;
 
 	constructor(
 		protected readonly iframeUrl: string,
-		protected readonly config: IVbrickEmbedConfig,
+		protected readonly config: VbrickEmbedConfig,
 		protected readonly container: HTMLElement
 	) {
+		this.logger = getLogger(this.config);
 	}
 
 	/**
@@ -33,11 +38,11 @@ export abstract class VbrickEmbed {
 			this.eventBus.awaitEvent('load', 'error')
 		])
 			.then(([token])=> {
-				getLogger().log('embed loaded, authenticating');
+				this.logger.log('embed loaded, authenticating');
 				this.eventBus.publish('authenticated', { token });
 			})
 			.catch(err => {
-				getLogger().error('Embed initialization error: ', err);
+				this.logger.error('Embed initialization error: ', err);
 
 				this.eventBus.publishError('Error loading embed content', err);
 			});
@@ -68,7 +73,6 @@ export abstract class VbrickEmbed {
 		if(this.config.className) {
 			iframe.className = this.config.className;
 		}
-
 
 		this.container.appendChild(iframe);
 
