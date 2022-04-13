@@ -146,6 +146,16 @@ vbrickEmbed.pause();
 vbrickEmbed.setVolume(5);
 ```
 
+#### Supported Video Events
+
+* videoLoaded
+* playerStatusChanged
+  * Playing
+  * Paused
+* volumeChanged
+* seeked
+* error
+
 #### Removing Video
 You can remove the video from the DOM by calling destroy method.
 
