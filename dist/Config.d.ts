@@ -1,5 +1,4 @@
-import { IVbrickVideoConfig, IVbrickWebcastConfig } from './IVbrickApi';
-declare type TConfig = IVbrickWebcastConfig & IVbrickVideoConfig;
+import { VbrickSDKConfig } from './VbrickSDK';
 /**
  * Assign default configuration values that will be applied to future api calls.
  * @param configuration A configuration object.
@@ -7,9 +6,8 @@ declare type TConfig = IVbrickWebcastConfig & IVbrickVideoConfig;
  * @example
  * Presetting a rev URL:
  * ```
- * vbrickEmbed.setDefaultConfig({ baseUrl: 'https://rev1.site.com' })
+ * revSdk.setDefaultConfig({ baseUrl: 'https://rev1.site.com' })
  * ```
  */
-export declare function setDefaultConfig(configuration: Partial<TConfig>): void;
-export declare function resolveConfig(configuration: Partial<TConfig>): any;
-export {};
+export declare function setDefaultConfig(configuration: Partial<VbrickSDKConfig>): void;
+export declare function resolveConfig(configuration: Partial<VbrickSDKConfig>): VbrickSDKConfig;
