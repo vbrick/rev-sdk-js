@@ -1,15 +1,6 @@
-import { TokenType, VbrickSDKConfig, VbrickSDKToken } from "../VbrickSDK";
+import { TokenType, VbrickSDKConfig } from "../VbrickSDK";
 
-let promise: Promise<VbrickSDKToken>;
-
-export function initializeWebcastToken(webcastId: string, config: VbrickSDKConfig): Promise<VbrickSDKToken> {
-	if(!promise) {
-		promise = getToken(webcastId, config);
-	}
-	return promise;
-}
-
-function getToken(webcastId: string, config: VbrickSDKConfig): Promise<any> {
+export function initializeWebcastToken(webcastId: string, config: VbrickSDKConfig): Promise<any> {
 
 	if(config.token?.type !== TokenType.JWT) {
 		return Promise.resolve({
