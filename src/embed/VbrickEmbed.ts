@@ -54,7 +54,8 @@ export abstract class VbrickEmbed {
 	protected abstract initializeEmbed(): void;
 
 	public on(event: string, listener: IListener): void {
-		this.eventBus.on(event, listener);
+		//ensure internal updates take effect before calling client handlers
+		this.eventBus.on(event, e => setTimeout(() => listener(e)));
 	}
 
 	public off(event: string, listener: IListener): void {
