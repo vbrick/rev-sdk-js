@@ -143,7 +143,7 @@ vbrickEmbed.on('videoLoaded', data => {
 ```
 vbrickEmbed.play();
 vbrickEmbed.pause();
-vbrickEmbed.setVolume(5);
+vbrickEmbed.setVolume(0.5);
 ```
 
 #### Supported Video Events
@@ -160,10 +160,3 @@ vbrickEmbed.setVolume(5);
 You can remove the video from the DOM by calling destroy method.
 
 `vbrickEmbed.destroy();`
-
-#### Upgrading from rev-embed-sdk
-There are a few breaking changes if you are updating from rev-embed-sdk:
-
-Export was renamed from `revEmbed` to `revSdk`
-The library URL was changed to `https://<<YOUR_REV_URL>>/dist/rev-sdk.js`
-The NPM package was renamed to `@vbrick/rev-sdk`
