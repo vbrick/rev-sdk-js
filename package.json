@@ -4,8 +4,10 @@
   "description": "Client SDK for Vbrick Rev",
   "browser": "dist/rev-sdk.js",
   "browserslist": [
-    "ie 11"
+    "defaults",
+    "not IE 11"
   ],
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node --max_old_space_size=4096 node_modules/webpack/bin/webpack --config ./webpack.config.js --progress",
