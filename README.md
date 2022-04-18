@@ -156,8 +156,12 @@ vbrickEmbed.setVolume(0.5);
 
 * videoLoaded
 * playerStatusChanged
-  * Playing
+  * Buffering
+  * Ended
+  * Initializing
   * Paused
+  * Playing
+  * Seeking
 * volumeChanged
 * seeked
 * error
@@ -182,17 +186,9 @@ vbrickEmbed.setVolume(0.5);
 ```
 
 ##### Get Video Status
-You can get the status of the video using status variable. See example below
+You can get the status of the video using status variable, this reflects the latest playerStatusChanged message. See example below
 
 `vbrickEmbed.playerStatus;`
-
-#### Player Status Values
-* Buffering
-* Ended
-* Initializing
-* Paused
-* Playing
-* Seeking
 
 ##### Removing Webcast
 You can remove the webcast from the DOM by calling destroy method.
