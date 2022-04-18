@@ -23,7 +23,7 @@ export interface VbrickEmbedConfig extends VbrickSDKConfig {
 	hideVideo?: boolean;
 
 	/**
-	 * For video embeds. If the user needs to log in, show the login form in a popup window.
+	 * For video embeds. If a user needs to log in, go through the login process in a popup window. This is the standard behavior for non-SDK Rev embeded videos
 	 */
 	popupAuth?: boolean;
 
