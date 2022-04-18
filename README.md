@@ -186,7 +186,7 @@ vbrickEmbed.setVolume(0.5);
 ```
 
 ##### Get Video Status
-You can get the status of the video using status variable, this reflects the latest playerStatusChanged message. See example below
+You can get the status of the video using status variable, this reflects the latest playerStatusChanged event. See example below
 
 `vbrickEmbed.playerStatus;`
 
