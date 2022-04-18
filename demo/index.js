@@ -5,7 +5,7 @@ console.log('Demo, API: ', window.revSdk);
 /** @type {import("../dist/IVbrickApi").IVbrickBaseEmbed} */
 let currentEmbed;
 
-init({
+const getData = init({
 	sourceUrl: '',
 	baseUrl: '',
 	videoId: '',
@@ -19,6 +19,11 @@ init({
 
 const logEvents = ['error', 'load', 'volumeChanged', 'captionsChanged', 'playerStatusChanged', 'videoLoaded', 'seeked',
 	'webcastLoaded', 'webcastStarted', 'webcastEnded', 'broadcastStarted', 'broadcastStopped'];
+
+document.querySelector('#updateToken').addEventListener('click', () => {
+	const data = getData();
+	currentEmbed?.updateToken(data.config.token);
+});
 
 function embedContent({
 	baseUrl,

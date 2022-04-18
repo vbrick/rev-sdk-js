@@ -1,5 +1,6 @@
 import { WebcastStatus } from './WebcastStatus';
 import { PlayerStatus } from './PlayerStatus';
+import { VbrickSDKToken } from 'src/VbrickSDK';
 export { WebcastStatus } from './WebcastStatus';
 export { PlayerStatus } from './PlayerStatus';
 
@@ -48,7 +49,7 @@ export interface IVbrickWebcastEmbed extends IVbrickBaseEmbed {
 	/**
 	 * Indicates whether the webcast is started, or broadcasting.
 	 */
-	readonly status: WebcastStatus;
+	readonly webcastStatus: WebcastStatus;
 
 	/**
 	 * Register an event handler. Events are fired at different lifecycle stages of the webcast
@@ -144,6 +145,12 @@ export interface IVbrickBaseEmbed {
 	 * Removes the embedded content from the DOM.
 	 */
 	 destroy(): void;
+
+	/**
+	 * Allows updating the access token if the old one has expired.
+	 * @param token
+	 */
+	updateToken(token: VbrickSDKToken): void;
 }
 
 export interface ICaptionSettings {

@@ -17,6 +17,7 @@ const queryParams = Object.fromEntries( new URLSearchParams(window.location.sear
  * Initializes the demo form
  * @param {any} formDefaults
  * @param {(config: any) => void} render
+ * @returns {() => any} function that returns the embed config
  */
 export function init(formDefaults, render) {
 	const form = document.querySelector('form');
@@ -47,19 +48,24 @@ export function init(formDefaults, render) {
 		renderInternal();
 	});
 
-	form.addEventListener('reset', (e) => {
-		const data = readParams(formDefaults);
-		writeFormData(form, data);
-		renderInternal();
+	form.addEventListener('reset', () => {
+		writeFormData(form, formDefaults);
+		storeParams(formDefaults);
 	});
 
 	setTimeout(renderInternal, 1000);
 
 	function renderInternal() {
+		render(syncFormData());
+	}
+
+	function syncFormData() {
 		const data = readFormData(form);
 		storeParams(data);
-		render(getConfig(data));
+		return getConfig(data);
 	}
+
+	return syncFormData;
 }
 
 function getConfig(formData) {
