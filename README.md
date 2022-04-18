@@ -133,9 +133,9 @@ const vbrickEmbed = revSdk.embedVideo('#embed', '01234567-89AB-CDEF-0123-456789A
 Use the .on method to watch for events about the video:
 
 ```
-const videoLoaded = vbrickEmbed.on('videoLoaded', data => {
-		console.log(`Video loaded: ${JSON.stringify(data)}`);
-});
+const videoLoaded = console.log(`Video loaded: ${JSON.stringify(data)}`);
+
+vbrickEmbed.on('videoLoaded', videoLoaded);
 ```
 
 Use the .off method to stop listening for events:
