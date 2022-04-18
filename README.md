@@ -156,6 +156,25 @@ vbrickEmbed.setVolume(0.5);
 * seeked
 * error
 
+#### Video Config Example
+
+```
+{
+  "accentColor": "ff0000",
+  "autoplay" : true, 
+  "forcedCaptions": false,
+  "hideCaptions": false,
+  "hideChapters" : false,
+  "hideFullscreen": false,
+  "playInLoop": true,
+  "hideOverlayControls": false,
+  "hidePlayControls": false, 
+  "hideSettings": false,
+  "popOut": false,
+  "startAt": "00m10s"
+}
+```
+
 #### Removing Video
 You can remove the video from the DOM by calling destroy method.
 
