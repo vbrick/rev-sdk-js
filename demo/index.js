@@ -49,7 +49,6 @@ function embedContent({
 
 	const logEl = document.getElementById('logMessages');
 	const statusEl = document.getElementById('status');
-	const playerStatusEl = document.getElementById('playerStatus');
 
 	logEvents.forEach(e => currentEmbed.on(e, data => {
 		const li = document.createElement('li');
@@ -59,8 +58,9 @@ function embedContent({
 	}));
 
 	function updateStatus() {
-		statusEl.innerHTML = currentEmbed.status || 'undefined';
-		playerStatusEl.innerHTML = currentEmbed.playerStatus || 'undefined';
+		statusEl.innerHTML = currentEmbed.isVod ?
+			currentEmbed.webcastStatus || 'undefined' :
+			currentEmbed.playerStatus || 'undefined';
 	}
 }
 

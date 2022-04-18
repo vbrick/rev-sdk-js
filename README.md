@@ -87,7 +87,7 @@ webcast.on('broadcastStarted', function() {
 * webcastEnded
 * error
 
-#### Stop Listening to Events
+##### Stop Listening to Events
 
 You can stop listening for the events using .off(). See example below
 
@@ -97,7 +97,7 @@ webcast.off('broadcastStarted', function() {
 });
 ~~~
 
-#### Get Webcast Status
+##### Get Webcast Status
 You can get the status of the webcast using status variable. See example below
 
 `var sts = webcast.status();`
@@ -110,7 +110,7 @@ You can get the status of the webcast using status variable. See example below
 * Loading
 * Scheduled
 
-#### Removing Webcast
+##### Removing Webcast
 You can remove the webcast from the DOM by calling destroy method.
 
 `webcast.destroy();`
@@ -138,6 +138,12 @@ vbrickEmbed.on('videoLoaded', data => {
 });
 ```
 
+Use the .off method to stop listening for events:
+
+```
+vbrickEmbed.off('videoLoaded');
+```
+
 ##### Control the player using external commands:
 
 ```
@@ -146,7 +152,7 @@ vbrickEmbed.pause();
 vbrickEmbed.setVolume(0.5);
 ```
 
-#### Supported Video Events
+##### Supported Video Events
 
 * videoLoaded
 * playerStatusChanged
@@ -156,7 +162,7 @@ vbrickEmbed.setVolume(0.5);
 * seeked
 * error
 
-#### Video Config Example
+##### Video Config Example
 
 ```
 {
@@ -175,7 +181,23 @@ vbrickEmbed.setVolume(0.5);
 }
 ```
 
-#### Removing Video
+##### Get Video Status
+You can get the status of the video using status variable. See example below
+
+`vbrickEmbed.playerStatus;`
+
+#### Player Status Values
+* Buffering
+* Ended
+* Initializing
+* Paused
+* Playing
+* Seeking
+
+##### Removing Webcast
+You can remove the webcast from the DOM by calling destroy method.
+
+##### Removing Video
 You can remove the video from the DOM by calling destroy method.
 
 `vbrickEmbed.destroy();`
