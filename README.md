@@ -87,7 +87,7 @@ webcast.on('broadcastStarted', function() {
 * webcastEnded
 * error
 
-#### Stop Listening to Events
+##### Stop Listening to Events
 
 You can stop listening for the events using .off(). See example below
 
@@ -97,7 +97,7 @@ webcast.off('broadcastStarted', function() {
 });
 ~~~
 
-#### Get Webcast Status
+##### Get Webcast Status
 You can get the status of the webcast using status variable. See example below
 
 `var sts = webcast.status();`
@@ -110,7 +110,7 @@ You can get the status of the webcast using status variable. See example below
 * Loading
 * Scheduled
 
-#### Removing Webcast
+##### Removing Webcast
 You can remove the webcast from the DOM by calling destroy method.
 
 `webcast.destroy();`
@@ -133,9 +133,15 @@ const vbrickEmbed = revSdk.embedVideo('#embed', '01234567-89AB-CDEF-0123-456789A
 Use the .on method to watch for events about the video:
 
 ```
-vbrickEmbed.on('videoLoaded', data => {
-		console.log(`Video loaded: ${JSON.stringify(data)}`);
-});
+const videoLoaded = console.log(`Video loaded: ${JSON.stringify(data)}`);
+
+vbrickEmbed.on('videoLoaded', videoLoaded);
+```
+
+Use the .off method to stop listening for events:
+
+```
+vbrickEmbed.off('videoLoaded', videoLoaded);
 ```
 
 ##### Control the player using external commands:
@@ -146,17 +152,21 @@ vbrickEmbed.pause();
 vbrickEmbed.setVolume(0.5);
 ```
 
-#### Supported Video Events
+##### Supported Video Events
 
 * videoLoaded
 * playerStatusChanged
-  * Playing
+  * Buffering
+  * Ended
+  * Initializing
   * Paused
+  * Playing
+  * Seeking
 * volumeChanged
 * seeked
 * error
 
-#### Video Config Example
+##### Video Config Example
 
 ```
 {
@@ -175,7 +185,15 @@ vbrickEmbed.setVolume(0.5);
 }
 ```
 
-#### Removing Video
+##### Get Video Status
+You can get the status of the video using status variable, this reflects the latest playerStatusChanged event. See example below
+
+`vbrickEmbed.playerStatus;`
+
+##### Removing Webcast
+You can remove the webcast from the DOM by calling destroy method.
+
+##### Removing Video
 You can remove the video from the DOM by calling destroy method.
 
 `vbrickEmbed.destroy();`
