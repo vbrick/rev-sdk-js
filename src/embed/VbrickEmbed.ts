@@ -1,11 +1,13 @@
 import { EventBus, IListener } from './EventBus';
 import { VbrickEmbedConfig } from './VbrickEmbedConfig';
 import { getLogger, ILogger } from '../Log';
+import { IVbrickBaseEmbed } from './IVbrickApi';
+import { VbrickSDKToken } from 'src/VbrickSDK';
 
 /**
  * Base class for embedded content.
  */
-export abstract class VbrickEmbed {
+export abstract class VbrickEmbed implements IVbrickBaseEmbed {
 
 	protected iframe: HTMLIFrameElement;
 	protected eventBus: EventBus;
@@ -54,7 +56,8 @@ export abstract class VbrickEmbed {
 	protected abstract initializeEmbed(): void;
 
 	public on(event: string, listener: IListener): void {
-		this.eventBus.on(event, listener);
+		//ensure internal updates take effect before calling client handlers
+		this.eventBus.on(event, e => setTimeout(() => listener(e)));
 	}
 
 	public off(event: string, listener: IListener): void {
@@ -84,5 +87,12 @@ export abstract class VbrickEmbed {
 		this.eventBus.destroy();
 		this.init = null;
 		this.unsubscribes?.forEach(fn => fn());
+	}
+
+	public updateToken(token: VbrickSDKToken): void {
+		this.config.token = token;
+		this.initializeToken().then(() =>
+			this.eventBus.publish('authChanged', { token }))
+		.catch(e => this.logger.error('Error updating token: ', e));
 	}
 }

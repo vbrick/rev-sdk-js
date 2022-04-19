@@ -5,7 +5,7 @@ console.log('Demo, API: ', window.revSdk);
 /** @type {import("../dist/IVbrickApi").IVbrickBaseEmbed} */
 let currentEmbed;
 
-init({
+const getData = init({
 	sourceUrl: '',
 	baseUrl: '',
 	videoId: '',
@@ -20,6 +20,11 @@ init({
 const logEvents = ['error', 'load', 'volumeChanged', 'captionsChanged', 'playerStatusChanged', 'videoLoaded', 'seeked',
 	'webcastLoaded', 'webcastStarted', 'webcastEnded', 'broadcastStarted', 'broadcastStopped'];
 
+document.querySelector('#updateToken').addEventListener('click', () => {
+	const data = getData();
+	currentEmbed?.updateToken(data.config.token);
+});
+
 function embedContent({
 	baseUrl,
 	webcastId,
@@ -27,7 +32,7 @@ function embedContent({
 	config
 }) {
 
-	const isVod = !!videoId;
+	const isVod = document.getElementById('demoform').elements.embedType.value == 'vod';
 	const embedConfig = {
 		showVideo: true,
 		log: true,
@@ -44,7 +49,6 @@ function embedContent({
 
 	const logEl = document.getElementById('logMessages');
 	const statusEl = document.getElementById('status');
-	const playerStatusEl = document.getElementById('playerStatus');
 
 	logEvents.forEach(e => currentEmbed.on(e, data => {
 		const li = document.createElement('li');
@@ -54,8 +58,9 @@ function embedContent({
 	}));
 
 	function updateStatus() {
-		statusEl.innerHTML = currentEmbed.status || 'undefined';
-		playerStatusEl.innerHTML = currentEmbed.playerStatus || 'undefined';
+		statusEl.innerHTML = isVod ?
+			currentEmbed.playerStatus || 'undefined' :
+			currentEmbed.webcastStatus || 'undefined';
 	}
 }
 

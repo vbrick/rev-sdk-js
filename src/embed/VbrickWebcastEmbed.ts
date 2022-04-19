@@ -7,9 +7,10 @@ import { VbrickEmbedConfig } from './VbrickEmbedConfig';
 
 export class VbrickWebcastEmbed extends VbrickEmbed implements IVbrickWebcastEmbed {
 
-	private _status: WebcastStatus;
-	public get status() {
-		return this._status;
+	private initialized: Promise<any>;
+	private _webcastStatus: WebcastStatus;
+	public get webcastStatus() {
+		return this.webcastStatus;
 	};
 
 	constructor(
@@ -21,16 +22,19 @@ export class VbrickWebcastEmbed extends VbrickEmbed implements IVbrickWebcastEmb
 	}
 
 	protected initializeToken(): Promise<VbrickSDKToken> {
-		return initializeWebcastToken(this.webcastId, this.config);
+		if(!this.initialized) {
+			this.initialized = initializeWebcastToken(this.webcastId, this.config);
+		}
+		return this.initialized;
 	}
 
 	protected initializeEmbed(): void {
 		['webcastStarted', 'broadcastStarted', 'broadcastStopped', 'webcastEnded'].forEach(event => {
-			this.eventBus.on(event, data => this._status = data.status);
+			this.eventBus.on(event, data => this._webcastStatus = data.status);
 		});
 
 		this.eventBus.awaitEvent('webcastLoaded').then(data => {
-			this._status = data.status;
+			this._webcastStatus = data.status;
 		});
 	}
 

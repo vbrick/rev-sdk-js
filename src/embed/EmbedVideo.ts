@@ -1,5 +1,5 @@
 import { IVbrickVideoEmbed } from './IVbrickApi';
-import { VbrickSDKConfig } from '../VbrickSDK';
+import { VbrickEmbedConfig } from './VbrickEmbedConfig';
 import { VbrickVideoEmbed } from './VbrickVideoEmbed';
 import { lookupElement } from '../util';
 import { resolveConfig } from '../Config';
@@ -15,10 +15,10 @@ import { resolveConfig } from '../Config';
 export function embedVideo(
 	element: HTMLElement | string,
 	videoId: string,
-	config: VbrickSDKConfig
+	config: VbrickEmbedConfig
 ): IVbrickVideoEmbed {
 	const el = lookupElement(element);
-	const cfg = resolveConfig(config) as VbrickSDKConfig;
+	const cfg = resolveConfig(config) as VbrickEmbedConfig;
 
 	const video = new VbrickVideoEmbed(videoId, cfg, el);
 	video.initialize();

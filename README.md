@@ -1,6 +1,6 @@
 # Rev JavaScript SDK
 
-This is Vbrick's JavaScript SDK library that enables you to embed Vbrick Rev webcasts and videos on your website, portal, or any web-based application using JavaScript code. The SDK currently supports interaction with the webcast and video player. We will support full webcast and video features including slides, chats, Q&A, polls, and other video functionality, etc via this SDK in the future.
+This is Vbrick's JavaScript SDK library that enables you to embed Vbrick Rev webcasts and videos (also known as Video on Demand or VOD) on your website, portal, or any web-based application using JavaScript code. The SDK currently supports interaction with the webcast and video player. We will support full webcast and video features including slides, chats, Q&A, polls, and other video functionality, etc via this SDK in the future.
 
 ##### Documentation
 - [API Reference](/docs/README.md)
@@ -8,7 +8,6 @@ This is Vbrick's JavaScript SDK library that enables you to embed Vbrick Rev web
 #### Accessing the SDK
 
 The JavaScript SDK can be accessed via `<script>` tag in your HTML. Set the src attribute to `https://<<YOUR_REV_URL>>/dist/rev-sdk.js` or import for ES6 module.
-
 
 ~~~
 <script src="https://<<YOUR_REV_URL>>/dist/rev-sdk.js"></script>
@@ -32,7 +31,7 @@ npm install
 npm run build
 ~~~
 
-#### Embedding a Webcast
+## Embedding a Webcast
 On your web page, you can insert an embedded webcast using an empty div tag. You will have to reference the div id when you interact with the SDK.
 
 `<div id="embed"></div>`
@@ -88,7 +87,7 @@ webcast.on('broadcastStarted', function() {
 * webcastEnded
 * error
 
-#### Stop Listening to Events
+##### Stop Listening to Events
 
 You can stop listening for the events using .off(). See example below
 
@@ -98,7 +97,7 @@ webcast.off('broadcastStarted', function() {
 });
 ~~~
 
-#### Get Webcast Status
+##### Get Webcast Status
 You can get the status of the webcast using status variable. See example below
 
 `var sts = webcast.status();`
@@ -111,12 +110,12 @@ You can get the status of the webcast using status variable. See example below
 * Loading
 * Scheduled
 
-#### Removing Webcast
+##### Removing Webcast
 You can remove the webcast from the DOM by calling destroy method.
 
 `webcast.destroy();`
 
-#### Embedding a Video
+## Embedding a Video
 You can embed a video just like a webcast using an empty div tag.
 
 `<div id="embed"></div>`
@@ -134,9 +133,15 @@ const vbrickEmbed = revSdk.embedVideo('#embed', '01234567-89AB-CDEF-0123-456789A
 Use the .on method to watch for events about the video:
 
 ```
-vbrickEmbed.on('videoLoaded', data => {
-		console.log(`Video loaded: ${JSON.stringify(data)}`);
-});
+const videoLoaded = console.log(`Video loaded: ${JSON.stringify(data)}`);
+
+vbrickEmbed.on('videoLoaded', videoLoaded);
+```
+
+Use the .off method to stop listening for events:
+
+```
+vbrickEmbed.off('videoLoaded', videoLoaded);
 ```
 
 ##### Control the player using external commands:
@@ -144,11 +149,51 @@ vbrickEmbed.on('videoLoaded', data => {
 ```
 vbrickEmbed.play();
 vbrickEmbed.pause();
+vbrickEmbed.setVolume(0.5);
 ```
 
-#### Upgrading from rev-embed-sdk
-There are a few breaking changes if you are updating from rev-embed-sdk:
+##### Supported Video Events
 
-Export was renamed from `revEmbed` to `revSdk`
-The library URL was changed to `https://<<YOUR_REV_URL>>/dist/rev-sdk.js`
-The NPM package was renamed to `@vbrick/rev-sdk`
+* videoLoaded
+* playerStatusChanged
+  * Buffering
+  * Ended
+  * Initializing
+  * Paused
+  * Playing
+  * Seeking
+* volumeChanged
+* seeked
+* error
+
+##### Video Config Example
+
+```
+{
+  "accentColor": "ff0000",
+  "autoplay" : true, 
+  "forcedCaptions": false,
+  "hideCaptions": false,
+  "hideChapters" : false,
+  "hideFullscreen": false,
+  "playInLoop": true,
+  "hideOverlayControls": false,
+  "hidePlayControls": false, 
+  "hideSettings": false,
+  "popOut": false,
+  "startAt": "00m10s"
+}
+```
+
+##### Get Video Status
+You can get the status of the video using status variable, this reflects the latest playerStatusChanged event. See example below
+
+`vbrickEmbed.playerStatus;`
+
+##### Removing Webcast
+You can remove the webcast from the DOM by calling destroy method.
+
+##### Removing Video
+You can remove the video from the DOM by calling destroy method.
+
+`vbrickEmbed.destroy();`
