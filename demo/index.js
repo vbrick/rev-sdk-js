@@ -32,7 +32,7 @@ function embedContent({
 	config
 }) {
 
-	const isVod = !!videoId;
+	const isVod = document.getElementById('demoform').elements.embedType.value == 'vod';
 	const embedConfig = {
 		showVideo: true,
 		log: true,
@@ -58,9 +58,9 @@ function embedContent({
 	}));
 
 	function updateStatus() {
-		statusEl.innerHTML = currentEmbed.isVod ?
-			currentEmbed.webcastStatus || 'undefined' :
-			currentEmbed.playerStatus || 'undefined';
+		statusEl.innerHTML = isVod ?
+			currentEmbed.playerStatus || 'undefined' :
+			currentEmbed.webcastStatus || 'undefined';
 	}
 }
 
