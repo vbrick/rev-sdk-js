@@ -17,6 +17,8 @@ const getData = init({
 	config: '{}'
 }, embedContent);
 
+const volumeSlider = document.querySelector('#volumeSlider');
+
 const logEvents = ['error', 'load', 'volumeChanged', 'captionsChanged', 'playerStatusChanged', 'videoLoaded', 'seeked',
 	'webcastLoaded', 'webcastStarted', 'webcastEnded', 'broadcastStarted', 'broadcastStopped'];
 
@@ -25,6 +27,7 @@ document.querySelector('#updateToken').addEventListener('click', () => {
 	currentEmbed?.updateToken(data.config.token);
 });
 
+
 function embedContent({
 	baseUrl,
 	webcastId,
@@ -32,7 +35,7 @@ function embedContent({
 	config
 }) {
 
-	const isVod = document.getElementById('demoform').elements.embedType.value == 'vod';
+	const isVod = !!videoId;
 	const embedConfig = {
 		showVideo: true,
 		log: true,
@@ -49,6 +52,7 @@ function embedContent({
 
 	const logEl = document.getElementById('logMessages');
 	const statusEl = document.getElementById('status');
+	const playerStatusEl = document.getElementById('playerStatus');
 
 	logEvents.forEach(e => currentEmbed.on(e, data => {
 		const li = document.createElement('li');
@@ -58,9 +62,11 @@ function embedContent({
 	}));
 
 	function updateStatus() {
-		statusEl.innerHTML = isVod ?
-			currentEmbed.playerStatus || 'undefined' :
-			currentEmbed.webcastStatus || 'undefined';
+		statusEl.innerHTML = currentEmbed.status || 'undefined';
+		playerStatusEl.innerHTML = currentEmbed.playerStatus || 'undefined';
+		if(currentEmbed.volume >= 0) {
+			volumeSlider.value = currentEmbed.volume;
+		}
 	}
 }
 

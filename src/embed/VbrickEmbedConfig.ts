@@ -22,12 +22,10 @@ export interface VbrickEmbedConfig extends VbrickSDKConfig {
 	 */
 	hideVideo?: boolean;
 
-
 	/**
-	 * Plays the video in a popup window. If false(default) the video plays directly in the embed element.
-	 * Only implemented for VOD Embeds
+	 * For video embeds. If a user needs to log in, go through the login process in a popup window. This is the standard behavior for non-SDK Rev embeded videos
 	 */
-	popOut?: boolean;
+	popupAuth?: boolean;
 
 	autoplay?: boolean;
 	playInLoop?: boolean;
