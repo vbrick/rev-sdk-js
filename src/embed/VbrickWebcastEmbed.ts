@@ -10,7 +10,7 @@ export class VbrickWebcastEmbed extends VbrickEmbed implements IVbrickWebcastEmb
 	private initialized: Promise<any>;
 	private _webcastStatus: WebcastStatus;
 	public get webcastStatus() {
-		return this.webcastStatus;
+		return this._webcastStatus;
 	};
 
 	constructor(
