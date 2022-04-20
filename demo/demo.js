@@ -1,23 +1,33 @@
-/**
- * @typedef {object} DemoForm
- * @property {string} sourceUrl
- * @property {string} baseUrl
- * @property {string} videoId
- * @property {string} webcastId
- * @property {'webcast' | 'vod'} embedType
- * @property {'JWT' | 'AccessToken'} tokenType
- * @property {string} tokenValue
- * @property {string} tokenIssuer
- * @property {string} config
- */
-
 const queryParams = Object.fromEntries( new URLSearchParams(window.location.search));
 
 /**
+ * @typedef {object} RevSDKDemoSettings
+ * @property {string} baseUrl
+ * @property {string} videoId
+ * @property {string} webcastId
+ * @property {import("..").VbrickEmbedConfig} config
+ */
+
+/**
+ * 
+ * @typedef {object} DemoForm
+ * @property {string} sourceUrl - A Rev URL to parse and extract relevant values into form
+ * @property {string} baseUrl - URL/origin of Rev tenant
+ * @property {string} videoId - ID of Video/VOD
+ * @property {string} webcastId - ID of Webcast
+ * @property {'vod' | 'webcast'} embedType - what kind of content is being embedded
+ * @property {import("..").TokenType} tokenType - type of passed in token
+ * @property {string} tokenValue - value of token
+ * @property {'vbrick' | 'vbrick_rev'} tokenIssuer
+ * @property {string} config - JSON string of additional config options.
+ */
+
+
+/**
  * Initializes the demo form
- * @param {any} formDefaults
- * @param {(config: any) => void} render
- * @returns {() => any} function that returns the embed config
+ * @param {DemoForm} formDefaults
+ * @param {(config: RevSDKDemoSettings) => void} render function to call when form is submitted
+ * @returns {() => RevSDKDemoSettings} function that returns the embed config
  */
 export function init(formDefaults, render) {
 	const form = document.querySelector('form');
@@ -53,7 +63,10 @@ export function init(formDefaults, render) {
 		storeParams(formDefaults);
 	});
 
-	setTimeout(renderInternal, 1000);
+	// if form has valid values on page load then render
+	if (formValues.baseUrl && (formValues.webcastId || formValues.videoId)) {
+		setTimeout(renderInternal, 1000);
+	}
 
 	function renderInternal() {
 		render(syncFormData());
@@ -68,6 +81,11 @@ export function init(formDefaults, render) {
 	return syncFormData;
 }
 
+/**
+ * Translates the form/stored data into the parameters expected by index.js
+ * @param {DemoForm} formData
+ * @returns {RevSDKDemoSettings}
+ */
 function getConfig(formData) {
 	const {
 		config,
@@ -75,21 +93,37 @@ function getConfig(formData) {
 		tokenType,
 		tokenIssuer,
 		sourceUrl,
-		...data
+		embedType,
+		videoId,
+		webcastId,
+		baseUrl
 	} = formData
 
-	return {
-		...data,
+	/** @type {RevSDKDemoSettings} */
+	const data = {
+		baseUrl,
 		config: {
+			// include any passed in config values (hideControls, accentColor, etc)
 			...tryParse(config),
 			token: tokenValue && {
 				type: tokenType,
 				value: tokenValue,
 				issuer: tokenIssuer
 			}
-		},
+		}
 	};
+
+	// read the form radio toggle to only return expected ID
+	if (embedType === 'vod') {
+		data.videoId = videoId;
+	} else {
+		data.webcastId = webcastId;
+	}
+
+	return data;
 }
+
+/** Form event handlers */
 
 function onSourceUrlChanged(form, sourceUrl) {
 	const settings = parseRevUrl(sourceUrl);
@@ -118,6 +152,12 @@ function onEmbedTypeChanged(form) {
 	form.elements.videoId.disabled = !isVOD;
 }
 
+/**
+ * helper to pretty-print json
+ * @param {any} data 
+ * @param {boolean} minify 
+ * @returns 
+ */
 export function stringifyJson(data, minify) {
 	if (!data) {
 		return '';
@@ -150,6 +190,10 @@ function tryParse(json) {
 	}
 	catch(e) {}
 }
+
+
+/******** HELPERS *********/
+/** Various utility functions to handle getting/setting form values + cookies */
 
 function setCookie(cookie, value, isTransient) {
 	const ONE_DAY = 1000 * 60 * 60 * 24;
@@ -206,12 +250,10 @@ function storeParams(formData) {
 }
 
 /**
- * @typedef {{isValid: boolean, baseUrl?: string, videoId?: string, webcastId?: string, config: import("../src/IVbrickApi").IVbrickEmbedConfig}} ParsedRevUrl
- */
-/**
+ * Parse a Rev URL
  * attempt to parse a URL (or <iframe src=...> embed code) referencing a Rev webcast or vod)
- * @param {string | URL} url
- * @returns {ParsedRevUrl}
+ * @param {string} url
+ * @returns {Partial<RevSDKDemoSettings>}
  */
 export function parseRevUrl(url) {
 	url = url.trim();
@@ -225,7 +267,6 @@ export function parseRevUrl(url) {
 		urlObj = new URL(url);
 	} catch (err) {
 		return {
-			isValid: false,
 			config: '{}'
 		};
 	}
@@ -237,11 +278,10 @@ export function parseRevUrl(url) {
 		origin: baseUrl
 	} = urlObj;
 
-	/** @type {ParsedRevUrl} */
+	/** @type {RevSDKDemoSettings} */
 	const result = {
 		webcastId: '',
 		videoId: '',
-		isValid: true,
 		baseUrl,
 		config: '{}'
 	};
@@ -311,9 +351,3 @@ export function parseRevUrl(url) {
 	return result;
 }
 
-function tryParse(json) {
-	try{
-		return JSON.parse(json);
-	}
-	catch(e) {}
-}
