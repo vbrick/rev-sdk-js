@@ -36,11 +36,6 @@ On your web page, you can insert an embedded webcast using an empty div tag. You
 
 `<div id="embed"></div>`
 
-#### Initializing the SDK
-You can initialize the SDK as shown below
-
-`revSdk.defaults({baseUrl: 'https://<<YOUR_REV_URL>>' });`
-
 #### Invoking Webcast
 Embedding a webcast requires you to pass the following parameters to the embedWebast function
 
@@ -51,7 +46,7 @@ Embedding a webcast requires you to pass the following parameters to the embedWe
     * type (type=string, Required): Set to 'JWT' (Future version will support more token types
     * value (type=string, Required): JWT token generate for each individual user
     * issuer (type=string, Required): Issuer of the JWT token
-  * baseUrl (type=string, Optional): Your Rev URL if you did not initialize the SDK with defaults
+  * baseUrl (type=string, Optional): Your Rev URL
   * className (type=string, Optional): CSS classes if you want to include to the embed iFrame
   * width (type=string, Optional): iframe width if you want to overwrite the default responsive behavior
   * height (type=string, Optional): iframe height if you want to overwrite the default responsive behavior
@@ -66,7 +61,9 @@ const jwtToken = {
     value: '<<JWT_TOKEN>>'
 };
 const webcast = revSdk.embedWebcast('#embed', webcastId, {
-    token: jwtToken
+    baseUrl: 'https://<<YOUR_REV_URL>>',
+    token: jwtToken,
+    log: true
 });
 ~~~
 
@@ -171,14 +168,14 @@ vbrickEmbed.setVolume(0.5);
 ```
 {
   "accentColor": "ff0000",
-  "autoplay" : true, 
+  "autoplay" : true,
   "forcedCaptions": false,
   "hideCaptions": false,
   "hideChapters" : false,
   "hideFullscreen": false,
   "playInLoop": true,
   "hideOverlayControls": false,
-  "hidePlayControls": false, 
+  "hidePlayControls": false,
   "hideSettings": false,
   "popOut": false,
   "startAt": "00m10s"
