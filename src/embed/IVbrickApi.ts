@@ -61,12 +61,12 @@ export interface IVbrickWebcastEmbed extends IVbrickBaseEmbed {
 	/**
 	 * Fired when the webcast starts broadcasting.
 	 */
-	on(event: 'broadcastStarted', listener: () => void): void;
+	on(event: 'broadcastStarted', listener: (event: { status: WebcastStatus.Broadcasting }) => void): void;
 
 	/**
 	 * Fired when the webcast stops broadcasting.
 	 */
-	on(event: 'broadcastStopped', listener: () => void): void;
+	on(event: 'broadcastStopped', listener: (event: { status: WebcastStatus.Completed }) => void): void;
 
 	/**
 	 * Fired when the webcast starts.
@@ -82,19 +82,24 @@ export interface IVbrickWebcastEmbed extends IVbrickBaseEmbed {
 
 }
 
+interface VideoInfo extends Record<string, any> {
+	id: string;
+	title?: string;
+	duration?: number;
+}
 
 export interface IVbrickBaseEmbed {
 
 	/**
 	 * Fires when the video metadata is loaded
 	 */
-	on(event: 'videoLoaded', listener: (event: any) => void): void;
+	on(event: 'videoLoaded', listener: (event: VideoInfo) => void): void;
 
 	/**
 	 * Fired if the player volume changes
 	 * @param volume number between 0 and 1
 	 */
-	on(event: 'volumeChanged', listener: ({ volume: number }) => void): void;
+	on(event: 'volumeChanged', listener: (event: { volume: number }) => void): void;
 
 	/**
 	 * Fired when the player status changes
@@ -129,7 +134,7 @@ export interface IVbrickBaseEmbed {
 	/**
 	 * Fired when the user seeks in the video player
 	 */
-	on(event: 'seeked', listener: (event: { speed: number }) => void): void;
+	on(event: 'seeked', listener: (event: { startTime: number, endTime: number }) => void): void;
 
 	/**
 	 * Fired if there is an error
@@ -144,7 +149,7 @@ export interface IVbrickBaseEmbed {
 	/**
 	 * Removes the embedded content from the DOM.
 	 */
-	 destroy(): void;
+	destroy(): void;
 
 	/**
 	 * Allows updating the access token if the old one has expired.
