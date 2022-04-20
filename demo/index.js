@@ -1,4 +1,4 @@
-import { init } from './demo.js';
+import { init } from './demoform.js';
 import { stringifyJson, htmlEscape } from "./utils.js";
 
 /** 
@@ -24,7 +24,7 @@ addPlayerControls();
 
 /**
  * This is the main function for calling the revSDK and displaying a video/webcast
- * @param {import('./demo.js').RevSDKDemoSettings} settings 
+ * @param {import('./demoform.js').RevSDKDemoSettings} settings 
  */
  function embedContent(settings) {
 	const {
