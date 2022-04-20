@@ -42,11 +42,11 @@ Embedding a webcast requires you to pass the following parameters to the embedWe
 * Either a CSS selector string or HTML div element where the embed content will be rendered
 * Rev Webcast Id
 * Webcast Config which consists of the following individual parameters
-  * token (type=object, Required): Json Web Token (JWT) for the user who is watching the webcast
-    * type (type=string, Required): Set to 'JWT' (Future version will support more token types
-    * value (type=string, Required): JWT token generate for each individual user
-    * issuer (type=string, Required): Issuer of the JWT token
-  * baseUrl (type=string, Optional): Your Rev URL
+  * token (type=object, Required): Token for the user who is watching the webcast, which can be unique for each embed
+    * type (type=string, Required): Set to 'JWT' for Json Web Token, or 'AccessToken' for an OAuth or API token.
+    * value (type=string, Required): Value of the token
+    * issuer (type=string, Required): Issuer of the token
+  * baseUrl (type=string, Required): Your Rev URL
   * className (type=string, Optional): CSS classes if you want to include to the embed iFrame
   * width (type=string, Optional): iframe width if you want to overwrite the default responsive behavior
   * height (type=string, Optional): iframe height if you want to overwrite the default responsive behavior
@@ -120,10 +120,17 @@ You can embed a video just like a webcast using an empty div tag.
 Use the embedVideo method to display the video on your web page:
 
 ```
-const vbrickEmbed = revSdk.embedVideo('#embed', '01234567-89AB-CDEF-0123-456789ABCDEF', {
+const videoId = '01234567-89AB-CDEF-0123-456789ABCDEF';
+const token = {
+    type: 'AccessToken',
+    issuer: 'vbrick',
+    value: '<<Token Value>>'
+};
+
+const vbrickEmbed = revSdk.embedVideo('#embed', videoId, {
 	log: true,
 	token,
-	baseUrl: formValues.baseUrl
+  baseUrl: 'https://<<YOUR_REV_URL>>',
 });
 ```
 
