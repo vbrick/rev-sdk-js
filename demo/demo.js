@@ -1,26 +1,29 @@
-const queryParams = Object.fromEntries( new URLSearchParams(window.location.search));
-
 /**
+ * This file handles parsing/updating the form on the demo page.
+ * 
  * @typedef {object} RevSDKDemoSettings
+ * Holds the parameters necessary for calling the Rev SDK's embedVideo/embedWebcast functions
  * @property {string} baseUrl
  * @property {string} videoId
  * @property {string} webcastId
- * @property {import("..").VbrickEmbedConfig} config
- */
-
-/**
+ * @property {import("../dist").VbrickEmbedConfig} config
  * 
  * @typedef {object} DemoForm
+ * The fields in this page's form
  * @property {string} sourceUrl - A Rev URL to parse and extract relevant values into form
  * @property {string} baseUrl - URL/origin of Rev tenant
  * @property {string} videoId - ID of Video/VOD
  * @property {string} webcastId - ID of Webcast
  * @property {'vod' | 'webcast'} embedType - what kind of content is being embedded
- * @property {import("..").TokenType} tokenType - type of passed in token
+ * @property {import("../dist").TokenType} tokenType - type of passed in token
  * @property {string} tokenValue - value of token
  * @property {'vbrick' | 'vbrick_rev'} tokenIssuer
  * @property {string} config - JSON string of additional config options.
  */
+
+import { readParams, storeParams, tryParse, stringifyJson } from "./utils.js";
+
+
 
 
 /**
@@ -35,10 +38,12 @@ export function init(formDefaults, render) {
 	const formValues = readParams(formDefaults);
 	writeFormData(form, formValues);
 
-	if(queryParams.sourceUrl) {
-		onSourceUrlChanged(form, queryParams.sourceUrl);
+	// if sourceUrl is passed into query (rather than stored in cookies) then trigger update of form
+	if(window.location.search.includes('sourceUrl')) {
+		onSourceUrlChanged(form, formValues.sourceUrl);
 	}
 
+	// update dependent fields of the form depending on what was changed
 	form.addEventListener('change', evt => {
 		switch (evt.target.name) {
 			case 'tokenType':
@@ -58,6 +63,7 @@ export function init(formDefaults, render) {
 		renderInternal();
 	});
 
+	// when reset is pressed clear out the form values AND clear out stored cookies
 	form.addEventListener('reset', () => {
 		writeFormData(form, formDefaults);
 		storeParams(formDefaults);
@@ -72,6 +78,10 @@ export function init(formDefaults, render) {
 		render(syncFormData());
 	}
 
+	/**
+	 * translates the form into values used by the SDK (and stores in cookies)
+	 * @returns {RevSDKDemoSettings}
+	 */
 	function syncFormData() {
 		const data = readFormData(form);
 		storeParams(data);
@@ -103,7 +113,7 @@ function getConfig(formData) {
 	const data = {
 		baseUrl,
 		config: {
-			// include any passed in config values (hideControls, accentColor, etc)
+			// try to parse the "config" field as JSON. It can include any of the embed config options (hideControls, accentColor, etc)
 			...tryParse(config),
 			token: tokenValue && {
 				type: tokenType,
@@ -136,8 +146,10 @@ function onSourceUrlChanged(form, sourceUrl) {
 		...settings,
 	});
 }
-
-function onTokenTypeChanged(form) {
+/**
+ * update the "issuer" value depending on the selected token type
+ */
+export function onTokenTypeChanged(form) {
 	onEmbedTypeChanged(form);
 
 	const isJWT = form.elements.tokenType.value === 'JWT';
@@ -145,7 +157,9 @@ function onTokenTypeChanged(form) {
 		? 'vbrick_rev'
 		: 'vbrick';
 }
-
+/**
+ * update which type of ID is editable when the embed type is updated
+ */
 function onEmbedTypeChanged(form) {
 	const isVOD = form.elements.embedType.value === 'vod';
 	form.elements.webcastId.disabled = isVOD;
@@ -154,23 +168,22 @@ function onEmbedTypeChanged(form) {
 
 /**
  * helper to pretty-print json
- * @param {any} data 
- * @param {boolean} minify 
- * @returns 
+ * @param {any} data
+ * @param {boolean} [minify]
+ * @returns {string}
  */
-export function stringifyJson(data, minify) {
+ export function stringifyJson(data, minify) {
 	if (!data) {
 		return '';
 	}
 	return JSON.stringify(data, (key, value) => value instanceof Error
 		? value.toString() + '\n' + value.stack.toString()
-		: value
-	, minify ? 0 : 2);
+		: value,
+		minify ? 0 : 2);
 }
-
 /**
- * quick helper to html-escape strings
- * @param {string} str 
+ * Replaces reserved html characters
+ * @param {string} str
  * @returns {string}
  */
 export function htmlEscape(str) {
@@ -183,26 +196,20 @@ export function htmlEscape(str) {
 		}
 	});
 }
-
-function tryParse(json) {
-	try{
+export function tryParse(json) {
+	try {
 		return JSON.parse(json);
 	}
-	catch(e) {}
+	catch (e) { }
 }
-
-
-/******** HELPERS *********/
-/** Various utility functions to handle getting/setting form values + cookies */
 
 function setCookie(cookie, value, isTransient) {
 	const ONE_DAY = 1000 * 60 * 60 * 24;
 	const expires = isTransient
 		? new Date(Date.now() + ONE_DAY)
-		: new Date('9999-01-01')
+		: new Date('9999-01-01');
 	document.cookie = `${cookie}=${encodeURIComponent(value)};expires=${expires.toUTCString()}`;
 }
-
 function getCookie(name) {
 	let value = '; ' + document.cookie;
 	let parts = value.split(`; ${name}=`);
@@ -211,24 +218,40 @@ function getCookie(name) {
 	}
 }
 
+const queryParams = Object.fromEntries( new URLSearchParams(window.location.search));
 function getParameterByName(name) {
 	return queryParams[name] || getCookie(name) || '';
 }
-
-function readParams(defaults) {
+/**
+ * 
+ * @param {T} defaults 
+ * @returns {T}
+ * @template T
+ */
+export function readParams(defaults) {
 	return Object.keys(defaults).reduce((acc, k) => {
 		acc[k] = getParameterByName(k) || defaults[k];
 		return acc;
 	}, {});
 }
 
-function readFormData(form) {
+
+/**
+ * 
+ * @param {HTMLFormElement} form 
+ * @returns {DemoForm}
+ */
+ export function readFormData(form) {
 	return Array.from(form.elements)
 		.filter(el => el.name && (el.type !== 'radio' || el.checked))
-		.reduce((acc, el) => Object.assign(acc, {[el.name]: el.value}), {});
+		.reduce((acc, el) => Object.assign(acc, { [el.name]: el.value }), {});
 }
-
-function writeFormData(form, values) {
+/**
+ * 
+ * @param {HTMLFormElement} form 
+ * @param {DemoForm} values 
+ */
+export function writeFormData(form, values) {
 	Object.entries(values).forEach(([k, value]) => {
 		const el = form.elements[k];
 		if (!el) {
@@ -243,17 +266,20 @@ function writeFormData(form, values) {
 	onTokenTypeChanged(form);
 }
 
-function storeParams(formData) {
+
+
+export function storeParams(formData) {
 	Object.entries(formData).forEach(([k, value]) => {
 		setCookie(k, value);
 	});
 }
 
+
 /**
  * Parse a Rev URL
  * attempt to parse a URL (or <iframe src=...> embed code) referencing a Rev webcast or vod)
  * @param {string} url
- * @returns {Partial<RevSDKDemoSettings>}
+ * @returns {Partial<DemoForm>}
  */
 export function parseRevUrl(url) {
 	url = url.trim();
@@ -278,7 +304,7 @@ export function parseRevUrl(url) {
 		origin: baseUrl
 	} = urlObj;
 
-	/** @type {RevSDKDemoSettings} */
+	/** @type {Partial<DemoForm>} */
 	const result = {
 		webcastId: '',
 		videoId: '',
