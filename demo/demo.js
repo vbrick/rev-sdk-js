@@ -128,6 +128,29 @@ export function stringifyJson(data, minify) {
 	, minify ? 0 : 2);
 }
 
+/**
+ * quick helper to html-escape strings
+ * @param {string} str 
+ * @returns {string}
+ */
+export function htmlEscape(str) {
+	return str.replace(/[&<"']/g, c => {
+		switch (c) {
+			case '&': return '&amp;';
+			case '<': return '&lt;';
+			case '"': return '&quot;';
+			default: return '&#039;';
+		}
+	});
+}
+
+function tryParse(json) {
+	try{
+		return JSON.parse(json);
+	}
+	catch(e) {}
+}
+
 function setCookie(cookie, value, isTransient) {
 	const ONE_DAY = 1000 * 60 * 60 * 24;
 	const expires = isTransient

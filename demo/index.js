@@ -56,7 +56,7 @@ function embedContent({
 
 	logEvents.forEach(e => currentEmbed.on(e, data => {
 		const li = document.createElement('li');
-		li.innerHTML = `${new Date().toLocaleTimeString()} ${e}:<pre>${stringifyJson(data)}</pre>`;
+		li.innerHTML = `${new Date().toLocaleTimeString()} ${e}:<pre>${htmlEscape(stringifyJson(data))}</pre>`;
 		logEl.insertBefore(li, logEl.firstChild);
 		updateStatus();
 	}));
