@@ -52,11 +52,9 @@ export interface IVbrickWebcastEmbed extends IVbrickBaseEmbed {
 	readonly webcastStatus: WebcastStatus;
 
 	/**
-	 * Register an event handler. Events are fired at different lifecycle stages of the webcast
-	 * @param event
-	 * @param listener
+	 * Fired on initial load
 	 */
-	on(event: string, listener: (event: any) => void): void;
+	on(event: 'webcastLoaded', listener: (event: { status: WebcastStatus }) => void): void;
 
 	/**
 	 * Fired when the webcast starts broadcasting.
@@ -73,12 +71,14 @@ export interface IVbrickWebcastEmbed extends IVbrickBaseEmbed {
 	 *
 	 * isPreProduction: boolean, Indicates that the webcast is running in pre-production mode, and is not started publicly.
 	 */
-	on(event: 'webastStarted', listener: (event: { isPreProduction: boolean }) => void): void;
+	on(event: 'webastStarted', listener: (event: { status: WebcastStatus.InProgress, isPreProduction: boolean }) => void): void;
 
 	/**
 	 * Fired when the webcast ends.
 	 */
-	on(event: 'webcastEnded', listener: () => void): void;
+	on(event: 'webcastEnded', listener: (event: { status: WebcastStatus.Completed }) => void): void;
+
+	on(event: string, listener: (event: any) => void): void;
 
 }
 
