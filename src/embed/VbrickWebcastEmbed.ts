@@ -21,8 +21,8 @@ export class VbrickWebcastEmbed extends VbrickEmbed implements IVbrickWebcastEmb
 		super(new URL(`/embed/webcast/${webcastId}${config.token ? '?tk' : ''}`, config.baseUrl).toString(), config, container);
 	}
 
-	protected initializeToken(): Promise<VbrickSDKToken> {
-		if(!this.initialized) {
+	protected initializeToken(force?: boolean): Promise<VbrickSDKToken> {
+		if(!this.initialized || force) {
 			this.initialized = initializeWebcastToken(this.webcastId, this.config);
 		}
 		return this.initialized;

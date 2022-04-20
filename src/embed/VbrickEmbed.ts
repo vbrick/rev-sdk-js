@@ -52,7 +52,7 @@ export abstract class VbrickEmbed implements IVbrickBaseEmbed {
 		return this.init;
 	}
 
-	protected abstract initializeToken(): Promise<any>;
+	protected abstract initializeToken(force?: boolean): Promise<any>;
 	protected abstract initializeEmbed(): void;
 
 	public on(event: string, listener: IListener): void {
@@ -89,9 +89,9 @@ export abstract class VbrickEmbed implements IVbrickBaseEmbed {
 		this.unsubscribes?.forEach(fn => fn());
 	}
 
-	public updateToken(token: VbrickSDKToken): void {
-		this.config.token = token;
-		this.initializeToken().then(() =>
+	public updateToken(newToken: VbrickSDKToken): void {
+		this.config.token = newToken;
+		this.initializeToken(true).then(token =>
 			this.eventBus.publish('authChanged', { token }))
 		.catch(e => this.logger.error('Error updating token: ', e));
 	}
