@@ -1,5 +1,5 @@
 import { init } from './demo.js';
-import { stringifyJson, htmlEscape } from "./demo.js";
+import { stringifyJson, htmlEscape } from "./utils.js";
 
 /** 
  * A reference to the current Rev SDK VbrickEmbed instance
