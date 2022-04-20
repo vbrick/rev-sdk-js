@@ -7,7 +7,6 @@ import { VbrickEmbedConfig } from './VbrickEmbedConfig';
 
 export class VbrickWebcastEmbed extends VbrickEmbed implements IVbrickWebcastEmbed {
 
-	private initialized: Promise<any>;
 	private _webcastStatus: WebcastStatus;
 	public get webcastStatus() {
 		return this._webcastStatus;
@@ -21,11 +20,8 @@ export class VbrickWebcastEmbed extends VbrickEmbed implements IVbrickWebcastEmb
 		super(new URL(`/embed/webcast/${webcastId}${config.token ? '?tk' : ''}`, config.baseUrl).toString(), config, container);
 	}
 
-	protected initializeToken(force?: boolean): Promise<VbrickSDKToken> {
-		if(!this.initialized || force) {
-			this.initialized = initializeWebcastToken(this.webcastId, this.config);
-		}
-		return this.initialized;
+	protected initializeToken(): Promise<VbrickSDKToken> {
+		return initializeWebcastToken(this.webcastId, this.config);
 	}
 
 	protected initializeEmbed(): void {
