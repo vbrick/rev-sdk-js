@@ -1,7 +1,7 @@
 import { VbrickSDKConfig } from '../VbrickSDK';
 
 /**
- * Options when crating the iframe embed for a video/webcast
+ * Options when creating the iframe embed for a video/webcast
  * @public
  */
 export interface VbrickBaseEmbedConfig extends VbrickSDKConfig {
