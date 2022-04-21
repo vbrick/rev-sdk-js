@@ -1,25 +1,28 @@
 import { WebcastStatus } from './WebcastStatus';
 import { PlayerStatus } from './PlayerStatus';
-import { VbrickSDKToken } from 'src/VbrickSDK';
+import { VbrickSDKToken } from '../VbrickSDK';
 export { WebcastStatus } from './WebcastStatus';
 export { PlayerStatus } from './PlayerStatus';
 
+/**
+ * @public
+ */
 export interface IVbrickVideoEmbed extends IVbrickBaseEmbed {
 
 	/**
 	 * Fires when the video metadata is loaded
 	 */
-	on(event: 'videoLoaded', listener: (event: VideoInfo) => void): void;
+	on(event: 'videoLoaded', listener: (event: IVideoInfo) => void): void;
 
 	/**
 	 * Fired if the player volume changes
-	 * @param volume number between 0 and 1
+	 * @param volume - number between 0 and 1
 	 */
 	on(event: 'volumeChanged', listener: (event: { volume: number }) => void): void;
 
 	/**
 	 * Fired when the player status changes
-	 * @param status PlayerStatus can be one of the following:
+	 * @param status - PlayerStatus can be one of the following:
 	 *     Initializing,
 	 *     Playing,
 	 *     Paused,
@@ -35,15 +38,16 @@ export interface IVbrickVideoEmbed extends IVbrickBaseEmbed {
 
 	/**
 	 * Fired when the captions are toggled, or the language changes
-	 * @param enabled true if the captions are on
-	 * @param language The displayed language for caption text
+	 * @alpha
+	 * @param enabled - true if the captions are on
+	 * @param language - The displayed language for caption text
 	 */
 	on(event: 'captionsChanged', listener: (event: ICaptionSettings) => void): void;
 
 	/**
 	 * Fired when the playback speed changes. Only available for prerecorded video on demand.
-	 * @param speed number. Multiplier for the video playback speed. 1 is normal speed.
-	 * @param listener
+	 * @alpha
+	 * @param speed - number. Multiplier for the video playback speed. 1 is normal speed.
 	 */
 	on(event: 'playbackSpeedChanged', listener: (event: { speed: number }) => void): void;
 
@@ -54,7 +58,7 @@ export interface IVbrickVideoEmbed extends IVbrickBaseEmbed {
 
 	/**
 	 * Fired if the player volume changes
-	 * @param volume number between 0 and 1
+	 * @param volume - number between 0 and 1
 	 */
 	on(event: 'volumeChanged', listener: (event: { volume: number }) => void): void;
 
@@ -72,13 +76,15 @@ export interface IVbrickVideoEmbed extends IVbrickBaseEmbed {
 
 	/**
 	 * Whether captions are enabled, and selected language
+	 * @alpha
 	 */
 	readonly captions: ICaptionSettings;
 
 	/**
 	 * Contains metadata for the video
+	 * @beta
 	 */
-	readonly videoInfo: any;
+	readonly videoInfo: IVideoInfo;
 
 	/**
 	 * Plays the video if it is paused.
@@ -92,11 +98,14 @@ export interface IVbrickVideoEmbed extends IVbrickBaseEmbed {
 
 	/**
 	 * Sets player volume
-	 * @param volume {number} 0-1
+	 * @param volume - number 0-1
 	 */
 	setVolume(volume: number): void;
 }
 
+/**
+ * @public
+ */
 export interface IVbrickWebcastEmbed extends IVbrickBaseEmbed {
 
 	/**
@@ -135,12 +144,9 @@ export interface IVbrickWebcastEmbed extends IVbrickBaseEmbed {
 
 }
 
-interface VideoInfo extends Record<string, any> {
-	id: string;
-	title?: string;
-	duration?: number;
-}
-
+/**
+ * @public
+ */
 export interface IVbrickBaseEmbed {
 	/**
 	 * Fired when iframe has loaded
@@ -154,8 +160,8 @@ export interface IVbrickBaseEmbed {
 
 	/**
 	 * Register an event handler. Events are fired at different lifecycle stages of the webcast
-	 * @param event
-	 * @param listener
+	 * @param event - name of event
+	 * @param listener - callback when event is fired. Keep a reference if you intend to call {@link IVbrickBaseEmbed.off} later
 	 */
 	on(event: string, listener: (event: any) => void): void;
 
@@ -171,16 +177,22 @@ export interface IVbrickBaseEmbed {
 
 	/**
 	 * Allows updating the access token if the old one has expired.
-	 * @param token
+	 * @param token - New token
 	 */
 	updateToken(token: VbrickSDKToken): void;
 }
 
+/**
+ * @beta
+ */
 export interface ICaptionSettings {
 	enabled: boolean;
 	language: string;
 }
 
+/**
+ * @beta
+ */
 export interface IVideoInfo {
 	id: string;
 	title: string;
