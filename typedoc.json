@@ -1,7 +1,11 @@
 {
+	"$schema": "https://typedoc.org/schema.json",
 	"entryPoints": ["src/"],
-	"entryPointStrategy": "expand",
+	"entryPointStrategy": "Expand",
 	"out": "docs",
 	"plugin": "typedoc-plugin-markdown",
-	"gitRemote": "upstream"
+	"gitRemote": "upstream",
+	"excludeInternal": true,
+	"excludePrivate": true,
+	"excludeProtected": true
 }
