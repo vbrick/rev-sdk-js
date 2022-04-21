@@ -2,7 +2,7 @@ import { IVbrickWebcastEmbed } from './IVbrickApi';
 import { VbrickWebcastEmbed } from './VbrickWebcastEmbed';
 import { lookupElement } from '../util';
 import { resolveConfig } from '../Config';
-import { VbrickEmbedConfig } from './VbrickEmbedConfig';
+import { VbrickWebcastEmbedConfig } from './VbrickEmbedConfig';
 
 /**
  * Embeds a webcast on the page
@@ -28,11 +28,11 @@ import { VbrickEmbedConfig } from './VbrickEmbedConfig';
 export function embedWebcast(
 	element: HTMLElement | string,
 	webcastId: string,
-	config: VbrickEmbedConfig
+	config: VbrickWebcastEmbedConfig
 ): IVbrickWebcastEmbed {
 
 	const el = lookupElement(element);
-	const cfg = resolveConfig(config) as VbrickEmbedConfig;
+	const cfg = resolveConfig(config);
 
 	const webcast = new VbrickWebcastEmbed(webcastId, cfg, el);
 	webcast.initialize();

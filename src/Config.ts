@@ -2,7 +2,7 @@ import { VbrickSDKConfig } from './VbrickSDK';
 
 const defaultConfig: any = { };
 
-export function resolveConfig(configuration: Partial<VbrickSDKConfig>): VbrickSDKConfig {
+export function resolveConfig<TConfig extends VbrickSDKConfig>(configuration: TConfig): TConfig {
 	const cfg = {
 		...defaultConfig,
 		...configuration,

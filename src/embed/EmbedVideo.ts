@@ -1,9 +1,8 @@
 import { IVbrickVideoEmbed } from './IVbrickApi';
-import { VbrickEmbedConfig } from './VbrickEmbedConfig';
+import { VbrickVideoEmbedConfig } from './VbrickEmbedConfig';
 import { VbrickVideoEmbed } from './VbrickVideoEmbed';
 import { lookupElement } from '../util';
 import { resolveConfig } from '../Config';
-
 
 /**
  * Embed a VOD/video on a page, with optional token-based authentication. Returns a VbrickEmbed object for interacting with playback and receiving events.
@@ -16,10 +15,10 @@ import { resolveConfig } from '../Config';
 export function embedVideo(
 	element: HTMLElement | string,
 	videoId: string,
-	config: VbrickEmbedConfig
+	config: VbrickVideoEmbedConfig
 ): IVbrickVideoEmbed {
 	const el = lookupElement(element);
-	const cfg = resolveConfig(config) as VbrickEmbedConfig;
+	const cfg = resolveConfig(config);
 
 	const video = new VbrickVideoEmbed(videoId, cfg, el);
 	video.initialize();
