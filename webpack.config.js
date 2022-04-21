@@ -3,7 +3,6 @@ import path from 'node:path';
 import fs from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const babelrcConfig = JSON.parse(fs.readFileSync('.babelrc', 'utf8'));
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 
@@ -63,7 +62,7 @@ export default [
 			outputModule: true
 		},
 		output: {
-			path: path.resolve(__dirname, 'dist'),
+			path: fileURLToPath(new URL('dist', import.meta.url)),
 			filename: path.basename(pkg.module),
 			library: {
 				type: 'module'
