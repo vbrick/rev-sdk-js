@@ -1,6 +1,6 @@
 import { VbrickSDKConfig } from './VbrickSDK';
 
-const defaultConfig: any = { showVideo: true };
+const defaultConfig: any = { };
 
 export function resolveConfig(configuration: Partial<VbrickSDKConfig>): VbrickSDKConfig {
 	const cfg = {

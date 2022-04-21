@@ -22,11 +22,6 @@ export interface VbrickEmbedConfig extends VbrickSDKConfig {
 	height?: string;
 
 	/**
-	 * Optional, For embedded webcasts, hides the video. Default is false.
-	 */
-	hideVideo?: boolean;
-
-	/**
 	 * For video embeds. If a user needs to log in, go through the login process in a popup window. This is the standard behavior for non-SDK Rev embeded videos
 	 */
 	popupAuth?: boolean;
