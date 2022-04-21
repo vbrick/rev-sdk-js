@@ -1,2 +1,8 @@
 demo/
 node_modules/
+temp/
+docs/
+webpack.config.js
+typedoc.json
+api-extractor.json
+favicon.ico

@@ -1,5 +1,9 @@
 import { VbrickSDKConfig } from '../VbrickSDK';
 
+/**
+ * Options available when embedding a VOD/video or webcast
+ * @public
+ */
 export interface VbrickEmbedConfig extends VbrickSDKConfig {
 
 	/**

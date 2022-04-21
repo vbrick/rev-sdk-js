@@ -1,9 +1,15 @@
 
+/**
+ * @public
+ */
 export enum TokenType {
 	JWT = 'JWT',
 	ACCESS_TOKEN = 'AccessToken'
 }
 
+/**
+ * @public
+ */
 export interface VbrickSDKToken {
 	type: TokenType;
 
@@ -18,6 +24,9 @@ export interface VbrickSDKToken {
 	issuer: string;
 }
 
+/**
+ * @public
+ */
 export interface VbrickSDKConfig {
 	/**
 	 * URL for Rev
