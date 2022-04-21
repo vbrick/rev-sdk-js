@@ -7,6 +7,9 @@ export interface ILogger {
 
 export function getLogger(cfg: VbrickSDKConfig): ILogger {
 	return cfg.log ? console : {
+/**
+ * @internal
+ */
 		log: noop,
 		error: noop
 	};

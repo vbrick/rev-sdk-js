@@ -1,7 +1,13 @@
+/**
+ * @internal
+ */
 export function isString (val: any): boolean {
 	return Object.prototype.toString.call(val) === '[object String]';
 }
 
+/**
+ * @internal
+ */
 export function lookupElement(element: string | HTMLElement): HTMLElement {
 	const el: HTMLElement = element instanceof HTMLElement ? element : document.querySelector(element);
 

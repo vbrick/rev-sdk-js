@@ -4,6 +4,9 @@ export interface IListener {
 	(e: any): void;
 }
 
+/**
+ * @internal
+ */
 export class EventBus {
 	private win: Window;
 	private msgListener: (e: MessageEvent) => void;
