@@ -22,7 +22,7 @@
 
 ### Properties
 
-- [\_status](embed_VbrickWebcastEmbed.VbrickWebcastEmbed.md#_status)
+- [\_webcastStatus](embed_VbrickWebcastEmbed.VbrickWebcastEmbed.md#_webcaststatus)
 - [config](embed_VbrickWebcastEmbed.VbrickWebcastEmbed.md#config)
 - [container](embed_VbrickWebcastEmbed.VbrickWebcastEmbed.md#container)
 - [eventBus](embed_VbrickWebcastEmbed.VbrickWebcastEmbed.md#eventbus)
@@ -33,7 +33,7 @@
 
 ### Accessors
 
-- [status](embed_VbrickWebcastEmbed.VbrickWebcastEmbed.md#status)
+- [webcastStatus](embed_VbrickWebcastEmbed.VbrickWebcastEmbed.md#webcaststatus)
 
 ### Methods
 
@@ -43,6 +43,7 @@
 - [initializeToken](embed_VbrickWebcastEmbed.VbrickWebcastEmbed.md#initializetoken)
 - [off](embed_VbrickWebcastEmbed.VbrickWebcastEmbed.md#off)
 - [on](embed_VbrickWebcastEmbed.VbrickWebcastEmbed.md#on)
+- [updateToken](embed_VbrickWebcastEmbed.VbrickWebcastEmbed.md#updatetoken)
 
 ## Constructors
 
@@ -64,17 +65,17 @@
 
 #### Defined in
 
-[embed/VbrickWebcastEmbed.ts:15](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/VbrickWebcastEmbed.ts#L15)
+[embed/VbrickWebcastEmbed.ts:15](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickWebcastEmbed.ts#L15)
 
 ## Properties
 
-### \_status
+### \_webcastStatus
 
-• `Private` **\_status**: [`WebcastStatus`](../enums/embed_WebcastStatus.WebcastStatus.md)
+• `Private` **\_webcastStatus**: [`WebcastStatus`](../enums/embed_WebcastStatus.WebcastStatus.md)
 
 #### Defined in
 
-[embed/VbrickWebcastEmbed.ts:10](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/VbrickWebcastEmbed.ts#L10)
+[embed/VbrickWebcastEmbed.ts:10](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickWebcastEmbed.ts#L10)
 
 ___
 
@@ -108,7 +109,7 @@ ___
 
 #### Defined in
 
-[embed/VbrickEmbed.ts:11](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/VbrickEmbed.ts#L11)
+[embed/VbrickEmbed.ts:13](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickEmbed.ts#L13)
 
 ___
 
@@ -122,7 +123,7 @@ ___
 
 #### Defined in
 
-[embed/VbrickEmbed.ts:10](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/VbrickEmbed.ts#L10)
+[embed/VbrickEmbed.ts:12](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickEmbed.ts#L12)
 
 ___
 
@@ -146,7 +147,7 @@ ___
 
 #### Defined in
 
-[embed/VbrickEmbed.ts:14](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/VbrickEmbed.ts#L14)
+[embed/VbrickEmbed.ts:16](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickEmbed.ts#L16)
 
 ___
 
@@ -160,13 +161,13 @@ ___
 
 #### Defined in
 
-[embed/VbrickEmbed.ts:13](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/VbrickEmbed.ts#L13)
+[embed/VbrickEmbed.ts:15](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickEmbed.ts#L15)
 
 ## Accessors
 
-### status
+### webcastStatus
 
-• `get` **status**(): [`WebcastStatus`](../enums/embed_WebcastStatus.WebcastStatus.md)
+• `get` **webcastStatus**(): [`WebcastStatus`](../enums/embed_WebcastStatus.WebcastStatus.md)
 
 Indicates whether the webcast is started, or broadcasting.
 
@@ -176,11 +177,11 @@ Indicates whether the webcast is started, or broadcasting.
 
 #### Implementation of
 
-[IVbrickWebcastEmbed](../interfaces/embed_IVbrickApi.IVbrickWebcastEmbed.md).[status](../interfaces/embed_IVbrickApi.IVbrickWebcastEmbed.md#status)
+[IVbrickWebcastEmbed](../interfaces/embed_IVbrickApi.IVbrickWebcastEmbed.md).[webcastStatus](../interfaces/embed_IVbrickApi.IVbrickWebcastEmbed.md#webcaststatus)
 
 #### Defined in
 
-[embed/VbrickWebcastEmbed.ts:11](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/VbrickWebcastEmbed.ts#L11)
+[embed/VbrickWebcastEmbed.ts:11](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickWebcastEmbed.ts#L11)
 
 ## Methods
 
@@ -204,7 +205,7 @@ Removes the embedded content from the DOM.
 
 #### Defined in
 
-[embed/VbrickEmbed.ts:82](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/VbrickEmbed.ts#L82)
+[embed/VbrickEmbed.ts:85](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickEmbed.ts#L85)
 
 ___
 
@@ -225,7 +226,7 @@ If there was a problem loading the content, or a problem with the token, the pro
 
 #### Defined in
 
-[embed/VbrickEmbed.ts:28](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/VbrickEmbed.ts#L28)
+[embed/VbrickEmbed.ts:30](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickEmbed.ts#L30)
 
 ___
 
@@ -243,7 +244,7 @@ ___
 
 #### Defined in
 
-[embed/VbrickWebcastEmbed.ts:27](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/VbrickWebcastEmbed.ts#L27)
+[embed/VbrickWebcastEmbed.ts:27](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickWebcastEmbed.ts#L27)
 
 ___
 
@@ -261,7 +262,7 @@ ___
 
 #### Defined in
 
-[embed/VbrickWebcastEmbed.ts:23](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/VbrickWebcastEmbed.ts#L23)
+[embed/VbrickWebcastEmbed.ts:23](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickWebcastEmbed.ts#L23)
 
 ___
 
@@ -292,7 +293,7 @@ Removes an event listener
 
 #### Defined in
 
-[embed/VbrickEmbed.ts:60](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/VbrickEmbed.ts#L60)
+[embed/VbrickEmbed.ts:63](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickEmbed.ts#L63)
 
 ___
 
@@ -300,7 +301,7 @@ ___
 
 ▸ **on**(`event`, `listener`): `void`
 
-Register an event handler. Events are fired at different lifecycle stages of the webcast
+Fired on initial load
 
 #### Parameters
 
@@ -323,4 +324,34 @@ Register an event handler. Events are fired at different lifecycle stages of the
 
 #### Defined in
 
-[embed/VbrickEmbed.ts:56](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/VbrickEmbed.ts#L56)
+[embed/VbrickEmbed.ts:58](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickEmbed.ts#L58)
+
+___
+
+### updateToken
+
+▸ **updateToken**(`newToken`): `void`
+
+Allows updating the access token if the old one has expired.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `newToken` | [`VbrickSDKToken`](../interfaces/VbrickSDK.VbrickSDKToken.md) |
+
+#### Returns
+
+`void`
+
+#### Implementation of
+
+[IVbrickWebcastEmbed](../interfaces/embed_IVbrickApi.IVbrickWebcastEmbed.md).[updateToken](../interfaces/embed_IVbrickApi.IVbrickWebcastEmbed.md#updatetoken)
+
+#### Inherited from
+
+[VbrickEmbed](embed_VbrickEmbed.VbrickEmbed.md).[updateToken](embed_VbrickEmbed.VbrickEmbed.md#updatetoken)
+
+#### Defined in
+
+[embed/VbrickEmbed.ts:92](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickEmbed.ts#L92)

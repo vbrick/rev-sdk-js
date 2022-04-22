@@ -1,25 +1,6 @@
 import { VbrickSDKConfig } from './VbrickSDK';
 
-let defaultConfig: any = {
-	showVideo: true
-};
-
-/**
- * Assign default configuration values that will be applied to future api calls.
- * @param configuration A configuration object.
- *
- * @example
- * Presetting a rev URL:
- * ```
- * revSdk.setDefaultConfig({ baseUrl: 'https://rev1.site.com' })
- * ```
- */
- export function setDefaultConfig(configuration: Partial<VbrickSDKConfig>): void {
-	defaultConfig = {
-		...defaultConfig,
-		...configuration
-	};
-}
+const defaultConfig: any = { showVideo: true };
 
 export function resolveConfig(configuration: Partial<VbrickSDKConfig>): VbrickSDKConfig {
 	const cfg = {

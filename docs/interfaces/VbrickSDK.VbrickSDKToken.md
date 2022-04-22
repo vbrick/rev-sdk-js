@@ -22,7 +22,7 @@ The issuer for the token
 
 #### Defined in
 
-[VbrickSDK.ts:18](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/VbrickSDK.ts#L18)
+[VbrickSDK.ts:24](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/VbrickSDK.ts#L24)
 
 ___
 
@@ -32,7 +32,7 @@ ___
 
 #### Defined in
 
-[VbrickSDK.ts:8](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/VbrickSDK.ts#L8)
+[VbrickSDK.ts:14](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/VbrickSDK.ts#L14)
 
 ___
 
@@ -44,4 +44,4 @@ String containing the token value
 
 #### Defined in
 
-[VbrickSDK.ts:13](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/VbrickSDK.ts#L13)
+[VbrickSDK.ts:19](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/VbrickSDK.ts#L19)

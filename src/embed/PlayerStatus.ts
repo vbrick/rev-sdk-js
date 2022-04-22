@@ -1,3 +1,6 @@
+/**
+ * @public
+ */
 export enum PlayerStatus {
 	Initializing = 'Initializing',
 	Playing = 'Playing',

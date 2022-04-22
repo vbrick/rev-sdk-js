@@ -1,6 +1,10 @@
-const path = require('path');
-const fs = require('fs');
+//@ts-check
+import path from 'node:path';
+import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
+
 const babelrcConfig = JSON.parse(fs.readFileSync('.babelrc', 'utf8'));
+const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 
 const BABEL_LOADER = {
 	loader: 'babel-loader',
@@ -10,18 +14,11 @@ const BABEL_LOADER = {
 	}
 };
 
-module.exports = {
+/** @type {import("webpack").Configuration} */
+const webpackConfig = {
 	mode: 'development',
 	devtool: 'source-map',
 	entry: './src/index.ts',
-	output: {
-		path: path.resolve(__dirname, 'dist'),
-		filename: 'rev-sdk.js',
-		library: {
-			name: 'revSdk',
-			type: 'umd'
-		}
-	},
 
 	module: {
 		rules: [
@@ -31,7 +28,7 @@ module.exports = {
 					BABEL_LOADER,
 					'ts-loader'
 				],
-				include: [path.join(__dirname, 'src')]
+				include: [fileURLToPath(new URL('src', import.meta.url))]
 			},
 		]
 	},
@@ -43,3 +40,33 @@ module.exports = {
 		poll: 5000
 	}
 };
+
+/** @type {import("webpack").Configuration[]} */
+export default [
+	// UMD export
+	{
+		...webpackConfig,
+		output: {
+			path: fileURLToPath(new URL('dist', import.meta.url)),
+			filename: path.basename(pkg.browser),
+			library: {
+				name: 'revSdk',
+				type: 'umd'
+			}
+		}
+	},
+	// ES export
+	{
+		...webpackConfig,
+		experiments: {
+			outputModule: true
+		},
+		output: {
+			path: fileURLToPath(new URL('dist', import.meta.url)),
+			filename: path.basename(pkg.module),
+			library: {
+				type: 'module'
+			}
+		}	
+	}
+]
