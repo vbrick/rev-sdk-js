@@ -1,11 +1,10 @@
 import { VbrickSDKConfig } from '../VbrickSDK';
 
 /**
- * Options available when embedding a VOD/video or webcast
+ * Options when creating the iframe embed for a video/webcast
  * @public
  */
-export interface VbrickEmbedConfig extends VbrickSDKConfig {
-
+export interface VbrickBaseEmbedConfig extends VbrickSDKConfig {
 	/**
 	 * An optional class to be set on embeds.
 	 */
@@ -20,12 +19,13 @@ export interface VbrickEmbedConfig extends VbrickSDKConfig {
 	 * Optional height to be set on embeds. Default is "100%"
 	 */
 	height?: string;
+}
 
-	/**
-	 * Optional, For embedded webcasts, hides the video. Default is false.
-	 */
-	hideVideo?: boolean;
-
+/**
+ * Options available when embedding a VOD/video
+ * @public
+ */
+export interface VbrickVideoEmbedConfig extends VbrickBaseEmbedConfig {
 	/**
 	 * For video embeds. If a user needs to log in, go through the login process in a popup window. This is the standard behavior for non-SDK Rev embeded videos
 	 */
@@ -57,3 +57,17 @@ export interface VbrickEmbedConfig extends VbrickSDKConfig {
 	 */
 	accentColor?: string;
 }
+
+/**
+ * Options available when embedding a webcast
+ * @public
+ */
+export interface VbrickWebcastEmbedConfig extends VbrickBaseEmbedConfig {
+
+}
+
+/**
+ * Options available when embedding a VOD/video or webcast
+ * @public
+ */
+export type VbrickEmbedConfig = VbrickVideoEmbedConfig & VbrickWebcastEmbedConfig;

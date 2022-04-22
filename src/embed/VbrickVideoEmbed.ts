@@ -2,7 +2,7 @@ import { TokenType } from '../VbrickSDK';
 import { IVbrickVideoEmbed, ICaptionSettings } from './IVbrickApi';
 import { PlayerStatus } from './PlayerStatus';
 import { VbrickEmbed } from './VbrickEmbed';
-import { VbrickEmbedConfig } from './VbrickEmbedConfig';
+import { VbrickVideoEmbedConfig } from './VbrickEmbedConfig';
 
 /**
  * Internal class used to model an embedded video
@@ -42,7 +42,7 @@ export class VbrickVideoEmbed extends VbrickEmbed implements IVbrickVideoEmbed {
 
 	constructor(
 		videoId: string,
-		config: VbrickEmbedConfig,
+		config: VbrickVideoEmbedConfig,
 		container: HTMLElement
 	) {
 		super(getEmbedUrl(videoId, config), config, container);
@@ -96,7 +96,7 @@ export class VbrickVideoEmbed extends VbrickEmbed implements IVbrickVideoEmbed {
 	}
 }
 
-function getEmbedUrl(id: string, config: VbrickEmbedConfig): string {
+function getEmbedUrl(id: string, config: VbrickVideoEmbedConfig): string {
 	const query = [
 		['tk', !!config.token],
 		['id', id],
