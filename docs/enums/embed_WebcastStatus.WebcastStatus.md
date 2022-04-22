@@ -25,7 +25,7 @@ Webcast is active with video stream
 
 #### Defined in
 
-[embed/WebcastStatus.ts:20](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/WebcastStatus.ts#L20)
+[embed/WebcastStatus.ts:20](https://github.com/vbrick/rev-sdk-js/blob/e325589/src/embed/WebcastStatus.ts#L20)
 
 ___
 
@@ -37,7 +37,7 @@ Webcast has ended
 
 #### Defined in
 
-[embed/WebcastStatus.ts:24](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/WebcastStatus.ts#L24)
+[embed/WebcastStatus.ts:24](https://github.com/vbrick/rev-sdk-js/blob/e325589/src/embed/WebcastStatus.ts#L24)
 
 ___
 
@@ -49,7 +49,7 @@ Fatal error embedding webcast
 
 #### Defined in
 
-[embed/WebcastStatus.ts:28](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/WebcastStatus.ts#L28)
+[embed/WebcastStatus.ts:28](https://github.com/vbrick/rev-sdk-js/blob/e325589/src/embed/WebcastStatus.ts#L28)
 
 ___
 
@@ -61,7 +61,7 @@ Webcast is active (but not currently Broadcasting)
 
 #### Defined in
 
-[embed/WebcastStatus.ts:16](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/WebcastStatus.ts#L16)
+[embed/WebcastStatus.ts:16](https://github.com/vbrick/rev-sdk-js/blob/e325589/src/embed/WebcastStatus.ts#L16)
 
 ___
 
@@ -73,7 +73,7 @@ Embedded webcast is authenticating
 
 #### Defined in
 
-[embed/WebcastStatus.ts:8](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/WebcastStatus.ts#L8)
+[embed/WebcastStatus.ts:8](https://github.com/vbrick/rev-sdk-js/blob/e325589/src/embed/WebcastStatus.ts#L8)
 
 ___
 
@@ -85,4 +85,4 @@ Embedded webcast is authenticated and waiting for webcast to start
 
 #### Defined in
 
-[embed/WebcastStatus.ts:12](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/WebcastStatus.ts#L12)
+[embed/WebcastStatus.ts:12](https://github.com/vbrick/rev-sdk-js/blob/e325589/src/embed/WebcastStatus.ts#L12)

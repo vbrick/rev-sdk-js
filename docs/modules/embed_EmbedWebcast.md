@@ -34,7 +34,7 @@ revSdk.embedWebcast('#webcast-embed', webcastId, {
 | :------ | :------ | :------ |
 | `element` | `string` \| `HTMLElement` | Either a CSS selector string or HTML Element where the embed content will be rendered |
 | `webcastId` | `string` | ID of the webcast to embed |
-| `config` | [`VbrickEmbedConfig`](../interfaces/embed_VbrickEmbedConfig.VbrickEmbedConfig.md) | A configuration object |
+| `config` | [`VbrickWebcastEmbedConfig`](../interfaces/embed_VbrickEmbedConfig.VbrickWebcastEmbedConfig.md) | A configuration object |
 
 #### Returns
 
@@ -44,4 +44,4 @@ An [IVbrickWebcastEmbed](../interfaces/embed_IVbrickApi.IVbrickWebcastEmbed.md) 
 
 #### Defined in
 
-[embed/EmbedWebcast.ts:28](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/EmbedWebcast.ts#L28)
+[embed/EmbedWebcast.ts:28](https://github.com/vbrick/rev-sdk-js/blob/e325589/src/embed/EmbedWebcast.ts#L28)

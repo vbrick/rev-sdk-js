@@ -12,18 +12,24 @@
 
 ### resolveConfig
 
-▸ **resolveConfig**(`configuration`): [`VbrickSDKConfig`](../interfaces/VbrickSDK.VbrickSDKConfig.md)
+▸ **resolveConfig**<`TConfig`\>(`configuration`): `TConfig`
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `TConfig` | extends [`VbrickSDKConfig`](../interfaces/VbrickSDK.VbrickSDKConfig.md) |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `configuration` | `Partial`<[`VbrickSDKConfig`](../interfaces/VbrickSDK.VbrickSDKConfig.md)\> |
+| `configuration` | `TConfig` |
 
 #### Returns
 
-[`VbrickSDKConfig`](../interfaces/VbrickSDK.VbrickSDKConfig.md)
+`TConfig`
 
 #### Defined in
 
-[Config.ts:5](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/Config.ts#L5)
+[Config.ts:3](https://github.com/vbrick/rev-sdk-js/blob/e325589/src/Config.ts#L3)

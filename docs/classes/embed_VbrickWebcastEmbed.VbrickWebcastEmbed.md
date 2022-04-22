@@ -20,17 +20,6 @@
 
 - [constructor](embed_VbrickWebcastEmbed.VbrickWebcastEmbed.md#constructor)
 
-### Properties
-
-- [\_webcastStatus](embed_VbrickWebcastEmbed.VbrickWebcastEmbed.md#_webcaststatus)
-- [config](embed_VbrickWebcastEmbed.VbrickWebcastEmbed.md#config)
-- [container](embed_VbrickWebcastEmbed.VbrickWebcastEmbed.md#container)
-- [eventBus](embed_VbrickWebcastEmbed.VbrickWebcastEmbed.md#eventbus)
-- [iframe](embed_VbrickWebcastEmbed.VbrickWebcastEmbed.md#iframe)
-- [iframeUrl](embed_VbrickWebcastEmbed.VbrickWebcastEmbed.md#iframeurl)
-- [logger](embed_VbrickWebcastEmbed.VbrickWebcastEmbed.md#logger)
-- [unsubscribes](embed_VbrickWebcastEmbed.VbrickWebcastEmbed.md#unsubscribes)
-
 ### Accessors
 
 - [webcastStatus](embed_VbrickWebcastEmbed.VbrickWebcastEmbed.md#webcaststatus)
@@ -39,8 +28,6 @@
 
 - [destroy](embed_VbrickWebcastEmbed.VbrickWebcastEmbed.md#destroy)
 - [initialize](embed_VbrickWebcastEmbed.VbrickWebcastEmbed.md#initialize)
-- [initializeEmbed](embed_VbrickWebcastEmbed.VbrickWebcastEmbed.md#initializeembed)
-- [initializeToken](embed_VbrickWebcastEmbed.VbrickWebcastEmbed.md#initializetoken)
 - [off](embed_VbrickWebcastEmbed.VbrickWebcastEmbed.md#off)
 - [on](embed_VbrickWebcastEmbed.VbrickWebcastEmbed.md#on)
 - [updateToken](embed_VbrickWebcastEmbed.VbrickWebcastEmbed.md#updatetoken)
@@ -56,7 +43,7 @@
 | Name | Type |
 | :------ | :------ |
 | `webcastId` | `string` |
-| `config` | [`VbrickEmbedConfig`](../interfaces/embed_VbrickEmbedConfig.VbrickEmbedConfig.md) |
+| `config` | [`VbrickWebcastEmbedConfig`](../interfaces/embed_VbrickEmbedConfig.VbrickWebcastEmbedConfig.md) |
 | `container` | `HTMLElement` |
 
 #### Overrides
@@ -65,103 +52,7 @@
 
 #### Defined in
 
-[embed/VbrickWebcastEmbed.ts:15](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickWebcastEmbed.ts#L15)
-
-## Properties
-
-### \_webcastStatus
-
-• `Private` **\_webcastStatus**: [`WebcastStatus`](../enums/embed_WebcastStatus.WebcastStatus.md)
-
-#### Defined in
-
-[embed/VbrickWebcastEmbed.ts:10](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickWebcastEmbed.ts#L10)
-
-___
-
-### config
-
-• `Protected` `Readonly` **config**: [`VbrickEmbedConfig`](../interfaces/embed_VbrickEmbedConfig.VbrickEmbedConfig.md)
-
-#### Inherited from
-
-[VbrickEmbed](embed_VbrickEmbed.VbrickEmbed.md).[config](embed_VbrickEmbed.VbrickEmbed.md#config)
-
-___
-
-### container
-
-• `Protected` `Readonly` **container**: `HTMLElement`
-
-#### Inherited from
-
-[VbrickEmbed](embed_VbrickEmbed.VbrickEmbed.md).[container](embed_VbrickEmbed.VbrickEmbed.md#container)
-
-___
-
-### eventBus
-
-• `Protected` **eventBus**: [`EventBus`](embed_EventBus.EventBus.md)
-
-#### Inherited from
-
-[VbrickEmbed](embed_VbrickEmbed.VbrickEmbed.md).[eventBus](embed_VbrickEmbed.VbrickEmbed.md#eventbus)
-
-#### Defined in
-
-[embed/VbrickEmbed.ts:13](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickEmbed.ts#L13)
-
-___
-
-### iframe
-
-• `Protected` **iframe**: `HTMLIFrameElement`
-
-#### Inherited from
-
-[VbrickEmbed](embed_VbrickEmbed.VbrickEmbed.md).[iframe](embed_VbrickEmbed.VbrickEmbed.md#iframe)
-
-#### Defined in
-
-[embed/VbrickEmbed.ts:12](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickEmbed.ts#L12)
-
-___
-
-### iframeUrl
-
-• `Protected` `Readonly` **iframeUrl**: `string`
-
-#### Inherited from
-
-[VbrickEmbed](embed_VbrickEmbed.VbrickEmbed.md).[iframeUrl](embed_VbrickEmbed.VbrickEmbed.md#iframeurl)
-
-___
-
-### logger
-
-• `Protected` **logger**: [`ILogger`](../interfaces/Log.ILogger.md)
-
-#### Inherited from
-
-[VbrickEmbed](embed_VbrickEmbed.VbrickEmbed.md).[logger](embed_VbrickEmbed.VbrickEmbed.md#logger)
-
-#### Defined in
-
-[embed/VbrickEmbed.ts:16](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickEmbed.ts#L16)
-
-___
-
-### unsubscribes
-
-• `Protected` **unsubscribes**: () => `void`[]
-
-#### Inherited from
-
-[VbrickEmbed](embed_VbrickEmbed.VbrickEmbed.md).[unsubscribes](embed_VbrickEmbed.VbrickEmbed.md#unsubscribes)
-
-#### Defined in
-
-[embed/VbrickEmbed.ts:15](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickEmbed.ts#L15)
+[embed/VbrickWebcastEmbed.ts:15](https://github.com/vbrick/rev-sdk-js/blob/e325589/src/embed/VbrickWebcastEmbed.ts#L15)
 
 ## Accessors
 
@@ -181,7 +72,7 @@ Indicates whether the webcast is started, or broadcasting.
 
 #### Defined in
 
-[embed/VbrickWebcastEmbed.ts:11](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickWebcastEmbed.ts#L11)
+[embed/VbrickWebcastEmbed.ts:11](https://github.com/vbrick/rev-sdk-js/blob/e325589/src/embed/VbrickWebcastEmbed.ts#L11)
 
 ## Methods
 
@@ -205,7 +96,7 @@ Removes the embedded content from the DOM.
 
 #### Defined in
 
-[embed/VbrickEmbed.ts:85](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickEmbed.ts#L85)
+[embed/VbrickEmbed.ts:85](https://github.com/vbrick/rev-sdk-js/blob/e325589/src/embed/VbrickEmbed.ts#L85)
 
 ___
 
@@ -226,43 +117,7 @@ If there was a problem loading the content, or a problem with the token, the pro
 
 #### Defined in
 
-[embed/VbrickEmbed.ts:30](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickEmbed.ts#L30)
-
-___
-
-### initializeEmbed
-
-▸ `Protected` **initializeEmbed**(): `void`
-
-#### Returns
-
-`void`
-
-#### Overrides
-
-[VbrickEmbed](embed_VbrickEmbed.VbrickEmbed.md).[initializeEmbed](embed_VbrickEmbed.VbrickEmbed.md#initializeembed)
-
-#### Defined in
-
-[embed/VbrickWebcastEmbed.ts:27](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickWebcastEmbed.ts#L27)
-
-___
-
-### initializeToken
-
-▸ `Protected` **initializeToken**(): `Promise`<[`VbrickSDKToken`](../interfaces/VbrickSDK.VbrickSDKToken.md)\>
-
-#### Returns
-
-`Promise`<[`VbrickSDKToken`](../interfaces/VbrickSDK.VbrickSDKToken.md)\>
-
-#### Overrides
-
-[VbrickEmbed](embed_VbrickEmbed.VbrickEmbed.md).[initializeToken](embed_VbrickEmbed.VbrickEmbed.md#initializetoken)
-
-#### Defined in
-
-[embed/VbrickWebcastEmbed.ts:23](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickWebcastEmbed.ts#L23)
+[embed/VbrickEmbed.ts:30](https://github.com/vbrick/rev-sdk-js/blob/e325589/src/embed/VbrickEmbed.ts#L30)
 
 ___
 
@@ -293,7 +148,7 @@ Removes an event listener
 
 #### Defined in
 
-[embed/VbrickEmbed.ts:63](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickEmbed.ts#L63)
+[embed/VbrickEmbed.ts:63](https://github.com/vbrick/rev-sdk-js/blob/e325589/src/embed/VbrickEmbed.ts#L63)
 
 ___
 
@@ -324,7 +179,7 @@ Fired on initial load
 
 #### Defined in
 
-[embed/VbrickEmbed.ts:58](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickEmbed.ts#L58)
+[embed/VbrickEmbed.ts:58](https://github.com/vbrick/rev-sdk-js/blob/e325589/src/embed/VbrickEmbed.ts#L58)
 
 ___
 
@@ -354,4 +209,4 @@ Allows updating the access token if the old one has expired.
 
 #### Defined in
 
-[embed/VbrickEmbed.ts:92](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickEmbed.ts#L92)
+[embed/VbrickEmbed.ts:92](https://github.com/vbrick/rev-sdk-js/blob/e325589/src/embed/VbrickEmbed.ts#L92)

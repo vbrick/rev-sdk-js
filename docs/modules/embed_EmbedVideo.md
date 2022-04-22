@@ -22,7 +22,7 @@ Embed a VOD/video on a page, with optional token-based authentication. Returns a
 | :------ | :------ | :------ |
 | `element` | `string` \| `HTMLElement` | Container element where the embed content will be rendered. Either an HTMLElement or a CSS Selector string. |
 | `videoId` | `string` | ID of the video to embed |
-| `config` | [`VbrickEmbedConfig`](../interfaces/embed_VbrickEmbedConfig.VbrickEmbedConfig.md) | A configuration object |
+| `config` | [`VbrickVideoEmbedConfig`](../interfaces/embed_VbrickEmbedConfig.VbrickVideoEmbedConfig.md) | A configuration object |
 
 #### Returns
 
@@ -32,4 +32,4 @@ An [IVbrickVideoEmbed](../interfaces/embed_IVbrickApi.IVbrickVideoEmbed.md) obje
 
 #### Defined in
 
-[embed/EmbedVideo.ts:16](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/EmbedVideo.ts#L16)
+[embed/EmbedVideo.ts:15](https://github.com/vbrick/rev-sdk-js/blob/e325589/src/embed/EmbedVideo.ts#L15)
