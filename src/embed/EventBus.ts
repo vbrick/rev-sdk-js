@@ -1,4 +1,4 @@
-import { VbrickSDKConfig } from "src/VbrickSDK";
+import { VbrickSDKConfig } from "../VbrickSDK";
 
 export interface IListener {
 	(e: any): void;
