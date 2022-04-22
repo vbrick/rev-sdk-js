@@ -39,7 +39,7 @@ Removes the embedded content from the DOM.
 
 #### Defined in
 
-[embed/IVbrickApi.ts:176](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/IVbrickApi.ts#L176)
+[embed/IVbrickApi.ts:176](https://github.com/vbrick/rev-sdk-js/blob/e325589/src/embed/IVbrickApi.ts#L176)
 
 ___
 
@@ -62,7 +62,7 @@ Removes an event listener
 
 #### Defined in
 
-[embed/IVbrickApi.ts:171](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/IVbrickApi.ts#L171)
+[embed/IVbrickApi.ts:171](https://github.com/vbrick/rev-sdk-js/blob/e325589/src/embed/IVbrickApi.ts#L171)
 
 ___
 
@@ -85,7 +85,7 @@ Fired when iframe has loaded
 
 #### Defined in
 
-[embed/IVbrickApi.ts:154](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/IVbrickApi.ts#L154)
+[embed/IVbrickApi.ts:154](https://github.com/vbrick/rev-sdk-js/blob/e325589/src/embed/IVbrickApi.ts#L154)
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -104,7 +104,7 @@ Fired if there is an error
 
 #### Defined in
 
-[embed/IVbrickApi.ts:159](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/IVbrickApi.ts#L159)
+[embed/IVbrickApi.ts:159](https://github.com/vbrick/rev-sdk-js/blob/e325589/src/embed/IVbrickApi.ts#L159)
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -123,7 +123,7 @@ Register an event handler. Events are fired at different lifecycle stages of the
 
 #### Defined in
 
-[embed/IVbrickApi.ts:166](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/IVbrickApi.ts#L166)
+[embed/IVbrickApi.ts:166](https://github.com/vbrick/rev-sdk-js/blob/e325589/src/embed/IVbrickApi.ts#L166)
 
 ___
 
@@ -145,4 +145,4 @@ Allows updating the access token if the old one has expired.
 
 #### Defined in
 
-[embed/IVbrickApi.ts:182](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/IVbrickApi.ts#L182)
+[embed/IVbrickApi.ts:182](https://github.com/vbrick/rev-sdk-js/blob/e325589/src/embed/IVbrickApi.ts#L182)

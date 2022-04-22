@@ -21,7 +21,7 @@
 
 #### Defined in
 
-[embed/IVbrickApi.ts:189](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/IVbrickApi.ts#L189)
+[embed/IVbrickApi.ts:189](https://github.com/vbrick/rev-sdk-js/blob/e325589/src/embed/IVbrickApi.ts#L189)
 
 ___
 
@@ -31,4 +31,4 @@ ___
 
 #### Defined in
 
-[embed/IVbrickApi.ts:190](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/IVbrickApi.ts#L190)
+[embed/IVbrickApi.ts:190](https://github.com/vbrick/rev-sdk-js/blob/e325589/src/embed/IVbrickApi.ts#L190)

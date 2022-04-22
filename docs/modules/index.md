@@ -15,9 +15,12 @@ A javascript SDK for embedding or calling rev APIs
 - [IVideoInfo](index.md#ivideoinfo)
 - [PlayerStatus](index.md#playerstatus)
 - [TokenType](index.md#tokentype)
+- [VbrickBaseEmbedConfig](index.md#vbrickbaseembedconfig)
 - [VbrickEmbedConfig](index.md#vbrickembedconfig)
 - [VbrickSDKConfig](index.md#vbricksdkconfig)
 - [VbrickSDKToken](index.md#vbricksdktoken)
+- [VbrickVideoEmbedConfig](index.md#vbrickvideoembedconfig)
+- [VbrickWebcastEmbedConfig](index.md#vbrickwebcastembedconfig)
 - [WebcastStatus](index.md#webcaststatus)
 - [embedVideo](index.md#embedvideo)
 - [embedWebcast](index.md#embedwebcast)
@@ -70,9 +73,15 @@ Re-exports [TokenType](../enums/VbrickSDK.TokenType.md)
 
 ___
 
+### VbrickBaseEmbedConfig
+
+Re-exports [VbrickBaseEmbedConfig](../interfaces/embed_VbrickEmbedConfig.VbrickBaseEmbedConfig.md)
+
+___
+
 ### VbrickEmbedConfig
 
-Re-exports [VbrickEmbedConfig](../interfaces/embed_VbrickEmbedConfig.VbrickEmbedConfig.md)
+Re-exports [VbrickEmbedConfig](embed_VbrickEmbedConfig.md#vbrickembedconfig)
 
 ___
 
@@ -85,6 +94,18 @@ ___
 ### VbrickSDKToken
 
 Re-exports [VbrickSDKToken](../interfaces/VbrickSDK.VbrickSDKToken.md)
+
+___
+
+### VbrickVideoEmbedConfig
+
+Re-exports [VbrickVideoEmbedConfig](../interfaces/embed_VbrickEmbedConfig.VbrickVideoEmbedConfig.md)
+
+___
+
+### VbrickWebcastEmbedConfig
+
+Re-exports [VbrickWebcastEmbedConfig](../interfaces/embed_VbrickEmbedConfig.VbrickWebcastEmbedConfig.md)
 
 ___
 
@@ -114,9 +135,9 @@ Re-exports [embedWebcast](embed_EmbedWebcast.md#embedwebcast)
 
 | Name | Type |
 | :------ | :------ |
-| `embedVideo` | (`element`: `string` \| `HTMLElement`, `videoId`: `string`, `config`: [`VbrickEmbedConfig`](../interfaces/embed_VbrickEmbedConfig.VbrickEmbedConfig.md)) => [`IVbrickVideoEmbed`](../interfaces/embed_IVbrickApi.IVbrickVideoEmbed.md) |
-| `embedWebcast` | (`element`: `string` \| `HTMLElement`, `webcastId`: `string`, `config`: [`VbrickEmbedConfig`](../interfaces/embed_VbrickEmbedConfig.VbrickEmbedConfig.md)) => [`IVbrickWebcastEmbed`](../interfaces/embed_IVbrickApi.IVbrickWebcastEmbed.md) |
+| `embedVideo` | (`element`: `string` \| `HTMLElement`, `videoId`: `string`, `config`: [`VbrickVideoEmbedConfig`](../interfaces/embed_VbrickEmbedConfig.VbrickVideoEmbedConfig.md)) => [`IVbrickVideoEmbed`](../interfaces/embed_IVbrickApi.IVbrickVideoEmbed.md) |
+| `embedWebcast` | (`element`: `string` \| `HTMLElement`, `webcastId`: `string`, `config`: [`VbrickWebcastEmbedConfig`](../interfaces/embed_VbrickEmbedConfig.VbrickWebcastEmbedConfig.md)) => [`IVbrickWebcastEmbed`](../interfaces/embed_IVbrickApi.IVbrickWebcastEmbed.md) |
 
 #### Defined in
 
-[index.ts:20](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/index.ts#L20)
+[index.ts:20](https://github.com/vbrick/rev-sdk-js/blob/e325589/src/index.ts#L20)
