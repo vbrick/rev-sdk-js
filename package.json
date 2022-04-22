@@ -13,6 +13,7 @@
     "not IE 11"
   ],
   "scripts": {
+    "prepublishOnly": "(npm run build) && (npm run dts)",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node --max_old_space_size=4096 node_modules/webpack/bin/webpack --config ./webpack.config.js --progress",
     "build:watch": "node --max_old_space_size=4096 node_modules/webpack/bin/webpack --config ./webpack.config.js --progress --watch",
