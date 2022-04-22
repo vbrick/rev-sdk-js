@@ -2,7 +2,7 @@ import { EventBus, IListener } from './EventBus';
 import { VbrickEmbedConfig } from './VbrickEmbedConfig';
 import { getLogger, ILogger } from '../Log';
 import { IVbrickBaseEmbed } from './IVbrickApi';
-import { VbrickSDKToken } from 'src/VbrickSDK';
+import { VbrickSDKToken } from '../VbrickSDK';
 
 /**
  * Base class for embedded content.
