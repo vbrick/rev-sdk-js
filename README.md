@@ -89,15 +89,13 @@ webcast.on('broadcastStarted', function() {
 You can stop listening for the events using .off(). See example below
 
 ~~~
-webcast.off('broadcastStarted', function() {
-  // handle this event
-});
+webcast.off('broadcastStarted', handlerFunction);
 ~~~
 
 ##### Get Webcast Status
 You can get the status of the webcast using status variable. See example below
 
-`var sts = webcast.status();`
+`const webcastStatus = webcast.webcastStatus;`
 
 #### Webcast Status Values
 * Broadcasting
@@ -137,15 +135,15 @@ const vbrickEmbed = revSdk.embedVideo('#embed', videoId, {
 Use the .on method to watch for events about the video:
 
 ```
-const videoLoaded = console.log(`Video loaded: ${JSON.stringify(data)}`);
+const onVideoLoaded = data => console.log(`Video loaded: ${JSON.stringify(data)}`);
 
-vbrickEmbed.on('videoLoaded', videoLoaded);
+vbrickEmbed.on('videoLoaded', onVideoLoaded);
 ```
 
 Use the .off method to stop listening for events:
 
 ```
-vbrickEmbed.off('videoLoaded', videoLoaded);
+vbrickEmbed.off('videoLoaded', onVideoLoaded);
 ```
 
 ##### Control the player using external commands:

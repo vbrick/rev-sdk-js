@@ -1,9 +1,12 @@
-import { VbrickSDKConfig } from "src/VbrickSDK";
+import { VbrickSDKConfig } from "../VbrickSDK";
 
 export interface IListener {
 	(e: any): void;
 }
 
+/**
+ * @internal
+ */
 export class EventBus {
 	private win: Window;
 	private msgListener: (e: MessageEvent) => void;

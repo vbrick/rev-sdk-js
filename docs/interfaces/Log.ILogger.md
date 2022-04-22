@@ -30,7 +30,7 @@
 
 #### Defined in
 
-[Log.ts:5](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/Log.ts#L5)
+[Log.ts:5](https://github.com/vbrick/rev-sdk-js/blob/e325589/src/Log.ts#L5)
 
 ___
 
@@ -51,4 +51,4 @@ ___
 
 #### Defined in
 
-[Log.ts:4](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/Log.ts#L4)
+[Log.ts:4](https://github.com/vbrick/rev-sdk-js/blob/e325589/src/Log.ts#L4)

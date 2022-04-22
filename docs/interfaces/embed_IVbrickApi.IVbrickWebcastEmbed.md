@@ -37,7 +37,7 @@ Indicates whether the webcast is started, or broadcasting.
 
 #### Defined in
 
-[embed/IVbrickApi.ts:114](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/IVbrickApi.ts#L114)
+[embed/IVbrickApi.ts:114](https://github.com/vbrick/rev-sdk-js/blob/e325589/src/embed/IVbrickApi.ts#L114)
 
 ## Methods
 
@@ -57,7 +57,7 @@ Removes the embedded content from the DOM.
 
 #### Defined in
 
-[embed/IVbrickApi.ts:176](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/IVbrickApi.ts#L176)
+[embed/IVbrickApi.ts:176](https://github.com/vbrick/rev-sdk-js/blob/e325589/src/embed/IVbrickApi.ts#L176)
 
 ___
 
@@ -84,7 +84,7 @@ Removes an event listener
 
 #### Defined in
 
-[embed/IVbrickApi.ts:171](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/IVbrickApi.ts#L171)
+[embed/IVbrickApi.ts:171](https://github.com/vbrick/rev-sdk-js/blob/e325589/src/embed/IVbrickApi.ts#L171)
 
 ___
 
@@ -111,7 +111,7 @@ Fired on initial load
 
 #### Defined in
 
-[embed/IVbrickApi.ts:119](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/IVbrickApi.ts#L119)
+[embed/IVbrickApi.ts:119](https://github.com/vbrick/rev-sdk-js/blob/e325589/src/embed/IVbrickApi.ts#L119)
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -134,7 +134,7 @@ Fired when the webcast starts broadcasting.
 
 #### Defined in
 
-[embed/IVbrickApi.ts:124](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/IVbrickApi.ts#L124)
+[embed/IVbrickApi.ts:124](https://github.com/vbrick/rev-sdk-js/blob/e325589/src/embed/IVbrickApi.ts#L124)
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -157,7 +157,7 @@ Fired when the webcast stops broadcasting.
 
 #### Defined in
 
-[embed/IVbrickApi.ts:129](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/IVbrickApi.ts#L129)
+[embed/IVbrickApi.ts:129](https://github.com/vbrick/rev-sdk-js/blob/e325589/src/embed/IVbrickApi.ts#L129)
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -182,7 +182,7 @@ IVbrickBaseEmbed.on
 
 #### Defined in
 
-[embed/IVbrickApi.ts:136](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/IVbrickApi.ts#L136)
+[embed/IVbrickApi.ts:136](https://github.com/vbrick/rev-sdk-js/blob/e325589/src/embed/IVbrickApi.ts#L136)
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -205,7 +205,7 @@ IVbrickBaseEmbed.on
 
 #### Defined in
 
-[embed/IVbrickApi.ts:141](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/IVbrickApi.ts#L141)
+[embed/IVbrickApi.ts:141](https://github.com/vbrick/rev-sdk-js/blob/e325589/src/embed/IVbrickApi.ts#L141)
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -226,7 +226,7 @@ IVbrickBaseEmbed.on
 
 #### Defined in
 
-[embed/IVbrickApi.ts:143](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/IVbrickApi.ts#L143)
+[embed/IVbrickApi.ts:143](https://github.com/vbrick/rev-sdk-js/blob/e325589/src/embed/IVbrickApi.ts#L143)
 
 ___
 
@@ -252,4 +252,4 @@ Allows updating the access token if the old one has expired.
 
 #### Defined in
 
-[embed/IVbrickApi.ts:182](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/IVbrickApi.ts#L182)
+[embed/IVbrickApi.ts:182](https://github.com/vbrick/rev-sdk-js/blob/e325589/src/embed/IVbrickApi.ts#L182)
