@@ -14,6 +14,10 @@ Base class for embedded content.
 
   ↳ [`VbrickWebcastEmbed`](embed_VbrickWebcastEmbed.VbrickWebcastEmbed.md)
 
+## Implements
+
+- [`IVbrickBaseEmbed`](../interfaces/embed_IVbrickApi.IVbrickBaseEmbed.md)
+
 ## Table of contents
 
 ### Constructors
@@ -40,6 +44,7 @@ Base class for embedded content.
 - [off](embed_VbrickEmbed.VbrickEmbed.md#off)
 - [on](embed_VbrickEmbed.VbrickEmbed.md#on)
 - [render](embed_VbrickEmbed.VbrickEmbed.md#render)
+- [updateToken](embed_VbrickEmbed.VbrickEmbed.md#updatetoken)
 
 ## Constructors
 
@@ -57,7 +62,7 @@ Base class for embedded content.
 
 #### Defined in
 
-[embed/VbrickEmbed.ts:16](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/VbrickEmbed.ts#L16)
+[embed/VbrickEmbed.ts:18](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickEmbed.ts#L18)
 
 ## Properties
 
@@ -79,7 +84,7 @@ ___
 
 #### Defined in
 
-[embed/VbrickEmbed.ts:11](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/VbrickEmbed.ts#L11)
+[embed/VbrickEmbed.ts:13](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickEmbed.ts#L13)
 
 ___
 
@@ -89,7 +94,7 @@ ___
 
 #### Defined in
 
-[embed/VbrickEmbed.ts:10](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/VbrickEmbed.ts#L10)
+[embed/VbrickEmbed.ts:12](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickEmbed.ts#L12)
 
 ___
 
@@ -105,7 +110,7 @@ ___
 
 #### Defined in
 
-[embed/VbrickEmbed.ts:12](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/VbrickEmbed.ts#L12)
+[embed/VbrickEmbed.ts:14](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickEmbed.ts#L14)
 
 ___
 
@@ -115,7 +120,7 @@ ___
 
 #### Defined in
 
-[embed/VbrickEmbed.ts:14](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/VbrickEmbed.ts#L14)
+[embed/VbrickEmbed.ts:16](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickEmbed.ts#L16)
 
 ___
 
@@ -125,7 +130,7 @@ ___
 
 #### Defined in
 
-[embed/VbrickEmbed.ts:13](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/VbrickEmbed.ts#L13)
+[embed/VbrickEmbed.ts:15](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickEmbed.ts#L15)
 
 ## Methods
 
@@ -133,13 +138,19 @@ ___
 
 ▸ **destroy**(): `void`
 
+Removes the embedded content from the DOM.
+
 #### Returns
 
 `void`
 
+#### Implementation of
+
+[IVbrickBaseEmbed](../interfaces/embed_IVbrickApi.IVbrickBaseEmbed.md).[destroy](../interfaces/embed_IVbrickApi.IVbrickBaseEmbed.md#destroy)
+
 #### Defined in
 
-[embed/VbrickEmbed.ts:82](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/VbrickEmbed.ts#L82)
+[embed/VbrickEmbed.ts:85](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickEmbed.ts#L85)
 
 ___
 
@@ -156,7 +167,7 @@ If there was a problem loading the content, or a problem with the token, the pro
 
 #### Defined in
 
-[embed/VbrickEmbed.ts:28](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/VbrickEmbed.ts#L28)
+[embed/VbrickEmbed.ts:30](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickEmbed.ts#L30)
 
 ___
 
@@ -170,7 +181,7 @@ ___
 
 #### Defined in
 
-[embed/VbrickEmbed.ts:54](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/VbrickEmbed.ts#L54)
+[embed/VbrickEmbed.ts:56](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickEmbed.ts#L56)
 
 ___
 
@@ -184,7 +195,7 @@ ___
 
 #### Defined in
 
-[embed/VbrickEmbed.ts:53](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/VbrickEmbed.ts#L53)
+[embed/VbrickEmbed.ts:55](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickEmbed.ts#L55)
 
 ___
 
@@ -192,6 +203,8 @@ ___
 
 ▸ **off**(`event`, `listener`): `void`
 
+Removes an event listener
+
 #### Parameters
 
 | Name | Type |
@@ -203,9 +216,13 @@ ___
 
 `void`
 
+#### Implementation of
+
+[IVbrickBaseEmbed](../interfaces/embed_IVbrickApi.IVbrickBaseEmbed.md).[off](../interfaces/embed_IVbrickApi.IVbrickBaseEmbed.md#off)
+
 #### Defined in
 
-[embed/VbrickEmbed.ts:60](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/VbrickEmbed.ts#L60)
+[embed/VbrickEmbed.ts:63](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickEmbed.ts#L63)
 
 ___
 
@@ -213,6 +230,8 @@ ___
 
 ▸ **on**(`event`, `listener`): `void`
 
+Fired when iframe has loaded
+
 #### Parameters
 
 | Name | Type |
@@ -224,9 +243,13 @@ ___
 
 `void`
 
+#### Implementation of
+
+[IVbrickBaseEmbed](../interfaces/embed_IVbrickApi.IVbrickBaseEmbed.md).[on](../interfaces/embed_IVbrickApi.IVbrickBaseEmbed.md#on)
+
 #### Defined in
 
-[embed/VbrickEmbed.ts:56](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/VbrickEmbed.ts#L56)
+[embed/VbrickEmbed.ts:58](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickEmbed.ts#L58)
 
 ___
 
@@ -240,4 +263,30 @@ ___
 
 #### Defined in
 
-[embed/VbrickEmbed.ts:64](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/VbrickEmbed.ts#L64)
+[embed/VbrickEmbed.ts:67](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickEmbed.ts#L67)
+
+___
+
+### updateToken
+
+▸ **updateToken**(`newToken`): `void`
+
+Allows updating the access token if the old one has expired.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `newToken` | [`VbrickSDKToken`](../interfaces/VbrickSDK.VbrickSDKToken.md) |
+
+#### Returns
+
+`void`
+
+#### Implementation of
+
+[IVbrickBaseEmbed](../interfaces/embed_IVbrickApi.IVbrickBaseEmbed.md).[updateToken](../interfaces/embed_IVbrickApi.IVbrickBaseEmbed.md#updatetoken)
+
+#### Defined in
+
+[embed/VbrickEmbed.ts:92](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/VbrickEmbed.ts#L92)
