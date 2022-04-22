@@ -6,11 +6,12 @@ import { resolveConfig } from '../Config';
 
 
 /**
- *
- * @param element Container element where the embed content will be rendered. Either an HTMLElement or a CSS Selector string.
- * @param videoId
- * @param config
- * @returns
+ * Embed a VOD/video on a page, with optional token-based authentication. Returns a VbrickEmbed object for interacting with playback and receiving events.
+ * @public
+ * @param element - Container element where the embed content will be rendered. Either an HTMLElement or a CSS Selector string.
+ * @param videoId - ID of the video to embed
+ * @param config - A configuration object
+ * @returns An {@link IVbrickVideoEmbed} object
  */
 export function embedVideo(
 	element: HTMLElement | string,

@@ -8,11 +8,91 @@ A javascript SDK for embedding or calling rev APIs
 
 ### References
 
+- [ICaptionSettings](index.md#icaptionsettings)
+- [IVbrickBaseEmbed](index.md#ivbrickbaseembed)
+- [IVbrickVideoEmbed](index.md#ivbrickvideoembed)
+- [IVbrickWebcastEmbed](index.md#ivbrickwebcastembed)
+- [IVideoInfo](index.md#ivideoinfo)
+- [PlayerStatus](index.md#playerstatus)
+- [TokenType](index.md#tokentype)
+- [VbrickEmbedConfig](index.md#vbrickembedconfig)
+- [VbrickSDKConfig](index.md#vbricksdkconfig)
+- [VbrickSDKToken](index.md#vbricksdktoken)
+- [WebcastStatus](index.md#webcaststatus)
 - [embedVideo](index.md#embedvideo)
 - [embedWebcast](index.md#embedwebcast)
-- [setDefaultConfig](index.md#setdefaultconfig)
+
+### Variables
+
+- [default](index.md#default)
 
 ## References
+
+### ICaptionSettings
+
+Re-exports [ICaptionSettings](../interfaces/embed_IVbrickApi.ICaptionSettings.md)
+
+___
+
+### IVbrickBaseEmbed
+
+Re-exports [IVbrickBaseEmbed](../interfaces/embed_IVbrickApi.IVbrickBaseEmbed.md)
+
+___
+
+### IVbrickVideoEmbed
+
+Re-exports [IVbrickVideoEmbed](../interfaces/embed_IVbrickApi.IVbrickVideoEmbed.md)
+
+___
+
+### IVbrickWebcastEmbed
+
+Re-exports [IVbrickWebcastEmbed](../interfaces/embed_IVbrickApi.IVbrickWebcastEmbed.md)
+
+___
+
+### IVideoInfo
+
+Re-exports [IVideoInfo](../interfaces/embed_IVbrickApi.IVideoInfo.md)
+
+___
+
+### PlayerStatus
+
+Re-exports [PlayerStatus](../enums/embed_PlayerStatus.PlayerStatus.md)
+
+___
+
+### TokenType
+
+Re-exports [TokenType](../enums/VbrickSDK.TokenType.md)
+
+___
+
+### VbrickEmbedConfig
+
+Re-exports [VbrickEmbedConfig](../interfaces/embed_VbrickEmbedConfig.VbrickEmbedConfig.md)
+
+___
+
+### VbrickSDKConfig
+
+Re-exports [VbrickSDKConfig](../interfaces/VbrickSDK.VbrickSDKConfig.md)
+
+___
+
+### VbrickSDKToken
+
+Re-exports [VbrickSDKToken](../interfaces/VbrickSDK.VbrickSDKToken.md)
+
+___
+
+### WebcastStatus
+
+Re-exports [WebcastStatus](../enums/embed_WebcastStatus.WebcastStatus.md)
+
+___
 
 ### embedVideo
 
@@ -24,8 +104,19 @@ ___
 
 Re-exports [embedWebcast](embed_EmbedWebcast.md#embedwebcast)
 
-___
+## Variables
 
-### setDefaultConfig
+### default
 
-Re-exports [setDefaultConfig](Config.md#setdefaultconfig)
+• `Const` **default**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `embedVideo` | (`element`: `string` \| `HTMLElement`, `videoId`: `string`, `config`: [`VbrickEmbedConfig`](../interfaces/embed_VbrickEmbedConfig.VbrickEmbedConfig.md)) => [`IVbrickVideoEmbed`](../interfaces/embed_IVbrickApi.IVbrickVideoEmbed.md) |
+| `embedWebcast` | (`element`: `string` \| `HTMLElement`, `webcastId`: `string`, `config`: [`VbrickEmbedConfig`](../interfaces/embed_VbrickEmbedConfig.VbrickEmbedConfig.md)) => [`IVbrickWebcastEmbed`](../interfaces/embed_IVbrickApi.IVbrickWebcastEmbed.md) |
+
+#### Defined in
+
+[index.ts:20](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/index.ts#L20)

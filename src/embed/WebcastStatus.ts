@@ -1,3 +1,6 @@
+/**
+ * @public
+ */
 export enum WebcastStatus {
 	/**
 	 * Embedded webcast is authenticating

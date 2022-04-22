@@ -4,6 +4,8 @@
 
 [embed/IVbrickApi](../modules/embed_IVbrickApi.md).ICaptionSettings
 
+**`beta`**
+
 ## Table of contents
 
 ### Properties
@@ -19,7 +21,7 @@
 
 #### Defined in
 
-[embed/IVbrickApi.ts:150](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/IVbrickApi.ts#L150)
+[embed/IVbrickApi.ts:189](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/IVbrickApi.ts#L189)
 
 ___
 
@@ -29,4 +31,4 @@ ___
 
 #### Defined in
 
-[embed/IVbrickApi.ts:151](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/IVbrickApi.ts#L151)
+[embed/IVbrickApi.ts:190](https://github.com/vbrick/rev-sdk-js/blob/cac113d/src/embed/IVbrickApi.ts#L190)

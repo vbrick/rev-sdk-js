@@ -1,20 +1,24 @@
 {
   "name": "@vbrick/rev-sdk",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Client SDK for Vbrick Rev",
+  "author": "Vbrick Systems",
+  "repository": "github:vbrick/rev-sdk-js",
+  "type": "module",
+  "module": "dist/rev-sdk.esm.js",
   "browser": "dist/rev-sdk.js",
+  "types": "dist/index.d.ts",
   "browserslist": [
     "defaults",
     "not IE 11"
   ],
-  "types": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node --max_old_space_size=4096 node_modules/webpack/bin/webpack --config ./webpack.config.js --progress",
     "build:watch": "node --max_old_space_size=4096 node_modules/webpack/bin/webpack --config ./webpack.config.js --progress --watch",
+    "dts": "npx @microsoft/api-extractor run",
     "doc": "npx typedoc --readme none"
   },
-  "author": "",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.14.0",

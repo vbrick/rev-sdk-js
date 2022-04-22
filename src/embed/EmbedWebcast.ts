@@ -6,10 +6,11 @@ import { VbrickEmbedConfig } from './VbrickEmbedConfig';
 
 /**
  * Embeds a webcast on the page
- * @param element  Either a CSS selector string or HTML Element where the embed content will be rendered
- * @param webcastId
- * @param config A configuration object
- * @returns An {@linkcode VbrickWebcastEmbed} object
+ * @public
+ * @param element - Either a CSS selector string or HTML Element where the embed content will be rendered
+ * @param webcastId - ID of the webcast to embed
+ * @param config - A configuration object
+ * @returns An {@link IVbrickWebcastEmbed} object
  *
  * @example
  * Embedding a webcast:
