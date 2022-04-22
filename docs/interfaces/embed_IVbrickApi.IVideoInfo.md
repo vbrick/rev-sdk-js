@@ -4,6 +4,8 @@
 
 [embed/IVbrickApi](../modules/embed_IVbrickApi.md).IVideoInfo
 
+**`beta`**
+
 ## Table of contents
 
 ### Properties
@@ -20,7 +22,7 @@
 
 #### Defined in
 
-[embed/IVbrickApi.ts:157](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/IVbrickApi.ts#L157)
+[embed/IVbrickApi.ts:199](https://github.com/vbrick/rev-sdk-js/blob/a752b53/src/embed/IVbrickApi.ts#L199)
 
 ___
 
@@ -30,7 +32,7 @@ ___
 
 #### Defined in
 
-[embed/IVbrickApi.ts:155](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/IVbrickApi.ts#L155)
+[embed/IVbrickApi.ts:197](https://github.com/vbrick/rev-sdk-js/blob/a752b53/src/embed/IVbrickApi.ts#L197)
 
 ___
 
@@ -40,4 +42,4 @@ ___
 
 #### Defined in
 
-[embed/IVbrickApi.ts:156](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/IVbrickApi.ts#L156)
+[embed/IVbrickApi.ts:198](https://github.com/vbrick/rev-sdk-js/blob/a752b53/src/embed/IVbrickApi.ts#L198)

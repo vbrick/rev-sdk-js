@@ -18,25 +18,26 @@
 
 ### Properties
 
-- [status](embed_IVbrickApi.IVbrickWebcastEmbed.md#status)
+- [webcastStatus](embed_IVbrickApi.IVbrickWebcastEmbed.md#webcaststatus)
 
 ### Methods
 
 - [destroy](embed_IVbrickApi.IVbrickWebcastEmbed.md#destroy)
 - [off](embed_IVbrickApi.IVbrickWebcastEmbed.md#off)
 - [on](embed_IVbrickApi.IVbrickWebcastEmbed.md#on)
+- [updateToken](embed_IVbrickApi.IVbrickWebcastEmbed.md#updatetoken)
 
 ## Properties
 
-### status
+### webcastStatus
 
-• `Readonly` **status**: [`WebcastStatus`](../enums/embed_WebcastStatus.WebcastStatus.md)
+• `Readonly` **webcastStatus**: [`WebcastStatus`](../enums/embed_WebcastStatus.WebcastStatus.md)
 
 Indicates whether the webcast is started, or broadcasting.
 
 #### Defined in
 
-[embed/IVbrickApi.ts:51](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/IVbrickApi.ts#L51)
+[embed/IVbrickApi.ts:114](https://github.com/vbrick/rev-sdk-js/blob/a752b53/src/embed/IVbrickApi.ts#L114)
 
 ## Methods
 
@@ -56,7 +57,7 @@ Removes the embedded content from the DOM.
 
 #### Defined in
 
-[embed/IVbrickApi.ts:146](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/IVbrickApi.ts#L146)
+[embed/IVbrickApi.ts:176](https://github.com/vbrick/rev-sdk-js/blob/a752b53/src/embed/IVbrickApi.ts#L176)
 
 ___
 
@@ -83,7 +84,7 @@ Removes an event listener
 
 #### Defined in
 
-[embed/IVbrickApi.ts:141](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/IVbrickApi.ts#L141)
+[embed/IVbrickApi.ts:171](https://github.com/vbrick/rev-sdk-js/blob/a752b53/src/embed/IVbrickApi.ts#L171)
 
 ___
 
@@ -91,7 +92,122 @@ ___
 
 ▸ **on**(`event`, `listener`): `void`
 
-Register an event handler. Events are fired at different lifecycle stages of the webcast
+Fired on initial load
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `event` | ``"webcastLoaded"`` |
+| `listener` | (`event`: { `status`: [`WebcastStatus`](../enums/embed_WebcastStatus.WebcastStatus.md)  }) => `void` |
+
+#### Returns
+
+`void`
+
+#### Overrides
+
+[IVbrickBaseEmbed](embed_IVbrickApi.IVbrickBaseEmbed.md).[on](embed_IVbrickApi.IVbrickBaseEmbed.md#on)
+
+#### Defined in
+
+[embed/IVbrickApi.ts:119](https://github.com/vbrick/rev-sdk-js/blob/a752b53/src/embed/IVbrickApi.ts#L119)
+
+▸ **on**(`event`, `listener`): `void`
+
+Fired when the webcast starts broadcasting.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `event` | ``"broadcastStarted"`` |
+| `listener` | (`event`: { `status`: [`Broadcasting`](../enums/embed_WebcastStatus.WebcastStatus.md#broadcasting)  }) => `void` |
+
+#### Returns
+
+`void`
+
+#### Overrides
+
+[IVbrickBaseEmbed](embed_IVbrickApi.IVbrickBaseEmbed.md).[on](embed_IVbrickApi.IVbrickBaseEmbed.md#on)
+
+#### Defined in
+
+[embed/IVbrickApi.ts:124](https://github.com/vbrick/rev-sdk-js/blob/a752b53/src/embed/IVbrickApi.ts#L124)
+
+▸ **on**(`event`, `listener`): `void`
+
+Fired when the webcast stops broadcasting.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `event` | ``"broadcastStopped"`` |
+| `listener` | (`event`: { `status`: [`Completed`](../enums/embed_WebcastStatus.WebcastStatus.md#completed)  }) => `void` |
+
+#### Returns
+
+`void`
+
+#### Overrides
+
+[IVbrickBaseEmbed](embed_IVbrickApi.IVbrickBaseEmbed.md).[on](embed_IVbrickApi.IVbrickBaseEmbed.md#on)
+
+#### Defined in
+
+[embed/IVbrickApi.ts:129](https://github.com/vbrick/rev-sdk-js/blob/a752b53/src/embed/IVbrickApi.ts#L129)
+
+▸ **on**(`event`, `listener`): `void`
+
+Fired when the webcast starts.
+
+isPreProduction: boolean, Indicates that the webcast is running in pre-production mode, and is not started publicly.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `event` | ``"webastStarted"`` |
+| `listener` | (`event`: { `isPreProduction`: `boolean` ; `status`: [`InProgress`](../enums/embed_WebcastStatus.WebcastStatus.md#inprogress)  }) => `void` |
+
+#### Returns
+
+`void`
+
+#### Overrides
+
+IVbrickBaseEmbed.on
+
+#### Defined in
+
+[embed/IVbrickApi.ts:136](https://github.com/vbrick/rev-sdk-js/blob/a752b53/src/embed/IVbrickApi.ts#L136)
+
+▸ **on**(`event`, `listener`): `void`
+
+Fired when the webcast ends.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `event` | ``"webcastEnded"`` |
+| `listener` | (`event`: { `status`: [`Completed`](../enums/embed_WebcastStatus.WebcastStatus.md#completed)  }) => `void` |
+
+#### Returns
+
+`void`
+
+#### Overrides
+
+IVbrickBaseEmbed.on
+
+#### Defined in
+
+[embed/IVbrickApi.ts:141](https://github.com/vbrick/rev-sdk-js/blob/a752b53/src/embed/IVbrickApi.ts#L141)
+
+▸ **on**(`event`, `listener`): `void`
 
 #### Parameters
 
@@ -106,102 +222,34 @@ Register an event handler. Events are fired at different lifecycle stages of the
 
 #### Overrides
 
-[IVbrickBaseEmbed](embed_IVbrickApi.IVbrickBaseEmbed.md).[on](embed_IVbrickApi.IVbrickBaseEmbed.md#on)
+IVbrickBaseEmbed.on
 
 #### Defined in
 
-[embed/IVbrickApi.ts:58](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/IVbrickApi.ts#L58)
+[embed/IVbrickApi.ts:143](https://github.com/vbrick/rev-sdk-js/blob/a752b53/src/embed/IVbrickApi.ts#L143)
 
-▸ **on**(`event`, `listener`): `void`
+___
 
-Fired when the webcast starts broadcasting.
+### updateToken
+
+▸ **updateToken**(`token`): `void`
+
+Allows updating the access token if the old one has expired.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `event` | ``"broadcastStarted"`` |
-| `listener` | () => `void` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `token` | [`VbrickSDKToken`](VbrickSDK.VbrickSDKToken.md) | New token |
 
 #### Returns
 
 `void`
 
-#### Overrides
+#### Inherited from
 
-[IVbrickBaseEmbed](embed_IVbrickApi.IVbrickBaseEmbed.md).[on](embed_IVbrickApi.IVbrickBaseEmbed.md#on)
-
-#### Defined in
-
-[embed/IVbrickApi.ts:63](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/IVbrickApi.ts#L63)
-
-▸ **on**(`event`, `listener`): `void`
-
-Fired when the webcast stops broadcasting.
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `event` | ``"broadcastStopped"`` |
-| `listener` | () => `void` |
-
-#### Returns
-
-`void`
-
-#### Overrides
-
-[IVbrickBaseEmbed](embed_IVbrickApi.IVbrickBaseEmbed.md).[on](embed_IVbrickApi.IVbrickBaseEmbed.md#on)
+[IVbrickBaseEmbed](embed_IVbrickApi.IVbrickBaseEmbed.md).[updateToken](embed_IVbrickApi.IVbrickBaseEmbed.md#updatetoken)
 
 #### Defined in
 
-[embed/IVbrickApi.ts:68](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/IVbrickApi.ts#L68)
-
-▸ **on**(`event`, `listener`): `void`
-
-Fired when the webcast starts.
-
-isPreProduction: boolean, Indicates that the webcast is running in pre-production mode, and is not started publicly.
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `event` | ``"webastStarted"`` |
-| `listener` | (`event`: { `isPreProduction`: `boolean`  }) => `void` |
-
-#### Returns
-
-`void`
-
-#### Overrides
-
-[IVbrickBaseEmbed](embed_IVbrickApi.IVbrickBaseEmbed.md).[on](embed_IVbrickApi.IVbrickBaseEmbed.md#on)
-
-#### Defined in
-
-[embed/IVbrickApi.ts:75](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/IVbrickApi.ts#L75)
-
-▸ **on**(`event`, `listener`): `void`
-
-Fired when the webcast ends.
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `event` | ``"webcastEnded"`` |
-| `listener` | () => `void` |
-
-#### Returns
-
-`void`
-
-#### Overrides
-
-[IVbrickBaseEmbed](embed_IVbrickApi.IVbrickBaseEmbed.md).[on](embed_IVbrickApi.IVbrickBaseEmbed.md#on)
-
-#### Defined in
-
-[embed/IVbrickApi.ts:80](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/IVbrickApi.ts#L80)
+[embed/IVbrickApi.ts:182](https://github.com/vbrick/rev-sdk-js/blob/a752b53/src/embed/IVbrickApi.ts#L182)

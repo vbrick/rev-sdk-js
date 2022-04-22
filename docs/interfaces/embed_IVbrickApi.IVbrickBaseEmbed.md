@@ -12,6 +12,10 @@
 
   ↳ [`IVbrickWebcastEmbed`](embed_IVbrickApi.IVbrickWebcastEmbed.md)
 
+## Implemented by
+
+- [`VbrickEmbed`](../classes/embed_VbrickEmbed.VbrickEmbed.md)
+
 ## Table of contents
 
 ### Methods
@@ -19,6 +23,7 @@
 - [destroy](embed_IVbrickApi.IVbrickBaseEmbed.md#destroy)
 - [off](embed_IVbrickApi.IVbrickBaseEmbed.md#off)
 - [on](embed_IVbrickApi.IVbrickBaseEmbed.md#on)
+- [updateToken](embed_IVbrickApi.IVbrickBaseEmbed.md#updatetoken)
 
 ## Methods
 
@@ -34,7 +39,7 @@ Removes the embedded content from the DOM.
 
 #### Defined in
 
-[embed/IVbrickApi.ts:146](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/IVbrickApi.ts#L146)
+[embed/IVbrickApi.ts:176](https://github.com/vbrick/rev-sdk-js/blob/a752b53/src/embed/IVbrickApi.ts#L176)
 
 ___
 
@@ -57,7 +62,7 @@ Removes an event listener
 
 #### Defined in
 
-[embed/IVbrickApi.ts:141](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/IVbrickApi.ts#L141)
+[embed/IVbrickApi.ts:171](https://github.com/vbrick/rev-sdk-js/blob/a752b53/src/embed/IVbrickApi.ts#L171)
 
 ___
 
@@ -65,14 +70,14 @@ ___
 
 ▸ **on**(`event`, `listener`): `void`
 
-Fires when the video metadata is loaded
+Fired when iframe has loaded
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `event` | ``"videoLoaded"`` |
-| `listener` | (`event`: `any`) => `void` |
+| `event` | ``"load"`` |
+| `listener` | (`event`: `undefined`) => `void` |
 
 #### Returns
 
@@ -80,102 +85,7 @@ Fires when the video metadata is loaded
 
 #### Defined in
 
-[embed/IVbrickApi.ts:90](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/IVbrickApi.ts#L90)
-
-▸ **on**(`event`, `listener`): `void`
-
-Fired if the player volume changes
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `event` | ``"volumeChanged"`` |
-| `listener` | (`__namedParameters`: `Object`) => `void` |
-
-#### Returns
-
-`void`
-
-#### Defined in
-
-[embed/IVbrickApi.ts:96](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/IVbrickApi.ts#L96)
-
-▸ **on**(`event`, `listener`): `void`
-
-Fired when the player status changes
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `event` | ``"playerStatusChanged"`` |
-| `listener` | (`event`: { `status`: [`PlayerStatus`](../enums/embed_PlayerStatus.PlayerStatus.md)  }) => `void` |
-
-#### Returns
-
-`void`
-
-#### Defined in
-
-[embed/IVbrickApi.ts:107](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/IVbrickApi.ts#L107)
-
-▸ **on**(`event`, `listener`): `void`
-
-Fired when the captions are toggled, or the language changes
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `event` | ``"captionsChanged"`` |
-| `listener` | (`event`: [`ICaptionSettings`](embed_IVbrickApi.ICaptionSettings.md)) => `void` |
-
-#### Returns
-
-`void`
-
-#### Defined in
-
-[embed/IVbrickApi.ts:119](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/IVbrickApi.ts#L119)
-
-▸ **on**(`event`, `listener`): `void`
-
-Fired when the playback speed changes. Only available for prerecorded video on demand.
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `event` | ``"playbackSpeedChanged"`` |
-| `listener` | (`event`: { `speed`: `number`  }) => `void` |
-
-#### Returns
-
-`void`
-
-#### Defined in
-
-[embed/IVbrickApi.ts:126](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/IVbrickApi.ts#L126)
-
-▸ **on**(`event`, `listener`): `void`
-
-Fired when the user seeks in the video player
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `event` | ``"seeked"`` |
-| `listener` | (`event`: { `speed`: `number`  }) => `void` |
-
-#### Returns
-
-`void`
-
-#### Defined in
-
-[embed/IVbrickApi.ts:131](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/IVbrickApi.ts#L131)
+[embed/IVbrickApi.ts:154](https://github.com/vbrick/rev-sdk-js/blob/a752b53/src/embed/IVbrickApi.ts#L154)
 
 ▸ **on**(`event`, `listener`): `void`
 
@@ -194,4 +104,45 @@ Fired if there is an error
 
 #### Defined in
 
-[embed/IVbrickApi.ts:136](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/IVbrickApi.ts#L136)
+[embed/IVbrickApi.ts:159](https://github.com/vbrick/rev-sdk-js/blob/a752b53/src/embed/IVbrickApi.ts#L159)
+
+▸ **on**(`event`, `listener`): `void`
+
+Register an event handler. Events are fired at different lifecycle stages of the webcast
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `event` | `string` | name of event |
+| `listener` | (`event`: `any`) => `void` | callback when event is fired. Keep a reference if you intend to call [IVbrickBaseEmbed.off](embed_IVbrickApi.IVbrickBaseEmbed.md#off) later |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+[embed/IVbrickApi.ts:166](https://github.com/vbrick/rev-sdk-js/blob/a752b53/src/embed/IVbrickApi.ts#L166)
+
+___
+
+### updateToken
+
+▸ **updateToken**(`token`): `void`
+
+Allows updating the access token if the old one has expired.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `token` | [`VbrickSDKToken`](VbrickSDK.VbrickSDKToken.md) | New token |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+[embed/IVbrickApi.ts:182](https://github.com/vbrick/rev-sdk-js/blob/a752b53/src/embed/IVbrickApi.ts#L182)

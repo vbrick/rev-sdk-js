@@ -12,7 +12,7 @@
 
 ### initializeWebcastToken
 
-▸ **initializeWebcastToken**(`webcastId`, `config`): `Promise`<[`VbrickSDKToken`](../interfaces/VbrickSDK.VbrickSDKToken.md)\>
+▸ **initializeWebcastToken**(`webcastId`, `config`): `Promise`<`any`\>
 
 #### Parameters
 
@@ -23,8 +23,8 @@
 
 #### Returns
 
-`Promise`<[`VbrickSDKToken`](../interfaces/VbrickSDK.VbrickSDKToken.md)\>
+`Promise`<`any`\>
 
 #### Defined in
 
-[embed/webcastAuth.ts:5](https://github.com/vbrick/rev-sdk-js/blob/f31aed5/src/embed/webcastAuth.ts#L5)
+[embed/webcastAuth.ts:3](https://github.com/vbrick/rev-sdk-js/blob/a752b53/src/embed/webcastAuth.ts#L3)
