@@ -110,7 +110,7 @@ function getEmbedUrl(id: string, config: VbrickVideoEmbedConfig): string {
 		['noFullscreen', config.hideFullscreen],
 		['noPlayBar', config.hidePlayControls],
 		['noSettings', config.hideSettings],
-		['popupAuth=true', !config.token && config.popupAuth], //popupAuth requires a true value
+		['popupAuth', !config.token && (config.popupAuth ? 'true' : 'false')], //popupAuth requires a true value
 		['startAt', config.startAt],
 	]
 		.map(([key, value]) =>

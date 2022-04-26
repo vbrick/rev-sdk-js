@@ -115,11 +115,13 @@ function getConfig(formData) {
 		config: {
 			// try to parse the "config" field as JSON. It can include any of the embed config options (hideControls, accentColor, etc)
 			...tryParse(config),
-			token: tokenValue && {
-				type: tokenType,
-				value: tokenValue,
-				issuer: tokenIssuer
-			}
+			token: tokenValue
+				? {
+					type: tokenType,
+					value: tokenValue,
+					issuer: tokenIssuer
+				}
+				: undefined
 		}
 	};
 
@@ -262,6 +264,7 @@ export function parseRevUrl(url) {
 	}
 
 	// add additional config options passed
+	/** @type {Record<string, keyof import("../dist/rev-sdk").VbrickVideoEmbedConfig>} */
 	const queryConfigMap = {
 		accent: 'accentColor',
 		autoplay: 'autoplay',
@@ -274,7 +277,8 @@ export function parseRevUrl(url) {
 		noPlayBar: 'hidePlayControls',
 		noSettings: 'hideSettings',
 		placeholder: 'popOut',
-		startAt: 'startAt'
+		startAt: 'startAt',
+		popupAuth: 'popupAuth'
 	};
 	const config = Array.from(searchParams.entries()).reduce((config, [key, value]) => {
 		const configKey = queryConfigMap[key];
