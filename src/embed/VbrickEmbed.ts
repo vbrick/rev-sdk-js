@@ -35,19 +35,25 @@ export abstract class VbrickEmbed implements IVbrickBaseEmbed {
 		this.eventBus = new EventBus(this.iframe, this.config);
 		this.initializeEmbed();
 
-		this.init = Promise.all([
+		const init = Promise.all([
 			this.initializeToken(),
-			this.eventBus.awaitEvent('load', 'error')
-		])
-			.then(([token])=> {
-				this.logger.log('embed loaded, authenticating');
-				this.eventBus.publish('authenticated', { token });
-			})
-			.catch(err => {
-				this.logger.error('Embed initialization error: ', err);
+			this.eventBus.awaitEvent('load')
+		]).then(([token])=> {
+			this.logger.log('embed loaded, authenticating');
+			this.eventBus.publish('authenticated', { token });
+		})
+		.catch(err => {
+			this.logger.error('Embed initialization error: ', err);
 
-				this.eventBus.publishError('Error loading embed content', err);
-			});
+			this.eventBus.publishError('initializationFailed');
+			this.eventBus.emitLocalError('Error loading embed content', err);
+		});
+
+		this.init = Promise.race([
+			init,
+			this.eventBus.awaitEvent('error')
+				.then(e => Promise.reject(e))
+		]);
 
 		return this.init;
 	}
