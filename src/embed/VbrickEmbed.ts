@@ -35,7 +35,7 @@ export abstract class VbrickEmbed implements IVbrickBaseEmbed {
 		this.eventBus = new EventBus(this.iframe, this.config);
 		this.initializeEmbed();
 
-		return Promise.all([
+		return this.init = Promise.all([
 			this.initializeToken(),
 			this.eventBus.awaitEvent('load')
 		]).then(([token])=> {
