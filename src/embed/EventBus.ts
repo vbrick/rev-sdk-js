@@ -36,7 +36,7 @@ export class EventBus {
 		return () => this.off(event, fn);
 	}
 
-	public awaitEvent(event: string, failEvent?: string, timeout: number = 30000): Promise<any> {
+	public awaitEvent(event: string, failEvent: string = 'error', timeout: number = 30000): Promise<any> {
 		return new Promise((resolve, reject) => {
 			const handler = (fn: (e: any) => void) => e => {
 				fn(e);
