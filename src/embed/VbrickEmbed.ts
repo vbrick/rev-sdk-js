@@ -39,27 +39,28 @@ export abstract class VbrickEmbed implements IVbrickBaseEmbed {
 			this.initializeToken(),
 			this.eventBus.awaitEvent('load')
 		]).then(([token])=> {
-			this.logger.log('embed loaded, authenticating');
-			if (token) {
-				this.eventBus.publish('authenticated', { token });
-
-				// added fail-safe check for if authChanged event isn't passed
-				// COMBAK - remove when confirmed unnecessary
-				let cleanup: () => void;
-				const whenLoaded = new Promise<void>((resolve) => {
-					cleanup = () => {
-						this.eventBus.off('videoLoaded', cleanup);
-						this.eventBus.off('webcastLoaded', cleanup);
-					};
-					this.eventBus.on('videoLoaded', resolve),
-					this.eventBus.on('webcastLoaded', resolve)
-				});
-				return Promise.race([
-					this.eventBus.awaitEvent('authChanged'),
-					whenLoaded
-				])
-					.finally(() => cleanup?.());
+			if (!token) {
+				return this.logger.log('embed loaded');
 			}
+			this.logger.log('embed loaded, authenticating');
+			this.eventBus.publish('authenticated', { token });
+
+			// added fail-safe check for if authChanged event isn't passed
+			// COMBAK - remove when confirmed unnecessary
+			let cleanup: () => void;
+			const whenLoaded = new Promise<void>((resolve) => {
+				cleanup = () => {
+					this.eventBus.off('videoLoaded', cleanup);
+					this.eventBus.off('webcastLoaded', cleanup);
+				};
+				this.eventBus.on('videoLoaded', resolve),
+				this.eventBus.on('webcastLoaded', resolve)
+			});
+			return Promise.race([
+				this.eventBus.awaitEvent('authChanged'),
+				whenLoaded
+			])
+				.finally(() => cleanup?.());
 		})
 		.catch(err => {
 			this.logger.error('Embed initialization error: ', err);
