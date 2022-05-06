@@ -92,7 +92,9 @@ function addPlayerControls() {
 	updateTokenButton.addEventListener('click', () => {
 		const data = getData();
 		if (currentEmbed) {
-			currentEmbed.updateToken(data.config.token);
+			currentEmbed.updateToken(data.config.token)
+				.then(() => console.log('Token update successful'))
+				.catch(err => console.error('Error updating token', err));
 		}
 	});
 }
@@ -102,7 +104,7 @@ function addPlayerControls() {
  * @param {import("..").IVbrickVideoEmbed & import("..").IVbrickWebcastEmbed} currentEmbed
  */
  function monitorEmbed(currentEmbed) {
-	const events = ['error', 'load', 'playerStatusChanged', 'captionsChanged', 'volumeChanged', 'playbackSpeedChanged', 'videoLoaded', 'seeked',
+	const events = ['error', 'load', 'authChanged', 'playerStatusChanged', 'captionsChanged', 'volumeChanged', 'playbackSpeedChanged', 'videoLoaded', 'seeked',
 	'webcastLoaded', 'webcastStarted', 'webcastEnded', 'broadcastStarted', 'broadcastStopped'];
 
 	events.forEach(e => currentEmbed.on(e, data => {
