@@ -40,8 +40,26 @@ export abstract class VbrickEmbed implements IVbrickBaseEmbed {
 			this.eventBus.awaitEvent('load')
 		]).then(([token])=> {
 			this.logger.log('embed loaded, authenticating');
-			this.eventBus.publish('authenticated', { token });
-			return this.eventBus.awaitEvent('authChanged');
+			if (token) {
+				this.eventBus.publish('authenticated', { token });
+
+				// added fail-safe check for if authChanged event isn't passed
+				// COMBAK - remove when confirmed unnecessary
+				let cleanup: () => void;
+				const whenLoaded = new Promise<void>((resolve) => {
+					cleanup = () => {
+						this.eventBus.off('videoLoaded', cleanup);
+						this.eventBus.off('webcastLoaded', cleanup);
+					};
+					this.eventBus.on('videoLoaded', resolve),
+					this.eventBus.on('webcastLoaded', resolve)
+				});
+				return Promise.race([
+					this.eventBus.awaitEvent('authChanged'),
+					whenLoaded
+				])
+					.finally(() => cleanup?.());
+			}
 		})
 		.catch(err => {
 			this.logger.error('Embed initialization error: ', err);
@@ -88,10 +106,12 @@ export abstract class VbrickEmbed implements IVbrickBaseEmbed {
 		this.unsubscribes?.forEach(fn => fn());
 	}
 
-	public updateToken(newToken: VbrickSDKToken): void {
+	public updateToken(newToken: VbrickSDKToken): Promise<void> {
 		this.config.token = newToken;
-		this.initializeToken().then(token =>
-			this.eventBus.publish('authChanged', { token }))
-		.catch(e => this.logger.error('Error updating token: ', e));
+		return this.initializeToken()
+			.then(token => {
+				this.eventBus.publish('authChanged', { token });
+				return this.eventBus.awaitEvent('authChanged');
+			});
 	}
 }
