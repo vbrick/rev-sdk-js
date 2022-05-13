@@ -17,7 +17,7 @@ export class VbrickWebcastEmbed extends VbrickEmbed implements IVbrickWebcastEmb
 		config: VbrickWebcastEmbedConfig,
 		container: HTMLElement
 	) {
-		super(new URL(`/embed/webcast/${webcastId}${config.token ? '?tk' : ''}`, config.baseUrl).toString(), config, container);
+		super(getEmbedUrl(webcastId, config), config, container);
 	}
 
 	protected initializeToken(): Promise<VbrickSDKToken> {
@@ -33,5 +33,21 @@ export class VbrickWebcastEmbed extends VbrickEmbed implements IVbrickWebcastEmb
 			this._webcastStatus = data.status;
 		});
 	}
+}
 
+function getEmbedUrl(id: string, config: VbrickWebcastEmbedConfig): string {
+	const query = [
+		['tk', !!config.token],
+		['autoplay', config.autoplay],
+		['popupAuth', !config.token && (config.popupAuth ? 'true' : 'false')],
+		['enableFullRev', config.enableFullRev]
+	]
+		.map(([key, value]) =>
+			!value ? undefined :
+			value === true ? key :
+			`${key}=${encodeURIComponent(value)}`)
+		.filter(Boolean)
+		.join('&');
+
+	return `${config.baseUrl}/embed/webcast/${id}?${query}`;
 }
