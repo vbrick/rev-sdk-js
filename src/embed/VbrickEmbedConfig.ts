@@ -24,8 +24,6 @@ export interface VbrickBaseEmbedConfig extends VbrickSDKConfig {
 	 * For video embeds. If a user needs to log in, go through the login process in a popup window. This is the standard behavior for non-SDK Rev embeded videos
 	 */
 	popupAuth?: boolean;
-
-	autoplay?: boolean;
 }
 
 /**
@@ -33,6 +31,7 @@ export interface VbrickBaseEmbedConfig extends VbrickSDKConfig {
  * @public
  */
 export interface VbrickVideoEmbedConfig extends VbrickBaseEmbedConfig {
+	autoplay?: boolean;
 	playInLoop?: boolean;
 	hideChapters?: boolean;
 	hideOverlayControls?: boolean;
@@ -67,7 +66,7 @@ export interface VbrickWebcastEmbedConfig extends VbrickBaseEmbedConfig {
 	/**
 	 * Include Chat, QA and Polls widgets in embed (if configured) 
 	 */
-	enableFullRev?: boolean;
+	showFullWebcast?: boolean;
 
 }
 

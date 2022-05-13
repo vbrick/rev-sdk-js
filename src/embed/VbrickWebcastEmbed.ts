@@ -38,9 +38,8 @@ export class VbrickWebcastEmbed extends VbrickEmbed implements IVbrickWebcastEmb
 function getEmbedUrl(id: string, config: VbrickWebcastEmbedConfig): string {
 	const query = [
 		['tk', !!config.token],
-		['autoplay', config.autoplay],
 		['popupAuth', !config.token && (config.popupAuth ? 'true' : 'false')],
-		['enableFullRev', config.enableFullRev]
+		['enableFullRev', config.showFullWebcast]
 	]
 		.map(([key, value]) =>
 			!value ? undefined :
