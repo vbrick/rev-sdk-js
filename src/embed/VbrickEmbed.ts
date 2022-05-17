@@ -47,20 +47,18 @@ export abstract class VbrickEmbed implements IVbrickBaseEmbed {
 
 			// added fail-safe check for if authChanged event isn't passed
 			// COMBAK - remove when confirmed unnecessary
-			let cleanup: () => void;
+			const cleanupCallbacks: (() => void)[] = [];
 			const whenLoaded = new Promise<void>((resolve) => {
-				cleanup = () => {
-					this.eventBus.off('videoLoaded', cleanup);
-					this.eventBus.off('webcastLoaded', cleanup);
-				};
-				this.eventBus.on('videoLoaded', resolve),
-				this.eventBus.on('webcastLoaded', resolve)
+				cleanupCallbacks.push(
+					this.eventBus.on('videoLoaded', resolve),
+					this.eventBus.on('webcastLoaded', resolve)
+				);
 			});
+
 			return Promise.race([
 				this.eventBus.awaitEvent('authChanged'),
 				whenLoaded
-			])
-				.finally(() => cleanup?.());
+			]).finally(() => cleanupCallbacks.forEach(cb => cb()));
 		})
 		.catch(err => {
 			this.logger.error('Embed initialization error: ', err);
