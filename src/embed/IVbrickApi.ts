@@ -82,7 +82,7 @@ export interface IVbrickVideoEmbed extends IVbrickBaseEmbed {
 
 	/**
 	 * Contains metadata for the video
-	 * @beta
+	 * @public
 	 */
 	readonly videoInfo: IVideoInfo;
 
@@ -191,7 +191,7 @@ export interface ICaptionSettings {
 }
 
 /**
- * @beta
+ * @public
  */
 export interface IVideoInfo {
 	id: string;
