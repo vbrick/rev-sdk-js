@@ -1,3 +1,4 @@
+import { getEmbedUrl } from '../util';
 import { TokenType } from '../VbrickSDK';
 import { IVbrickVideoEmbed, ICaptionSettings, ISDKVideoInfo } from './IVbrickApi';
 import { PlayerStatus } from './PlayerStatus';
@@ -61,11 +62,11 @@ export class VbrickVideoEmbed extends VbrickEmbed implements IVbrickVideoEmbed {
 	private _info: ISDKVideoInfo;
 
 	constructor(
-		videoId: string,
+		id: string,
 		config: VbrickVideoEmbedConfig,
 		container: HTMLElement
 	) {
-		super(getEmbedUrl(videoId, config), config, container);
+		super(id, config, container);
 	}
 
 	 /**
@@ -147,37 +148,34 @@ export class VbrickVideoEmbed extends VbrickEmbed implements IVbrickVideoEmbed {
 			// update duration in videoInfo?
 		});
 	}
-
-	public destroy(): void {
-		super.destroy();
-
-		this.unsubscribes?.forEach(fn => fn());
+	protected getEmbedUrl(id: string, config: VbrickEmbedConfig): string {
+		return getEmbedUrl(config.baseUrl, '/embed', {
+			id,
+			...getEmbedQuery(config)
+		});
 	}
 }
 
-function getEmbedUrl(id: string, config: VbrickVideoEmbedConfig): string {
-	const query = [
-		['tk', !!config.token],
-		['id', id],
-		['accent', config.accentColor],
-		['autoplay', config.autoplay],
-		['forceClosedCaptions', config.forcedCaptions],
-		['loopVideo', config.playInLoop],
-		['noCc', config.hideCaptions],
-		['noCenterButtons', config.hideOverlayControls],
-		['noChapters', config.hideChapters],
-		['noFullscreen', config.hideFullscreen],
-		['noPlayBar', config.hidePlayControls],
-		['noSettings', config.hideSettings],
-		['popupAuth', !config.token && (config.popupAuth ? 'true' : 'false')], //popupAuth requires a true value
-		['startAt', config.startAt],
-	]
-		.map(([key, value]) =>
-			!value ? undefined :
-			value === true ? key :
-			`${key}=${encodeURIComponent(value)}`)
-		.filter(Boolean)
-		.join('&');
-
-	return `${config.baseUrl}/embed?${query}`;
+/**
+ * parses a config object and converts into query parameters for the iframe embed URL
+ * @param config 
+ */
+export function getEmbedQuery(config: VbrickEmbedConfig): Record<string, undefined | boolean | string> {
+	return {
+		tk: !!config.token,
+		popupAuth: !config.token && (config.popupAuth ? 'true' : 'false'), //popupAuth requires a true value
+		// COMBAK temporary addition
+		debug: (config as any).debug !== undefined && `${!!((config as any).debug)}`,
+		accent: config.accentColor,
+		autoplay: config.autoplay,
+		forceClosedCaptions: config.forcedCaptions,
+		loopVideo: config.playInLoop,
+		noCc: config.hideCaptions,
+		noCenterButtons: config.hideOverlayControls,
+		noChapters: config.hideChapters,
+		noFullscreen: config.hideFullscreen,
+		noPlayBar: config.hidePlayControls,
+		noSettings: config.hideSettings,
+		startAt: config.startAt
+	};
 }

@@ -10,16 +10,18 @@ import { VbrickSDKToken } from '../VbrickSDK';
 export abstract class VbrickEmbed implements IVbrickBaseEmbed {
 
 	protected iframe: HTMLIFrameElement;
+	protected readonly iframeUrl: string;
 	protected eventBus: EventBus;
 	private init: Promise<any>;
-	protected unsubscribes: Array<() => void>;
+	private unsubscribes: Array<() => void>;
 	protected logger: ILogger;
 
 	constructor(
-		protected readonly iframeUrl: string,
+		id: string,
 		protected readonly config: VbrickEmbedConfig,
 		protected readonly container: HTMLElement
 	) {
+		this.iframeUrl = this.getEmbedUrl(id, this.config);
 		this.logger = getLogger(this.config);
 	}
 
@@ -95,4 +97,5 @@ export abstract class VbrickEmbed implements IVbrickBaseEmbed {
 			this.eventBus.publish('authChanged', { token }))
 		.catch(e => this.logger.error('Error updating token: ', e));
 	}
+	protected abstract getEmbedUrl(id: string, config: VbrickEmbedConfig);
 }
