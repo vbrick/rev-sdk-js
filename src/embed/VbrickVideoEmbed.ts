@@ -16,7 +16,7 @@ export class VbrickVideoEmbed extends VbrickEmbed implements IVbrickVideoEmbed {
 	public get playerStatus(): PlayerStatus {
 		return this._playerStatus;
 	}
-	private _playerStatus
+	private _playerStatus = PlayerStatus.Initializing;
 
 	 /**
 	 * Player Volume. 0-1
@@ -120,6 +120,14 @@ export class VbrickVideoEmbed extends VbrickEmbed implements IVbrickVideoEmbed {
 	 */
 	public setCaptions(captions: ICaptionSettings) {
 		this.eventBus.publish('setCaptions', captions);
+	}
+
+	public initialize(): Promise<void> {
+		const whenInitialized = super.initialize();
+		whenInitialized.catch(() => {
+			this._playerStatus = PlayerStatus.Error;
+		});
+		return whenInitialized;
 	}
 
 	protected initializeToken(): Promise<any> {

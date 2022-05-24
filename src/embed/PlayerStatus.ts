@@ -8,4 +8,5 @@ export enum PlayerStatus {
 	Buffering = 'Buffering',
 	Seeking = 'Seeking',
 	Ended = 'Ended',
+	Error = 'Error'
 }

@@ -188,7 +188,7 @@ export interface ICaptionSettings {
 
 
 export interface ISDKVideoInfo {
-	id: string;
+	videoId: string;
 	title: string;
 	status: string;
 	duration: number;
@@ -213,6 +213,7 @@ export interface ISDKVideoInfo {
 
 // matches Public Get Webcast Status API (save the slidesUrl)
 export interface IWebcastInfo {
+	webcastId: string;
 	status: WebcastStatus;
 	isPreProduction?: boolean;
 	title: string;
