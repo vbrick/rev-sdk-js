@@ -12,7 +12,7 @@ export interface IVbrickVideoEmbed extends IVbrickBaseEmbed {
 	/**
 	 * Fires when the video metadata is loaded
 	 */
-	on(event: 'videoLoaded', listener: (event: IVideoInfo) => void): void;
+	on(event: 'videoLoaded', listener: (event: ISDKVideoInfo) => void): void;
 
 	/**
 	 * Fired if the player volume changes
@@ -76,15 +76,13 @@ export interface IVbrickVideoEmbed extends IVbrickBaseEmbed {
 
 	/**
 	 * Whether captions are enabled, and selected language
-	 * @alpha
 	 */
 	readonly captions: ICaptionSettings;
 
 	/**
 	 * Contains metadata for the video
-	 * @beta
 	 */
-	readonly videoInfo: IVideoInfo;
+	readonly videoInfo: ISDKVideoInfo;
 
 	/**
 	 * Plays the video if it is paused.
@@ -182,19 +180,44 @@ export interface IVbrickBaseEmbed {
 	updateToken(token: VbrickSDKToken): void;
 }
 
-/**
- * @beta
- */
+
 export interface ICaptionSettings {
 	enabled: boolean;
-	language: string;
+	language?: 'captions' | string;
 }
 
-/**
- * @beta
- */
-export interface IVideoInfo {
+
+export interface ISDKVideoInfo {
 	id: string;
 	title: string;
-	description: string;
+	status: string;
+	duration: number;
+	isLive: boolean;
+	is360: boolean;
+	hasAudioOnly: boolean;
+	captions: Array<{ language: string }>;
+	chapters: Array<{
+		time: number;
+		imageId: string | null;
+		extension: string | null;
+		title: string | null;
+	}>;
+	playbacks: Array<{
+		id: string;
+		label: string;
+		streamDeliveryType: string;
+		zoneName: string | null;
+		deviceName: string | null;
+	}>;
+}
+
+// matches Public Get Webcast Status API (save the slidesUrl)
+export interface IWebcastInfo {
+	status: WebcastStatus;
+	isPreProduction?: boolean;
+	title: string;
+	startDate: string;
+	endDate: string;
+	captions: Array<{ language: string }>;
+	linkedVideoId?: string;
 }
