@@ -49,4 +49,7 @@ function getEmbedUrl(id: string, config: VbrickWebcastEmbedConfig): string {
 		.join('&');
 
 	return `${config.baseUrl}/embed/webcast/${id}?${query}`;
+	public updateLayout(layout: { video?: boolean, presentation?: boolean}) {
+		this.eventBus.publish('updateLayout', layout);
+	}
 }

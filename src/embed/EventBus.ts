@@ -96,7 +96,9 @@ export class EventBus {
 			return;
 		}
 
-		this.shouldLog && console.log('rev SDK inbound message. ', e.data);
+		const shouldLog = this.shouldLog && data.event !== 'currentTime';
+
+		shouldLog && console.log('rev SDK inbound message. ', e.data);
 
 		this.callHandlers(data.event, data.msg);
 	}

@@ -1,8 +1,8 @@
 import { TokenType } from '../VbrickSDK';
-import { IVbrickVideoEmbed, ICaptionSettings } from './IVbrickApi';
+import { IVbrickVideoEmbed, ICaptionSettings, ISDKVideoInfo } from './IVbrickApi';
 import { PlayerStatus } from './PlayerStatus';
 import { VbrickEmbed } from './VbrickEmbed';
-import { VbrickVideoEmbedConfig } from './VbrickEmbedConfig';
+import { VbrickEmbedConfig, VbrickVideoEmbedConfig } from './VbrickEmbedConfig';
 
 /**
  * Internal class used to model an embedded video
@@ -26,6 +26,21 @@ export class VbrickVideoEmbed extends VbrickEmbed implements IVbrickVideoEmbed {
 	private _volume: number;
 
 	/**
+	 * Current position in video in seconds
+	 */
+	public get currentTime(): number {
+		return this._currentTime;
+	}
+	private _currentTime: number;
+
+	/**
+	 * Duration of video in seconds. Wil be undefined for live content
+	 */
+	public get duration(): number {
+		return this._info?.duration;
+	}
+
+	/**
 	 * Whether captions are enabled, and selected language
 	 */
 	public get captions(): ICaptionSettings {
@@ -33,12 +48,17 @@ export class VbrickVideoEmbed extends VbrickEmbed implements IVbrickVideoEmbed {
 	}
 	private _captions: ICaptionSettings;
 
+	public get isLive(): boolean {
+		return this._info?.isLive;
+	}
+
 	/**
 	 * Contains metadata for the video
 	 */
-	public readonly videoInfo: any;
-
-
+	public get videoInfo(): ISDKVideoInfo {
+		return this._info;
+	}
+	private _info: ISDKVideoInfo;
 
 	constructor(
 		videoId: string,
@@ -69,6 +89,38 @@ export class VbrickVideoEmbed extends VbrickEmbed implements IVbrickVideoEmbed {
 		this.eventBus.publish('setVolume', { volume });
 	}
 
+	/**
+	 * sets playback rate 
+	 * @param speed {number} 0-16, default is 1
+	 */
+	public setPlaybackSpeed(speed: number): void {
+		if (this.isLive) {
+			this.logger.log('Live video, cannot change speed');
+			return;
+		}
+		this.eventBus.publish('setPlaybackSpeed', { speed });
+	}
+
+	/**
+	 * sets the current time in the video
+	 * @param currentTime {number} 0 - video duration
+	 */
+	public seek(currentTime: number) {
+		if (this.isLive) {
+			this.logger.log('Live video, seek');
+			return;
+		}
+		this.eventBus.publish('seek', { currentTime });
+	}
+
+	/**
+	 * update the current captions settings
+	 * @param captions enable/disable captions and set language (use 'captions' for closed captions encoded into video stream)
+	 */
+	public setCaptions(captions: ICaptionSettings) {
+		this.eventBus.publish('setCaptions', captions);
+	}
+
 	protected initializeToken(): Promise<any> {
 		if(!this.config.token) {
 			return Promise.resolve()
@@ -84,9 +136,16 @@ export class VbrickVideoEmbed extends VbrickEmbed implements IVbrickVideoEmbed {
 	}
 
 	protected initializeEmbed(): void {
-		this.eventBus.on('playerStatusChanged', e => this._playerStatus = e.status),
-		this.eventBus.on('volumeChanged', e => this._volume = e.volume),
-		this.eventBus.on('captionsChanged', e => this._captions = e.captions)
+		this.eventBus.on('videoLoaded', e => this._info = e);
+		this.eventBus.on('playerStatusChanged', e => this._playerStatus = e.status);
+		this.eventBus.on('volumeChanged', e => this._volume = e.volume);
+		this.eventBus.on('captionsChanged', e => {
+			this._captions = e.captions;
+		});
+		this.eventBus.on('currentTime', e => {
+			this._currentTime = e.currentTime;
+			// update duration in videoInfo?
+		});
 	}
 
 	public destroy(): void {
