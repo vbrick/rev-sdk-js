@@ -1,5 +1,5 @@
 import { VbrickSDKToken } from '../VbrickSDK';
-import { IVbrickWebcastEmbed, WebcastStatus } from './IVbrickApi';
+import { IVbrickWebcastEmbed, IWebcastInfo, WebcastStatus } from './IVbrickApi';
 import { initializeWebcastToken } from './webcastAuth';
 import { VbrickEmbedConfig, VbrickWebcastEmbedConfig } from './VbrickEmbedConfig';
 import { getEmbedQuery, VbrickVideoEmbed } from './VbrickVideoEmbed';
@@ -8,10 +8,15 @@ import { getEmbedUrl } from '../util';
 
 export class VbrickWebcastEmbed extends VbrickVideoEmbed implements IVbrickWebcastEmbed {
 
-	private _webcastStatus: WebcastStatus;
 	public get webcastStatus() {
 		return this._webcastStatus;
 	};
+	private _webcastStatus: WebcastStatus = WebcastStatus.Loading;
+	
+	public get webcastInfo() {
+		return this._webcastInfo;
+	}
+	private _webcastInfo: IWebcastInfo;
 
 	constructor(
 		private readonly webcastId: string,
@@ -25,13 +30,20 @@ export class VbrickWebcastEmbed extends VbrickVideoEmbed implements IVbrickWebca
 		return initializeWebcastToken(this.webcastId, this.config);
 	}
 
-	protected initializeEmbed(): void {
+	protected async initializeEmbed(): Promise<void> {
+		super.initializeEmbed();
+
 		['webcastStarted', 'broadcastStarted', 'broadcastStopped', 'webcastEnded'].forEach(event => {
 			this.eventBus.on(event, data => this._webcastStatus = data.status);
 		});
 
-		this.eventBus.awaitEvent('webcastLoaded').then(data => {
-			this._webcastStatus = data.status;
+		this.eventBus.on('webcastLoaded', e => {
+			this._webcastStatus = e.status;
+			this._webcastInfo = e;
+		});
+		// if a webcast is over it may redirect to a recoreded version of it
+		this.eventBus.on('videoLoaded', () => {
+			this._webcastStatus = WebcastStatus.Completed;
 		});
 	}
 

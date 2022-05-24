@@ -24,6 +24,12 @@ export interface VbrickBaseEmbedConfig extends VbrickSDKConfig {
 	 * For video embeds. If a user needs to log in, go through the login process in a popup window. This is the standard behavior for non-SDK Rev embeded videos
 	 */
 	popupAuth?: boolean;
+
+	/**
+	 * seconds to wait for the embed initialization to complete. default is 30 seconds
+	 * @default 30
+	 */
+	timeoutSeconds?: number;
 }
 
 /**

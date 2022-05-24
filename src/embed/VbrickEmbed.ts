@@ -29,7 +29,7 @@ export abstract class VbrickEmbed implements IVbrickBaseEmbed {
 	 * Indicates the embedded content was initialized and authenticated.
 	 * If there was a problem loading the content, or a problem with the token, the promise will be rejected.
 	 */
-	public initialize(): Promise<any> {
+	public initialize(): Promise<void> {
 		if(this.init) {
 			return this.init;
 		}
@@ -37,18 +37,24 @@ export abstract class VbrickEmbed implements IVbrickBaseEmbed {
 		this.eventBus = new EventBus(this.iframe, this.config);
 		this.initializeEmbed();
 
+		const timeout = (this.config.timeoutSeconds * 1000) || undefined;
+
 		this.init = Promise.all([
 			this.initializeToken(),
-			this.eventBus.awaitEvent('load', 'error')
+			this.eventBus.awaitEvent('load', 'error', timeout)
 		])
 			.then(([token])=> {
 				this.logger.log('embed loaded, authenticating');
 				this.eventBus.publish('authenticated', { token });
+				// added fail-safe check for if authChanged event isn't passed
+            	// COMBAK - remove when confirmed unnecessary
+				this.eventBus.awaitEvent(['authChanged', 'videoLoaded', 'webcastLoaded'], 'error', timeout);
 			})
 			.catch(err => {
 				this.logger.error('Embed initialization error: ', err);
-
-				this.eventBus.publishError('Error loading embed content', err);
+				this.eventBus.publishError('initializationFailed');
+				this.eventBus.emitLocalError('Error loading embed content', err);
+				return Promise.reject(err);
 			});
 
 		return this.init;
@@ -91,11 +97,17 @@ export abstract class VbrickEmbed implements IVbrickBaseEmbed {
 		this.unsubscribes?.forEach(fn => fn());
 	}
 
-	public updateToken(newToken: VbrickSDKToken): void {
+	public async updateToken(newToken: VbrickSDKToken): Promise<void> {
 		this.config.token = newToken;
-		this.initializeToken().then(token =>
-			this.eventBus.publish('authChanged', { token }))
-		.catch(e => this.logger.error('Error updating token: ', e));
+		try {
+			const token = await this.initializeToken();
+			this.eventBus.publish('authChanged', { token });
+			await this.eventBus.awaitEvent('authChanged', 'error');
+		} catch (error) {
+			this.logger.error('Error updating token: ', error);
+			// TODO REVIEW should this swallow error or return?
+			throw error;
+		}
 	}
 	protected abstract getEmbedUrl(id: string, config: VbrickEmbedConfig);
 }

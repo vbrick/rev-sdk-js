@@ -1,5 +1,8 @@
 import { VbrickSDKConfig } from "../VbrickSDK";
 
+// default to 30 second timeout on authentication/SDK communication
+const DEFAULT_TIMEOUT = 30 * 1000;
+
 export interface IListener {
 	(e: any): void;
 }
@@ -36,27 +39,29 @@ export class EventBus {
 		return () => this.off(event, fn);
 	}
 
-	public awaitEvent(event: string, failEvent?: string, timeout: number = 30000): Promise<any> {
+	public awaitEvent(event: string | string[], failEvent: string = 'error', timeout: number = DEFAULT_TIMEOUT): Promise<any> {
+		const events = Array.isArray(event) ? event : [event];
 		return new Promise((resolve, reject) => {
 			const handler = (fn: (e: any) => void) => e => {
 				fn(e);
-				this.off(event, onEvent);
-				this.off(failEvent, onErr);
-				clearTimeout(timer);
+				offHandlers.forEach(h => h());
 			};
 
 			const onEvent = handler(resolve);
 			const onErr = handler(reject);
-			this.on(event, onEvent);
+			const offHandlers = events.map(evt => this.on(evt, onEvent));
 
 			if(failEvent) {
-				this.on(failEvent, onErr);
+				offHandlers.push(this.on(failEvent, onErr));
 			}
 
-			const timer = setTimeout(() => {
-				if (this.isDestroyed) { return; }
-				onErr(event + ': timeout')
-			}, timeout);
+			if(timeout > 0) {
+				const timer = setTimeout(() => {
+					if (this.isDestroyed) { return; }
+					onErr(event + ': timeout')
+				}, timeout);
+				offHandlers.push(() => clearTimeout(timer));
+			}
 		});
 	}
 
@@ -68,6 +73,7 @@ export class EventBus {
 		}
 	}
 
+	/** Posts a message to the embed */
 	public publish(event: string, msg?: any): void {
 		this.shouldLog && console.log('rev client posting message. ', event);
 		this.win.postMessage({
@@ -77,14 +83,25 @@ export class EventBus {
 		}, this.baseUrl);
 	}
 
-	public publishError(msg: string, err: any) {
-		this.callHandlers('error', { msg, err });
+	/** Posts an 'error' message to the embed */
+	public publishError(msg: string) {
 		this.win.postMessage({
 			app: 'vbrick',
 			event: 'error',
 			msg
 		}, this.baseUrl);
 	}
+
+	/** Fires local event handlers */
+	public emitLocalEvent(event: string, msg?: any): void {
+		// this.callHandlers(event, msg);
+	}
+
+	/** Calls the local 'error' event handlers */
+	public emitLocalError(msg: string, err: any) {
+		this.callHandlers('error', { msg, err });
+	}
+	
 
 	private handleMessage(e: MessageEvent): void {
 		const data = e.data || {};
