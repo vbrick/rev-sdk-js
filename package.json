@@ -7,7 +7,7 @@
   "type": "module",
   "module": "dist/rev-sdk.esm.js",
   "browser": "dist/rev-sdk.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/rev-sdk.d.ts",
   "browserslist": [
     "defaults",
     "not IE 11"
