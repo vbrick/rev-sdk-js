@@ -27,7 +27,6 @@ export interface VbrickBaseEmbedConfig extends VbrickSDKConfig {
 
 	/**
 	 * seconds to wait for the embed initialization to complete. default is 30 seconds
-	 * @default 30
 	 */
 	timeoutSeconds?: number;
 }
@@ -42,7 +41,8 @@ export interface VbrickVideoEmbedConfig extends VbrickBaseEmbedConfig {
 	hideChapters?: boolean;
 	hideOverlayControls?: boolean;
 	hidePlayControls?: boolean;
-	hideCaptions?: boolean;
+	hideSubtitles?: boolean;
+	/** Use the Close Captions embedded in video stream as Subtitles */
 	forcedCaptions?: boolean;
 	hideSettings?: boolean;
 	hideFullscreen?: boolean;

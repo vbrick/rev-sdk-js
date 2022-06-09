@@ -1,30 +1,13 @@
 import { getEmbedUrl } from '../util';
-import { TokenType } from '../VbrickSDK';
-import { IVbrickVideoEmbed, ICaptionSettings, ISDKVideoInfo } from './IVbrickApi';
-import { PlayerStatus } from './PlayerStatus';
-import { VbrickEmbed } from './VbrickEmbed';
+import { IVbrickVideoEmbed } from './IVbrickApi';
+import { IVideoInfo } from "./IVbrickTypes";
+import { getEmbedQuery, VbrickEmbed } from './VbrickEmbed';
 import { VbrickEmbedConfig, VbrickVideoEmbedConfig } from './VbrickEmbedConfig';
 
 /**
  * Internal class used to model an embedded video
  */
-export class VbrickVideoEmbed extends VbrickEmbed implements IVbrickVideoEmbed {
-
-	 /**
-	 * video playing, buffering, etc
-	 */
-	public get playerStatus(): PlayerStatus {
-		return this._playerStatus;
-	}
-	private _playerStatus = PlayerStatus.Initializing;
-
-	 /**
-	 * Player Volume. 0-1
-	 */
-	public get volume(): number {
-		return this._volume;
-	}
-	private _volume: number;
+export class VbrickVideoEmbed extends VbrickEmbed<IVideoInfo> implements IVbrickVideoEmbed {
 
 	/**
 	 * Current position in video in seconds
@@ -35,31 +18,19 @@ export class VbrickVideoEmbed extends VbrickEmbed implements IVbrickVideoEmbed {
 	private _currentTime: number;
 
 	/**
-	 * Duration of video in seconds. Wil be undefined for live content
+	 * Duration of video in seconds. Will be undefined for live content
 	 */
 	public get duration(): number {
-		return this._info?.duration;
-	}
-
-	/**
-	 * Whether captions are enabled, and selected language
-	 */
-	public get captions(): ICaptionSettings {
-		return this._captions;
-	}
-	private _captions: ICaptionSettings;
-
-	public get isLive(): boolean {
-		return this._info?.isLive;
+		return this.info?.duration;
 	}
 
 	/**
 	 * Contains metadata for the video
+	 * @deprecated Use `info` instead
 	 */
-	public get videoInfo(): ISDKVideoInfo {
-		return this._info;
+	public get videoInfo(): IVideoInfo {
+		return this.info;
 	}
-	private _info: ISDKVideoInfo;
 
 	constructor(
 		id: string,
@@ -67,27 +38,6 @@ export class VbrickVideoEmbed extends VbrickEmbed implements IVbrickVideoEmbed {
 		container: HTMLElement
 	) {
 		super(id, config, container);
-	}
-
-	 /**
-	  * Plays the video if it is paused.
-	  */
-	public play(): void {
-		this.eventBus.publish('playVideo');
-	}
-	/**
-	  * Pauses the video if it is playing.
-	  */
-	public pause(): void {
-		this.eventBus.publish('pauseVideo');
-	}
-
-	/**
-	 * Sets player volume
-	 * @param volume {number} 0-1
-	 */
-	public setVolume(volume: number): void {
-		this.eventBus.publish('setVolume', { volume });
 	}
 
 	/**
@@ -114,43 +64,8 @@ export class VbrickVideoEmbed extends VbrickEmbed implements IVbrickVideoEmbed {
 		this.eventBus.publish('seek', { currentTime });
 	}
 
-	/**
-	 * update the current captions settings
-	 * @param captions enable/disable captions and set language (use 'captions' for closed captions encoded into video stream)
-	 */
-	public setCaptions(captions: ICaptionSettings) {
-		this.eventBus.publish('setCaptions', captions);
-	}
-
-	public initialize(): Promise<void> {
-		const whenInitialized = super.initialize();
-		whenInitialized.catch(() => {
-			this._playerStatus = PlayerStatus.Error;
-		});
-		return whenInitialized;
-	}
-
-	protected initializeToken(): Promise<any> {
-		if(!this.config.token) {
-			return Promise.resolve()
-		}
-
-		if(this.config.token.type !== TokenType.ACCESS_TOKEN) {
-			return Promise.reject('Unsupported token type');
-		}
-
-		return Promise.resolve({
-			accessToken: this.config.token.value
-		});
-	}
-
 	protected initializeEmbed(): void {
-		this.eventBus.on('videoLoaded', e => this._info = e);
-		this.eventBus.on('playerStatusChanged', e => this._playerStatus = e.status);
-		this.eventBus.on('volumeChanged', e => this._volume = e.volume);
-		this.eventBus.on('captionsChanged', e => {
-			this._captions = e.captions;
-		});
+		super.initializeEmbed();
 		this.eventBus.on('currentTime', e => {
 			this._currentTime = e.currentTime;
 			// update duration in videoInfo?
@@ -162,28 +77,4 @@ export class VbrickVideoEmbed extends VbrickEmbed implements IVbrickVideoEmbed {
 			...getEmbedQuery(config)
 		});
 	}
-}
-
-/**
- * parses a config object and converts into query parameters for the iframe embed URL
- * @param config 
- */
-export function getEmbedQuery(config: VbrickEmbedConfig): Record<string, undefined | boolean | string> {
-	return {
-		tk: !!config.token,
-		popupAuth: !config.token && (config.popupAuth ? 'true' : 'false'), //popupAuth requires a true value
-		// COMBAK temporary addition
-		debug: (config as any).debug !== undefined && `${!!((config as any).debug)}`,
-		accent: config.accentColor,
-		autoplay: config.autoplay,
-		forceClosedCaptions: config.forcedCaptions,
-		loopVideo: config.playInLoop,
-		noCc: config.hideCaptions,
-		noCenterButtons: config.hideOverlayControls,
-		noChapters: config.hideChapters,
-		noFullscreen: config.hideFullscreen,
-		noPlayBar: config.hidePlayControls,
-		noSettings: config.hideSettings,
-		startAt: config.startAt
-	};
 }

@@ -1,23 +1,19 @@
 import { VbrickSDKToken } from '../VbrickSDK';
-import { IVbrickWebcastEmbed, IWebcastInfo, WebcastStatus } from './IVbrickApi';
+import { IVbrickWebcastEmbed, WebcastStatus } from './IVbrickApi';
 import { initializeWebcastToken } from './webcastAuth';
 import { VbrickEmbedConfig, VbrickWebcastEmbedConfig } from './VbrickEmbedConfig';
-import { getEmbedQuery, VbrickVideoEmbed } from './VbrickVideoEmbed';
 import { getEmbedUrl } from '../util';
+import { TVbrickEvent } from './IVbrickEvents';
+import { IWebcastInfo, IWebcastLayout } from "./IVbrickTypes";
+import { getEmbedQuery, VbrickEmbed } from './VbrickEmbed';
 
-
-export class VbrickWebcastEmbed extends VbrickVideoEmbed implements IVbrickWebcastEmbed {
+export class VbrickWebcastEmbed extends VbrickEmbed<IWebcastInfo> implements IVbrickWebcastEmbed {
 
 	public get webcastStatus() {
 		return this._webcastStatus;
 	};
 	private _webcastStatus: WebcastStatus = WebcastStatus.Loading;
 	
-	public get webcastInfo() {
-		return this._webcastInfo;
-	}
-	private _webcastInfo: IWebcastInfo;
-
 	constructor(
 		private readonly webcastId: string,
 		config: VbrickWebcastEmbedConfig,
@@ -33,28 +29,30 @@ export class VbrickWebcastEmbed extends VbrickVideoEmbed implements IVbrickWebca
 	protected async initializeEmbed(): Promise<void> {
 		super.initializeEmbed();
 
-		['webcastStarted', 'broadcastStarted', 'broadcastStopped', 'webcastEnded'].forEach(event => {
+		['webcastStarted', 'broadcastStarted', 'broadcastStopped', 'webcastEnded'].forEach((event: TVbrickEvent) => {
 			this.eventBus.on(event, data => this._webcastStatus = data.status);
 		});
 
 		this.eventBus.on('webcastLoaded', e => {
 			this._webcastStatus = e.status;
-			this._webcastInfo = e;
+			// start initially with hidden slides
+			if (this.config.showFullWebcast) {
+				this.updateLayout({ video: true, presentation: false });
+			}
 		});
-		// if a webcast is over it may redirect to a recoreded version of it
+		// if a webcast is completed it may redirect to a recoreded version of it
 		this.eventBus.on('videoLoaded', () => {
 			this._webcastStatus = WebcastStatus.Completed;
 		});
 	}
 
-	public updateLayout(layout: { video?: boolean, presentation?: boolean}) {
+	public updateLayout(layout: IWebcastLayout) {
 		this.eventBus.publish('updateLayout', layout);
 	}
 	protected getEmbedUrl(id: string, config: VbrickEmbedConfig): string {
-		const query = {
+		return getEmbedUrl(config.baseUrl, `/embed/webcast/${id}`, {
 			enableFullRev: config.showFullWebcast,
 			...getEmbedQuery(config)
-		};
-		return getEmbedUrl(config.baseUrl, `/embed/webcast/${id}`, query);
+		});
 	}
 }
