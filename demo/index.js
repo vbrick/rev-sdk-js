@@ -1,9 +1,16 @@
 import { init } from './demoform.js';
 import { stringifyJson, htmlEscape } from "./utils.js";
+import revSDK from '../dist/rev-sdk.esm.js';
+
+/**
+ * @typedef {import("../dist/rev-sdk").IVbrickWebcastEmbed} IVbrickWebcastEmbed
+ * @typedef {import("../dist/rev-sdk").IVbrickVideoEmbed} IVbrickVideoEmbed
+ * @typedef {import("../dist/rev-sdk").VbrickEmbedConfig} VbrickEmbedConfig
+ */
 
 /**
  * A reference to the current Rev SDK VbrickEmbed instance
- * @type {import("..").IVbrickVideoEmbed & import("..").IVbrickWebcastEmbed}
+ * @type {IVbrickVideoEmbed & IVbrickWebcastEmbed}
  */
 let currentEmbed;
 
@@ -44,7 +51,7 @@ addPlayerControls();
 	/**
 	 * construct the config for passing to sdk.
 	 * "log" controls outputting debug messages to the console
-	 * @type {import("..").VbrickEmbedConfig}
+	 * @type {VbrickEmbedConfig}
 	 */
 	const embedConfig = {
 		log: true,
@@ -59,14 +66,18 @@ addPlayerControls();
 
 	// embed the specified video/webcast. Returns an instance of VbrickEmbed
 	currentEmbed = isVod
-		? revSdk.embedVideo('#embed', videoId, embedConfig)
-		: revSdk.embedWebcast('#embed', webcastId, embedConfig);
+		? revSDK.embedVideo('#embed', videoId, embedConfig)
+		: revSDK.embedWebcast('#embed', webcastId, embedConfig);
 
 	// store a reference for interacting with on the devtools console
 	globalThis.vbrickEmbed = currentEmbed;
 
 	// add event listeners to log to screen + update volume
 	monitorEmbed(currentEmbed);
+
+	document.body.classList.toggle('is-vod', isVod);
+	document.body.classList.toggle('is-webcast', !isVod);
+	document.body.classList.toggle('is-full-webcast', !isVod && config.showFullWebcast);
 }
 
 /**
@@ -95,31 +106,57 @@ function addPlayerControls() {
 			currentEmbed.updateToken(data.config.token);
 		}
 	});
+
+	/** @type {HTMLSelectElement} */
+	const subtitlesSelect = document.querySelector('#subtitles');
+	subtitlesSelect.addEventListener('change', () => {
+		currentEmbed?.setSubtitles({
+			enabled: !!subtitlesSelect.value,
+			language: subtitlesSelect.value
+		});
+	});
 }
 
 /**
  * Add listeners for events emitted by the VbrickEmbed instance
- * @param {import("..").IVbrickVideoEmbed & import("..").IVbrickWebcastEmbed} currentEmbed
+ * @param {IVbrickVideoEmbed & IVbrickWebcastEmbed} currentEmbed
  */
  function monitorEmbed(currentEmbed) {
-	const events = ['error', 'load', 'playerStatusChanged', 'captionsChanged', 'volumeChanged', 'playbackSpeedChanged', 'videoLoaded', 'seeked',
-	'webcastLoaded', 'webcastStarted', 'webcastEnded', 'broadcastStarted', 'broadcastStopped'];
+	const events = ['error', 'load', 'playerStatusChanged', 'subtitlesChanged', 'volumeChanged', 'playbackSpeedChanged', 'videoLoaded', 'seeked',
+	'webcastLoaded', 'webcastStarted', 'webcastEnded', 'broadcastStarted', 'broadcastStopped', 'layoutChanged', 'commentAdded', 'slideChanged', 'pollOpened', 'pollClosed', 'pollPublished', 'pollUnpublished'];
 
 	events.forEach(e => currentEmbed.on(e, data => {
 		logEvent(e, data);
-		updateControls(currentEmbed);
+		updateControls(currentEmbed, e);
 	}));
 }
 
 /**
  * Updates the controls on the page
- * @param {import("..").IVbrickVideoEmbed | import("..").IVbrickWebcastEmbed} currentEmbed
+ * @param {IVbrickVideoEmbed | IVbrickWebcastEmbed} currentEmbed
+ * @param {Parameters<IVbrickWebcastEmbed['on']>[0]} eventType
  */
-function updateControls(currentEmbed) {
+function updateControls(currentEmbed, eventType) {
 	playerStatusEl.innerText = currentEmbed.playerStatus;
 	webcastStatusEl.innerText = currentEmbed.webcastStatus;
 	if(currentEmbed.volume >= 0) {
 		volumeSlider.value = currentEmbed.volume;
+	}
+
+	const subtitlesSelect = document.querySelector('#subtitles');
+	if(eventType === 'videoLoaded' || eventType === 'webcastLoaded') {
+		const subtitles = currentEmbed.videoInfo.subtitles || currentEmbed.webcastInfo.subtitles;
+		for (let c of subtitles) {
+			const el = document.createElement('option');
+			el.value = c.language;
+			el.text = c.language === 'captions' ? 'Closed Captions' : c.language;
+			subtitlesSelect.appendChild(el);
+		}
+	}
+	if (eventType === 'subtitlesChanged') {
+		subtitlesSelect.value = currentEmbed.subtitles.enabled
+			? currentEmbed.subtitles.language
+			: '';
 	}
 }
 

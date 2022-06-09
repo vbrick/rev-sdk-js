@@ -5,9 +5,8 @@
 <head>
 	<style>
 		#embed {
-			height: 400px;
-			width: 700px;
-			margin: 20px;
+			height: 404px;
+			width: 720px;
 		}
 
 		form {
@@ -44,6 +43,22 @@
 
 		#demo {
 			display: flex;
+			gap: 20px;
+		}
+
+		.is-full-webcast #demo {
+			flex-wrap: wrap;
+		}
+
+		.is-full-webcast #embed {
+			max-width: 100%;
+			min-width: 480px;
+			box-sizing: border-box;
+			height: 576px;
+			flex: 1 0 1024px;
+		}
+		.is-full-webcast #controls {
+			flex: 1 1 auto;
 		}
 	</style>
 </head>
@@ -121,11 +136,15 @@
 				<div>
 					<div><b>Webcast Status: </b><span id="webcastStatus"></span></div>
 					<div><b>Player Status: </b><span id="playerStatus"></span></div>
+					<div><b>Current Time: </b><span id="currentTime"></span></div>
 				</div>
 				<div>
 					<button id="playButton">Play</button>
 					<button id="pauseButton">Pause</button>
-					Volume:<input type="range" id="volumeSlider" min="0" max="1"  step="0.01" />
+					<label for="volumeSlider">Volume: <input type="range" id="volumeSlider" min="0" max="1"  step="0.01" /></label>
+					<label for="subtitles">Subtitles: <select id="subtitles">
+						<option value="" default>None</option>
+					</select></label>
 				</div>
 			</div>
 		</div>
