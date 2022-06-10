@@ -19,6 +19,16 @@ export interface VbrickBaseEmbedConfig extends VbrickSDKConfig {
 	 * Optional height to be set on embeds. Default is "100%"
 	 */
 	height?: string;
+
+	/**
+	 * For video embeds. If a user needs to log in, go through the login process in a popup window. This is the standard behavior for non-SDK Rev embeded videos
+	 */
+	popupAuth?: boolean;
+
+	/**
+	 * seconds to wait for the embed initialization to complete. default is 30 seconds
+	 */
+	timeoutSeconds?: number;
 }
 
 /**
@@ -26,17 +36,13 @@ export interface VbrickBaseEmbedConfig extends VbrickSDKConfig {
  * @public
  */
 export interface VbrickVideoEmbedConfig extends VbrickBaseEmbedConfig {
-	/**
-	 * For video embeds. If a user needs to log in, go through the login process in a popup window. This is the standard behavior for non-SDK Rev embeded videos
-	 */
-	popupAuth?: boolean;
-
 	autoplay?: boolean;
 	playInLoop?: boolean;
 	hideChapters?: boolean;
 	hideOverlayControls?: boolean;
 	hidePlayControls?: boolean;
-	hideCaptions?: boolean;
+	hideSubtitles?: boolean;
+	/** Use the Close Captions embedded in video stream as Subtitles */
 	forcedCaptions?: boolean;
 	hideSettings?: boolean;
 	hideFullscreen?: boolean;
@@ -63,6 +69,10 @@ export interface VbrickVideoEmbedConfig extends VbrickBaseEmbedConfig {
  * @public
  */
 export interface VbrickWebcastEmbedConfig extends VbrickBaseEmbedConfig {
+	/**
+	 * Include Chat, QA and Polls widgets in embed (if configured) 
+	 */
+	showFullWebcast?: boolean;
 
 }
 
@@ -70,4 +80,4 @@ export interface VbrickWebcastEmbedConfig extends VbrickBaseEmbedConfig {
  * Options available when embedding a VOD/video or webcast
  * @public
  */
-export type VbrickEmbedConfig = VbrickVideoEmbedConfig & VbrickWebcastEmbedConfig;
+export interface VbrickEmbedConfig extends VbrickVideoEmbedConfig, VbrickWebcastEmbedConfig {}

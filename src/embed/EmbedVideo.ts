@@ -21,6 +21,6 @@ export function embedVideo(
 	const cfg = resolveConfig(config);
 
 	const video = new VbrickVideoEmbed(videoId, cfg, el);
-	video.initialize();
+	video.initialize().catch(() => {});
 	return video;
 }

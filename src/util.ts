@@ -17,3 +17,15 @@ export function lookupElement(element: string | HTMLElement): HTMLElement {
 
 	return el;
 }
+
+export function getEmbedUrl(baseUrl: string, endpoint: string, params: Record<string, any>) {
+	const query = Object.entries(params)
+		.map(([key, value]) =>
+			!value ? undefined :
+			value === true ? key :
+			`${key}=${encodeURIComponent(value)}`)
+		.filter(Boolean)
+		.join('&');
+
+	return `${baseUrl}${endpoint}?${query}`;
+}

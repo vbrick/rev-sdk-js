@@ -270,7 +270,7 @@ export function parseRevUrl(url) {
 		autoplay: 'autoplay',
 		forceClosedCaptions: 'forcedCaptions',
 		loopVideo: 'playInLoop',
-		noCc: 'hideCaptions',
+		noCc: 'hideSubtitles',
 		noCenterButtons: 'hideOverlayControls',
 		noChapters: 'hideChapters',
 		noFullscreen: 'hideFullscreen',
@@ -278,7 +278,8 @@ export function parseRevUrl(url) {
 		noSettings: 'hideSettings',
 		placeholder: 'popOut',
 		startAt: 'startAt',
-		popupAuth: 'popupAuth'
+		popupAuth: 'popupAuth',
+		enableFullRev: 'showFullWebcast'
 	};
 	const config = Array.from(searchParams.entries()).reduce((config, [key, value]) => {
 		const configKey = queryConfigMap[key];

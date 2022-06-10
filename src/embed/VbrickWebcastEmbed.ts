@@ -1,37 +1,57 @@
 import { VbrickSDKToken } from '../VbrickSDK';
 import { IVbrickWebcastEmbed, WebcastStatus } from './IVbrickApi';
-import { VbrickEmbed } from './VbrickEmbed';
 import { initializeWebcastToken } from './webcastAuth';
-import { VbrickWebcastEmbedConfig } from './VbrickEmbedConfig';
+import { VbrickEmbedConfig, VbrickWebcastEmbedConfig } from './VbrickEmbedConfig';
+import { getEmbedUrl } from '../util';
+import { IWebcastInfo, IWebcastLayout } from "./IVbrickTypes";
+import { getEmbedQuery, VbrickEmbed } from './VbrickEmbed';
 
+export class VbrickWebcastEmbed extends VbrickEmbed<IWebcastInfo> implements IVbrickWebcastEmbed {
 
-export class VbrickWebcastEmbed extends VbrickEmbed implements IVbrickWebcastEmbed {
-
-	private _webcastStatus: WebcastStatus;
 	public get webcastStatus() {
 		return this._webcastStatus;
 	};
-
+	private _webcastStatus: WebcastStatus = WebcastStatus.Loading;
+	
 	constructor(
 		private readonly webcastId: string,
 		config: VbrickWebcastEmbedConfig,
 		container: HTMLElement
 	) {
-		super(new URL(`/embed/webcast/${webcastId}${config.token ? '?tk' : ''}`, config.baseUrl).toString(), config, container);
+		super(webcastId, config, container);
 	}
 
 	protected initializeToken(): Promise<VbrickSDKToken> {
 		return initializeWebcastToken(this.webcastId, this.config);
 	}
 
-	protected initializeEmbed(): void {
-		['webcastStarted', 'broadcastStarted', 'broadcastStopped', 'webcastEnded'].forEach(event => {
+	protected async initializeEmbed(): Promise<void> {
+		super.initializeEmbed();
+
+		(<const>['webcastStarted', 'broadcastStarted', 'broadcastStopped', 'webcastEnded']).forEach(event => {
 			this.eventBus.on(event, data => this._webcastStatus = data.status);
 		});
 
-		this.eventBus.awaitEvent('webcastLoaded').then(data => {
-			this._webcastStatus = data.status;
+		this.eventBus.on('webcastLoaded', e => {
+			this._webcastStatus = e.status;
+			// start initially with hidden slides
+			if (this.config.showFullWebcast) {
+				this.updateLayout({ video: true, presentation: false });
+			}
+		});
+		// if a webcast is completed it may redirect to a recoreded version of it
+		this.eventBus.on('videoLoaded', () => {
+			this._webcastStatus = WebcastStatus.Completed;
 		});
 	}
 
+	public updateLayout(layout: IWebcastLayout) {
+		this.eventBus.publish('updateLayout', layout);
+	}
+	protected getEmbedUrl(id: string, config: VbrickEmbedConfig): string {
+		return getEmbedUrl(config.baseUrl, `/embed/webcast/${id}`, {
+			enableFullRev: config.showFullWebcast,
+			...getEmbedQuery(config)
+		});
+	}
 }

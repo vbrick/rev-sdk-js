@@ -7,13 +7,13 @@ This is Vbrick's JavaScript SDK library that enables you to embed Vbrick Rev web
 
 #### Accessing the SDK
 
-The JavaScript SDK can be accessed via `<script>` tag in your HTML. Set the src attribute to `https://<<YOUR_REV_URL>>/dist/rev-sdk.js` or import for ES6 module.
+The JavaScript SDK can be accessed via `<script>` tag in your HTML. Set the src attribute to `https://cdn.jsdelivr.net/npm/@vbrick/rev-sdk@latest/dist/rev-sdk.js` or import for ES6 module.
 
 ~~~
-<script src="https://<<YOUR_REV_URL>>/dist/rev-sdk.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@vbrick/rev-sdk@latest/dist/rev-sdk.js"></script>
 
 <script type="module">
-  import revSdk from "https://<<YOUR_REV_URL>>/dist/rev-sdk.js";
+  import revSdk from "https://cdn.jsdelivr.net/npm/@vbrick/rev-sdk@latest/dist/rev-sdk.esm.js";
 </script>
 ~~~
 
