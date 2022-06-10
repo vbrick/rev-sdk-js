@@ -80,4 +80,4 @@ export interface VbrickWebcastEmbedConfig extends VbrickBaseEmbedConfig {
  * Options available when embedding a VOD/video or webcast
  * @public
  */
-export type VbrickEmbedConfig = VbrickVideoEmbedConfig & VbrickWebcastEmbedConfig;
+export interface VbrickEmbedConfig extends VbrickVideoEmbedConfig, VbrickWebcastEmbedConfig {}

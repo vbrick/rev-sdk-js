@@ -137,11 +137,15 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 		});
 	}
 	protected initializeEmbed(): void {
-		this.eventBus.on('videoLoaded', (e: any) => this._info = e);
+		this.eventBus.on('videoLoaded', (e: any) => {
+			this._info = e;
+			this._playerStatus = PlayerStatus.Paused;
+		});
 		//don't include status in information, since it can change
 		this.eventBus.on('webcastLoaded', ({status, ...info}: any) => {
 			this._info = info;
 		});
+		
 		this.eventBus.on('playerStatusChanged', e => this._playerStatus = e.status);
 		this.eventBus.on('subtitlesChanged', subtitles => {
 			this._currentSubtitles = subtitles;

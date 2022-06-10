@@ -1,3 +1,4 @@
+//@ts-check
 import { init } from './demoform.js';
 import { stringifyJson, htmlEscape } from "./utils.js";
 import revSDK from '../dist/rev-sdk.esm.js';
@@ -17,6 +18,8 @@ let currentEmbed;
 const webcastStatusEl = document.getElementById('webcastStatus');
 const playerStatusEl = document.getElementById('playerStatus');
 const volumeSlider = document.getElementById('volumeSlider');
+const subtitlesEl = document.getElementById('subtitles');
+const currentTimeEl = document.getElementById('currentTime');
 const logEl = document.getElementById('logMessages');
 
 // Initialize the configuration form and tell it what to do (embedContent) when form is submitted.
@@ -107,12 +110,11 @@ function addPlayerControls() {
 		}
 	});
 
-	/** @type {HTMLSelectElement} */
-	const subtitlesSelect = document.querySelector('#subtitles');
-	subtitlesSelect.addEventListener('change', () => {
+	
+	subtitlesEl.addEventListener('change', () => {
 		currentEmbed?.setSubtitles({
-			enabled: !!subtitlesSelect.value,
-			language: subtitlesSelect.value
+			enabled: !!subtitlesEl.value,
+			language: subtitlesEl.value
 		});
 	});
 }
@@ -129,12 +131,16 @@ function addPlayerControls() {
 		logEvent(e, data);
 		updateControls(currentEmbed, e);
 	}));
+
+	currentEmbed.on('currentTime', data => {
+		currentTimeEl.innerText = data.currentTime?.toPrecision(3);
+	})
 }
 
 /**
  * Updates the controls on the page
  * @param {IVbrickVideoEmbed | IVbrickWebcastEmbed} currentEmbed
- * @param {Parameters<IVbrickWebcastEmbed['on']>[0]} eventType
+ * @param {import("../dist/rev-sdk").TVbrickEvent} eventType
  */
 function updateControls(currentEmbed, eventType) {
 	playerStatusEl.innerText = currentEmbed.playerStatus;
@@ -143,19 +149,20 @@ function updateControls(currentEmbed, eventType) {
 		volumeSlider.value = currentEmbed.volume;
 	}
 
-	const subtitlesSelect = document.querySelector('#subtitles');
 	if(eventType === 'videoLoaded' || eventType === 'webcastLoaded') {
-		const subtitles = currentEmbed.videoInfo.subtitles || currentEmbed.webcastInfo.subtitles;
+		// clear out previous subtitles, leaving only the "None" option
+		subtitlesEl.querySelectorAll('option:not([default])').forEach(el => el.remove());
+		const subtitles = currentEmbed.info.subtitles || currentEmbed.info.subtitles;
 		for (let c of subtitles) {
 			const el = document.createElement('option');
 			el.value = c.language;
 			el.text = c.language === 'captions' ? 'Closed Captions' : c.language;
-			subtitlesSelect.appendChild(el);
+			subtitlesEl.appendChild(el);
 		}
 	}
-	if (eventType === 'subtitlesChanged') {
-		subtitlesSelect.value = currentEmbed.subtitles.enabled
-			? currentEmbed.subtitles.language
+	if(eventType === 'subtitlesChanged') {
+		subtitlesEl.value = currentEmbed.currentSubtitles.enabled
+			? currentEmbed.currentSubtitles.language
 			: '';
 	}
 }
