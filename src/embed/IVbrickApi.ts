@@ -1,16 +1,18 @@
 import { WebcastStatus } from './WebcastStatus';
 import { PlayerStatus } from './PlayerStatus';
 import { VbrickSDKToken } from '../VbrickSDK';
-import { IHandlerArgs, TEmbedMessage, TPlayerMessage, TWebcastMessage } from './IVbrickEvents';
+import { TVbrickEvent, IListener, TEmbedMessages, TPlayerMessages, TWebcastMessages } from './IVbrickEvents';
 import { IVideoInfo, IWebcastInfo, IWebcastLayout, ISubtitles, IBasicInfo } from "./IVbrickTypes";
+
 export { WebcastStatus } from './WebcastStatus';
 export { PlayerStatus } from './PlayerStatus';
-
+export { TVbrickEvent, IListener, TEmbedMessages, TPlayerMessages, TWebcastMessages, TVbrickMessages } from './IVbrickEvents';
+export * from './IVbrickTypes';
 
 /**
  * @public
  */
-export interface IVbrickBaseEmbed<TMessages extends [string, ...any[]], TInfo extends IBasicInfo> {
+export interface IVbrickBaseEmbed<TInfo extends IBasicInfo, Events extends string & TVbrickEvent = keyof TEmbedMessages> {
 	/**
 	* video playing, buffering, etc
 	*/
@@ -49,7 +51,7 @@ export interface IVbrickBaseEmbed<TMessages extends [string, ...any[]], TInfo ex
 
 	/**
 	 * update the current subtitles settings
-	 * @param subtitles enable/disable subtitles and set language (use 'captions' for closed captions encoded into video stream)
+	 * @param subtitles - enable/disable subtitles and set language (use 'captions' for closed captions encoded into video stream)
 	 */
 	setSubtitles(subtitles: ISubtitles): void;
 
@@ -58,12 +60,12 @@ export interface IVbrickBaseEmbed<TMessages extends [string, ...any[]], TInfo ex
 	 * @param event - name of event
 	 * @param listener - callback when event is fired. Keep a reference if you intend to call {@link IVbrickBaseEmbed.off} later
 	 */
-	on(...[event, listener]: IHandlerArgs<TMessages>): void;
+	on<T extends Events>(event: T, listener: IListener<T>): void;
 
 	/**
 	 * Removes an event listener
 	 */
-	off(...[event, listener]: IHandlerArgs<TMessages>): void;
+	off<T extends Events>(event: T, listener: IListener<T>): void;
 
 	/**
 	 * Removes the embedded content from the DOM.
@@ -80,7 +82,7 @@ export interface IVbrickBaseEmbed<TMessages extends [string, ...any[]], TInfo ex
 /**
  * @public
  */
-export interface IVbrickVideoEmbed extends IVbrickBaseEmbed<TEmbedMessage | TPlayerMessage, IVideoInfo> {
+export interface IVbrickVideoEmbed extends IVbrickBaseEmbed<IVideoInfo, keyof (TEmbedMessages & TPlayerMessages)> {
 	/**
 	 * Current position in video in seconds
 	 */
@@ -99,13 +101,13 @@ export interface IVbrickVideoEmbed extends IVbrickBaseEmbed<TEmbedMessage | TPla
 
 	/**
 	 * sets playback rate 
-	 * @param speed {number} 0-16, default is 1
+	 * @param speed - 0-16, default is 1
 	 */
 	setPlaybackSpeed(speed: number): void;
 
 	/**
 	 * sets the current time in the video
-	 * @param currentTime {number} 0 - video duration
+	 * @param currentTime - value (in seconds) between 0 and video duration
 	 */
 	seek(currentTime: number): void;
 }
@@ -113,7 +115,7 @@ export interface IVbrickVideoEmbed extends IVbrickBaseEmbed<TEmbedMessage | TPla
 /**
  * @public
  */
-export interface IVbrickWebcastEmbed extends IVbrickBaseEmbed<TEmbedMessage | TPlayerMessage | TWebcastMessage, IWebcastInfo> {
+export interface IVbrickWebcastEmbed extends IVbrickBaseEmbed<IWebcastInfo, keyof (TEmbedMessages & TWebcastMessages)> {
 	/**
 	 * Indicates whether the webcast is started, or broadcasting.
 	 */
@@ -122,10 +124,7 @@ export interface IVbrickWebcastEmbed extends IVbrickBaseEmbed<TEmbedMessage | TP
 	/**
 	 * Change the visibility of video/slides. Only applicable when the "showFullWebcast" config
 	 * flag is enabled and the event includes slides
-	 * @param layout 
+	 * @param layout  - set if video/slides are displayed
 	 */
 	updateLayout(layout: IWebcastLayout): void;
-
-	on(...[event, listener]: IHandlerArgs<TEmbedMessage | TPlayerMessage | TWebcastMessage>): void;
-	off(...[event, listener]: IHandlerArgs<TEmbedMessage | TPlayerMessage | TWebcastMessage>): void;
 }

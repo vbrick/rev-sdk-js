@@ -5,68 +5,105 @@ import { IVideoInfo, ISubtitles, IWebcastInfo, IWebcastStatusMessage, IWebcastLa
  * Authentication/load events 
  * @public
  */
-export type TEmbedMessage =
-	['load'] |
-	['authChanged'] |
-	['error', { msg: string; }];
-
+export type TEmbedMessages = {
+	/** Fired on initial embed load */
+	load: void;
+	/** Authentication has been updated */
+	authChanged: void;
+	/** Returned if an error occurs in the communication with the embed * (for example, a bad token)* */
+	error: {
+		/** Diagnostic error message */
+		msg: string;
+	};
+	/** Passes metadata of video */
+	videoLoaded: IVideoInfo;
+	/** Fired when the player has changed state *(Play/Pause/Buffering, etc.)* */
+	playerStatusChanged: { status: PlayerStatus; };
+	/** Fired when the player's volume is updated */
+	volumeChanged: number;
+	/** Fired when subtitles are changed or enabled/disabled */
+	subtitlesChanged: ISubtitles;
+}
 
 /**
  * Video Player events
  * @public
  */
- export type TPlayerMessage =
-	['videoLoaded', IVideoInfo] |
-	['playerStatusChanged', { status: PlayerStatus; }] |
-	['volumeChanged', number] |
-	['subtitlesChanged', ISubtitles] |
-	['playbackSpeedChanged', number] |
-	['seeked', { startTime: number, endTime: number; }] |
-	['currentTime', { currentTime: number, duration: number; }];
+export type TPlayerMessages = {
+	/**
+	 * Fired when the playback rate has been updated
+	 */
+	playbackSpeedChanged: number;
+	/**
+	 * Playback position has been changed
+	 */
+	seeked: {
+		/** Playback position before seek started */
+		startTime: number,
+		/** Playback position when seek ended */
+		endTime: number;
+	}
+	currentTime: {
+		/** Current time in seconds into the video */
+		currentTime: number,
+		/** Total duration of video */
+		duration: number;
+	}
+}
 
 /**
  * Webcast events
  * @public
  */
- export type TWebcastMessage =
+export type TWebcastMessages = {
 	/**
-	 * Metadata about the webcast
+	 * Passes metadata about the webcast
 	 */
-	['webcastLoaded', IWebcastInfo & IWebcastStatusMessage] |
-	['webcastStarted', IWebcastStatusMessage] |
-	['broadcastStarted', IWebcastStatusMessage] |
-	['broadcastStopped', IWebcastStatusMessage] |
-	['webcastEnded', IWebcastStatusMessage] |
-	['layoutChanged', IWebcastLayout] |
-	['commentAdded', IComment] |
-	['slideChanged', ISlideEvent] |
-	['pollOpened', IPoll] |
-	['pollClosed', TPollId] |
-	['pollPublished', IPoll] |
-	['pollUnpublished', TPollId];
+	webcastLoaded: IWebcastInfo & IWebcastStatusMessage;
+	/** Webcast is active (video not yet visible / in lobby) */
+	webcastStarted: IWebcastStatusMessage;
+	/** Webcast is active and video content displayed */
+	broadcastStarted: IWebcastStatusMessage;
+	/** Webcast is active but video stopped */
+	broadcastStopped: IWebcastStatusMessage;
+	/** Webcast is complete */
+	webcastEnded: IWebcastStatusMessage;
+	/** video/slides display has been changed */
+	layoutChanged: IWebcastLayout;
+	/** New Chat comment added */
+	commentAdded: IComment;
+	/** Active slide has een updated */
+	slideChanged: ISlideEvent;
+	/** Poll has been opened */
+	pollOpened: IPoll;
+	/** Includes the ID of a poll that is now closed */
+	pollClosed: TPollId;
+	/** Poll is published - includes voting details */
+	pollPublished: IPoll;
+	/** Poll has been removed */
+	pollUnpublished: TPollId;
+}
 
 /**
- * Tuples of emitted events and their payload types
+ * All supported events and their corresponding listener callback payload 
  * @public
  */
-export type TVbrickMessage =
-	TEmbedMessage |
-	TPlayerMessage |
-	TWebcastMessage;
+export type TVbrickMessages = TEmbedMessages & TPlayerMessages & TWebcastMessages;
 
 /**
  * Events emitted by Vbrick Embed
  * @public
  */
-export type TVbrickEvent = TVbrickMessage[0];
+export type TVbrickEvent = Extract<keyof TVbrickMessages, string>;
 
 /**
- * A mapping of published events and a listener callback with the expected payload
+ * Event callback parameters for the specified event
  * @public
  */
- export type IHandlerArgs<T extends [string, ...any[]]> = {
-	[K in T[0]]: [K, Handler<ValOfTuple<T, K>, void>]
-}[T[0]];
+export type IListener<TEvent extends string & keyof TVbrickMessages> = TVbrickMessages[TEvent] extends void
+	? () => void
+	: (data: TVbrickMessages[TEvent]) => void;
+
 
 //#region internal
 
@@ -78,7 +115,6 @@ export type TAuthMethods =
 	['authenticated', IAuthChangeRequest] |
 	['error', string] |
 	['authChanged', IAuthChangeRequest];
-
 
 /**
 * @internal
@@ -106,21 +142,3 @@ interface IAuthChangeRequest {
 		accessToken: string;
 	};
 }
-
-/**
- * Events and the shape of the corresponding listener callback
- * @internal
- */
-export type TEventHandlers = {
-	[K in TVbrickEvent]: Handler<ValOfTuple<TVbrickMessage, K>, void>
-};
-
-type Handler<TIn, TOut> = TIn extends void
-	? () => TOut
-	: (...args: [TIn, ...any[]]) => TOut;
-
-export type ValOfTuple<T extends [string] | [string, ...any[]], K> = T extends [string, any]
-	? Extract<T, [K, any]>[1]
-	: void;
-
-

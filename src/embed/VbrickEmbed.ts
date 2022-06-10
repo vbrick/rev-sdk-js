@@ -3,13 +3,13 @@ import { VbrickEmbedConfig } from './VbrickEmbedConfig';
 import { getLogger, ILogger } from '../Log';
 import { IVbrickBaseEmbed, PlayerStatus } from './IVbrickApi';
 import { TokenType, VbrickSDKToken } from '../VbrickSDK';
-import { IHandlerArgs, TEmbedMessage, TVbrickMessage } from './IVbrickEvents';
+import { TVbrickEvent, IListener } from './IVbrickEvents';
 import { IBasicInfo, ISubtitles } from './IVbrickTypes';
 
 /**
  * Base class for embedded content.
  */
-export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBaseEmbed<TEmbedMessage, TInfo> {
+export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBaseEmbed<TInfo> {
 
 	/**
 	* video playing, buffering, etc
@@ -151,12 +151,12 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 	}
 	protected abstract getEmbedUrl(id: string, config: VbrickEmbedConfig);
 	
-	public on(...[event, listener]: IHandlerArgs<TVbrickMessage>): void {
+	public on<T extends TVbrickEvent>(event: T, listener: IListener<T>): void {
 		//ensure internal updates take effect before calling client handlers
-		this.eventBus.on(event, (e: any) => setTimeout(() => listener(e)));
+		this.eventBus.on<any>(event, (e: any) => setTimeout(() => listener(e)));
 	}
 
-	public off(...[event, listener]: IHandlerArgs<TVbrickMessage>): void {
+	public off<T extends TVbrickEvent>(event: T, listener: IListener<T>): void {
 		this.eventBus.off(event, listener);
 	}
 

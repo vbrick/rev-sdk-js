@@ -1,10 +1,8 @@
 import { VbrickSDKConfig } from "../VbrickSDK";
-import { TVbrickMessage, TVbrickEvent, TEventHandlers, TPlayerMethod, TAuthMethods, TWebcastMethod, IHandlerArgs } from './IVbrickEvents';
+import { TVbrickEvent, IListener, TPlayerMethod, TAuthMethods, TWebcastMethod, TVbrickMessages } from './IVbrickEvents';
 
 // default to 30 second timeout on authentication/SDK communication
 const DEFAULT_TIMEOUT = 30 * 1000;
-
-type IListener = (data: any) => void;
 
 /**
  * @internal
@@ -16,7 +14,7 @@ export class EventBus {
 	private readonly shouldLog: boolean;
 	private isDestroyed: boolean = false;
 
-	private eventHandlers: { [K in TVbrickEvent]?: Array<IListener> } = {};
+	private eventHandlers: { [K in TVbrickEvent]?: Array<IListener<K>> } = {};
 
 	constructor(
 		iframe: HTMLIFrameElement,
@@ -30,7 +28,7 @@ export class EventBus {
 		this.shouldLog = !!config.log;
 	}
 
-	public on<T extends TVbrickEvent>(event: T, fn: TEventHandlers[T]): () => void {
+	public on<T extends TVbrickEvent>(event: T, fn: IListener<T>) {
 		const handlers = this.getHandlers(event);
 		handlers.push(fn);
 
@@ -63,7 +61,7 @@ export class EventBus {
 		});
 	}
 
-	public off<T extends TVbrickEvent>(event: T, fn: TEventHandlers[T]): void {
+	public off<T extends TVbrickEvent>(event: T, fn: IListener<T>): void {
 		const handlers = this.getHandlers(event);
 		const i = handlers.indexOf(fn);
 		if(i >= 0) {
@@ -91,7 +89,7 @@ export class EventBus {
 	}
 
 	/** Fires local event handlers */
-	public emitLocalEvent(...[event, msg = undefined]: TVbrickMessage): void {
+	public emitLocalEvent<T extends TVbrickEvent>(event: T, msg: TVbrickMessages[T] = undefined): void {
 		this.callHandlers(event, msg);
 	}
 
@@ -122,7 +120,7 @@ export class EventBus {
 		const handlers = Array.from(this.getHandlers(event));
 		handlers.forEach(h => h(data));
 	}
-	private getHandlers(event: string): IListener[] {
+	private getHandlers(event: string): IListener<any>[] {
 		const h = this.eventHandlers;
 		if(!h[event]) {
 			h[event] = [];
