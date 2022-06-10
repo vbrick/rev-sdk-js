@@ -1,6 +1,6 @@
 {
   "name": "@vbrick/rev-sdk",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "Client SDK for Vbrick Rev",
   "author": "Vbrick Systems",
   "repository": "github:vbrick/rev-sdk-js",
