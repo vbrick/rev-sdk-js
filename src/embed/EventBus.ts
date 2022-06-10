@@ -36,7 +36,7 @@ export class EventBus {
 		return () => this.off(event, fn);
 	}
 
-	public awaitEvent(event: string, failEvent?: string, timeout: number = 30000): Promise<any> {
+	public awaitEvent(event: string, failEvent: string = 'error', timeout: number = 30000): Promise<any> {
 		return new Promise((resolve, reject) => {
 			const handler = (fn: (e: any) => void) => e => {
 				fn(e);
@@ -68,6 +68,7 @@ export class EventBus {
 		}
 	}
 
+	/** Posts a message to the embed */
 	public publish(event: string, msg?: any): void {
 		this.shouldLog && console.log('rev client posting message. ', event);
 		this.win.postMessage({
@@ -77,13 +78,23 @@ export class EventBus {
 		}, this.baseUrl);
 	}
 
-	public publishError(msg: string, err: any) {
-		this.callHandlers('error', { msg, err });
+	/** Posts an 'error' message to the embed */
+	public publishError(msg: string) {
 		this.win.postMessage({
 			app: 'vbrick',
 			event: 'error',
 			msg
 		}, this.baseUrl);
+	}
+
+	/** Fires local event handlers */
+	public emitLocalEvent(event: string, msg?: any): void {
+		//not implemented
+	}
+
+	/** Calls the local 'error' event handlers */
+	public emitLocalError(msg: string, err: any) {
+		this.callHandlers('error', { msg, err });
 	}
 
 	private handleMessage(e: MessageEvent): void {
