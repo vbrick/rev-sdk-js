@@ -103,7 +103,7 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 
 		const timeout = (this.config.timeoutSeconds * 1000) || undefined;
 
-		this.init = Promise.all([
+		return this.init = Promise.all([
 			this.initializeToken(),
 			this.eventBus.awaitEvent('load', 'error', timeout)
 		])
@@ -119,8 +119,6 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 				this.eventBus.emitLocalError('Error loading embed content', err);
 				return Promise.reject(err);
 			});
-
-		return this.init;
 	}
 
 	protected initializeToken(): Promise<any> {

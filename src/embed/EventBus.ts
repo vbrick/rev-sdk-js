@@ -97,7 +97,6 @@ export class EventBus {
 	public emitLocalError(msg: string, err: any) {
 		this.callHandlers('error', { msg, err });
 	}
-	
 
 	private handleMessage(e: MessageEvent): void {
 		const data = e.data || {};
