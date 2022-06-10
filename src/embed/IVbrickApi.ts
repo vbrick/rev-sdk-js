@@ -50,8 +50,9 @@ export interface IVbrickBaseEmbed<TInfo extends IBasicInfo, Events extends strin
 	setVolume(volume: number): void;
 
 	/**
+	 * Indicates whether the webcast is started, or broadcasting.
 	 * update the current subtitles settings
-	 * @param subtitles - enable/disable subtitles and set language (use 'captions' for closed captions encoded into video stream)
+	 * @param subtitles - enable/disable subtitles and set language (leave language blank to use closed captions encoded into video stream)
 	 */
 	setSubtitles(subtitles: ISubtitles): void;
 

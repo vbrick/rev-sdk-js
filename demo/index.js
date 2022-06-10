@@ -1,4 +1,3 @@
-//@ts-check
 import { init } from './demoform.js';
 import { stringifyJson, htmlEscape } from "./utils.js";
 import revSDK from '../dist/rev-sdk.esm.js';
@@ -112,9 +111,10 @@ function addPlayerControls() {
 
 	
 	subtitlesEl.addEventListener('change', () => {
+		const val = subtitlesEl.value;
 		currentEmbed?.setSubtitles({
-			enabled: !!subtitlesEl.value,
-			language: subtitlesEl.value
+			enabled: !!val,
+			language: val === 'captions' ? undefined : val
 		});
 	});
 }
@@ -162,7 +162,7 @@ function updateControls(currentEmbed, eventType) {
 	}
 	if(eventType === 'subtitlesChanged') {
 		subtitlesEl.value = currentEmbed.currentSubtitles.enabled
-			? currentEmbed.currentSubtitles.language
+			? currentEmbed.currentSubtitles.language || 'captions'
 			: '';
 	}
 }

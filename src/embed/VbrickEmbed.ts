@@ -83,7 +83,7 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 
 	/**
 	 * update the current subtitles settings
-	 * @param subtitles enable/disable subtitles and set language (use 'captions' for closed captions encoded into video stream)
+	 * @param subtitles enable/disable subtitles and set language (leave language blank to use closed captions encoded into video stream)
 	 */
 	public setSubtitles(subtitles: ISubtitles) {
 		this.eventBus.publish('setSubtitles', subtitles);
