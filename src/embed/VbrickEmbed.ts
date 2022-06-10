@@ -110,9 +110,7 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 			.then(([token]) => {
 				this.logger.log('embed loaded, authenticating');
 				this.eventBus.publish('authenticated', { token });
-				// added fail-safe check for if authChanged event isn't passed
-				// COMBAK - remove when confirmed unnecessary
-				this.eventBus.awaitEvent(['authChanged', 'videoLoaded', 'webcastLoaded'], 'error', timeout);
+				this.eventBus.awaitEvent('authChanged', 'error', timeout);
 			})
 			.catch(err => {
 				this._playerStatus = PlayerStatus.Error;
