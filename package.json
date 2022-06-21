@@ -1,18 +1,19 @@
 {
   "name": "@vbrick/rev-sdk",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "Client SDK for Vbrick Rev",
   "author": "Vbrick Systems",
   "repository": "github:vbrick/rev-sdk-js",
   "type": "module",
   "module": "dist/rev-sdk.esm.js",
   "browser": "dist/rev-sdk.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/rev-sdk.d.ts",
   "browserslist": [
     "defaults",
     "not IE 11"
   ],
   "scripts": {
+    "prepublishOnly": "(npm run build) && (npm run dts)",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node --max_old_space_size=4096 node_modules/webpack/bin/webpack --config ./webpack.config.js --progress",
     "build:watch": "node --max_old_space_size=4096 node_modules/webpack/bin/webpack --config ./webpack.config.js --progress --watch",
@@ -28,7 +29,7 @@
     "ts-loader": "^9.1.2",
     "typedoc": "^0.22.13",
     "typedoc-plugin-markdown": "^3.11.14",
-    "typescript": "^4.2.4",
+    "typescript": "^4.5.5",
     "webpack": "^5.36.2",
     "webpack-cli": "^4.7.0"
   }
