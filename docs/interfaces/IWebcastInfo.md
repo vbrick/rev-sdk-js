@@ -31,7 +31,7 @@ Webcast Metadata
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:69](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/IVbrickTypes.ts#L69)
+[embed/IVbrickTypes.ts:69](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/IVbrickTypes.ts#L69)
 
 ___
 
@@ -45,7 +45,7 @@ ___
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:72](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/IVbrickTypes.ts#L72)
+[embed/IVbrickTypes.ts:72](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/IVbrickTypes.ts#L72)
 
 ___
 
@@ -55,7 +55,7 @@ ___
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:73](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/IVbrickTypes.ts#L73)
+[embed/IVbrickTypes.ts:73](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/IVbrickTypes.ts#L73)
 
 ___
 
@@ -65,7 +65,7 @@ ___
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:71](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/IVbrickTypes.ts#L71)
+[embed/IVbrickTypes.ts:71](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/IVbrickTypes.ts#L71)
 
 ___
 
@@ -75,7 +75,7 @@ ___
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:68](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/IVbrickTypes.ts#L68)
+[embed/IVbrickTypes.ts:68](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/IVbrickTypes.ts#L68)
 
 ___
 
@@ -89,7 +89,7 @@ ___
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:70](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/IVbrickTypes.ts#L70)
+[embed/IVbrickTypes.ts:70](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/IVbrickTypes.ts#L70)
 
 ___
 
@@ -103,7 +103,7 @@ ___
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:67](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/IVbrickTypes.ts#L67)
+[embed/IVbrickTypes.ts:67](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/IVbrickTypes.ts#L67)
 
 ___
 
@@ -113,4 +113,4 @@ ___
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:66](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/IVbrickTypes.ts#L66)
+[embed/IVbrickTypes.ts:66](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/IVbrickTypes.ts#L66)

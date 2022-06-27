@@ -276,7 +276,6 @@ export function parseRevUrl(url) {
 		noFullscreen: 'hideFullscreen',
 		noPlayBar: 'hidePlayControls',
 		noSettings: 'hideSettings',
-		placeholder: 'popOut',
 		startAt: 'startAt',
 		popupAuth: 'popupAuth',
 		enableFullRev: 'showFullWebcast'

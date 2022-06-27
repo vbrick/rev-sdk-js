@@ -13,13 +13,19 @@ export * from './embed/IVbrickApi';
 
 import { embedWebcast } from './embed/EmbedWebcast';
 import { embedVideo } from './embed/EmbedVideo';
+import { TokenType } from './VbrickSDK';
+import { PlayerStatus } from './embed/PlayerStatus';
+import { WebcastStatus } from './embed/WebcastStatus';
 
 /**
  * @public
  */
 const revSDK = {
     embedWebcast,
-    embedVideo
+    embedVideo,
+    TokenType,
+    PlayerStatus,
+    WebcastStatus
 };
 
 export default revSDK;

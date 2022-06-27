@@ -47,7 +47,7 @@ Branding Settings. Accent color to use in the player, in HTML #rrggbb format
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:64](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/VbrickEmbedConfig.ts#L64)
+[embed/VbrickEmbedConfig.ts:64](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/VbrickEmbedConfig.ts#L64)
 
 ___
 
@@ -57,7 +57,7 @@ ___
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:39](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/VbrickEmbedConfig.ts#L39)
+[embed/VbrickEmbedConfig.ts:39](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/VbrickEmbedConfig.ts#L39)
 
 ___
 
@@ -73,7 +73,7 @@ URL for Rev
 
 #### Defined in
 
-[VbrickSDK.ts:34](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/VbrickSDK.ts#L34)
+[VbrickSDK.ts:34](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/VbrickSDK.ts#L34)
 
 ___
 
@@ -89,7 +89,7 @@ An optional class to be set on embeds.
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:11](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/VbrickEmbedConfig.ts#L11)
+[embed/VbrickEmbedConfig.ts:11](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/VbrickEmbedConfig.ts#L11)
 
 ___
 
@@ -101,7 +101,7 @@ Use the Close Captions embedded in video stream as Subtitles
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:46](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/VbrickEmbedConfig.ts#L46)
+[embed/VbrickEmbedConfig.ts:46](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/VbrickEmbedConfig.ts#L46)
 
 ___
 
@@ -117,7 +117,7 @@ Optional height to be set on embeds. Default is "100%"
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:21](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/VbrickEmbedConfig.ts#L21)
+[embed/VbrickEmbedConfig.ts:21](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/VbrickEmbedConfig.ts#L21)
 
 ___
 
@@ -127,7 +127,7 @@ ___
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:41](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/VbrickEmbedConfig.ts#L41)
+[embed/VbrickEmbedConfig.ts:41](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/VbrickEmbedConfig.ts#L41)
 
 ___
 
@@ -137,7 +137,7 @@ ___
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:48](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/VbrickEmbedConfig.ts#L48)
+[embed/VbrickEmbedConfig.ts:48](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/VbrickEmbedConfig.ts#L48)
 
 ___
 
@@ -147,7 +147,7 @@ ___
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:42](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/VbrickEmbedConfig.ts#L42)
+[embed/VbrickEmbedConfig.ts:42](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/VbrickEmbedConfig.ts#L42)
 
 ___
 
@@ -157,7 +157,7 @@ ___
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:43](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/VbrickEmbedConfig.ts#L43)
+[embed/VbrickEmbedConfig.ts:43](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/VbrickEmbedConfig.ts#L43)
 
 ___
 
@@ -167,7 +167,7 @@ ___
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:47](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/VbrickEmbedConfig.ts#L47)
+[embed/VbrickEmbedConfig.ts:47](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/VbrickEmbedConfig.ts#L47)
 
 ___
 
@@ -177,7 +177,7 @@ ___
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:44](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/VbrickEmbedConfig.ts#L44)
+[embed/VbrickEmbedConfig.ts:44](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/VbrickEmbedConfig.ts#L44)
 
 ___
 
@@ -193,7 +193,7 @@ If true, sdk will log to console
 
 #### Defined in
 
-[VbrickSDK.ts:44](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/VbrickSDK.ts#L44)
+[VbrickSDK.ts:44](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/VbrickSDK.ts#L44)
 
 ___
 
@@ -205,7 +205,7 @@ Branding Settings. Logo image URL
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:59](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/VbrickEmbedConfig.ts#L59)
+[embed/VbrickEmbedConfig.ts:59](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/VbrickEmbedConfig.ts#L59)
 
 ___
 
@@ -215,7 +215,7 @@ ___
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:40](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/VbrickEmbedConfig.ts#L40)
+[embed/VbrickEmbedConfig.ts:40](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/VbrickEmbedConfig.ts#L40)
 
 ___
 
@@ -231,7 +231,7 @@ For video embeds. If a user needs to log in, go through the login process in a p
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:26](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/VbrickEmbedConfig.ts#L26)
+[embed/VbrickEmbedConfig.ts:26](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/VbrickEmbedConfig.ts#L26)
 
 ___
 
@@ -243,7 +243,7 @@ Starts the video at specified timestamp. must be in the format ##m##s. For examp
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:54](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/VbrickEmbedConfig.ts#L54)
+[embed/VbrickEmbedConfig.ts:54](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/VbrickEmbedConfig.ts#L54)
 
 ___
 
@@ -259,7 +259,7 @@ seconds to wait for the embed initialization to complete. default is 30 seconds
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:31](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/VbrickEmbedConfig.ts#L31)
+[embed/VbrickEmbedConfig.ts:31](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/VbrickEmbedConfig.ts#L31)
 
 ___
 
@@ -275,7 +275,7 @@ Token for authentication
 
 #### Defined in
 
-[VbrickSDK.ts:39](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/VbrickSDK.ts#L39)
+[VbrickSDK.ts:39](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/VbrickSDK.ts#L39)
 
 ___
 
@@ -291,4 +291,4 @@ Optional width to be set on embeds. Default is "100%"
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:16](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/VbrickEmbedConfig.ts#L16)
+[embed/VbrickEmbedConfig.ts:16](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/VbrickEmbedConfig.ts#L16)

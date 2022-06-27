@@ -19,7 +19,7 @@ The current subtitles language and if enabled or not
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:11](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/IVbrickTypes.ts#L11)
+[embed/IVbrickTypes.ts:11](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/IVbrickTypes.ts#L11)
 
 ___
 
@@ -29,4 +29,4 @@ ___
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:10](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/IVbrickTypes.ts#L10)
+[embed/IVbrickTypes.ts:10](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/IVbrickTypes.ts#L10)

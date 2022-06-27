@@ -40,7 +40,7 @@ URL for Rev
 
 #### Defined in
 
-[VbrickSDK.ts:34](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/VbrickSDK.ts#L34)
+[VbrickSDK.ts:34](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/VbrickSDK.ts#L34)
 
 ___
 
@@ -56,7 +56,7 @@ An optional class to be set on embeds.
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:11](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/VbrickEmbedConfig.ts#L11)
+[embed/VbrickEmbedConfig.ts:11](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/VbrickEmbedConfig.ts#L11)
 
 ___
 
@@ -72,7 +72,7 @@ Optional height to be set on embeds. Default is "100%"
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:21](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/VbrickEmbedConfig.ts#L21)
+[embed/VbrickEmbedConfig.ts:21](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/VbrickEmbedConfig.ts#L21)
 
 ___
 
@@ -88,7 +88,7 @@ If true, sdk will log to console
 
 #### Defined in
 
-[VbrickSDK.ts:44](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/VbrickSDK.ts#L44)
+[VbrickSDK.ts:44](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/VbrickSDK.ts#L44)
 
 ___
 
@@ -104,7 +104,7 @@ For video embeds. If a user needs to log in, go through the login process in a p
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:26](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/VbrickEmbedConfig.ts#L26)
+[embed/VbrickEmbedConfig.ts:26](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/VbrickEmbedConfig.ts#L26)
 
 ___
 
@@ -116,7 +116,7 @@ Include Chat, QA and Polls widgets in embed (if configured)
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:75](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/VbrickEmbedConfig.ts#L75)
+[embed/VbrickEmbedConfig.ts:75](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/VbrickEmbedConfig.ts#L75)
 
 ___
 
@@ -132,7 +132,7 @@ seconds to wait for the embed initialization to complete. default is 30 seconds
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:31](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/VbrickEmbedConfig.ts#L31)
+[embed/VbrickEmbedConfig.ts:31](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/VbrickEmbedConfig.ts#L31)
 
 ___
 
@@ -148,7 +148,7 @@ Token for authentication
 
 #### Defined in
 
-[VbrickSDK.ts:39](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/VbrickSDK.ts#L39)
+[VbrickSDK.ts:39](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/VbrickSDK.ts#L39)
 
 ___
 
@@ -164,4 +164,4 @@ Optional width to be set on embeds. Default is "100%"
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:16](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/VbrickEmbedConfig.ts#L16)
+[embed/VbrickEmbedConfig.ts:16](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/VbrickEmbedConfig.ts#L16)
