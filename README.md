@@ -43,9 +43,9 @@ Embedding a webcast requires you to pass the following parameters to the embedWe
 * Rev Webcast Id
 * Webcast Config which consists of the following individual parameters
   * token (type=object, Required): Token for the user who is watching the webcast, which can be unique for each embed
-    * type (type=string, Required): Set to 'JWT' for Json Web Token, or 'AccessToken' for an OAuth or API token.
+    * type (type=string, Required): Set to 'JWT' for [JSON Web Token](https://revdocs.vbrick.com/reference/jwt-authentication), 'AccessToken' for an [OAuth](https://revdocs.vbrick.com/reference/oauth2token) or [API token](https://revdocs.vbrick.com/reference/authenticateuser), or 'GuestRegistration' for a token generated using the [Guest Registration](https://revdocs.vbrick.com/reference/getguestuser) APIs.
     * value (type=string, Required): Value of the token
-    * issuer (type=string, Required): Issuer of the token
+    * issuer (type=string): Issuer of the token.
   * baseUrl (type=string, Required): Your Rev URL
   * className (type=string, Optional): CSS classes if you want to include to the embed iFrame
   * width (type=string, Optional): iframe width if you want to overwrite the default responsive behavior
