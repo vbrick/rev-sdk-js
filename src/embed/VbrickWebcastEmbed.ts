@@ -1,6 +1,6 @@
-import { VbrickSDKToken } from '../VbrickSDK';
+import { TokenType, VbrickSDKToken } from '../VbrickSDK';
 import { IVbrickWebcastEmbed, WebcastStatus } from './IVbrickApi';
-import { initializeWebcastToken } from './webcastAuth';
+import { authenticateGuestToken } from './auth';
 import { VbrickEmbedConfig, VbrickWebcastEmbedConfig } from './VbrickEmbedConfig';
 import { getEmbedUrl } from '../util';
 import { IWebcastInfo, IWebcastLayout } from "./IVbrickTypes";
@@ -22,7 +22,13 @@ export class VbrickWebcastEmbed extends VbrickEmbed<IWebcastInfo> implements IVb
 	}
 
 	protected initializeToken(): Promise<VbrickSDKToken> {
-		return initializeWebcastToken(this.webcastId, this.config);
+		const {type, issuer} = this.config.token ?? {};
+
+		if (type === TokenType.GUEST_REGISTRATION || (type === TokenType.JWT && issuer === 'vbrick_rev')) {
+			return authenticateGuestToken(this.webcastId, this.config);
+		}
+
+		return super.initializeToken();
 	}
 
 	protected async initializeEmbed(): Promise<void> {

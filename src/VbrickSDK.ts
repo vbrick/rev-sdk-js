@@ -4,7 +4,8 @@
  */
 export enum TokenType {
 	JWT = 'JWT',
-	ACCESS_TOKEN = 'AccessToken'
+	ACCESS_TOKEN = 'AccessToken',
+	GUEST_REGISTRATION = 'GuestRegistration'
 }
 
 /**

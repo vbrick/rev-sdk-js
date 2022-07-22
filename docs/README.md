@@ -37,7 +37,7 @@ A javascript SDK for embedding or calling rev APIs
 - [VbrickVideoEmbedConfig](interfaces/VbrickVideoEmbedConfig.md)
 - [VbrickWebcastEmbedConfig](interfaces/VbrickWebcastEmbedConfig.md)
 
-### Type aliases
+### Type Aliases
 
 - [IListener](README.md#ilistener)
 - [IWebcastStatusMessage](README.md#iwebcaststatusmessage)
@@ -64,7 +64,7 @@ ___
 
 Renames and re-exports [__type](README.md#__type)
 
-## Type aliases
+## Type Aliases
 
 ### IListener
 
@@ -80,7 +80,7 @@ Event callback parameters for the specified event
 
 #### Defined in
 
-[embed/IVbrickEvents.ts:103](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/IVbrickEvents.ts#L103)
+[embed/IVbrickEvents.ts:103](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickEvents.ts#L103)
 
 ___
 
@@ -105,7 +105,7 @@ Event indicating the current webcast status
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:56](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/IVbrickTypes.ts#L56)
+[embed/IVbrickTypes.ts:56](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickTypes.ts#L56)
 
 ___
 
@@ -131,7 +131,7 @@ Authentication/load events
 
 #### Defined in
 
-[embed/IVbrickEvents.ts:8](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/IVbrickEvents.ts#L8)
+[embed/IVbrickEvents.ts:8](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickEvents.ts#L8)
 
 ___
 
@@ -155,7 +155,7 @@ Video Player events
 
 #### Defined in
 
-[embed/IVbrickEvents.ts:32](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/IVbrickEvents.ts#L32)
+[embed/IVbrickEvents.ts:32](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickEvents.ts#L32)
 
 ___
 
@@ -173,7 +173,7 @@ The Webcast Poll that has been Closed/Unpublished
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:116](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/IVbrickTypes.ts#L116)
+[embed/IVbrickTypes.ts:116](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickTypes.ts#L116)
 
 ___
 
@@ -185,7 +185,7 @@ Events emitted by Vbrick Embed
 
 #### Defined in
 
-[embed/IVbrickEvents.ts:97](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/IVbrickEvents.ts#L97)
+[embed/IVbrickEvents.ts:97](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickEvents.ts#L97)
 
 ___
 
@@ -197,7 +197,7 @@ All supported events and their corresponding listener callback payload
 
 #### Defined in
 
-[embed/IVbrickEvents.ts:91](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/IVbrickEvents.ts#L91)
+[embed/IVbrickEvents.ts:91](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickEvents.ts#L91)
 
 ___
 
@@ -226,7 +226,7 @@ Webcast events
 
 #### Defined in
 
-[embed/IVbrickEvents.ts:58](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/IVbrickEvents.ts#L58)
+[embed/IVbrickEvents.ts:58](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickEvents.ts#L58)
 
 ## Variables
 
@@ -246,4 +246,4 @@ Webcast events
 
 #### Defined in
 
-[index.ts:23](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/index.ts#L23)
+[index.ts:20](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/index.ts#L20)

@@ -19,7 +19,7 @@ Details of if Video and/or Slides are currently displayed
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:126](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/IVbrickTypes.ts#L126)
+[embed/IVbrickTypes.ts:126](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickTypes.ts#L126)
 
 ___
 
@@ -29,4 +29,4 @@ ___
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:125](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/IVbrickTypes.ts#L125)
+[embed/IVbrickTypes.ts:125](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickTypes.ts#L125)

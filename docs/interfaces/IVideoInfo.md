@@ -33,7 +33,7 @@ Video Metadata
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:37](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/IVbrickTypes.ts#L37)
+[embed/IVbrickTypes.ts:37](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickTypes.ts#L37)
 
 ___
 
@@ -43,7 +43,7 @@ ___
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:32](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/IVbrickTypes.ts#L32)
+[embed/IVbrickTypes.ts:32](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickTypes.ts#L32)
 
 ___
 
@@ -53,7 +53,7 @@ ___
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:35](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/IVbrickTypes.ts#L35)
+[embed/IVbrickTypes.ts:35](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickTypes.ts#L35)
 
 ___
 
@@ -63,7 +63,7 @@ ___
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:34](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/IVbrickTypes.ts#L34)
+[embed/IVbrickTypes.ts:34](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickTypes.ts#L34)
 
 ___
 
@@ -77,7 +77,7 @@ ___
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:33](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/IVbrickTypes.ts#L33)
+[embed/IVbrickTypes.ts:33](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickTypes.ts#L33)
 
 ___
 
@@ -87,7 +87,7 @@ ___
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:43](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/IVbrickTypes.ts#L43)
+[embed/IVbrickTypes.ts:43](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickTypes.ts#L43)
 
 ___
 
@@ -97,7 +97,7 @@ ___
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:31](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/IVbrickTypes.ts#L31)
+[embed/IVbrickTypes.ts:31](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickTypes.ts#L31)
 
 ___
 
@@ -111,7 +111,7 @@ ___
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:36](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/IVbrickTypes.ts#L36)
+[embed/IVbrickTypes.ts:36](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickTypes.ts#L36)
 
 ___
 
@@ -125,7 +125,7 @@ ___
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:30](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/IVbrickTypes.ts#L30)
+[embed/IVbrickTypes.ts:30](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickTypes.ts#L30)
 
 ___
 
@@ -135,4 +135,4 @@ ___
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:29](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/IVbrickTypes.ts#L29)
+[embed/IVbrickTypes.ts:29](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickTypes.ts#L29)
