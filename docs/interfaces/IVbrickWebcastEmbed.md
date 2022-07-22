@@ -44,7 +44,7 @@ Whether subtitles are enabled, and selected language
 
 #### Defined in
 
-[embed/IVbrickApi.ts:29](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/IVbrickApi.ts#L29)
+[embed/IVbrickApi.ts:29](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickApi.ts#L29)
 
 ___
 
@@ -60,7 +60,7 @@ metadata of the video/webcast
 
 #### Defined in
 
-[embed/IVbrickApi.ts:34](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/IVbrickApi.ts#L34)
+[embed/IVbrickApi.ts:34](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickApi.ts#L34)
 
 ___
 
@@ -76,7 +76,7 @@ video playing, buffering, etc
 
 #### Defined in
 
-[embed/IVbrickApi.ts:19](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/IVbrickApi.ts#L19)
+[embed/IVbrickApi.ts:19](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickApi.ts#L19)
 
 ___
 
@@ -92,7 +92,7 @@ Player Volume. 0-1
 
 #### Defined in
 
-[embed/IVbrickApi.ts:24](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/IVbrickApi.ts#L24)
+[embed/IVbrickApi.ts:24](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickApi.ts#L24)
 
 ___
 
@@ -104,7 +104,7 @@ Indicates whether the webcast is started, or broadcasting.
 
 #### Defined in
 
-[embed/IVbrickApi.ts:123](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/IVbrickApi.ts#L123)
+[embed/IVbrickApi.ts:123](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickApi.ts#L123)
 
 ## Methods
 
@@ -124,7 +124,7 @@ Removes the embedded content from the DOM.
 
 #### Defined in
 
-[embed/IVbrickApi.ts:74](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/IVbrickApi.ts#L74)
+[embed/IVbrickApi.ts:74](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickApi.ts#L74)
 
 ___
 
@@ -157,7 +157,7 @@ Removes an event listener
 
 #### Defined in
 
-[embed/IVbrickApi.ts:69](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/IVbrickApi.ts#L69)
+[embed/IVbrickApi.ts:69](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickApi.ts#L69)
 
 ___
 
@@ -178,7 +178,7 @@ Register an event handler. Events are fired at different lifecycle stages of the
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `event` | `T` | name of event |
-| `listener` | [`IListener`](../README.md#ilistener)<`T`\> | callback when event is fired. Keep a reference if you intend to call [IVbrickBaseEmbed.off](IVbrickBaseEmbed.md#off) later |
+| `listener` | [`IListener`](../README.md#ilistener)<`T`\> | callback when event is fired. Keep a reference if you intend to call [off](IVbrickBaseEmbed.md#off) later |
 
 #### Returns
 
@@ -190,7 +190,7 @@ Register an event handler. Events are fired at different lifecycle stages of the
 
 #### Defined in
 
-[embed/IVbrickApi.ts:64](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/IVbrickApi.ts#L64)
+[embed/IVbrickApi.ts:64](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickApi.ts#L64)
 
 ___
 
@@ -210,7 +210,7 @@ Pauses the video if it is playing.
 
 #### Defined in
 
-[embed/IVbrickApi.ts:44](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/IVbrickApi.ts#L44)
+[embed/IVbrickApi.ts:44](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickApi.ts#L44)
 
 ___
 
@@ -230,7 +230,7 @@ Plays the video if it is paused.
 
 #### Defined in
 
-[embed/IVbrickApi.ts:39](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/IVbrickApi.ts#L39)
+[embed/IVbrickApi.ts:39](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickApi.ts#L39)
 
 ___
 
@@ -257,7 +257,7 @@ update the current subtitles settings
 
 #### Defined in
 
-[embed/IVbrickApi.ts:57](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/IVbrickApi.ts#L57)
+[embed/IVbrickApi.ts:57](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickApi.ts#L57)
 
 ___
 
@@ -283,7 +283,7 @@ Sets player volume
 
 #### Defined in
 
-[embed/IVbrickApi.ts:50](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/IVbrickApi.ts#L50)
+[embed/IVbrickApi.ts:50](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickApi.ts#L50)
 
 ___
 
@@ -306,7 +306,7 @@ flag is enabled and the event includes slides
 
 #### Defined in
 
-[embed/IVbrickApi.ts:130](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/IVbrickApi.ts#L130)
+[embed/IVbrickApi.ts:130](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickApi.ts#L130)
 
 ___
 
@@ -332,4 +332,4 @@ Allows updating the access token if the old one has expired.
 
 #### Defined in
 
-[embed/IVbrickApi.ts:80](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/IVbrickApi.ts#L80)
+[embed/IVbrickApi.ts:80](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickApi.ts#L80)

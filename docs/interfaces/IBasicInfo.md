@@ -28,7 +28,7 @@ Basic metadata shared between VOD and Webcast Embeds
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:20](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/IVbrickTypes.ts#L20)
+[embed/IVbrickTypes.ts:20](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickTypes.ts#L20)
 
 ___
 
@@ -38,7 +38,7 @@ ___
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:21](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/IVbrickTypes.ts#L21)
+[embed/IVbrickTypes.ts:21](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickTypes.ts#L21)
 
 ___
 
@@ -48,4 +48,4 @@ ___
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:19](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/IVbrickTypes.ts#L19)
+[embed/IVbrickTypes.ts:19](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickTypes.ts#L19)
