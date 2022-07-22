@@ -154,10 +154,11 @@ function onSourceUrlChanged(form, sourceUrl) {
 export function onTokenTypeChanged(form) {
 	onEmbedTypeChanged(form);
 
-	const isJWT = form.elements.tokenType.value === 'JWT';
-	form.elements.tokenIssuer.value = isJWT
-		? 'vbrick_rev'
-		: 'vbrick';
+	form.elements.tokenIssuer.value = {
+		AccessToken: 'vbrick',
+		JWT: '',
+		GuestRegistration: 'vbrick_rev'
+	}[form.elements.tokenType.value || ''] || '';
 }
 /**
  * update which type of ID is editable when the embed type is updated
@@ -291,12 +292,17 @@ export function parseRevUrl(url) {
 	result.config = stringifyJson(config, true);
 	result.embedType = result.videoId ? 'vod' : 'webcast';
 
-	if(searchParams.get('token')) {
+	if (searchParams.get('token')) {
 		result.tokenValue = searchParams.get('token');
-		if(result.webcastId) {
-			result.tokenType = 'JWT';
+		if (result.webcastId) {
+			result.tokenType = 'GuestRegistraion';
 			result.tokenIssuer = 'vbrick_rev';
 		}
+	}
+	if (searchParams.get('jwt_token')) {
+		result.tokenValue = searchParams.get('jwt_token');
+		result.tokenType = 'JWT';
+		result.tokenIssuer = '';
 	}
 
 	return result;

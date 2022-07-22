@@ -22,7 +22,7 @@ Fired when a new comment has been added to Chat
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:81](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/IVbrickTypes.ts#L81)
+[embed/IVbrickTypes.ts:81](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickTypes.ts#L81)
 
 ___
 
@@ -32,7 +32,7 @@ ___
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:82](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/IVbrickTypes.ts#L82)
+[embed/IVbrickTypes.ts:82](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickTypes.ts#L82)
 
 ___
 
@@ -42,7 +42,7 @@ ___
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:84](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/IVbrickTypes.ts#L84)
+[embed/IVbrickTypes.ts:84](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickTypes.ts#L84)
 
 ___
 
@@ -52,7 +52,7 @@ ___
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:85](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/IVbrickTypes.ts#L85)
+[embed/IVbrickTypes.ts:85](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickTypes.ts#L85)
 
 ___
 
@@ -62,4 +62,4 @@ ___
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:83](https://github.com/vbrick/rev-sdk-js/blob/bdcf956/src/embed/IVbrickTypes.ts#L83)
+[embed/IVbrickTypes.ts:83](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickTypes.ts#L83)
