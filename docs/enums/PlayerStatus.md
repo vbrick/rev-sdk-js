@@ -4,7 +4,7 @@
 
 ## Table of contents
 
-### Enumeration members
+### Enumeration Members
 
 - [Buffering](PlayerStatus.md#buffering)
 - [Ended](PlayerStatus.md#ended)
@@ -14,72 +14,72 @@
 - [Playing](PlayerStatus.md#playing)
 - [Seeking](PlayerStatus.md#seeking)
 
-## Enumeration members
+## Enumeration Members
 
 ### Buffering
 
-• **Buffering** = `"Buffering"`
+• **Buffering** = ``"Buffering"``
 
 #### Defined in
 
-[embed/PlayerStatus.ts:8](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/PlayerStatus.ts#L8)
+[embed/PlayerStatus.ts:8](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/PlayerStatus.ts#L8)
 
 ___
 
 ### Ended
 
-• **Ended** = `"Ended"`
+• **Ended** = ``"Ended"``
 
 #### Defined in
 
-[embed/PlayerStatus.ts:10](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/PlayerStatus.ts#L10)
+[embed/PlayerStatus.ts:10](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/PlayerStatus.ts#L10)
 
 ___
 
 ### Error
 
-• **Error** = `"Error"`
+• **Error** = ``"Error"``
 
 #### Defined in
 
-[embed/PlayerStatus.ts:11](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/PlayerStatus.ts#L11)
+[embed/PlayerStatus.ts:11](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/PlayerStatus.ts#L11)
 
 ___
 
 ### Initializing
 
-• **Initializing** = `"Initializing"`
+• **Initializing** = ``"Initializing"``
 
 #### Defined in
 
-[embed/PlayerStatus.ts:5](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/PlayerStatus.ts#L5)
+[embed/PlayerStatus.ts:5](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/PlayerStatus.ts#L5)
 
 ___
 
 ### Paused
 
-• **Paused** = `"Paused"`
+• **Paused** = ``"Paused"``
 
 #### Defined in
 
-[embed/PlayerStatus.ts:7](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/PlayerStatus.ts#L7)
+[embed/PlayerStatus.ts:7](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/PlayerStatus.ts#L7)
 
 ___
 
 ### Playing
 
-• **Playing** = `"Playing"`
+• **Playing** = ``"Playing"``
 
 #### Defined in
 
-[embed/PlayerStatus.ts:6](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/PlayerStatus.ts#L6)
+[embed/PlayerStatus.ts:6](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/PlayerStatus.ts#L6)
 
 ___
 
 ### Seeking
 
-• **Seeking** = `"Seeking"`
+• **Seeking** = ``"Seeking"``
 
 #### Defined in
 
-[embed/PlayerStatus.ts:9](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/PlayerStatus.ts#L9)
+[embed/PlayerStatus.ts:9](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/PlayerStatus.ts#L9)

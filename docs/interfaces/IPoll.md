@@ -22,7 +22,7 @@ Details of a Webcast Poll
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:106](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/IVbrickTypes.ts#L106)
+[embed/IVbrickTypes.ts:106](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickTypes.ts#L106)
 
 ___
 
@@ -32,7 +32,7 @@ ___
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:107](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/IVbrickTypes.ts#L107)
+[embed/IVbrickTypes.ts:107](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickTypes.ts#L107)
 
 ___
 
@@ -42,7 +42,7 @@ ___
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:103](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/IVbrickTypes.ts#L103)
+[embed/IVbrickTypes.ts:103](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickTypes.ts#L103)
 
 ___
 
@@ -52,7 +52,7 @@ ___
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:104](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/IVbrickTypes.ts#L104)
+[embed/IVbrickTypes.ts:104](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickTypes.ts#L104)
 
 ___
 
@@ -62,4 +62,4 @@ ___
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:109](https://github.com/vbrick/rev-sdk-js/blob/3af4ced/src/embed/IVbrickTypes.ts#L109)
+[embed/IVbrickTypes.ts:109](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickTypes.ts#L109)
