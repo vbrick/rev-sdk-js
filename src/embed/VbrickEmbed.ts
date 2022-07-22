@@ -5,6 +5,7 @@ import { IVbrickBaseEmbed, PlayerStatus } from './IVbrickApi';
 import { TokenType, VbrickSDKToken } from '../VbrickSDK';
 import { TVbrickEvent, IListener } from './IVbrickEvents';
 import { IBasicInfo, ISubtitles } from './IVbrickTypes';
+import { authenticateAccessToken, authenticateJWT } from './auth';
 
 /**
  * Base class for embedded content.
@@ -126,13 +127,14 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 			return Promise.resolve()
 		}
 
-		if (this.config.token.type !== TokenType.ACCESS_TOKEN) {
-			return Promise.reject('Unsupported token type');
+		switch (this.config.token.type) {
+			case TokenType.ACCESS_TOKEN:
+				return authenticateAccessToken(this.config);
+			case TokenType.JWT:
+				return authenticateJWT(this.config);
+			default:
+				return Promise.reject('Unsupported token type');
 		}
-
-		return Promise.resolve({
-			accessToken: this.config.token.value
-		});
 	}
 	protected initializeEmbed(): void {
 		this.eventBus.on('videoLoaded', (e: any) => {
