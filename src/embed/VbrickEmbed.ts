@@ -109,6 +109,9 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 			this.eventBus.awaitEvent('load', 'error', timeout)
 		])
 			.then(([token]) => {
+				if (!token) {
+					return;
+				}
 				this.logger.log('embed loaded, authenticating');
 				this.eventBus.publish('authenticated', { token });
 				this.eventBus.awaitEvent('authChanged', 'error', timeout);
