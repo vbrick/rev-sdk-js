@@ -326,7 +326,8 @@ export declare type TEmbedMessages = {
  */
 export declare enum TokenType {
     JWT = "JWT",
-    ACCESS_TOKEN = "AccessToken"
+    ACCESS_TOKEN = "AccessToken",
+    GUEST_REGISTRATION = "GuestRegistration"
 }
 
 /**

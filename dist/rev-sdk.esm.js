@@ -1,4 +1,3 @@
-/******/ "use strict";
 /******/ var __webpack_modules__ = ({
 
 /***/ "./src/Config.ts":
@@ -69,6 +68,7 @@ var TokenType;
 (function (TokenType) {
   TokenType["JWT"] = "JWT";
   TokenType["ACCESS_TOKEN"] = "AccessToken";
+  TokenType["GUEST_REGISTRATION"] = "GuestRegistration";
 })(TokenType || (TokenType = {}));
 
 /***/ }),
@@ -189,7 +189,9 @@ class EventBus {
     return () => this.off(event, fn);
   }
 
-  awaitEvent(event, failEvent = 'error', timeout = DEFAULT_TIMEOUT) {
+  awaitEvent(event) {
+    let failEvent = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'error';
+    let timeout = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : DEFAULT_TIMEOUT;
     const events = Array.isArray(event) ? event : [event];
     return new Promise((resolve, reject) => {
       const handler = fn => e => {
@@ -229,7 +231,12 @@ class EventBus {
   /** Posts a message to the embed */
 
 
-  publish(...[event, msg = undefined]) {
+  publish() {
+    for (var _len = arguments.length, _ref = new Array(_len), _key = 0; _key < _len; _key++) {
+      _ref[_key] = arguments[_key];
+    }
+
+    let [event, msg = undefined] = _ref;
     this.shouldLog && console.log('rev client posting message. ', event);
     this.win.postMessage({
       app: 'vbrick',
@@ -250,7 +257,8 @@ class EventBus {
   /** Fires local event handlers */
 
 
-  emitLocalEvent(event, msg = undefined) {
+  emitLocalEvent(event) {
+    let msg = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : undefined;
     this.callHandlers(event, msg);
   }
   /** Calls the local 'error' event handlers */
@@ -312,8 +320,8 @@ class EventBus {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "WebcastStatus": function() { return /* reexport safe */ _WebcastStatus__WEBPACK_IMPORTED_MODULE_0__.WebcastStatus; },
-/* harmony export */   "PlayerStatus": function() { return /* reexport safe */ _PlayerStatus__WEBPACK_IMPORTED_MODULE_1__.PlayerStatus; }
+/* harmony export */   "PlayerStatus": function() { return /* reexport safe */ _PlayerStatus__WEBPACK_IMPORTED_MODULE_1__.PlayerStatus; },
+/* harmony export */   "WebcastStatus": function() { return /* reexport safe */ _WebcastStatus__WEBPACK_IMPORTED_MODULE_0__.WebcastStatus; }
 /* harmony export */ });
 /* harmony import */ var _WebcastStatus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./WebcastStatus */ "./src/embed/WebcastStatus.ts");
 /* harmony import */ var _PlayerStatus__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PlayerStatus */ "./src/embed/PlayerStatus.ts");
@@ -377,6 +385,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Log__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Log */ "./src/Log.ts");
 /* harmony import */ var _IVbrickApi__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./IVbrickApi */ "./src/embed/IVbrickApi.ts");
 /* harmony import */ var _VbrickSDK__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../VbrickSDK */ "./src/VbrickSDK.ts");
+/* harmony import */ var _auth__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./auth */ "./src/embed/auth.ts");
 var __awaiter = undefined && undefined.__awaiter || function (thisArg, _arguments, P, generator) {
   function adopt(value) {
     return value instanceof P ? value : new P(function (resolve) {
@@ -419,6 +428,7 @@ var __rest = undefined && undefined.__rest || function (s, e) {
   }
   return t;
 };
+
 
 
 
@@ -524,7 +534,13 @@ class VbrickEmbed {
     this.eventBus = new _EventBus__WEBPACK_IMPORTED_MODULE_0__.EventBus(this.iframe, this.config);
     this.initializeEmbed();
     const timeout = this.config.timeoutSeconds * 1000 || undefined;
-    return this.init = Promise.all([this.initializeToken(), this.eventBus.awaitEvent('load', 'error', timeout)]).then(([token]) => {
+    return this.init = Promise.all([this.initializeToken(), this.eventBus.awaitEvent('load', 'error', timeout)]).then(_ref => {
+      let [token] = _ref;
+
+      if (!token) {
+        return;
+      }
+
       this.logger.log('embed loaded, authenticating');
       this.eventBus.publish('authenticated', {
         token
@@ -544,13 +560,16 @@ class VbrickEmbed {
       return Promise.resolve();
     }
 
-    if (this.config.token.type !== _VbrickSDK__WEBPACK_IMPORTED_MODULE_3__.TokenType.ACCESS_TOKEN) {
-      return Promise.reject('Unsupported token type');
-    }
+    switch (this.config.token.type) {
+      case _VbrickSDK__WEBPACK_IMPORTED_MODULE_3__.TokenType.ACCESS_TOKEN:
+        return (0,_auth__WEBPACK_IMPORTED_MODULE_4__.authenticateAccessToken)(this.config);
 
-    return Promise.resolve({
-      accessToken: this.config.token.value
-    });
+      case _VbrickSDK__WEBPACK_IMPORTED_MODULE_3__.TokenType.JWT:
+        return (0,_auth__WEBPACK_IMPORTED_MODULE_4__.authenticateJWT)(this.config);
+
+      default:
+        return Promise.reject('Unsupported token type');
+    }
   }
 
   initializeEmbed() {
@@ -771,10 +790,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "VbrickWebcastEmbed": function() { return /* binding */ VbrickWebcastEmbed; }
 /* harmony export */ });
-/* harmony import */ var _IVbrickApi__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./IVbrickApi */ "./src/embed/IVbrickApi.ts");
-/* harmony import */ var _webcastAuth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./webcastAuth */ "./src/embed/webcastAuth.ts");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util */ "./src/util.ts");
-/* harmony import */ var _VbrickEmbed__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./VbrickEmbed */ "./src/embed/VbrickEmbed.ts");
+/* harmony import */ var _VbrickSDK__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../VbrickSDK */ "./src/VbrickSDK.ts");
+/* harmony import */ var _IVbrickApi__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./IVbrickApi */ "./src/embed/IVbrickApi.ts");
+/* harmony import */ var _auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./auth */ "./src/embed/auth.ts");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../util */ "./src/util.ts");
+/* harmony import */ var _VbrickEmbed__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./VbrickEmbed */ "./src/embed/VbrickEmbed.ts");
 var __awaiter = undefined && undefined.__awaiter || function (thisArg, _arguments, P, generator) {
   function adopt(value) {
     return value instanceof P ? value : new P(function (resolve) {
@@ -811,11 +831,12 @@ var __awaiter = undefined && undefined.__awaiter || function (thisArg, _argument
 
 
 
-class VbrickWebcastEmbed extends _VbrickEmbed__WEBPACK_IMPORTED_MODULE_3__.VbrickEmbed {
+
+class VbrickWebcastEmbed extends _VbrickEmbed__WEBPACK_IMPORTED_MODULE_4__.VbrickEmbed {
   constructor(webcastId, config, container) {
     super(webcastId, config, container);
     this.webcastId = webcastId;
-    this._webcastStatus = _IVbrickApi__WEBPACK_IMPORTED_MODULE_0__.WebcastStatus.Loading;
+    this._webcastStatus = _IVbrickApi__WEBPACK_IMPORTED_MODULE_1__.WebcastStatus.Loading;
   }
 
   get webcastStatus() {
@@ -823,7 +844,18 @@ class VbrickWebcastEmbed extends _VbrickEmbed__WEBPACK_IMPORTED_MODULE_3__.Vbric
   }
 
   initializeToken() {
-    return (0,_webcastAuth__WEBPACK_IMPORTED_MODULE_1__.initializeWebcastToken)(this.webcastId, this.config);
+    var _a;
+
+    const {
+      type,
+      issuer
+    } = (_a = this.config.token) !== null && _a !== void 0 ? _a : {};
+
+    if (type === _VbrickSDK__WEBPACK_IMPORTED_MODULE_0__.TokenType.GUEST_REGISTRATION || type === _VbrickSDK__WEBPACK_IMPORTED_MODULE_0__.TokenType.JWT && issuer === 'vbrick_rev') {
+      return (0,_auth__WEBPACK_IMPORTED_MODULE_2__.authenticateGuestToken)(this.webcastId, this.config);
+    }
+
+    return super.initializeToken();
   }
 
   initializeEmbed() {
@@ -851,7 +883,7 @@ class VbrickWebcastEmbed extends _VbrickEmbed__WEBPACK_IMPORTED_MODULE_3__.Vbric
       }); // if a webcast is completed it may redirect to a recoreded version of it
 
       this.eventBus.on('videoLoaded', () => {
-        this._webcastStatus = _IVbrickApi__WEBPACK_IMPORTED_MODULE_0__.WebcastStatus.Completed;
+        this._webcastStatus = _IVbrickApi__WEBPACK_IMPORTED_MODULE_1__.WebcastStatus.Completed;
       });
     });
   }
@@ -861,9 +893,9 @@ class VbrickWebcastEmbed extends _VbrickEmbed__WEBPACK_IMPORTED_MODULE_3__.Vbric
   }
 
   getEmbedUrl(id, config) {
-    return (0,_util__WEBPACK_IMPORTED_MODULE_2__.getEmbedUrl)(config.baseUrl, `/embed/webcast/${id}`, Object.assign({
+    return (0,_util__WEBPACK_IMPORTED_MODULE_3__.getEmbedUrl)(config.baseUrl, `/embed/webcast/${id}`, Object.assign({
       enableFullRev: config.showFullWebcast
-    }, (0,_VbrickEmbed__WEBPACK_IMPORTED_MODULE_3__.getEmbedQuery)(config)));
+    }, (0,_VbrickEmbed__WEBPACK_IMPORTED_MODULE_4__.getEmbedQuery)(config)));
   }
 
 }
@@ -919,27 +951,26 @@ var WebcastStatus;
 
 /***/ }),
 
-/***/ "./src/embed/webcastAuth.ts":
-/*!**********************************!*\
-  !*** ./src/embed/webcastAuth.ts ***!
-  \**********************************/
+/***/ "./src/embed/auth.ts":
+/*!***************************!*\
+  !*** ./src/embed/auth.ts ***!
+  \***************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "initializeWebcastToken": function() { return /* binding */ initializeWebcastToken; }
+/* harmony export */   "authenticateAccessToken": function() { return /* binding */ authenticateAccessToken; },
+/* harmony export */   "authenticateGuestToken": function() { return /* binding */ authenticateGuestToken; },
+/* harmony export */   "authenticateJWT": function() { return /* binding */ authenticateJWT; }
 /* harmony export */ });
-/* harmony import */ var _VbrickSDK__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../VbrickSDK */ "./src/VbrickSDK.ts");
+function authenticateAccessToken(config) {
+  var _a;
 
-function initializeWebcastToken(webcastId, config) {
-  var _a, _b;
-
-  if (((_a = config.token) === null || _a === void 0 ? void 0 : _a.type) !== _VbrickSDK__WEBPACK_IMPORTED_MODULE_0__.TokenType.JWT) {
-    return Promise.resolve({
-      accessToken: (_b = config.token) === null || _b === void 0 ? void 0 : _b.value
-    });
-  }
-
+  return Promise.resolve({
+    accessToken: (_a = config.token) === null || _a === void 0 ? void 0 : _a.value
+  });
+}
+function authenticateGuestToken(webcastId, config) {
   const issuer = config.token.issuer;
   const token = config.token.value;
   return fetch(`${config.baseUrl}/external/auth/jwt/${webcastId}`, {
@@ -961,6 +992,27 @@ function initializeWebcastToken(webcastId, config) {
     issuer
   }));
 }
+function authenticateJWT(config) {
+  const issuer = config.token.issuer;
+  const jwt = config.token.value;
+  const url = new URL('/api/v2/jwtauthenticate', config.baseUrl);
+  url.searchParams.set('jwt_token', jwt);
+  return fetch(`${url}`, {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'x-requested-with': 'xmlhttprequest'
+    }
+  }).then(response => {
+    if (!response.ok) {
+      return Promise.reject('Unable to authenticate jwt');
+    }
+
+    return response.json();
+  }).then(response => Object.assign(Object.assign({}, response), {
+    issuer
+  }));
+}
 
 /***/ }),
 
@@ -972,9 +1024,9 @@ function initializeWebcastToken(webcastId, config) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getEmbedUrl": function() { return /* binding */ getEmbedUrl; },
 /* harmony export */   "isString": function() { return /* binding */ isString; },
-/* harmony export */   "lookupElement": function() { return /* binding */ lookupElement; },
-/* harmony export */   "getEmbedUrl": function() { return /* binding */ getEmbedUrl; }
+/* harmony export */   "lookupElement": function() { return /* binding */ lookupElement; }
 /* harmony export */ });
 /**
  * @internal
@@ -996,7 +1048,10 @@ function lookupElement(element) {
   return el;
 }
 function getEmbedUrl(baseUrl, endpoint, params) {
-  const query = Object.entries(params).map(([key, value]) => !value ? undefined : value === true ? key : `${key}=${encodeURIComponent(value)}`).filter(Boolean).join('&');
+  const query = Object.entries(params).map(_ref => {
+    let [key, value] = _ref;
+    return !value ? undefined : value === true ? key : `${key}=${encodeURIComponent(value)}`;
+  }).filter(Boolean).join('&');
   return `${baseUrl}${endpoint}?${query}`;
 }
 
@@ -1066,11 +1121,11 @@ var __webpack_exports__ = {};
   \**********************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "embedWebcast": function() { return /* reexport safe */ _embed_EmbedWebcast__WEBPACK_IMPORTED_MODULE_0__.embedWebcast; },
-/* harmony export */   "embedVideo": function() { return /* reexport safe */ _embed_EmbedVideo__WEBPACK_IMPORTED_MODULE_1__.embedVideo; },
-/* harmony export */   "TokenType": function() { return /* reexport safe */ _VbrickSDK__WEBPACK_IMPORTED_MODULE_2__.TokenType; },
 /* harmony export */   "PlayerStatus": function() { return /* reexport safe */ _embed_IVbrickApi__WEBPACK_IMPORTED_MODULE_4__.PlayerStatus; },
-/* harmony export */   "WebcastStatus": function() { return /* reexport safe */ _embed_IVbrickApi__WEBPACK_IMPORTED_MODULE_4__.WebcastStatus; }
+/* harmony export */   "TokenType": function() { return /* reexport safe */ _VbrickSDK__WEBPACK_IMPORTED_MODULE_2__.TokenType; },
+/* harmony export */   "WebcastStatus": function() { return /* reexport safe */ _embed_IVbrickApi__WEBPACK_IMPORTED_MODULE_4__.WebcastStatus; },
+/* harmony export */   "embedVideo": function() { return /* reexport safe */ _embed_EmbedVideo__WEBPACK_IMPORTED_MODULE_1__.embedVideo; },
+/* harmony export */   "embedWebcast": function() { return /* reexport safe */ _embed_EmbedWebcast__WEBPACK_IMPORTED_MODULE_0__.embedWebcast; }
 /* harmony export */ });
 /* harmony import */ var _embed_EmbedWebcast__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./embed/EmbedWebcast */ "./src/embed/EmbedWebcast.ts");
 /* harmony import */ var _embed_EmbedVideo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./embed/EmbedVideo */ "./src/embed/EmbedVideo.ts");
@@ -1110,7 +1165,7 @@ const revSDK = {
 var __webpack_exports__PlayerStatus = __webpack_exports__.PlayerStatus;
 var __webpack_exports__TokenType = __webpack_exports__.TokenType;
 var __webpack_exports__WebcastStatus = __webpack_exports__.WebcastStatus;
-var __webpack_exports__default = __webpack_exports__.default;
+var __webpack_exports__default = __webpack_exports__["default"];
 var __webpack_exports__embedVideo = __webpack_exports__.embedVideo;
 var __webpack_exports__embedWebcast = __webpack_exports__.embedWebcast;
 export { __webpack_exports__PlayerStatus as PlayerStatus, __webpack_exports__TokenType as TokenType, __webpack_exports__WebcastStatus as WebcastStatus, __webpack_exports__default as default, __webpack_exports__embedVideo as embedVideo, __webpack_exports__embedWebcast as embedWebcast };
