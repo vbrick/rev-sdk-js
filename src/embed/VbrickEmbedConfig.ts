@@ -62,6 +62,25 @@ export interface VbrickVideoEmbedConfig extends VbrickBaseEmbedConfig {
 	 * Branding Settings. Accent color to use in the player, in HTML #rrggbb format
 	 */
 	accentColor?: string;
+
+	/** @deprecated - embed parameter */
+	accent?: string;
+	/** @deprecated - embed parameter */
+	forceClosedCaptions?: string;
+	/** @deprecated - embed parameter */
+	loopVideo?: string;
+	/** @deprecated - embed parameter */
+	noCc?: boolean;
+	/** @deprecated - embed parameter */
+	noCenterButtons?: boolean;
+	/** @deprecated - embed parameter */
+	noChapters?: boolean;
+	/** @deprecated - embed parameter */
+	noFullscreen?: boolean;
+	/** @deprecated - embed parameter */
+	noPlayBar?: boolean;
+	/** @deprecated - embed parameter */
+	noSettings?: boolean;
 }
 
 /**
@@ -74,6 +93,8 @@ export interface VbrickWebcastEmbedConfig extends VbrickBaseEmbedConfig {
 	 */
 	showFullWebcast?: boolean;
 
+	/** @deprecated - embed parameter */
+	enableFullRev?: boolean;
 }
 
 /**

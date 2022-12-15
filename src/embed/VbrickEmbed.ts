@@ -216,14 +216,15 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 			: undefined,
 		accent: config.accentColor,
 		autoplay: config.autoplay,
-		forceClosedCaptions: config.forcedCaptions,
-		loopVideo: config.playInLoop,
-		noCc: config.hideSubtitles,
-		noCenterButtons: config.hideOverlayControls,
-		noChapters: config.hideChapters,
-		noFullscreen: config.hideFullscreen,
-		noPlayBar: config.hidePlayControls,
-		noSettings: config.hideSettings,
-		startAt: config.startAt
+		forceClosedCaptions: config.forcedCaptions ?? config.forceClosedCaptions,
+		loopVideo: config.playInLoop ?? config.playInLoop,
+		noCc: config.hideSubtitles ?? config.hideSubtitles,
+		noCenterButtons: config.hideOverlayControls ?? config.noCenterButtons,
+		noChapters: config.hideChapters ?? config.noChapters,
+		noFullscreen: config.hideFullscreen ?? config.noFullscreen,
+		noPlayBar: config.hidePlayControls ?? config.noPlayBar,
+		noSettings: config.hideSettings ?? config.noSettings,
+		startAt: config.startAt,
+		muted: config.muted
 	};
 }
