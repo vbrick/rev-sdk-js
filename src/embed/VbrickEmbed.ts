@@ -210,7 +210,10 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
  export function getEmbedQuery(config: VbrickEmbedConfig): Record<string, undefined | boolean | string> {
 	return {
 		tk: !!config.token,
-		popupAuth: !config.token && (config.popupAuth ? 'true' : 'false'), //popupAuth requires a true value
+		popupAuth: !config.token && ('popupAuth' in config)
+			/* popupAuth requires a "true" value if set */
+			? (!!config.popupAuth).toString()
+			: undefined,
 		accent: config.accentColor,
 		autoplay: config.autoplay,
 		forceClosedCaptions: config.forcedCaptions,
