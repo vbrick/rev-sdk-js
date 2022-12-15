@@ -29,6 +29,13 @@ export interface VbrickBaseEmbedConfig extends VbrickSDKConfig {
 	 * seconds to wait for the embed initialization to complete. default is 30 seconds
 	 */
 	timeoutSeconds?: number;
+
+	autoplay?: boolean;
+	
+	/**
+	 * set the volume to 0 upon initial load
+	 */
+	muted?: boolean;
 }
 
 /**
@@ -36,7 +43,6 @@ export interface VbrickBaseEmbedConfig extends VbrickSDKConfig {
  * @public
  */
 export interface VbrickVideoEmbedConfig extends VbrickBaseEmbedConfig {
-	autoplay?: boolean;
 	playInLoop?: boolean;
 	hideChapters?: boolean;
 	hideOverlayControls?: boolean;
@@ -46,7 +52,6 @@ export interface VbrickVideoEmbedConfig extends VbrickBaseEmbedConfig {
 	forcedCaptions?: boolean;
 	hideSettings?: boolean;
 	hideFullscreen?: boolean;
-
 
 	/**
 	 * Starts the video at specified timestamp. must be in the format ##m##s. For example 00m30s.

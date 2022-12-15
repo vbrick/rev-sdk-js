@@ -153,6 +153,15 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 		this.eventBus.on('subtitlesChanged', subtitles => {
 			this._currentSubtitles = subtitles;
 		});
+
+		// allow setting volume on player ready
+		if (this.config.muted != undefined) {
+			const volumeCallback = () => {
+				this.eventBus.off('playbackSpeedChanged', volumeCallback);
+				this.setVolume(this.config.muted ? 0 : 1);
+			};
+			this.eventBus.on('playbackSpeedChanged', volumeCallback);
+		}
 	}
 	protected abstract getEmbedUrl(id: string, config: VbrickEmbedConfig);
 	
