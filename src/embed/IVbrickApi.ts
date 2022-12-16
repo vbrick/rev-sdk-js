@@ -6,7 +6,7 @@ import { IVideoInfo, IWebcastInfo, IWebcastLayout, ISubtitles, IBasicInfo } from
 
 export { WebcastStatus } from './WebcastStatus';
 export { PlayerStatus } from './PlayerStatus';
-export { TVbrickEvent, IListener, TEmbedMessages, TPlayerMessages, TWebcastMessages, TVbrickMessages } from './IVbrickEvents';
+export type { TVbrickEvent, IListener, TEmbedMessages, TPlayerMessages, TWebcastMessages, TVbrickMessages } from './IVbrickEvents';
 export * from './IVbrickTypes';
 
 /**
