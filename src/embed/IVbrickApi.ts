@@ -31,7 +31,7 @@ export interface IVbrickBaseEmbed<TInfo extends IBasicInfo, Events extends strin
 	/**
 	 * metadata of the video/webcast
 	 */
-	readonly info: TInfo;
+	readonly info?: TInfo;
 
 	/**
 	 * Plays the video if it is paused.
@@ -98,7 +98,7 @@ export interface IVbrickVideoEmbed extends IVbrickBaseEmbed<IVideoInfo, keyof (T
 	 * Contains metadata for the video
 	 * @deprecated Use `info` instead
 	 */
-	readonly videoInfo: IVideoInfo;
+	readonly videoInfo?: IVideoInfo;
 
 	/**
 	 * sets playback rate 

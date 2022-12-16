@@ -37,18 +37,18 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 	private _currentSubtitles: ISubtitles = { enabled: false };
 
 	public get isLive(): boolean {
-		return this.info?.isLive;
+		return !!this.info?.isLive;
 	}
 	
-	public get info(): TInfo {
-		return this._info;
+	public get info(): TInfo | undefined {
+		return this._info as TInfo;
 	}
 	private _info?: TInfo;
 
 	protected iframe: HTMLIFrameElement;
 	protected readonly iframeUrl: string;
 	protected eventBus: EventBus;
-	private init: Promise<any>;
+	private init?: Promise<any>;
 	private unsubscribes: Array<() => void>;
 	protected logger: ILogger;
 
@@ -102,7 +102,7 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 		this.eventBus = new EventBus(this.iframe, this.config);
 		this.initializeEmbed();
 
-		const timeout = (this.config.timeoutSeconds * 1000) || undefined;
+		const timeout = (this.config.timeoutSeconds! * 1000) || undefined;
 
 		return this.init = Promise.all([
 			this.initializeToken(),
@@ -195,7 +195,7 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 	public destroy(): void {
 		this.iframe.remove();
 		this.eventBus.destroy();
-		this.init = null;
+		this.init = undefined;
 		this.unsubscribes?.forEach(fn => fn());
 	}
 
