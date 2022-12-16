@@ -47,7 +47,7 @@ Whether subtitles are enabled, and selected language
 
 #### Defined in
 
-[embed/IVbrickApi.ts:29](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickApi.ts#L29)
+[embed/IVbrickApi.ts:29](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L29)
 
 ___
 
@@ -59,7 +59,7 @@ Current position in video in seconds
 
 #### Defined in
 
-[embed/IVbrickApi.ts:90](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickApi.ts#L90)
+[embed/IVbrickApi.ts:90](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L90)
 
 ___
 
@@ -71,13 +71,13 @@ Duration of video in seconds. Will be undefined for live content
 
 #### Defined in
 
-[embed/IVbrickApi.ts:95](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickApi.ts#L95)
+[embed/IVbrickApi.ts:95](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L95)
 
 ___
 
 ### info
 
-• `Readonly` **info**: [`IVideoInfo`](IVideoInfo.md)
+• `Optional` `Readonly` **info**: [`IVideoInfo`](IVideoInfo.md)
 
 metadata of the video/webcast
 
@@ -87,7 +87,7 @@ metadata of the video/webcast
 
 #### Defined in
 
-[embed/IVbrickApi.ts:34](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickApi.ts#L34)
+[embed/IVbrickApi.ts:34](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L34)
 
 ___
 
@@ -103,13 +103,13 @@ video playing, buffering, etc
 
 #### Defined in
 
-[embed/IVbrickApi.ts:19](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickApi.ts#L19)
+[embed/IVbrickApi.ts:19](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L19)
 
 ___
 
 ### videoInfo
 
-• `Readonly` **videoInfo**: [`IVideoInfo`](IVideoInfo.md)
+• `Optional` `Readonly` **videoInfo**: [`IVideoInfo`](IVideoInfo.md)
 
 Contains metadata for the video
 
@@ -119,7 +119,7 @@ Use `info` instead
 
 #### Defined in
 
-[embed/IVbrickApi.ts:101](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickApi.ts#L101)
+[embed/IVbrickApi.ts:101](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L101)
 
 ___
 
@@ -135,7 +135,7 @@ Player Volume. 0-1
 
 #### Defined in
 
-[embed/IVbrickApi.ts:24](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickApi.ts#L24)
+[embed/IVbrickApi.ts:24](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L24)
 
 ## Methods
 
@@ -155,7 +155,7 @@ Removes the embedded content from the DOM.
 
 #### Defined in
 
-[embed/IVbrickApi.ts:74](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickApi.ts#L74)
+[embed/IVbrickApi.ts:74](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L74)
 
 ___
 
@@ -188,7 +188,7 @@ Removes an event listener
 
 #### Defined in
 
-[embed/IVbrickApi.ts:69](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickApi.ts#L69)
+[embed/IVbrickApi.ts:69](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L69)
 
 ___
 
@@ -221,7 +221,7 @@ Register an event handler. Events are fired at different lifecycle stages of the
 
 #### Defined in
 
-[embed/IVbrickApi.ts:64](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickApi.ts#L64)
+[embed/IVbrickApi.ts:64](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L64)
 
 ___
 
@@ -241,7 +241,7 @@ Pauses the video if it is playing.
 
 #### Defined in
 
-[embed/IVbrickApi.ts:44](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickApi.ts#L44)
+[embed/IVbrickApi.ts:44](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L44)
 
 ___
 
@@ -261,7 +261,7 @@ Plays the video if it is paused.
 
 #### Defined in
 
-[embed/IVbrickApi.ts:39](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickApi.ts#L39)
+[embed/IVbrickApi.ts:39](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L39)
 
 ___
 
@@ -283,7 +283,7 @@ sets the current time in the video
 
 #### Defined in
 
-[embed/IVbrickApi.ts:113](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickApi.ts#L113)
+[embed/IVbrickApi.ts:113](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L113)
 
 ___
 
@@ -305,7 +305,7 @@ sets playback rate
 
 #### Defined in
 
-[embed/IVbrickApi.ts:107](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickApi.ts#L107)
+[embed/IVbrickApi.ts:107](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L107)
 
 ___
 
@@ -332,7 +332,7 @@ update the current subtitles settings
 
 #### Defined in
 
-[embed/IVbrickApi.ts:57](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickApi.ts#L57)
+[embed/IVbrickApi.ts:57](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L57)
 
 ___
 
@@ -358,7 +358,7 @@ Sets player volume
 
 #### Defined in
 
-[embed/IVbrickApi.ts:50](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickApi.ts#L50)
+[embed/IVbrickApi.ts:50](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L50)
 
 ___
 
@@ -384,4 +384,4 @@ Allows updating the access token if the old one has expired.
 
 #### Defined in
 
-[embed/IVbrickApi.ts:80](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickApi.ts#L80)
+[embed/IVbrickApi.ts:80](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L80)

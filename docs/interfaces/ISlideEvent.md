@@ -19,7 +19,7 @@ Details of the current slide on a Webcast slide change event
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:94](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickTypes.ts#L94)
+[embed/IVbrickTypes.ts:94](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickTypes.ts#L94)
 
 ___
 
@@ -29,4 +29,4 @@ ___
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:93](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickTypes.ts#L93)
+[embed/IVbrickTypes.ts:93](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickTypes.ts#L93)

@@ -18,7 +18,7 @@
 
 #### Defined in
 
-[VbrickSDK.ts:7](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/VbrickSDK.ts#L7)
+[VbrickSDK.ts:7](https://github.com/vbrick/rev-sdk-js/blob/main/src/VbrickSDK.ts#L7)
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 #### Defined in
 
-[VbrickSDK.ts:8](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/VbrickSDK.ts#L8)
+[VbrickSDK.ts:8](https://github.com/vbrick/rev-sdk-js/blob/main/src/VbrickSDK.ts#L8)
 
 ___
 
@@ -38,4 +38,4 @@ ___
 
 #### Defined in
 
-[VbrickSDK.ts:6](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/VbrickSDK.ts#L6)
+[VbrickSDK.ts:6](https://github.com/vbrick/rev-sdk-js/blob/main/src/VbrickSDK.ts#L6)
