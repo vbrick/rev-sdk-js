@@ -6,6 +6,10 @@ This is Vbrick's JavaScript SDK library that enables you to embed Vbrick Rev web
 
 This library will soon add REST API functionality. This may introduce breaking changes, which will be outlined in the [Changelog](CHANGELOG.md)
 
+## Demo Page
+
+- [Demo Page](https://vbrick.github.io/rev-sdk-js/demo)
+
 ## Auto-Generated Documentation
 - [API Reference](/docs/README.md)
 

@@ -22,8 +22,8 @@ Options when creating the iframe embed for a video/webcast
 - [baseUrl](VbrickBaseEmbedConfig.md#baseurl)
 - [className](VbrickBaseEmbedConfig.md#classname)
 - [height](VbrickBaseEmbedConfig.md#height)
+- [initialVolume](VbrickBaseEmbedConfig.md#initialvolume)
 - [log](VbrickBaseEmbedConfig.md#log)
-- [muted](VbrickBaseEmbedConfig.md#muted)
 - [popupAuth](VbrickBaseEmbedConfig.md#popupauth)
 - [timeoutSeconds](VbrickBaseEmbedConfig.md#timeoutseconds)
 - [token](VbrickBaseEmbedConfig.md#token)
@@ -81,6 +81,18 @@ Optional height to be set on embeds. Default is "100%"
 
 ___
 
+### initialVolume
+
+• `Optional` **initialVolume**: `number`
+
+set the volume to upon initial load (for muting or otherwise)
+
+#### Defined in
+
+[embed/VbrickEmbedConfig.ts:38](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L38)
+
+___
+
 ### log
 
 • `Optional` **log**: `boolean`
@@ -94,18 +106,6 @@ If true, sdk will log to console
 #### Defined in
 
 [VbrickSDK.ts:45](https://github.com/vbrick/rev-sdk-js/blob/main/src/VbrickSDK.ts#L45)
-
-___
-
-### muted
-
-• `Optional` **muted**: `boolean`
-
-set the volume to 0 upon initial load
-
-#### Defined in
-
-[embed/VbrickEmbedConfig.ts:38](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L38)
 
 ___
 

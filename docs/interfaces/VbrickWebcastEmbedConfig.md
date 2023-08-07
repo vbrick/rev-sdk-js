@@ -21,8 +21,8 @@ Options available when embedding a webcast
 - [className](VbrickWebcastEmbedConfig.md#classname)
 - [enableFullRev](VbrickWebcastEmbedConfig.md#enablefullrev)
 - [height](VbrickWebcastEmbedConfig.md#height)
+- [initialVolume](VbrickWebcastEmbedConfig.md#initialvolume)
 - [log](VbrickWebcastEmbedConfig.md#log)
-- [muted](VbrickWebcastEmbedConfig.md#muted)
 - [popupAuth](VbrickWebcastEmbedConfig.md#popupauth)
 - [showFullWebcast](VbrickWebcastEmbedConfig.md#showfullwebcast)
 - [timeoutSeconds](VbrickWebcastEmbedConfig.md#timeoutseconds)
@@ -107,6 +107,22 @@ Optional height to be set on embeds. Default is "100%"
 
 ___
 
+### initialVolume
+
+• `Optional` **initialVolume**: `number`
+
+set the volume to upon initial load (for muting or otherwise)
+
+#### Inherited from
+
+[VbrickBaseEmbedConfig](VbrickBaseEmbedConfig.md).[initialVolume](VbrickBaseEmbedConfig.md#initialvolume)
+
+#### Defined in
+
+[embed/VbrickEmbedConfig.ts:38](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L38)
+
+___
+
 ### log
 
 • `Optional` **log**: `boolean`
@@ -120,22 +136,6 @@ If true, sdk will log to console
 #### Defined in
 
 [VbrickSDK.ts:45](https://github.com/vbrick/rev-sdk-js/blob/main/src/VbrickSDK.ts#L45)
-
-___
-
-### muted
-
-• `Optional` **muted**: `boolean`
-
-set the volume to 0 upon initial load
-
-#### Inherited from
-
-[VbrickBaseEmbedConfig](VbrickBaseEmbedConfig.md).[muted](VbrickBaseEmbedConfig.md#muted)
-
-#### Defined in
-
-[embed/VbrickEmbedConfig.ts:38](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L38)
 
 ___
 

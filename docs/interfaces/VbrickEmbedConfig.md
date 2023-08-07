@@ -31,10 +31,10 @@ Options available when embedding a VOD/video or webcast
 - [hidePlayControls](VbrickEmbedConfig.md#hideplaycontrols)
 - [hideSettings](VbrickEmbedConfig.md#hidesettings)
 - [hideSubtitles](VbrickEmbedConfig.md#hidesubtitles)
+- [initialVolume](VbrickEmbedConfig.md#initialvolume)
 - [log](VbrickEmbedConfig.md#log)
 - [logoUrl](VbrickEmbedConfig.md#logourl)
 - [loopVideo](VbrickEmbedConfig.md#loopvideo)
-- [muted](VbrickEmbedConfig.md#muted)
 - [noCc](VbrickEmbedConfig.md#nocc)
 - [noCenterButtons](VbrickEmbedConfig.md#nocenterbuttons)
 - [noChapters](VbrickEmbedConfig.md#nochapters)
@@ -283,6 +283,22 @@ ___
 
 ___
 
+### initialVolume
+
+• `Optional` **initialVolume**: `number`
+
+set the volume to upon initial load (for muting or otherwise)
+
+#### Inherited from
+
+[VbrickWebcastEmbedConfig](VbrickWebcastEmbedConfig.md).[initialVolume](VbrickWebcastEmbedConfig.md#initialvolume)
+
+#### Defined in
+
+[embed/VbrickEmbedConfig.ts:38](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L38)
+
+___
+
 ### log
 
 • `Optional` **log**: `boolean`
@@ -330,22 +346,6 @@ ___
 #### Defined in
 
 [embed/VbrickEmbedConfig.ts:76](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L76)
-
-___
-
-### muted
-
-• `Optional` **muted**: `boolean`
-
-set the volume to 0 upon initial load
-
-#### Inherited from
-
-[VbrickWebcastEmbedConfig](VbrickWebcastEmbedConfig.md).[muted](VbrickWebcastEmbedConfig.md#muted)
-
-#### Defined in
-
-[embed/VbrickEmbedConfig.ts:38](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L38)
 
 ___
 

@@ -257,7 +257,7 @@ An [IVbrickVideoEmbed](interfaces/IVbrickVideoEmbed.md) object
 
 #### Defined in
 
-embed/index.ts:19
+[embed/index.ts:19](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/index.ts#L19)
 
 ___
 
@@ -296,4 +296,4 @@ An [IVbrickWebcastEmbed](interfaces/IVbrickWebcastEmbed.md) object
 
 #### Defined in
 
-embed/index.ts:54
+[embed/index.ts:54](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/index.ts#L54)
