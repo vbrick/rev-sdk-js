@@ -1,6 +1,6 @@
 {
   "name": "@vbrick/rev-sdk",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Client SDK for Vbrick Rev",
   "author": "Vbrick Systems",
   "repository": "github:vbrick/rev-sdk-js",
@@ -9,9 +9,12 @@
   "browser": "dist/rev-sdk.js",
   "types": "dist/rev-sdk.d.ts",
   "exports": {
-    "import": "./dist/rev-sdk.esm.js",
-    "require": "./dist/rev-sdk.cjs.js",
-    "default": "./dist/rev-sdk.js"
+    ".": {
+      "types": "./dist/rev-sdk.d.ts",
+      "import": "./dist/rev-sdk.esm.js",
+      "require": "./dist/rev-sdk.cjs.js",
+      "default": "./dist/rev-sdk.esm.js"
+    }
   },
   "browserslist": [
     "defaults",

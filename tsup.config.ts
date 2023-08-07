@@ -1,61 +1,26 @@
 //@ts-check
-import { defineConfig } from 'tsup'
+import { defineConfig, Options } from 'tsup'
 import browserslistToEsbuild from 'browserslist-to-esbuild';
-
-import path from 'node:path';
-import fs from 'node:fs';
-
-const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
-
-function fileEntryName(filepath) {
-    return path.basename(filepath, '.js');
-}
-
-const paths = {
-    browser: fileEntryName(pkg.browser),
-    esm: fileEntryName(pkg.module),
-    commonjs: fileEntryName(pkg.exports.require)
-}
-
 
 export default defineConfig([
     {
         entry: {
-            [paths.esm]: 'src/index.ts'
+            'rev-sdk': 'src/index.ts'
         },
-        outExtension: ctx => ({ js: '.js' }),
-        format: 'esm',
+        format: ['esm', 'cjs', 'iife'],
         platform: 'browser',
-        target: [...browserslistToEsbuild(), 'node16'],
-        splitting: false,
-        sourcemap: true,
-        dts: true,
-        clean: false
-    },
-    {
-        entry: {
-            [paths.commonjs]: 'src/index.ts'
+        target: [...browserslistToEsbuild(), 'node16'] as Options['target'],
+        outExtension({ format, pkgType}) {
+            switch (format) {
+                case 'cjs': return { js: '.cjs.js', dts: '.d.ts' }
+                case 'esm': return { js: '.esm.js', dts: '.esm.d.ts' }
+                case 'iife': return { js: '.js', dts: '.d.ts' }
+            }
         },
-        format: 'cjs',
-        outExtension: ctx => ({ js: '.js' }),
-        platform: 'browser',
-        splitting: false,
-        sourcemap: true,
-        dts: true,
-        clean: false
-    },
-    {
-        entry: {
-            [paths.browser]: 'src/index.ts'
-        },
-        format: 'iife',
         globalName: 'revSdk',
-        platform: 'browser',
-        target: browserslistToEsbuild(),
-        outExtension: ctx => ({ js: '.js' }),
         splitting: false,
         sourcemap: true,
         dts: true,
-        clean: false
+        clean: true
     }
 ])
