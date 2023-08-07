@@ -226,11 +226,11 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 			/* popupAuth requires a "true" value if set */
 			? (!!config.popupAuth).toString()
 			: undefined,
-		accent: config.accentColor,
+		accent: config.accentColor ?? config.accent,
 		autoplay: config.autoplay,
 		forceClosedCaptions: config.forcedCaptions ?? config.forceClosedCaptions,
-		loopVideo: config.playInLoop ?? config.playInLoop,
-		noCc: config.hideSubtitles ?? config.hideSubtitles,
+		loopVideo: config.playInLoop ?? config.loopVideo,
+		noCc: config.hideSubtitles ?? config.noCc,
 		noCenterButtons: config.hideOverlayControls ?? config.noCenterButtons,
 		noChapters: config.hideChapters ?? config.noChapters,
 		noFullscreen: config.hideFullscreen ?? config.noFullscreen,
