@@ -13,10 +13,6 @@
 * Avoid edge case where including a trailing `/` in the config `baseUrl` could cause load errors
 * Detect some alternate config attributes *(the embed query paramters)*
 
-### Other
-
-*
-
 ## Version 0.4
 
 ### Breaking Changes
