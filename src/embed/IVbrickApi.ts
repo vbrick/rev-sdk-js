@@ -34,6 +34,12 @@ export interface IVbrickBaseEmbed<TInfo extends IBasicInfo, Events extends strin
 	readonly info?: TInfo;
 
 	/**
+	 * returns a promise once the player has completed authentication and load.
+	 * Will reject with an error if authentication/load failed
+	 */
+	initialize(): Promise<void>;
+
+	/**
 	 * Plays the video if it is paused.
 	 */
 	play(): void;
@@ -59,7 +65,7 @@ export interface IVbrickBaseEmbed<TInfo extends IBasicInfo, Events extends strin
 	/**
 	 * Register an event handler. Events are fired at different lifecycle stages of the webcast
 	 * @param event - name of event
-	 * @param listener - callback when event is fired. Keep a reference if you intend to call {@link IVbrickBaseEmbed.off} later
+	 * @param listener - callback when event is fired. Keep a reference if you intend to call {@link IVbrickBaseEmbed['off']} later
 	 */
 	on<T extends Events>(event: T, listener: IListener<T>): void;
 
