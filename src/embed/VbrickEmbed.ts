@@ -155,12 +155,15 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 		});
 
 		// allow setting volume on player ready
-		if (this.config.muted != undefined) {
-			const volumeCallback = () => {
-				this.eventBus.off('playbackSpeedChanged', volumeCallback);
-				this.setVolume(this.config.muted ? 0 : 1);
+		if (this.config.initialVolume != undefined && isFinite(this.config.initialVolume)) {
+			const volumeCallback: IListener<'playerStatusChanged'> = (evt) => {
+				if (evt.status !== PlayerStatus.Playing) {
+					return;
+				}
+				this.eventBus.off('playerStatusChanged', volumeCallback);
+				this.setVolume(this.config.initialVolume);
 			};
-			this.eventBus.on('playbackSpeedChanged', volumeCallback);
+			this.eventBus.on('playerStatusChanged', volumeCallback);
 		}
 	}
 	protected abstract getEmbedUrl(id: string, config: VbrickEmbedConfig);
@@ -233,7 +236,6 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 		noFullscreen: config.hideFullscreen ?? config.noFullscreen,
 		noPlayBar: config.hidePlayControls ?? config.noPlayBar,
 		noSettings: config.hideSettings ?? config.noSettings,
-		startAt: config.startAt,
-		muted: config.muted
+		startAt: config.startAt
 	};
 }

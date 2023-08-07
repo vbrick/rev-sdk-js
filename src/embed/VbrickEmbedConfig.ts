@@ -33,9 +33,9 @@ export interface VbrickBaseEmbedConfig extends VbrickSDKConfig {
 	autoplay?: boolean;
 	
 	/**
-	 * set the volume to 0 upon initial load
+	 * set the volume to upon initial load (for muting or otherwise)
 	 */
-	muted?: boolean;
+	initialVolume?: number;
 }
 
 /**
