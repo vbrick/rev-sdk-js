@@ -6,7 +6,7 @@ import { IVideoInfo, IWebcastInfo, IWebcastLayout, ISubtitles, IBasicInfo } from
 
 export { WebcastStatus } from './WebcastStatus';
 export { PlayerStatus } from './PlayerStatus';
-export { TVbrickEvent, IListener, TEmbedMessages, TPlayerMessages, TWebcastMessages, TVbrickMessages } from './IVbrickEvents';
+export type { TVbrickEvent, IListener, TEmbedMessages, TPlayerMessages, TWebcastMessages, TVbrickMessages } from './IVbrickEvents';
 export * from './IVbrickTypes';
 
 /**
@@ -31,7 +31,13 @@ export interface IVbrickBaseEmbed<TInfo extends IBasicInfo, Events extends strin
 	/**
 	 * metadata of the video/webcast
 	 */
-	readonly info: TInfo;
+	readonly info?: TInfo;
+
+	/**
+	 * returns a promise once the player has completed authentication and load.
+	 * Will reject with an error if authentication/load failed
+	 */
+	initialize(): Promise<void>;
 
 	/**
 	 * Plays the video if it is paused.
@@ -59,7 +65,7 @@ export interface IVbrickBaseEmbed<TInfo extends IBasicInfo, Events extends strin
 	/**
 	 * Register an event handler. Events are fired at different lifecycle stages of the webcast
 	 * @param event - name of event
-	 * @param listener - callback when event is fired. Keep a reference if you intend to call {@link IVbrickBaseEmbed.off} later
+	 * @param listener - callback when event is fired. Keep a reference if you intend to call {@link IVbrickBaseEmbed['off']} later
 	 */
 	on<T extends Events>(event: T, listener: IListener<T>): void;
 
@@ -98,7 +104,7 @@ export interface IVbrickVideoEmbed extends IVbrickBaseEmbed<IVideoInfo, keyof (T
 	 * Contains metadata for the video
 	 * @deprecated Use `info` instead
 	 */
-	readonly videoInfo: IVideoInfo;
+	readonly videoInfo?: IVideoInfo;
 
 	/**
 	 * sets playback rate 

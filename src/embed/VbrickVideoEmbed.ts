@@ -20,7 +20,7 @@ export class VbrickVideoEmbed extends VbrickEmbed<IVideoInfo> implements IVbrick
 	/**
 	 * Duration of video in seconds. Will be undefined for live content
 	 */
-	public get duration(): number {
+	public get duration(): number | undefined {
 		return this.info?.duration;
 	}
 
@@ -28,7 +28,7 @@ export class VbrickVideoEmbed extends VbrickEmbed<IVideoInfo> implements IVbrick
 	 * Contains metadata for the video
 	 * @deprecated Use `info` instead
 	 */
-	public get videoInfo(): IVideoInfo {
+	public get videoInfo(): IVideoInfo | undefined {
 		return this.info;
 	}
 

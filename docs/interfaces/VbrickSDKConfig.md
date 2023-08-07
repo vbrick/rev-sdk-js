@@ -26,7 +26,7 @@ URL for Rev
 
 #### Defined in
 
-[VbrickSDK.ts:35](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/VbrickSDK.ts#L35)
+[VbrickSDK.ts:35](https://github.com/vbrick/rev-sdk-js/blob/main/src/VbrickSDK.ts#L35)
 
 ___
 
@@ -38,7 +38,7 @@ If true, sdk will log to console
 
 #### Defined in
 
-[VbrickSDK.ts:45](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/VbrickSDK.ts#L45)
+[VbrickSDK.ts:45](https://github.com/vbrick/rev-sdk-js/blob/main/src/VbrickSDK.ts#L45)
 
 ___
 
@@ -50,4 +50,4 @@ Token for authentication
 
 #### Defined in
 
-[VbrickSDK.ts:40](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/VbrickSDK.ts#L40)
+[VbrickSDK.ts:40](https://github.com/vbrick/rev-sdk-js/blob/main/src/VbrickSDK.ts#L40)
