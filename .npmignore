@@ -7,5 +7,6 @@ typedoc.json
 api-extractor.json
 favicon.ico
 tsconfig.json
+tsup.config.ts
 .babelrc
 *.pem

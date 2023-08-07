@@ -4,6 +4,7 @@
 	"entryPointStrategy": "Resolve",
 	"out": "docs",
 	"plugin": "typedoc-plugin-markdown",
+	"gitRevision": "main",
 	"gitRemote": "upstream",
 	"excludeInternal": true,
 	"excludePrivate": true,

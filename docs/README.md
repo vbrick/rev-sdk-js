@@ -6,11 +6,6 @@ A javascript SDK for embedding or calling rev APIs
 
 ## Table of contents
 
-### References
-
-- [embedVideo](README.md#embedvideo)
-- [embedWebcast](README.md#embedwebcast)
-
 ### Enumerations
 
 - [PlayerStatus](enums/PlayerStatus.md)
@@ -52,17 +47,10 @@ A javascript SDK for embedding or calling rev APIs
 
 - [default](README.md#default)
 
-## References
+### Functions
 
-### embedVideo
-
-Renames and re-exports [__type](README.md#__type)
-
-___
-
-### embedWebcast
-
-Renames and re-exports [__type](README.md#__type)
+- [embedVideo](README.md#embedvideo)
+- [embedWebcast](README.md#embedwebcast)
 
 ## Type Aliases
 
@@ -80,7 +68,7 @@ Event callback parameters for the specified event
 
 #### Defined in
 
-[embed/IVbrickEvents.ts:103](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickEvents.ts#L103)
+[embed/IVbrickEvents.ts:103](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickEvents.ts#L103)
 
 ___
 
@@ -105,7 +93,7 @@ Event indicating the current webcast status
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:56](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickTypes.ts#L56)
+[embed/IVbrickTypes.ts:56](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickTypes.ts#L56)
 
 ___
 
@@ -131,7 +119,7 @@ Authentication/load events
 
 #### Defined in
 
-[embed/IVbrickEvents.ts:8](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickEvents.ts#L8)
+[embed/IVbrickEvents.ts:8](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickEvents.ts#L8)
 
 ___
 
@@ -155,7 +143,7 @@ Video Player events
 
 #### Defined in
 
-[embed/IVbrickEvents.ts:32](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickEvents.ts#L32)
+[embed/IVbrickEvents.ts:32](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickEvents.ts#L32)
 
 ___
 
@@ -173,7 +161,7 @@ The Webcast Poll that has been Closed/Unpublished
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:116](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickTypes.ts#L116)
+[embed/IVbrickTypes.ts:116](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickTypes.ts#L116)
 
 ___
 
@@ -185,7 +173,7 @@ Events emitted by Vbrick Embed
 
 #### Defined in
 
-[embed/IVbrickEvents.ts:97](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickEvents.ts#L97)
+[embed/IVbrickEvents.ts:97](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickEvents.ts#L97)
 
 ___
 
@@ -197,7 +185,7 @@ All supported events and their corresponding listener callback payload
 
 #### Defined in
 
-[embed/IVbrickEvents.ts:91](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickEvents.ts#L91)
+[embed/IVbrickEvents.ts:91](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickEvents.ts#L91)
 
 ___
 
@@ -226,7 +214,7 @@ Webcast events
 
 #### Defined in
 
-[embed/IVbrickEvents.ts:58](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/IVbrickEvents.ts#L58)
+[embed/IVbrickEvents.ts:58](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickEvents.ts#L58)
 
 ## Variables
 
@@ -243,4 +231,69 @@ Webcast events
 
 #### Defined in
 
-[index.ts:20](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/index.ts#L20)
+[index.ts:17](https://github.com/vbrick/rev-sdk-js/blob/main/src/index.ts#L17)
+
+## Functions
+
+### embedVideo
+
+▸ **embedVideo**(`element`, `videoId`, `config`): [`IVbrickVideoEmbed`](interfaces/IVbrickVideoEmbed.md)
+
+Embed a VOD/video on a page, with optional token-based authentication. Returns a VbrickEmbed object for interacting with playback and receiving events.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `element` | `string` \| `HTMLElement` | Container element where the embed content will be rendered. Either an HTMLElement or a CSS Selector string. |
+| `videoId` | `string` | ID of the video to embed |
+| `config` | [`VbrickVideoEmbedConfig`](interfaces/VbrickVideoEmbedConfig.md) | A configuration object |
+
+#### Returns
+
+[`IVbrickVideoEmbed`](interfaces/IVbrickVideoEmbed.md)
+
+An [IVbrickVideoEmbed](interfaces/IVbrickVideoEmbed.md) object
+
+#### Defined in
+
+[embed/index.ts:19](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/index.ts#L19)
+
+___
+
+### embedWebcast
+
+▸ **embedWebcast**(`element`, `webcastId`, `config`): [`IVbrickWebcastEmbed`](interfaces/IVbrickWebcastEmbed.md)
+
+Embeds a webcast on the page
+
+**`Example`**
+
+Embedding a webcast:
+```
+//In HTML:  <div id="webcast-embed"></div>
+
+const webcastId = '0d252797-6db7-44dc-aced-25a6843d529c';
+revSdk.embedWebcast('#webcast-embed', webcastId, {
+    showVideo: true,
+    token
+});
+```
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `element` | `string` \| `HTMLElement` | Either a CSS selector string or HTML Element where the embed content will be rendered |
+| `webcastId` | `string` | ID of the webcast to embed |
+| `config` | [`VbrickWebcastEmbedConfig`](interfaces/VbrickWebcastEmbedConfig.md) | A configuration object |
+
+#### Returns
+
+[`IVbrickWebcastEmbed`](interfaces/IVbrickWebcastEmbed.md)
+
+An [IVbrickWebcastEmbed](interfaces/IVbrickWebcastEmbed.md) object
+
+#### Defined in
+
+[embed/index.ts:54](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/index.ts#L54)

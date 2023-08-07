@@ -22,7 +22,7 @@
 
 #### Defined in
 
-[embed/PlayerStatus.ts:8](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/PlayerStatus.ts#L8)
+[embed/PlayerStatus.ts:8](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/PlayerStatus.ts#L8)
 
 ___
 
@@ -32,7 +32,7 @@ ___
 
 #### Defined in
 
-[embed/PlayerStatus.ts:10](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/PlayerStatus.ts#L10)
+[embed/PlayerStatus.ts:10](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/PlayerStatus.ts#L10)
 
 ___
 
@@ -42,7 +42,7 @@ ___
 
 #### Defined in
 
-[embed/PlayerStatus.ts:11](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/PlayerStatus.ts#L11)
+[embed/PlayerStatus.ts:11](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/PlayerStatus.ts#L11)
 
 ___
 
@@ -52,7 +52,7 @@ ___
 
 #### Defined in
 
-[embed/PlayerStatus.ts:5](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/PlayerStatus.ts#L5)
+[embed/PlayerStatus.ts:5](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/PlayerStatus.ts#L5)
 
 ___
 
@@ -62,7 +62,7 @@ ___
 
 #### Defined in
 
-[embed/PlayerStatus.ts:7](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/PlayerStatus.ts#L7)
+[embed/PlayerStatus.ts:7](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/PlayerStatus.ts#L7)
 
 ___
 
@@ -72,7 +72,7 @@ ___
 
 #### Defined in
 
-[embed/PlayerStatus.ts:6](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/PlayerStatus.ts#L6)
+[embed/PlayerStatus.ts:6](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/PlayerStatus.ts#L6)
 
 ___
 
@@ -82,4 +82,4 @@ ___
 
 #### Defined in
 
-[embed/PlayerStatus.ts:9](https://github.com/vbrick/rev-sdk-js/blob/384c0dd/src/embed/PlayerStatus.ts#L9)
+[embed/PlayerStatus.ts:9](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/PlayerStatus.ts#L9)
