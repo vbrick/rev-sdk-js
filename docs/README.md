@@ -9,6 +9,7 @@ A javascript SDK for embedding or calling rev APIs
 ### Enumerations
 
 - [PlayerStatus](enums/PlayerStatus.md)
+- [PlaylistLayout](enums/PlaylistLayout.md)
 - [TokenType](enums/TokenType.md)
 - [WebcastStatus](enums/WebcastStatus.md)
 
@@ -16,10 +17,13 @@ A javascript SDK for embedding or calling rev APIs
 
 - [IBasicInfo](interfaces/IBasicInfo.md)
 - [IComment](interfaces/IComment.md)
+- [IPlaylistInfo](interfaces/IPlaylistInfo.md)
+- [IPlaylistItem](interfaces/IPlaylistItem.md)
 - [IPoll](interfaces/IPoll.md)
 - [ISlideEvent](interfaces/ISlideEvent.md)
 - [ISubtitles](interfaces/ISubtitles.md)
 - [IVbrickBaseEmbed](interfaces/IVbrickBaseEmbed.md)
+- [IVbrickPlaylistEmbed](interfaces/IVbrickPlaylistEmbed.md)
 - [IVbrickVideoEmbed](interfaces/IVbrickVideoEmbed.md)
 - [IVbrickWebcastEmbed](interfaces/IVbrickWebcastEmbed.md)
 - [IVideoInfo](interfaces/IVideoInfo.md)
@@ -27,6 +31,7 @@ A javascript SDK for embedding or calling rev APIs
 - [IWebcastLayout](interfaces/IWebcastLayout.md)
 - [VbrickBaseEmbedConfig](interfaces/VbrickBaseEmbedConfig.md)
 - [VbrickEmbedConfig](interfaces/VbrickEmbedConfig.md)
+- [VbrickPlaylistEmbedConfig](interfaces/VbrickPlaylistEmbedConfig.md)
 - [VbrickSDKConfig](interfaces/VbrickSDKConfig.md)
 - [VbrickSDKToken](interfaces/VbrickSDKToken.md)
 - [VbrickVideoEmbedConfig](interfaces/VbrickVideoEmbedConfig.md)
@@ -49,6 +54,7 @@ A javascript SDK for embedding or calling rev APIs
 
 ### Functions
 
+- [embedPlaylist](README.md#embedplaylist)
 - [embedVideo](README.md#embedvideo)
 - [embedWebcast](README.md#embedwebcast)
 
@@ -68,7 +74,7 @@ Event callback parameters for the specified event
 
 #### Defined in
 
-[embed/IVbrickEvents.ts:103](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickEvents.ts#L103)
+[embed/IVbrickEvents.ts:115](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickEvents.ts#L115)
 
 ___
 
@@ -173,19 +179,19 @@ Events emitted by Vbrick Embed
 
 #### Defined in
 
-[embed/IVbrickEvents.ts:97](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickEvents.ts#L97)
+[embed/IVbrickEvents.ts:109](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickEvents.ts#L109)
 
 ___
 
 ### TVbrickMessages
 
-Ƭ **TVbrickMessages**: [`TEmbedMessages`](README.md#tembedmessages) & [`TPlayerMessages`](README.md#tplayermessages) & [`TWebcastMessages`](README.md#twebcastmessages)
+Ƭ **TVbrickMessages**: [`TEmbedMessages`](README.md#tembedmessages) & [`TPlayerMessages`](README.md#tplayermessages) & [`TWebcastMessages`](README.md#twebcastmessages) & `TPlaylistMessages`
 
 All supported events and their corresponding listener callback payload
 
 #### Defined in
 
-[embed/IVbrickEvents.ts:91](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickEvents.ts#L91)
+[embed/IVbrickEvents.ts:103](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickEvents.ts#L103)
 
 ___
 
@@ -227,16 +233,57 @@ Webcast events
 | Name | Type |
 | :------ | :------ |
 | `PlayerStatus` | typeof [`PlayerStatus`](enums/PlayerStatus.md) |
+| `PlaylistLayout` | typeof [`PlaylistLayout`](enums/PlaylistLayout.md) |
 | `TokenType` | typeof [`TokenType`](enums/TokenType.md) |
 | `WebcastStatus` | typeof [`WebcastStatus`](enums/WebcastStatus.md) |
+| `embedPlaylist` | (`element`: `string` \| `HTMLElement`, `playlistId`: `string`, `config`: [`VbrickPlaylistEmbedConfig`](interfaces/VbrickPlaylistEmbedConfig.md)) => [`IVbrickPlaylistEmbed`](interfaces/IVbrickPlaylistEmbed.md) |
 | `embedVideo` | (`element`: `string` \| `HTMLElement`, `videoId`: `string`, `config`: [`VbrickVideoEmbedConfig`](interfaces/VbrickVideoEmbedConfig.md)) => [`IVbrickVideoEmbed`](interfaces/IVbrickVideoEmbed.md) |
 | `embedWebcast` | (`element`: `string` \| `HTMLElement`, `webcastId`: `string`, `config`: [`VbrickWebcastEmbedConfig`](interfaces/VbrickWebcastEmbedConfig.md)) => [`IVbrickWebcastEmbed`](interfaces/IVbrickWebcastEmbed.md) |
 
 #### Defined in
 
-[index.ts:17](https://github.com/vbrick/rev-sdk-js/blob/main/src/index.ts#L17)
+[index.ts:18](https://github.com/vbrick/rev-sdk-js/blob/main/src/index.ts#L18)
 
 ## Functions
+
+### embedPlaylist
+
+▸ **embedPlaylist**(`element`, `playlistId`, `config`): [`IVbrickPlaylistEmbed`](interfaces/IVbrickPlaylistEmbed.md)
+
+Embeds a playlist on the page
+
+**`Example`**
+
+Embedding a playlist:
+```
+//In HTML:  <div id="playlist-embed"></div>
+
+const playlistId = '0d252797-6db7-44dc-aced-25a6843d529c';
+revSdk.embedPlaylist('#playlist-embed', playlistId, {
+    autoplay: true,
+    token
+});
+```
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `element` | `string` \| `HTMLElement` | Either a CSS selector string or HTML Element where the embed content will be rendered |
+| `playlistId` | `string` | ID of the playlist to embed |
+| `config` | [`VbrickPlaylistEmbedConfig`](interfaces/VbrickPlaylistEmbedConfig.md) | A configuration object |
+
+#### Returns
+
+[`IVbrickPlaylistEmbed`](interfaces/IVbrickPlaylistEmbed.md)
+
+An [IVbrickPlaylistEmbed](interfaces/IVbrickPlaylistEmbed.md) object
+
+#### Defined in
+
+[embed/index.ts:90](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/index.ts#L90)
+
+___
 
 ### embedVideo
 
@@ -260,7 +307,7 @@ An [IVbrickVideoEmbed](interfaces/IVbrickVideoEmbed.md) object
 
 #### Defined in
 
-[embed/index.ts:19](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/index.ts#L19)
+[embed/index.ts:20](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/index.ts#L20)
 
 ___
 
@@ -299,4 +346,4 @@ An [IVbrickWebcastEmbed](interfaces/IVbrickWebcastEmbed.md) object
 
 #### Defined in
 
-[embed/index.ts:54](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/index.ts#L54)
+[embed/index.ts:55](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/index.ts#L55)

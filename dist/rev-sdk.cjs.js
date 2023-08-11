@@ -20,9 +20,11 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 var src_exports = {};
 __export(src_exports, {
   PlayerStatus: () => PlayerStatus,
+  PlaylistLayout: () => PlaylistLayout,
   TokenType: () => TokenType,
   WebcastStatus: () => WebcastStatus,
   default: () => src_default,
+  embedPlaylist: () => embedPlaylist,
   embedVideo: () => embedVideo,
   embedWebcast: () => embedWebcast
 });
@@ -179,6 +181,14 @@ var PlayerStatus = /* @__PURE__ */ ((PlayerStatus2) => {
   PlayerStatus2["Error"] = "Error";
   return PlayerStatus2;
 })(PlayerStatus || {});
+
+// src/embed/PlaylistLayout.ts
+var PlaylistLayout = /* @__PURE__ */ ((PlaylistLayout2) => {
+  PlaylistLayout2["Filmstrip"] = "row";
+  PlaylistLayout2["Grid"] = "grid";
+  PlaylistLayout2["Slider"] = "slider";
+  return PlaylistLayout2;
+})(PlaylistLayout || {});
 
 // src/VbrickSDK.ts
 var TokenType = /* @__PURE__ */ ((TokenType2) => {
@@ -530,6 +540,70 @@ var VbrickWebcastEmbed = class extends VbrickEmbed {
   }
 };
 
+// src/embed/VbrickPlaylistEmbed.ts
+var VbrickPlaylistEmbed = class extends VbrickVideoEmbed {
+  constructor(id, config, container) {
+    super(id, config, container);
+    this._index = 0;
+  }
+  get playlist() {
+    return this._playlist;
+  }
+  get currentIndex() {
+    return this._index;
+  }
+  initializeEmbed() {
+    super.initializeEmbed();
+    this.eventBus.on("playlistLoaded", (playlist) => {
+      var _a, _b;
+      this._playlist = playlist;
+      if ((_a = this.info) == null ? void 0 : _a.videoId) {
+        this._index = getPlaylistIndex(this.playlist, (_b = this.info) == null ? void 0 : _b.videoId) ?? 0;
+      }
+    });
+    this.eventBus.on("videoLoaded", (video) => {
+      var _a;
+      if (!((_a = this.playlist) == null ? void 0 : _a.videos)) {
+        return;
+      }
+      this._index = getPlaylistIndex(this.playlist, video.videoId) ?? 0;
+      this.eventBus.emitLocalEvent("playlistItem", {
+        index: this._index,
+        videoId: this.playlist.videos[this._index].id
+      });
+    });
+  }
+  previous() {
+    const vid = wrapAt(this.playlist.videos, this._index - 1);
+    this.switchVideo(vid.id, true);
+  }
+  next() {
+    const vid = wrapAt(this.playlist.videos, this._index + 1);
+    this.switchVideo(vid.id, true);
+  }
+  switchVideo(videoId, autoplay) {
+    this.eventBus.publish("switchVideo", { videoId, autoplay });
+  }
+  getEmbedUrl(id, config) {
+    return getEmbedUrl(config.baseUrl, "/embed", {
+      playlist: id,
+      layout: config.layout,
+      noToolbar: config.hideToolbar,
+      maxRow: config.videosPerRow,
+      maxVideos: config.maxVideos,
+      ...getEmbedQuery(config)
+    });
+  }
+};
+function getPlaylistIndex(playlist, videoId) {
+  const idx = playlist.videos.findIndex(({ id }) => id === videoId);
+  return idx >= 0 ? idx : void 0;
+}
+function wrapAt(arr, i) {
+  const n = arr.length;
+  return arr[(i % n + n) % n];
+}
+
 // src/Config.ts
 function resolveConfig(configuration) {
   const cfg = {
@@ -563,11 +637,24 @@ function embedWebcast(element, webcastId, config) {
   });
   return webcast;
 }
+function embedPlaylist(element, playlistId, config) {
+  const el = lookupElement(element);
+  const cfg = resolveConfig(config);
+  const player = new VbrickPlaylistEmbed(playlistId, cfg, el);
+  player.initialize().catch(() => {
+  });
+  return player;
+}
 
 // src/index.ts
 var revSDK = {
   embedWebcast,
-  embedVideo
+  embedVideo,
+  embedPlaylist,
+  TokenType,
+  PlayerStatus,
+  WebcastStatus,
+  PlaylistLayout
 };
 var src_default = revSDK;
 //# sourceMappingURL=rev-sdk.cjs.js.map

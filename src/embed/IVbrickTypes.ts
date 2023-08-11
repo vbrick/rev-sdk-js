@@ -125,3 +125,32 @@ export interface IWebcastLayout {
 	video?: boolean;
 	presentation?: boolean;
 }
+
+/**
+ * @internal
+ */
+export interface IPlaylistSwitch {
+	videoId: string;
+	autoplay?: boolean;
+}
+
+/**
+ * Video entry in playlist
+ * @public
+ */
+export interface IPlaylistItem {
+	id: string;
+	title: string;
+	ownerProfileImageUri: string | null;
+	ownerFullName: string;
+}
+
+/**
+ * Playlist data emitted when playlist first loaded
+ * @public
+ */
+export interface IPlaylistInfo {
+	id: string;
+	name: string;
+	videos: IPlaylistItem[];
+}

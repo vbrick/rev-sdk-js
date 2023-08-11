@@ -29,6 +29,9 @@
 			grid-template-columns: max-content auto;
 			column-gap: 20px;
 		}
+		.grid-nowrap {
+			grid-template-columns: repeat(auto-fit, minmax(12ex, 1fr));
+		}
 
 		.buttons {
 			grid-column-start: 2;
@@ -82,9 +85,10 @@
 					</div>
 					<div>
 						<label for="embedType">Embed Type</label>
-						<div class="radio-grid">
+						<div class="radio-grid grid-nowrap">
 							<label><input type="radio" name="embedType" value="vod" checked>VOD</label>
 							<label><input type="radio" name="embedType" value="webcast">Webcast</label>
+							<label><input type="radio" name="embedType" value="playlist">Playlist</label>
 						</div>
 					</div>
 					<div>
@@ -98,9 +102,15 @@
 							placeholder="00000000-0000-0000-0000-000000000000" disabled>
 					</div>
 					<div>
+						<label id="playlistId" for="playlistId">Playlist Id:</label>
+						<input type="text" id="playlistId" name="playlistId"
+							placeholder="00000000-0000-0000-0000-000000000000" disabled>
+					</div>
+					<div>
 						<span>Token Type:</span>
 						<div class="radio-grid">
-							<label><input type="radio" name="tokenType" value="AccessToken" checked>Access Token</label>
+							<label><input type="radio" name="tokenType" value="" checked>None</label><em>Public (no authentication) or via popup authentication</em>
+							<label><input type="radio" name="tokenType" value="AccessToken">Access Token</label>
 							<em>(generated via the <a href="https://revdocs.vbrick.com/reference/authenticateuser"
 									target="revdocs">API Key</a>, <a
 									href="https://revdocs.vbrick.com/reference/loginuser" target="revdocs">Username</a>, <a href="https://revdocs.vbrick.com/reference/jwtauthenticate" target="revdocs">JWT</a> 
@@ -146,6 +156,12 @@
 					<label for="subtitles">Subtitles: <select id="subtitles">
 						<option value="" default>None</option>
 					</select></label>
+				</div>
+				<div id="playlist-controls">
+					<label for="playlistSelect">Playlist: <select id="playlistSelect">
+					</select></label>
+					<button id="playlistPrev">Previous</button>
+					<button id="playlistNext">Next</button>
 				</div>
 			</div>
 		</div>

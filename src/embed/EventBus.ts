@@ -1,5 +1,5 @@
 import { VbrickSDKConfig } from "../VbrickSDK";
-import { TVbrickEvent, IListener, TPlayerMethod, TAuthMethods, TWebcastMethod, TVbrickMessages } from './IVbrickEvents';
+import { TVbrickEvent, IListener, TPlayerMethod, TAuthMethods, TWebcastMethod, TVbrickMessages, TPlaylistMethod } from './IVbrickEvents';
 
 // default to 30 second timeout on authentication/SDK communication
 const DEFAULT_TIMEOUT = 30 * 1000;
@@ -70,7 +70,7 @@ export class EventBus {
 	}
 
 	/** Posts a message to the embed */
-	public publish(...[event, msg = undefined]: TAuthMethods | TPlayerMethod | TWebcastMethod): void {
+	public publish(...[event, msg = undefined]: TAuthMethods | TPlayerMethod | TWebcastMethod | TPlaylistMethod): void {
 		this.shouldLog && console.log('rev client posting message. ', event);
 		this.win.postMessage({
 			app: 'vbrick',

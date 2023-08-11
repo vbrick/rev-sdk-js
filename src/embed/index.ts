@@ -1,7 +1,8 @@
-import type { IVbrickVideoEmbed, IVbrickWebcastEmbed } from './IVbrickApi';
-import type { VbrickVideoEmbedConfig, VbrickWebcastEmbedConfig } from './VbrickEmbedConfig';
+import type { IVbrickPlaylistEmbed, IVbrickVideoEmbed, IVbrickWebcastEmbed } from './IVbrickApi';
+import type { VbrickPlaylistEmbedConfig, VbrickVideoEmbedConfig, VbrickWebcastEmbedConfig } from './VbrickEmbedConfig';
 import { VbrickVideoEmbed } from './VbrickVideoEmbed';
 import { VbrickWebcastEmbed } from './VbrickWebcastEmbed';
+import { VbrickPlaylistEmbed } from './VbrickPlaylistEmbed';
 import { lookupElement } from '../util';
 import { resolveConfig } from '../Config';
 
@@ -63,5 +64,40 @@ export function embedWebcast(
 	const webcast = new VbrickWebcastEmbed(webcastId, cfg, el);
 	webcast.initialize().catch(() => {});
 	return webcast;
+}
+
+/**
+ * Embeds a playlist on the page
+ * @public
+ * @param element - Either a CSS selector string or HTML Element where the embed content will be rendered
+ * @param playlistId - ID of the playlist to embed
+ * @param config - A configuration object
+ * @returns An {@link IVbrickPlaylistEmbed} object
+ *
+ * @example
+ * Embedding a playlist:
+ * ```
+ * //In HTML:  <div id="playlist-embed"></div>
+ *
+ * const playlistId = '0d252797-6db7-44dc-aced-25a6843d529c';
+ * revSdk.embedPlaylist('#playlist-embed', playlistId, {
+ *     autoplay: true,
+ *     token
+ * });
+ * ```
+ *
+ */
+export function embedPlaylist(
+	element: HTMLElement | string,
+	playlistId: string,
+	config: VbrickPlaylistEmbedConfig
+): IVbrickPlaylistEmbed {
+
+	const el = lookupElement(element);
+	const cfg = resolveConfig(config);
+
+	const player = new VbrickPlaylistEmbed(playlistId, cfg, el);
+	player.initialize().catch(() => {});
+	return player;
 }
 
