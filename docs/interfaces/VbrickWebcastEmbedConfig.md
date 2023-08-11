@@ -41,7 +41,7 @@ Options available when embedding a webcast
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:33](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L33)
+[embed/VbrickEmbedConfig.ts:34](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L34)
 
 ___
 
@@ -73,7 +73,7 @@ An optional class to be set on embeds.
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:11](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L11)
+[embed/VbrickEmbedConfig.ts:12](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L12)
 
 ___
 
@@ -87,7 +87,7 @@ ___
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:102](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L102)
+[embed/VbrickEmbedConfig.ts:103](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L103)
 
 ___
 
@@ -103,7 +103,7 @@ Optional height to be set on embeds. Default is "100%"
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:21](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L21)
+[embed/VbrickEmbedConfig.ts:22](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L22)
 
 ___
 
@@ -119,7 +119,7 @@ set the volume to upon initial load (for muting or otherwise)
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:38](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L38)
+[embed/VbrickEmbedConfig.ts:39](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L39)
 
 ___
 
@@ -151,7 +151,7 @@ For video embeds. If a user needs to log in, go through the login process in a p
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:26](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L26)
+[embed/VbrickEmbedConfig.ts:27](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L27)
 
 ___
 
@@ -163,7 +163,7 @@ Include Chat, QA and Polls widgets in embed (if configured)
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:99](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L99)
+[embed/VbrickEmbedConfig.ts:100](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L100)
 
 ___
 
@@ -179,7 +179,7 @@ seconds to wait for the embed initialization to complete. default is 30 seconds
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:31](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L31)
+[embed/VbrickEmbedConfig.ts:32](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L32)
 
 ___
 
@@ -211,4 +211,4 @@ Optional width to be set on embeds. Default is "100%"
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:16](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L16)
+[embed/VbrickEmbedConfig.ts:17](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L17)

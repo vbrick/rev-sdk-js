@@ -84,6 +84,10 @@ export type TWebcastMessages = {
 	pollUnpublished: TPollId;
 }
 
+/**
+ * Playlist events
+ * @public
+ */
 export type TPlaylistMessages = {
 	playlistLoaded: IPlaylistInfo;
 	playlistItem: {

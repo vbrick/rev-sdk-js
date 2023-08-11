@@ -201,16 +201,27 @@ interface IWebcastLayout {
     video?: boolean;
     presentation?: boolean;
 }
+/**
+ * @internal
+ */
 interface IPlaylistSwitch {
     videoId: string;
     autoplay?: boolean;
 }
+/**
+ * Video entry in playlist
+ * @public
+ */
 interface IPlaylistItem {
     id: string;
     title: string;
     ownerProfileImageUri: string | null;
     ownerFullName: string;
 }
+/**
+ * Playlist data emitted when playlist first loaded
+ * @public
+ */
 interface IPlaylistInfo {
     id: string;
     name: string;
@@ -299,6 +310,10 @@ type TWebcastMessages = {
     /** Poll has been removed */
     pollUnpublished: TPollId;
 };
+/**
+ * Playlist events
+ * @public
+ */
 type TPlaylistMessages = {
     playlistLoaded: IPlaylistInfo;
     playlistItem: {
