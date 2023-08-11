@@ -1,11 +1,12 @@
 import { WebcastStatus } from './WebcastStatus';
 import { PlayerStatus } from './PlayerStatus';
 import { VbrickSDKToken } from '../VbrickSDK';
-import { TVbrickEvent, IListener, TEmbedMessages, TPlayerMessages, TWebcastMessages } from './IVbrickEvents';
-import { IVideoInfo, IWebcastInfo, IWebcastLayout, ISubtitles, IBasicInfo } from "./IVbrickTypes";
+import { TVbrickEvent, IListener, TEmbedMessages, TPlayerMessages, TWebcastMessages, TPlaylistMessages } from './IVbrickEvents';
+import { IVideoInfo, IWebcastInfo, IWebcastLayout, ISubtitles, IBasicInfo, IPlaylistInfo } from "./IVbrickTypes";
 
 export { WebcastStatus } from './WebcastStatus';
 export { PlayerStatus } from './PlayerStatus';
+export { PlaylistLayout } from './PlaylistLayout';
 export type { TVbrickEvent, IListener, TEmbedMessages, TPlayerMessages, TWebcastMessages, TVbrickMessages } from './IVbrickEvents';
 export * from './IVbrickTypes';
 
@@ -134,4 +135,43 @@ export interface IVbrickWebcastEmbed extends IVbrickBaseEmbed<IWebcastInfo, keyo
 	 * @param layout  - set if video/slides are displayed
 	 */
 	updateLayout(layout: IWebcastLayout): void;
+}
+
+export interface IVbrickPlaylistEmbed extends IVbrickBaseEmbed<IVideoInfo, keyof (TEmbedMessages & TPlayerMessages & TPlaylistMessages)> {
+	readonly playlist: IPlaylistInfo;
+	
+	/**
+	 * Load a new video in the playlist. A 'videoInfo' event will be emitted once the new video has loaded
+	 * @param videoId  - specify video to show. It must exist in the playlist
+	 * @param autoplay - whether to automatically start playback on video load. Default is true
+	 */
+	switchVideo(videoId: string, autoplay?: boolean): void;
+
+	/**
+	 * Current position in video in seconds
+	 */
+	readonly currentTime: number;
+
+	/**
+	 * Duration of video in seconds. Will be undefined for live content
+	 */
+	readonly duration?: number;
+
+	/**
+	 * Contains metadata for the video
+	 * @deprecated Use `info` instead
+	 */
+	readonly videoInfo?: IVideoInfo;
+
+	/**
+	 * sets playback rate 
+	 * @param speed - 0-16, default is 1
+	 */
+	setPlaybackSpeed(speed: number): void;
+
+	/**
+	 * sets the current time in the video
+	 * @param currentTime - value (in seconds) between 0 and video duration
+	 */
+	seek(currentTime: number): void;
 }

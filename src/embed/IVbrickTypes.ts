@@ -125,3 +125,21 @@ export interface IWebcastLayout {
 	video?: boolean;
 	presentation?: boolean;
 }
+
+export interface IPlaylistSwitch {
+	videoId: string;
+	autoplay?: boolean;
+}
+
+export interface IPlaylistItem {
+	id: string;
+	title: string;
+	ownerProfileImageUri: string | null;
+	ownerFullName: string;
+}
+
+export interface IPlaylistInfo {
+	id: string;
+	name: string;
+	videos: IPlaylistItem[];
+}
