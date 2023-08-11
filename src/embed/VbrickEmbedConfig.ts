@@ -69,23 +69,23 @@ export interface VbrickVideoEmbedConfig extends VbrickBaseEmbedConfig {
 	 */
 	accentColor?: string;
 
-	/** @deprecated - embed parameter */
+	/** @deprecated - embed parameter name - alias of accentColor */
 	accent?: string;
-	/** @deprecated - embed parameter */
+	/** @deprecated - embed parameter name - alias of forcedCaptions */
 	forceClosedCaptions?: string;
-	/** @deprecated - embed parameter */
+	/** @deprecated - embed parameter name - alias of playInLoop */
 	loopVideo?: string;
-	/** @deprecated - embed parameter */
+	/** @deprecated - embed parameter name - alias of hideSubtitles */
 	noCc?: boolean;
-	/** @deprecated - embed parameter */
+	/** @deprecated - embed parameter name - alias of hideOverlayControls */
 	noCenterButtons?: boolean;
-	/** @deprecated - embed parameter */
+	/** @deprecated - embed parameter name - alias of hideChapters */
 	noChapters?: boolean;
-	/** @deprecated - embed parameter */
+	/** @deprecated - embed parameter name - alias of hideFullscreen */
 	noFullscreen?: boolean;
-	/** @deprecated - embed parameter */
+	/** @deprecated - embed parameter name - alias of hidePlayControls */
 	noPlayBar?: boolean;
-	/** @deprecated - embed parameter */
+	/** @deprecated - embed parameter name - alias of hideSettings */
 	noSettings?: boolean;
 }
 

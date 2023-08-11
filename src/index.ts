@@ -19,6 +19,9 @@ const revSDK = {
     embedWebcast,
     embedVideo,
     embedPlaylist,
+    TokenType,
+    PlayerStatus,
+    WebcastStatus,
     PlaylistLayout
 };
 
