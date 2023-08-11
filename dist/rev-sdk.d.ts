@@ -201,6 +201,21 @@ interface IWebcastLayout {
     video?: boolean;
     presentation?: boolean;
 }
+interface IPlaylistSwitch {
+    videoId: string;
+    autoplay?: boolean;
+}
+interface IPlaylistItem {
+    id: string;
+    title: string;
+    ownerProfileImageUri: string | null;
+    ownerFullName: string;
+}
+interface IPlaylistInfo {
+    id: string;
+    name: string;
+    videos: IPlaylistItem[];
+}
 
 /**
  * Authentication/load events
@@ -284,11 +299,18 @@ type TWebcastMessages = {
     /** Poll has been removed */
     pollUnpublished: TPollId;
 };
+type TPlaylistMessages = {
+    playlistLoaded: IPlaylistInfo;
+    playlistItem: {
+        index: number;
+        videoId: string;
+    };
+};
 /**
  * All supported events and their corresponding listener callback payload
  * @public
  */
-type TVbrickMessages = TEmbedMessages & TPlayerMessages & TWebcastMessages;
+type TVbrickMessages = TEmbedMessages & TPlayerMessages & TWebcastMessages & TPlaylistMessages;
 /**
  * Events emitted by Vbrick Embed
  * @public
@@ -299,6 +321,15 @@ type TVbrickEvent = Extract<keyof TVbrickMessages, string>;
  * @public
  */
 type IListener<TEvent extends string & keyof TVbrickMessages> = TVbrickMessages[TEvent] extends void ? () => void : (data: TVbrickMessages[TEvent]) => void;
+
+/**
+ * @public
+ */
+declare enum PlaylistLayout {
+    Filmstrip = "row",
+    Grid = "grid",
+    Slider = "slider"
+}
 
 /**
  * @public
@@ -407,6 +438,38 @@ interface IVbrickWebcastEmbed extends IVbrickBaseEmbed<IWebcastInfo, keyof (TEmb
      */
     updateLayout(layout: IWebcastLayout): void;
 }
+interface IVbrickPlaylistEmbed extends IVbrickBaseEmbed<IVideoInfo, keyof (TEmbedMessages & TPlayerMessages & TPlaylistMessages)> {
+    readonly playlist: IPlaylistInfo;
+    /**
+     * Load a new video in the playlist. A 'videoInfo' event will be emitted once the new video has loaded
+     * @param videoId  - specify video to show. It must exist in the playlist
+     * @param autoplay - whether to automatically start playback on video load. Default is true
+     */
+    switchVideo(videoId: string, autoplay?: boolean): void;
+    /**
+     * Current position in video in seconds
+     */
+    readonly currentTime: number;
+    /**
+     * Duration of video in seconds. Will be undefined for live content
+     */
+    readonly duration?: number;
+    /**
+     * Contains metadata for the video
+     * @deprecated Use `info` instead
+     */
+    readonly videoInfo?: IVideoInfo;
+    /**
+     * sets playback rate
+     * @param speed - 0-16, default is 1
+     */
+    setPlaybackSpeed(speed: number): void;
+    /**
+     * sets the current time in the video
+     * @param currentTime - value (in seconds) between 0 and video duration
+     */
+    seek(currentTime: number): void;
+}
 
 /**
  * Options when creating the iframe embed for a video/webcast
@@ -465,23 +528,23 @@ interface VbrickVideoEmbedConfig extends VbrickBaseEmbedConfig {
      * Branding Settings. Accent color to use in the player, in HTML #rrggbb format
      */
     accentColor?: string;
-    /** @deprecated - embed parameter */
+    /** @deprecated - embed parameter name - alias of accentColor */
     accent?: string;
-    /** @deprecated - embed parameter */
+    /** @deprecated - embed parameter name - alias of forcedCaptions */
     forceClosedCaptions?: string;
-    /** @deprecated - embed parameter */
+    /** @deprecated - embed parameter name - alias of playInLoop */
     loopVideo?: string;
-    /** @deprecated - embed parameter */
+    /** @deprecated - embed parameter name - alias of hideSubtitles */
     noCc?: boolean;
-    /** @deprecated - embed parameter */
+    /** @deprecated - embed parameter name - alias of hideOverlayControls */
     noCenterButtons?: boolean;
-    /** @deprecated - embed parameter */
+    /** @deprecated - embed parameter name - alias of hideChapters */
     noChapters?: boolean;
-    /** @deprecated - embed parameter */
+    /** @deprecated - embed parameter name - alias of hideFullscreen */
     noFullscreen?: boolean;
-    /** @deprecated - embed parameter */
+    /** @deprecated - embed parameter name - alias of hidePlayControls */
     noPlayBar?: boolean;
-    /** @deprecated - embed parameter */
+    /** @deprecated - embed parameter name - alias of hideSettings */
     noSettings?: boolean;
 }
 /**
@@ -497,10 +560,37 @@ interface VbrickWebcastEmbedConfig extends VbrickBaseEmbedConfig {
     enableFullRev?: boolean;
 }
 /**
+ * @public
+ */
+interface VbrickPlaylistEmbedConfig extends VbrickVideoEmbedConfig {
+    /**
+     * Select layout of playlist. Options are:
+     * - row (aka Filmstrip) - thumbnails of videos along bottom
+     * - grid - grid of thumbnails. Not compatible with autoplay functionality
+     * - slider - small prev/next buttons at bottom ov video player
+     */
+    layout?: `${PlaylistLayout}`;
+    /**
+     * Only applicable when layout is 'slider'
+     * Do not show bottom toolbar, only show the current video. This makes playlist functionality only possible through javascript API.
+     */
+    hideToolbar?: boolean;
+    /**
+     * Only applicable when layout is 'grid'
+     * Set the number of videos in each grid row (valid numbers are between 3 and 5)
+     */
+    videosPerRow?: number;
+    /**
+     * Only applicable when layout is 'grid'
+     * Set the maximum number of videos to include in grid view
+     */
+    maxVideos?: number;
+}
+/**
  * Options available when embedding a VOD/video or webcast
  * @public
  */
-interface VbrickEmbedConfig extends VbrickVideoEmbedConfig, VbrickWebcastEmbedConfig {
+interface VbrickEmbedConfig extends VbrickVideoEmbedConfig, VbrickWebcastEmbedConfig, VbrickPlaylistEmbedConfig {
 }
 
 /**
@@ -534,6 +624,28 @@ declare function embedVideo(element: HTMLElement | string, videoId: string, conf
  *
  */
 declare function embedWebcast(element: HTMLElement | string, webcastId: string, config: VbrickWebcastEmbedConfig): IVbrickWebcastEmbed;
+/**
+ * Embeds a playlist on the page
+ * @public
+ * @param element - Either a CSS selector string or HTML Element where the embed content will be rendered
+ * @param playlistId - ID of the playlist to embed
+ * @param config - A configuration object
+ * @returns An {@link IVbrickPlaylistEmbed} object
+ *
+ * @example
+ * Embedding a playlist:
+ * ```
+ * //In HTML:  <div id="playlist-embed"></div>
+ *
+ * const playlistId = '0d252797-6db7-44dc-aced-25a6843d529c';
+ * revSdk.embedPlaylist('#playlist-embed', playlistId, {
+ *     autoplay: true,
+ *     token
+ * });
+ * ```
+ *
+ */
+declare function embedPlaylist(element: HTMLElement | string, playlistId: string, config: VbrickPlaylistEmbedConfig): IVbrickPlaylistEmbed;
 
 /**
  * A javascript SDK for embedding or calling rev APIs
@@ -547,6 +659,11 @@ declare function embedWebcast(element: HTMLElement | string, webcastId: string, 
 declare const revSDK: {
     embedWebcast: typeof embedWebcast;
     embedVideo: typeof embedVideo;
+    embedPlaylist: typeof embedPlaylist;
+    TokenType: typeof TokenType;
+    PlayerStatus: typeof PlayerStatus;
+    WebcastStatus: typeof WebcastStatus;
+    PlaylistLayout: typeof PlaylistLayout;
 };
 
-export { IBasicInfo, IComment, IListener, IPoll, ISlideEvent, ISubtitles, IVbrickBaseEmbed, IVbrickVideoEmbed, IVbrickWebcastEmbed, IVideoInfo, IWebcastInfo, IWebcastLayout, IWebcastStatusMessage, PlayerStatus, TEmbedMessages, TPlayerMessages, TPollId, TVbrickEvent, TVbrickMessages, TWebcastMessages, TokenType, VbrickBaseEmbedConfig, VbrickEmbedConfig, VbrickSDKConfig, VbrickSDKToken, VbrickVideoEmbedConfig, VbrickWebcastEmbedConfig, WebcastStatus, revSDK as default, embedVideo, embedWebcast };
+export { IBasicInfo, IComment, IListener, IPlaylistInfo, IPlaylistItem, IPlaylistSwitch, IPoll, ISlideEvent, ISubtitles, IVbrickBaseEmbed, IVbrickPlaylistEmbed, IVbrickVideoEmbed, IVbrickWebcastEmbed, IVideoInfo, IWebcastInfo, IWebcastLayout, IWebcastStatusMessage, PlayerStatus, PlaylistLayout, TEmbedMessages, TPlayerMessages, TPollId, TVbrickEvent, TVbrickMessages, TWebcastMessages, TokenType, VbrickBaseEmbedConfig, VbrickEmbedConfig, VbrickPlaylistEmbedConfig, VbrickSDKConfig, VbrickSDKToken, VbrickVideoEmbedConfig, VbrickWebcastEmbedConfig, WebcastStatus, revSDK as default, embedPlaylist, embedVideo, embedWebcast };
