@@ -18,7 +18,7 @@
 
 #### Defined in
 
-embed/PlaylistLayout.ts:5
+[embed/PlaylistLayout.ts:5](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/PlaylistLayout.ts#L5)
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 #### Defined in
 
-embed/PlaylistLayout.ts:6
+[embed/PlaylistLayout.ts:6](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/PlaylistLayout.ts#L6)
 
 ___
 
@@ -38,4 +38,4 @@ ___
 
 #### Defined in
 
-embed/PlaylistLayout.ts:7
+[embed/PlaylistLayout.ts:7](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/PlaylistLayout.ts#L7)
