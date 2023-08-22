@@ -386,7 +386,7 @@ var VbrickEmbed = class {
 function getEmbedQuery(config) {
   return {
     tk: !!config.token,
-    popupAuth: !config.token && config.popupAuth != void 0 ? (!!config.popupAuth).toString() : void 0,
+    popupAuth: config.popupAuth != void 0 ? (!!config.popupAuth).toString() : void 0,
     accent: config.accentColor ?? config.accent,
     autoplay: config.autoplay,
     forceClosedCaptions: config.forcedCaptions ?? config.forceClosedCaptions,

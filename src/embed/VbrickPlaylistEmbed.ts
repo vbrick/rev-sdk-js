@@ -52,10 +52,10 @@ export class VbrickPlaylistEmbed extends VbrickVideoEmbed implements IVbrickPlay
         this.switchVideo(vid.id, true);
     }
 
-    switchVideo(videoId: string, autoplay?: boolean | undefined): void {
+    switchVideo(videoId?: string, autoplay?: boolean | undefined): void {
         this.eventBus.publish('switchVideo', { videoId, autoplay });
     }
-    
+
     protected getEmbedUrl(id: string, config: VbrickPlaylistEmbedConfig): string {
         return getEmbedUrl(config.baseUrl, '/embed', {
             playlist: id,
@@ -70,9 +70,9 @@ export class VbrickPlaylistEmbed extends VbrickVideoEmbed implements IVbrickPlay
 
 /**
  * get index of the specified video within a playlist
- * @param playlist 
- * @param videoId 
- * @returns 
+ * @param playlist
+ * @param videoId
+ * @returns
  */
 function getPlaylistIndex(playlist: IPlaylistInfo, videoId: string): number | undefined {
     const idx = playlist.videos.findIndex(({ id }) => id === videoId);
@@ -81,9 +81,9 @@ function getPlaylistIndex(playlist: IPlaylistInfo, videoId: string): number | un
 
 /**
  * get item at index, but wrap around at edges
- * @param arr 
- * @param i 
- * @returns 
+ * @param arr
+ * @param i
+ * @returns
  */
 function wrapAt<T>(arr: T[], i: number): T {
     const n = arr.length;

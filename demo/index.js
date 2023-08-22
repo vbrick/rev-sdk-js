@@ -195,7 +195,7 @@ function updateControls(currentEmbed, eventType, data) {
 	}
 	if(eventType === 'playlistLoaded') {
 		// clear out previous playlist items
-		playlistEl.querySelectorAll('option').forEach(el => el.remove());
+		playlistEl.querySelectorAll('option:not([default])').forEach(el => el.remove());
 		for (let vid of /** @type {IVbrickPlaylistEmbed} */(currentEmbed).playlist.videos) {
 			const el = document.createElement('option');
 			el.value = vid.id;
