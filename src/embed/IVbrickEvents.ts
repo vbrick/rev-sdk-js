@@ -1,5 +1,5 @@
 import { PlayerStatus } from './PlayerStatus';
-import { IVideoInfo, ISubtitles, IWebcastInfo, IWebcastStatusMessage, IWebcastLayout, IComment, ISlideEvent, IPoll, TPollId } from './IVbrickTypes';
+import { IVideoInfo, ISubtitles, IWebcastInfo, IWebcastStatusMessage, IWebcastLayout, IComment, ISlideEvent, IPoll, TPollId, IPlaylistInfo, IPlaylistSwitch, IPlaylistItem } from './IVbrickTypes';
 
 /**
  * Authentication/load events 
@@ -85,10 +85,22 @@ export type TWebcastMessages = {
 }
 
 /**
+ * Playlist events
+ * @public
+ */
+export type TPlaylistMessages = {
+	playlistLoaded: IPlaylistInfo;
+	playlistItem: {
+		index: number;
+		videoId: string;
+	};
+}
+
+/**
  * All supported events and their corresponding listener callback payload 
  * @public
  */
-export type TVbrickMessages = TEmbedMessages & TPlayerMessages & TWebcastMessages;
+export type TVbrickMessages = TEmbedMessages & TPlayerMessages & TWebcastMessages & TPlaylistMessages;
 
 /**
  * Events emitted by Vbrick Embed
@@ -133,6 +145,10 @@ export type TPlayerMethod =
 */
 export type TWebcastMethod =
 	['updateLayout', IWebcastLayout];
+
+
+export type TPlaylistMethod =
+	['switchVideo', IPlaylistSwitch];
 
 /**
  * @internal

@@ -37,18 +37,18 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 	private _currentSubtitles: ISubtitles = { enabled: false };
 
 	public get isLive(): boolean {
-		return this.info?.isLive;
+		return !!this.info?.isLive;
 	}
 	
-	public get info(): TInfo {
-		return this._info;
+	public get info(): TInfo | undefined {
+		return this._info as TInfo;
 	}
 	private _info?: TInfo;
 
 	protected iframe: HTMLIFrameElement;
 	protected readonly iframeUrl: string;
 	protected eventBus: EventBus;
-	private init: Promise<any>;
+	private init?: Promise<any>;
 	private unsubscribes: Array<() => void>;
 	protected logger: ILogger;
 
@@ -102,7 +102,7 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 		this.eventBus = new EventBus(this.iframe, this.config);
 		this.initializeEmbed();
 
-		const timeout = (this.config.timeoutSeconds * 1000) || undefined;
+		const timeout = (this.config.timeoutSeconds! * 1000) || undefined;
 
 		return this.init = Promise.all([
 			this.initializeToken(),
@@ -153,6 +153,18 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 		this.eventBus.on('subtitlesChanged', subtitles => {
 			this._currentSubtitles = subtitles;
 		});
+
+		// allow setting volume on player ready
+		if (this.config.initialVolume != undefined && isFinite(this.config.initialVolume)) {
+			const volumeCallback: IListener<'playerStatusChanged'> = (evt) => {
+				if (evt.status !== PlayerStatus.Playing) {
+					return;
+				}
+				this.eventBus.off('playerStatusChanged', volumeCallback);
+				this.setVolume(this.config.initialVolume);
+			};
+			this.eventBus.on('playerStatusChanged', volumeCallback);
+		}
 	}
 	protected abstract getEmbedUrl(id: string, config: VbrickEmbedConfig);
 	
@@ -186,7 +198,7 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 	public destroy(): void {
 		this.iframe.remove();
 		this.eventBus.destroy();
-		this.init = null;
+		this.init = undefined;
 		this.unsubscribes?.forEach(fn => fn());
 	}
 
@@ -210,17 +222,20 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
  export function getEmbedQuery(config: VbrickEmbedConfig): Record<string, undefined | boolean | string> {
 	return {
 		tk: !!config.token,
-		popupAuth: !config.token && (config.popupAuth ? 'true' : 'false'), //popupAuth requires a true value
-		accent: config.accentColor,
+		popupAuth: (config.popupAuth != undefined)
+			/* popupAuth requires a "true" value if set */
+			? (!!config.popupAuth).toString()
+			: undefined,
+		accent: config.accentColor ?? config.accent,
 		autoplay: config.autoplay,
-		forceClosedCaptions: config.forcedCaptions,
-		loopVideo: config.playInLoop,
-		noCc: config.hideSubtitles,
-		noCenterButtons: config.hideOverlayControls,
-		noChapters: config.hideChapters,
-		noFullscreen: config.hideFullscreen,
-		noPlayBar: config.hidePlayControls,
-		noSettings: config.hideSettings,
+		forceClosedCaptions: config.forcedCaptions ?? config.forceClosedCaptions,
+		loopVideo: config.playInLoop ?? config.loopVideo,
+		noCc: config.hideSubtitles ?? config.noCc,
+		noCenterButtons: config.hideOverlayControls ?? config.noCenterButtons,
+		noChapters: config.hideChapters ?? config.noChapters,
+		noFullscreen: config.hideFullscreen ?? config.noFullscreen,
+		noPlayBar: config.hidePlayControls ?? config.noPlayBar,
+		noSettings: config.hideSettings ?? config.noSettings,
 		startAt: config.startAt
 	};
 }

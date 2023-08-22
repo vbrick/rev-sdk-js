@@ -1,35 +1,40 @@
-[@vbrick/rev-sdk](../README.md) / IVbrickWebcastEmbed
+[@vbrick/rev-sdk](../README.md) / IVbrickPlaylistEmbed
 
-# Interface: IVbrickWebcastEmbed
+# Interface: IVbrickPlaylistEmbed
 
 ## Hierarchy
 
-- [`IVbrickBaseEmbed`](IVbrickBaseEmbed.md)<[`IWebcastInfo`](IWebcastInfo.md), keyof [`TEmbedMessages`](../README.md#tembedmessages) & [`TWebcastMessages`](../README.md#twebcastmessages)\>
+- [`IVbrickBaseEmbed`](IVbrickBaseEmbed.md)<[`IVideoInfo`](IVideoInfo.md), keyof [`TEmbedMessages`](../README.md#tembedmessages) & [`TPlayerMessages`](../README.md#tplayermessages) & `TPlaylistMessages`\>
 
-  ↳ **`IVbrickWebcastEmbed`**
+  ↳ **`IVbrickPlaylistEmbed`**
 
 ## Table of contents
 
 ### Properties
 
-- [currentSubtitles](IVbrickWebcastEmbed.md#currentsubtitles)
-- [info](IVbrickWebcastEmbed.md#info)
-- [playerStatus](IVbrickWebcastEmbed.md#playerstatus)
-- [volume](IVbrickWebcastEmbed.md#volume)
-- [webcastStatus](IVbrickWebcastEmbed.md#webcaststatus)
+- [currentSubtitles](IVbrickPlaylistEmbed.md#currentsubtitles)
+- [currentTime](IVbrickPlaylistEmbed.md#currenttime)
+- [duration](IVbrickPlaylistEmbed.md#duration)
+- [info](IVbrickPlaylistEmbed.md#info)
+- [playerStatus](IVbrickPlaylistEmbed.md#playerstatus)
+- [playlist](IVbrickPlaylistEmbed.md#playlist)
+- [videoInfo](IVbrickPlaylistEmbed.md#videoinfo)
+- [volume](IVbrickPlaylistEmbed.md#volume)
 
 ### Methods
 
-- [destroy](IVbrickWebcastEmbed.md#destroy)
-- [initialize](IVbrickWebcastEmbed.md#initialize)
-- [off](IVbrickWebcastEmbed.md#off)
-- [on](IVbrickWebcastEmbed.md#on)
-- [pause](IVbrickWebcastEmbed.md#pause)
-- [play](IVbrickWebcastEmbed.md#play)
-- [setSubtitles](IVbrickWebcastEmbed.md#setsubtitles)
-- [setVolume](IVbrickWebcastEmbed.md#setvolume)
-- [updateLayout](IVbrickWebcastEmbed.md#updatelayout)
-- [updateToken](IVbrickWebcastEmbed.md#updatetoken)
+- [destroy](IVbrickPlaylistEmbed.md#destroy)
+- [initialize](IVbrickPlaylistEmbed.md#initialize)
+- [off](IVbrickPlaylistEmbed.md#off)
+- [on](IVbrickPlaylistEmbed.md#on)
+- [pause](IVbrickPlaylistEmbed.md#pause)
+- [play](IVbrickPlaylistEmbed.md#play)
+- [seek](IVbrickPlaylistEmbed.md#seek)
+- [setPlaybackSpeed](IVbrickPlaylistEmbed.md#setplaybackspeed)
+- [setSubtitles](IVbrickPlaylistEmbed.md#setsubtitles)
+- [setVolume](IVbrickPlaylistEmbed.md#setvolume)
+- [switchVideo](IVbrickPlaylistEmbed.md#switchvideo)
+- [updateToken](IVbrickPlaylistEmbed.md#updatetoken)
 
 ## Properties
 
@@ -49,9 +54,33 @@ Whether subtitles are enabled, and selected language
 
 ___
 
+### currentTime
+
+• `Readonly` **currentTime**: `number`
+
+Current position in video in seconds
+
+#### Defined in
+
+[embed/IVbrickApi.ts:153](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L153)
+
+___
+
+### duration
+
+• `Optional` `Readonly` **duration**: `number`
+
+Duration of video in seconds. Will be undefined for live content
+
+#### Defined in
+
+[embed/IVbrickApi.ts:158](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L158)
+
+___
+
 ### info
 
-• `Optional` `Readonly` **info**: [`IWebcastInfo`](IWebcastInfo.md)
+• `Optional` `Readonly` **info**: [`IVideoInfo`](IVideoInfo.md)
 
 metadata of the video/webcast
 
@@ -81,6 +110,32 @@ video playing, buffering, etc
 
 ___
 
+### playlist
+
+• `Readonly` **playlist**: [`IPlaylistInfo`](IPlaylistInfo.md)
+
+#### Defined in
+
+[embed/IVbrickApi.ts:141](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L141)
+
+___
+
+### videoInfo
+
+• `Optional` `Readonly` **videoInfo**: [`IVideoInfo`](IVideoInfo.md)
+
+Contains metadata for the video
+
+**`Deprecated`**
+
+Use `info` instead
+
+#### Defined in
+
+[embed/IVbrickApi.ts:164](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L164)
+
+___
+
 ### volume
 
 • `Readonly` **volume**: `number`
@@ -94,18 +149,6 @@ Player Volume. 0-1
 #### Defined in
 
 [embed/IVbrickApi.ts:25](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L25)
-
-___
-
-### webcastStatus
-
-• `Readonly` **webcastStatus**: [`WebcastStatus`](../enums/WebcastStatus.md)
-
-Indicates whether the webcast is started, or broadcasting.
-
-#### Defined in
-
-[embed/IVbrickApi.ts:130](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L130)
 
 ## Methods
 
@@ -160,7 +203,7 @@ Removes an event listener
 
 | Name | Type |
 | :------ | :------ |
-| `T` | extends keyof [`TEmbedMessages`](../README.md#tembedmessages) \| keyof [`TWebcastMessages`](../README.md#twebcastmessages) |
+| `T` | extends keyof [`TEmbedMessages`](../README.md#tembedmessages) \| keyof [`TPlayerMessages`](../README.md#tplayermessages) \| keyof `TPlaylistMessages` |
 
 #### Parameters
 
@@ -193,7 +236,7 @@ Register an event handler. Events are fired at different lifecycle stages of the
 
 | Name | Type |
 | :------ | :------ |
-| `T` | extends keyof [`TEmbedMessages`](../README.md#tembedmessages) \| keyof [`TWebcastMessages`](../README.md#twebcastmessages) |
+| `T` | extends keyof [`TEmbedMessages`](../README.md#tembedmessages) \| keyof [`TPlayerMessages`](../README.md#tplayermessages) \| keyof `TPlaylistMessages` |
 
 #### Parameters
 
@@ -256,6 +299,50 @@ Plays the video if it is paused.
 
 ___
 
+### seek
+
+▸ **seek**(`currentTime`): `void`
+
+sets the current time in the video
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `currentTime` | `number` | value (in seconds) between 0 and video duration |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+[embed/IVbrickApi.ts:176](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L176)
+
+___
+
+### setPlaybackSpeed
+
+▸ **setPlaybackSpeed**(`speed`): `void`
+
+sets playback rate
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `speed` | `number` | 0-16, default is 1 |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+[embed/IVbrickApi.ts:170](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L170)
+
+___
+
 ### setSubtitles
 
 ▸ **setSubtitles**(`subtitles`): `void`
@@ -309,18 +396,18 @@ Sets player volume
 
 ___
 
-### updateLayout
+### switchVideo
 
-▸ **updateLayout**(`layout`): `void`
+▸ **switchVideo**(`videoId`, `autoplay?`): `void`
 
-Change the visibility of video/slides. Only applicable when the "showFullWebcast" config
-flag is enabled and the event includes slides
+Load a new video in the playlist. A 'videoInfo' event will be emitted once the new video has loaded
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `layout` | [`IWebcastLayout`](IWebcastLayout.md) | set if video/slides are displayed |
+| `videoId` | `string` | specify video to show. It must exist in the playlist |
+| `autoplay?` | `boolean` | whether to automatically start playback on video load. Default is true |
 
 #### Returns
 
@@ -328,7 +415,7 @@ flag is enabled and the event includes slides
 
 #### Defined in
 
-[embed/IVbrickApi.ts:137](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L137)
+[embed/IVbrickApi.ts:148](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L148)
 
 ___
 

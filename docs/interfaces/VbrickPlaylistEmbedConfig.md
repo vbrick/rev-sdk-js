@@ -1,59 +1,53 @@
-[@vbrick/rev-sdk](../README.md) / VbrickEmbedConfig
+[@vbrick/rev-sdk](../README.md) / VbrickPlaylistEmbedConfig
 
-# Interface: VbrickEmbedConfig
-
-Options available when embedding a VOD/video or webcast
+# Interface: VbrickPlaylistEmbedConfig
 
 ## Hierarchy
 
 - [`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md)
 
-- [`VbrickWebcastEmbedConfig`](VbrickWebcastEmbedConfig.md)
+  ↳ **`VbrickPlaylistEmbedConfig`**
 
-- [`VbrickPlaylistEmbedConfig`](VbrickPlaylistEmbedConfig.md)
-
-  ↳ **`VbrickEmbedConfig`**
+  ↳↳ [`VbrickEmbedConfig`](VbrickEmbedConfig.md)
 
 ## Table of contents
 
 ### Properties
 
-- [accent](VbrickEmbedConfig.md#accent)
-- [accentColor](VbrickEmbedConfig.md#accentcolor)
-- [autoplay](VbrickEmbedConfig.md#autoplay)
-- [baseUrl](VbrickEmbedConfig.md#baseurl)
-- [className](VbrickEmbedConfig.md#classname)
-- [enableFullRev](VbrickEmbedConfig.md#enablefullrev)
-- [forceClosedCaptions](VbrickEmbedConfig.md#forceclosedcaptions)
-- [forcedCaptions](VbrickEmbedConfig.md#forcedcaptions)
-- [height](VbrickEmbedConfig.md#height)
-- [hideChapters](VbrickEmbedConfig.md#hidechapters)
-- [hideFullscreen](VbrickEmbedConfig.md#hidefullscreen)
-- [hideOverlayControls](VbrickEmbedConfig.md#hideoverlaycontrols)
-- [hidePlayControls](VbrickEmbedConfig.md#hideplaycontrols)
-- [hideSettings](VbrickEmbedConfig.md#hidesettings)
-- [hideSubtitles](VbrickEmbedConfig.md#hidesubtitles)
-- [hideToolbar](VbrickEmbedConfig.md#hidetoolbar)
-- [initialVolume](VbrickEmbedConfig.md#initialvolume)
-- [layout](VbrickEmbedConfig.md#layout)
-- [log](VbrickEmbedConfig.md#log)
-- [logoUrl](VbrickEmbedConfig.md#logourl)
-- [loopVideo](VbrickEmbedConfig.md#loopvideo)
-- [maxVideos](VbrickEmbedConfig.md#maxvideos)
-- [noCc](VbrickEmbedConfig.md#nocc)
-- [noCenterButtons](VbrickEmbedConfig.md#nocenterbuttons)
-- [noChapters](VbrickEmbedConfig.md#nochapters)
-- [noFullscreen](VbrickEmbedConfig.md#nofullscreen)
-- [noPlayBar](VbrickEmbedConfig.md#noplaybar)
-- [noSettings](VbrickEmbedConfig.md#nosettings)
-- [playInLoop](VbrickEmbedConfig.md#playinloop)
-- [popupAuth](VbrickEmbedConfig.md#popupauth)
-- [showFullWebcast](VbrickEmbedConfig.md#showfullwebcast)
-- [startAt](VbrickEmbedConfig.md#startat)
-- [timeoutSeconds](VbrickEmbedConfig.md#timeoutseconds)
-- [token](VbrickEmbedConfig.md#token)
-- [videosPerRow](VbrickEmbedConfig.md#videosperrow)
-- [width](VbrickEmbedConfig.md#width)
+- [accent](VbrickPlaylistEmbedConfig.md#accent)
+- [accentColor](VbrickPlaylistEmbedConfig.md#accentcolor)
+- [autoplay](VbrickPlaylistEmbedConfig.md#autoplay)
+- [baseUrl](VbrickPlaylistEmbedConfig.md#baseurl)
+- [className](VbrickPlaylistEmbedConfig.md#classname)
+- [forceClosedCaptions](VbrickPlaylistEmbedConfig.md#forceclosedcaptions)
+- [forcedCaptions](VbrickPlaylistEmbedConfig.md#forcedcaptions)
+- [height](VbrickPlaylistEmbedConfig.md#height)
+- [hideChapters](VbrickPlaylistEmbedConfig.md#hidechapters)
+- [hideFullscreen](VbrickPlaylistEmbedConfig.md#hidefullscreen)
+- [hideOverlayControls](VbrickPlaylistEmbedConfig.md#hideoverlaycontrols)
+- [hidePlayControls](VbrickPlaylistEmbedConfig.md#hideplaycontrols)
+- [hideSettings](VbrickPlaylistEmbedConfig.md#hidesettings)
+- [hideSubtitles](VbrickPlaylistEmbedConfig.md#hidesubtitles)
+- [hideToolbar](VbrickPlaylistEmbedConfig.md#hidetoolbar)
+- [initialVolume](VbrickPlaylistEmbedConfig.md#initialvolume)
+- [layout](VbrickPlaylistEmbedConfig.md#layout)
+- [log](VbrickPlaylistEmbedConfig.md#log)
+- [logoUrl](VbrickPlaylistEmbedConfig.md#logourl)
+- [loopVideo](VbrickPlaylistEmbedConfig.md#loopvideo)
+- [maxVideos](VbrickPlaylistEmbedConfig.md#maxvideos)
+- [noCc](VbrickPlaylistEmbedConfig.md#nocc)
+- [noCenterButtons](VbrickPlaylistEmbedConfig.md#nocenterbuttons)
+- [noChapters](VbrickPlaylistEmbedConfig.md#nochapters)
+- [noFullscreen](VbrickPlaylistEmbedConfig.md#nofullscreen)
+- [noPlayBar](VbrickPlaylistEmbedConfig.md#noplaybar)
+- [noSettings](VbrickPlaylistEmbedConfig.md#nosettings)
+- [playInLoop](VbrickPlaylistEmbedConfig.md#playinloop)
+- [popupAuth](VbrickPlaylistEmbedConfig.md#popupauth)
+- [startAt](VbrickPlaylistEmbedConfig.md#startat)
+- [timeoutSeconds](VbrickPlaylistEmbedConfig.md#timeoutseconds)
+- [token](VbrickPlaylistEmbedConfig.md#token)
+- [videosPerRow](VbrickPlaylistEmbedConfig.md#videosperrow)
+- [width](VbrickPlaylistEmbedConfig.md#width)
 
 ## Properties
 
@@ -67,7 +61,7 @@ Options available when embedding a VOD/video or webcast
 
 #### Inherited from
 
-[VbrickPlaylistEmbedConfig](VbrickPlaylistEmbedConfig.md).[accent](VbrickPlaylistEmbedConfig.md#accent)
+[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[accent](VbrickVideoEmbedConfig.md#accent)
 
 #### Defined in
 
@@ -83,7 +77,7 @@ Branding Settings. Accent color to use in the player, in HTML #rrggbb format
 
 #### Inherited from
 
-[VbrickPlaylistEmbedConfig](VbrickPlaylistEmbedConfig.md).[accentColor](VbrickPlaylistEmbedConfig.md#accentcolor)
+[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[accentColor](VbrickVideoEmbedConfig.md#accentcolor)
 
 #### Defined in
 
@@ -97,7 +91,7 @@ ___
 
 #### Inherited from
 
-[VbrickPlaylistEmbedConfig](VbrickPlaylistEmbedConfig.md).[autoplay](VbrickPlaylistEmbedConfig.md#autoplay)
+[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[autoplay](VbrickVideoEmbedConfig.md#autoplay)
 
 #### Defined in
 
@@ -113,7 +107,7 @@ URL for Rev
 
 #### Inherited from
 
-[VbrickPlaylistEmbedConfig](VbrickPlaylistEmbedConfig.md).[baseUrl](VbrickPlaylistEmbedConfig.md#baseurl)
+[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[baseUrl](VbrickVideoEmbedConfig.md#baseurl)
 
 #### Defined in
 
@@ -129,29 +123,11 @@ An optional class to be set on embeds.
 
 #### Inherited from
 
-[VbrickPlaylistEmbedConfig](VbrickPlaylistEmbedConfig.md).[className](VbrickPlaylistEmbedConfig.md#classname)
+[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[className](VbrickVideoEmbedConfig.md#classname)
 
 #### Defined in
 
 [embed/VbrickEmbedConfig.ts:12](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L12)
-
-___
-
-### enableFullRev
-
-• `Optional` **enableFullRev**: `boolean`
-
-**`Deprecated`**
-
-- embed parameter
-
-#### Inherited from
-
-[VbrickWebcastEmbedConfig](VbrickWebcastEmbedConfig.md).[enableFullRev](VbrickWebcastEmbedConfig.md#enablefullrev)
-
-#### Defined in
-
-[embed/VbrickEmbedConfig.ts:103](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L103)
 
 ___
 
@@ -165,7 +141,7 @@ ___
 
 #### Inherited from
 
-[VbrickPlaylistEmbedConfig](VbrickPlaylistEmbedConfig.md).[forceClosedCaptions](VbrickPlaylistEmbedConfig.md#forceclosedcaptions)
+[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[forceClosedCaptions](VbrickVideoEmbedConfig.md#forceclosedcaptions)
 
 #### Defined in
 
@@ -181,7 +157,7 @@ Use the Close Captions embedded in video stream as Subtitles
 
 #### Inherited from
 
-[VbrickPlaylistEmbedConfig](VbrickPlaylistEmbedConfig.md).[forcedCaptions](VbrickPlaylistEmbedConfig.md#forcedcaptions)
+[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[forcedCaptions](VbrickVideoEmbedConfig.md#forcedcaptions)
 
 #### Defined in
 
@@ -197,7 +173,7 @@ Optional height to be set on embeds. Default is "100%"
 
 #### Inherited from
 
-[VbrickPlaylistEmbedConfig](VbrickPlaylistEmbedConfig.md).[height](VbrickPlaylistEmbedConfig.md#height)
+[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[height](VbrickVideoEmbedConfig.md#height)
 
 #### Defined in
 
@@ -211,7 +187,7 @@ ___
 
 #### Inherited from
 
-[VbrickPlaylistEmbedConfig](VbrickPlaylistEmbedConfig.md).[hideChapters](VbrickPlaylistEmbedConfig.md#hidechapters)
+[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[hideChapters](VbrickVideoEmbedConfig.md#hidechapters)
 
 #### Defined in
 
@@ -225,7 +201,7 @@ ___
 
 #### Inherited from
 
-[VbrickPlaylistEmbedConfig](VbrickPlaylistEmbedConfig.md).[hideFullscreen](VbrickPlaylistEmbedConfig.md#hidefullscreen)
+[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[hideFullscreen](VbrickVideoEmbedConfig.md#hidefullscreen)
 
 #### Defined in
 
@@ -239,7 +215,7 @@ ___
 
 #### Inherited from
 
-[VbrickPlaylistEmbedConfig](VbrickPlaylistEmbedConfig.md).[hideOverlayControls](VbrickPlaylistEmbedConfig.md#hideoverlaycontrols)
+[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[hideOverlayControls](VbrickVideoEmbedConfig.md#hideoverlaycontrols)
 
 #### Defined in
 
@@ -253,7 +229,7 @@ ___
 
 #### Inherited from
 
-[VbrickPlaylistEmbedConfig](VbrickPlaylistEmbedConfig.md).[hidePlayControls](VbrickPlaylistEmbedConfig.md#hideplaycontrols)
+[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[hidePlayControls](VbrickVideoEmbedConfig.md#hideplaycontrols)
 
 #### Defined in
 
@@ -267,7 +243,7 @@ ___
 
 #### Inherited from
 
-[VbrickPlaylistEmbedConfig](VbrickPlaylistEmbedConfig.md).[hideSettings](VbrickPlaylistEmbedConfig.md#hidesettings)
+[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[hideSettings](VbrickVideoEmbedConfig.md#hidesettings)
 
 #### Defined in
 
@@ -281,7 +257,7 @@ ___
 
 #### Inherited from
 
-[VbrickPlaylistEmbedConfig](VbrickPlaylistEmbedConfig.md).[hideSubtitles](VbrickPlaylistEmbedConfig.md#hidesubtitles)
+[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[hideSubtitles](VbrickVideoEmbedConfig.md#hidesubtitles)
 
 #### Defined in
 
@@ -295,10 +271,6 @@ ___
 
 Only applicable when layout is 'slider'
 Do not show bottom toolbar, only show the current video. This makes playlist functionality only possible through javascript API.
-
-#### Inherited from
-
-[VbrickPlaylistEmbedConfig](VbrickPlaylistEmbedConfig.md).[hideToolbar](VbrickPlaylistEmbedConfig.md#hidetoolbar)
 
 #### Defined in
 
@@ -314,7 +286,7 @@ set the volume to upon initial load (for muting or otherwise)
 
 #### Inherited from
 
-[VbrickPlaylistEmbedConfig](VbrickPlaylistEmbedConfig.md).[initialVolume](VbrickPlaylistEmbedConfig.md#initialvolume)
+[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[initialVolume](VbrickVideoEmbedConfig.md#initialvolume)
 
 #### Defined in
 
@@ -331,10 +303,6 @@ Select layout of playlist. Options are:
 - grid - grid of thumbnails. Not compatible with autoplay functionality
 - slider - small prev/next buttons at bottom ov video player
 
-#### Inherited from
-
-[VbrickPlaylistEmbedConfig](VbrickPlaylistEmbedConfig.md).[layout](VbrickPlaylistEmbedConfig.md#layout)
-
 #### Defined in
 
 [embed/VbrickEmbedConfig.ts:116](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L116)
@@ -349,7 +317,7 @@ If true, sdk will log to console
 
 #### Inherited from
 
-[VbrickPlaylistEmbedConfig](VbrickPlaylistEmbedConfig.md).[log](VbrickPlaylistEmbedConfig.md#log)
+[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[log](VbrickVideoEmbedConfig.md#log)
 
 #### Defined in
 
@@ -365,7 +333,7 @@ Branding Settings. Logo image URL
 
 #### Inherited from
 
-[VbrickPlaylistEmbedConfig](VbrickPlaylistEmbedConfig.md).[logoUrl](VbrickPlaylistEmbedConfig.md#logourl)
+[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[logoUrl](VbrickVideoEmbedConfig.md#logourl)
 
 #### Defined in
 
@@ -383,7 +351,7 @@ ___
 
 #### Inherited from
 
-[VbrickPlaylistEmbedConfig](VbrickPlaylistEmbedConfig.md).[loopVideo](VbrickPlaylistEmbedConfig.md#loopvideo)
+[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[loopVideo](VbrickVideoEmbedConfig.md#loopvideo)
 
 #### Defined in
 
@@ -397,10 +365,6 @@ ___
 
 Only applicable when layout is 'grid'
 Set the maximum number of videos to include in grid view
-
-#### Inherited from
-
-[VbrickPlaylistEmbedConfig](VbrickPlaylistEmbedConfig.md).[maxVideos](VbrickPlaylistEmbedConfig.md#maxvideos)
 
 #### Defined in
 
@@ -418,7 +382,7 @@ ___
 
 #### Inherited from
 
-[VbrickPlaylistEmbedConfig](VbrickPlaylistEmbedConfig.md).[noCc](VbrickPlaylistEmbedConfig.md#nocc)
+[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[noCc](VbrickVideoEmbedConfig.md#nocc)
 
 #### Defined in
 
@@ -436,7 +400,7 @@ ___
 
 #### Inherited from
 
-[VbrickPlaylistEmbedConfig](VbrickPlaylistEmbedConfig.md).[noCenterButtons](VbrickPlaylistEmbedConfig.md#nocenterbuttons)
+[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[noCenterButtons](VbrickVideoEmbedConfig.md#nocenterbuttons)
 
 #### Defined in
 
@@ -454,7 +418,7 @@ ___
 
 #### Inherited from
 
-[VbrickPlaylistEmbedConfig](VbrickPlaylistEmbedConfig.md).[noChapters](VbrickPlaylistEmbedConfig.md#nochapters)
+[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[noChapters](VbrickVideoEmbedConfig.md#nochapters)
 
 #### Defined in
 
@@ -472,7 +436,7 @@ ___
 
 #### Inherited from
 
-[VbrickPlaylistEmbedConfig](VbrickPlaylistEmbedConfig.md).[noFullscreen](VbrickPlaylistEmbedConfig.md#nofullscreen)
+[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[noFullscreen](VbrickVideoEmbedConfig.md#nofullscreen)
 
 #### Defined in
 
@@ -490,7 +454,7 @@ ___
 
 #### Inherited from
 
-[VbrickPlaylistEmbedConfig](VbrickPlaylistEmbedConfig.md).[noPlayBar](VbrickPlaylistEmbedConfig.md#noplaybar)
+[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[noPlayBar](VbrickVideoEmbedConfig.md#noplaybar)
 
 #### Defined in
 
@@ -508,7 +472,7 @@ ___
 
 #### Inherited from
 
-[VbrickPlaylistEmbedConfig](VbrickPlaylistEmbedConfig.md).[noSettings](VbrickPlaylistEmbedConfig.md#nosettings)
+[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[noSettings](VbrickVideoEmbedConfig.md#nosettings)
 
 #### Defined in
 
@@ -522,7 +486,7 @@ ___
 
 #### Inherited from
 
-[VbrickPlaylistEmbedConfig](VbrickPlaylistEmbedConfig.md).[playInLoop](VbrickPlaylistEmbedConfig.md#playinloop)
+[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[playInLoop](VbrickVideoEmbedConfig.md#playinloop)
 
 #### Defined in
 
@@ -538,27 +502,11 @@ For video embeds. If a user needs to log in, go through the login process in a p
 
 #### Inherited from
 
-[VbrickPlaylistEmbedConfig](VbrickPlaylistEmbedConfig.md).[popupAuth](VbrickPlaylistEmbedConfig.md#popupauth)
+[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[popupAuth](VbrickVideoEmbedConfig.md#popupauth)
 
 #### Defined in
 
 [embed/VbrickEmbedConfig.ts:27](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L27)
-
-___
-
-### showFullWebcast
-
-• `Optional` **showFullWebcast**: `boolean`
-
-Include Chat, QA and Polls widgets in embed (if configured)
-
-#### Inherited from
-
-[VbrickWebcastEmbedConfig](VbrickWebcastEmbedConfig.md).[showFullWebcast](VbrickWebcastEmbedConfig.md#showfullwebcast)
-
-#### Defined in
-
-[embed/VbrickEmbedConfig.ts:100](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L100)
 
 ___
 
@@ -570,7 +518,7 @@ Starts the video at specified timestamp. must be in the format ##m##s. For examp
 
 #### Inherited from
 
-[VbrickPlaylistEmbedConfig](VbrickPlaylistEmbedConfig.md).[startAt](VbrickPlaylistEmbedConfig.md#startat)
+[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[startAt](VbrickVideoEmbedConfig.md#startat)
 
 #### Defined in
 
@@ -586,7 +534,7 @@ seconds to wait for the embed initialization to complete. default is 30 seconds
 
 #### Inherited from
 
-[VbrickPlaylistEmbedConfig](VbrickPlaylistEmbedConfig.md).[timeoutSeconds](VbrickPlaylistEmbedConfig.md#timeoutseconds)
+[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[timeoutSeconds](VbrickVideoEmbedConfig.md#timeoutseconds)
 
 #### Defined in
 
@@ -602,7 +550,7 @@ Token for authentication
 
 #### Inherited from
 
-[VbrickPlaylistEmbedConfig](VbrickPlaylistEmbedConfig.md).[token](VbrickPlaylistEmbedConfig.md#token)
+[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[token](VbrickVideoEmbedConfig.md#token)
 
 #### Defined in
 
@@ -616,10 +564,6 @@ ___
 
 Only applicable when layout is 'grid'
 Set the number of videos in each grid row (valid numbers are between 3 and 5)
-
-#### Inherited from
-
-[VbrickPlaylistEmbedConfig](VbrickPlaylistEmbedConfig.md).[videosPerRow](VbrickPlaylistEmbedConfig.md#videosperrow)
 
 #### Defined in
 
@@ -635,7 +579,7 @@ Optional width to be set on embeds. Default is "100%"
 
 #### Inherited from
 
-[VbrickPlaylistEmbedConfig](VbrickPlaylistEmbedConfig.md).[width](VbrickPlaylistEmbedConfig.md#width)
+[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[width](VbrickVideoEmbedConfig.md#width)
 
 #### Defined in
 

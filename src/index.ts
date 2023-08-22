@@ -4,22 +4,25 @@
  * @packageDocumentation
  */
 
-export { embedWebcast } from './embed/EmbedWebcast';
-export { embedVideo } from './embed/EmbedVideo';
+import { embedVideo, embedWebcast, embedPlaylist, PlayerStatus, WebcastStatus, PlaylistLayout } from './embed';
+import {TokenType} from './VbrickSDK';
 
+export * from './embed';
 export * from './VbrickSDK';
-export * from './embed/VbrickEmbedConfig';
-export * from './embed/IVbrickApi';
 
-import { embedWebcast } from './embed/EmbedWebcast';
-import { embedVideo } from './embed/EmbedVideo';
+
 
 /**
  * @public
  */
 const revSDK = {
     embedWebcast,
-    embedVideo
+    embedVideo,
+    embedPlaylist,
+    TokenType,
+    PlayerStatus,
+    WebcastStatus,
+    PlaylistLayout
 };
 
 export default revSDK;

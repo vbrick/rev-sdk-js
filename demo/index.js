@@ -5,12 +5,13 @@ import revSDK from '../dist/rev-sdk.esm.js';
 /**
  * @typedef {import("../dist/rev-sdk").IVbrickWebcastEmbed} IVbrickWebcastEmbed
  * @typedef {import("../dist/rev-sdk").IVbrickVideoEmbed} IVbrickVideoEmbed
+ * @typedef {import("../dist/rev-sdk").IVbrickPlaylistEmbed} IVbrickPlaylistEmbed
  * @typedef {import("../dist/rev-sdk").VbrickEmbedConfig} VbrickEmbedConfig
  */
 
 /**
  * A reference to the current Rev SDK VbrickEmbed instance
- * @type {IVbrickVideoEmbed & IVbrickWebcastEmbed}
+ * @type {IVbrickVideoEmbed & IVbrickWebcastEmbed & IVbrickPlaylistEmbed}
  */
 let currentEmbed;
 
@@ -19,6 +20,7 @@ const playerStatusEl = document.getElementById('playerStatus');
 const volumeSlider = document.getElementById('volumeSlider');
 const subtitlesEl = document.getElementById('subtitles');
 const currentTimeEl = document.getElementById('currentTime');
+const playlistEl = document.getElementById('playlistSelect');
 const logEl = document.getElementById('logMessages');
 
 // Initialize the configuration form and tell it what to do (embedContent) when form is submitted.
@@ -27,8 +29,9 @@ const getData = init({
 	baseUrl: '',
 	videoId: '',
 	webcastId: '',
+	playlistId: '',
 	embedType: 'vod',
-	tokenType: 'AccessToken',
+	tokenType: '',
 	tokenValue: '',
 	tokenIssuer: 'vbrick',
 	config: '{}'
@@ -45,10 +48,13 @@ addPlayerControls();
 		baseUrl,
 		webcastId,
 		videoId,
+		playlistId,
 		config
 	} = settings;
 
 	const isVod = !!videoId;
+	const isWebcast = !!webcastId;
+	const isPlaylist = !!playlistId;
 
 	/**
 	 * construct the config for passing to sdk.
@@ -67,9 +73,15 @@ addPlayerControls();
 	}
 
 	// embed the specified video/webcast. Returns an instance of VbrickEmbed
-	currentEmbed = isVod
-		? revSDK.embedVideo('#embed', videoId, embedConfig)
-		: revSDK.embedWebcast('#embed', webcastId, embedConfig);
+	if (videoId) {
+		currentEmbed = revSDK.embedVideo('#embed', videoId, embedConfig);
+	} else if (webcastId) {
+		currentEmbed = revSDK.embedWebcast('#embed', webcastId, embedConfig);
+	} else if (playlistId) {
+		currentEmbed = revSDK.embedPlaylist('#embed', playlistId, embedConfig);
+	} else {
+		throw new Error('No resource ID specified');
+	}
 
 	// store a reference for interacting with on the devtools console
 	globalThis.vbrickEmbed = currentEmbed;
@@ -77,9 +89,10 @@ addPlayerControls();
 	// add event listeners to log to screen + update volume
 	monitorEmbed(currentEmbed);
 
-	document.body.classList.toggle('is-vod', isVod);
-	document.body.classList.toggle('is-webcast', !isVod);
-	document.body.classList.toggle('is-full-webcast', !isVod && config.showFullWebcast);
+	document.body.classList.toggle('is-vod', !!videoId);
+	document.body.classList.toggle('is-webcast', !!webcastId);
+	document.body.classList.toggle('is-full-webcast', !!webcastId && config.showFullWebcast);
+	document.body.classList.toggle('is-playlist', !!playlistId);
 }
 
 /**
@@ -117,6 +130,17 @@ function addPlayerControls() {
 			language: val === 'captions' ? undefined : val
 		});
 	});
+
+	document.querySelector('#playlistPrev')
+		.addEventListener('click', () => currentEmbed?.previous?.());
+
+	document.querySelector('#playlistNext')
+		.addEventListener('click', () => currentEmbed?.next?.());
+
+	playlistEl.addEventListener('change', () => {
+		const id = playlistEl.value;
+		currentEmbed?.switchVideo?.(id, true);
+	});
 }
 
 /**
@@ -125,24 +149,28 @@ function addPlayerControls() {
  */
  function monitorEmbed(currentEmbed) {
 	const events = ['error', 'load', 'playerStatusChanged', 'subtitlesChanged', 'volumeChanged', 'playbackSpeedChanged', 'videoLoaded', 'seeked',
-	'webcastLoaded', 'webcastStarted', 'webcastEnded', 'broadcastStarted', 'broadcastStopped', 'layoutChanged', 'commentAdded', 'slideChanged', 'pollOpened', 'pollClosed', 'pollPublished', 'pollUnpublished'];
+	'webcastLoaded', 'webcastStarted', 'webcastEnded', 'broadcastStarted', 'broadcastStopped', 'layoutChanged', 'commentAdded', 'slideChanged', 'pollOpened', 'pollClosed', 'pollPublished', 'pollUnpublished', 
+	'playlistLoaded', 'playlistItem'];
 
 	events.forEach(e => currentEmbed.on(e, data => {
 		logEvent(e, data);
-		updateControls(currentEmbed, e);
+		updateControls(currentEmbed, e, data);
 	}));
 
 	currentEmbed.on('currentTime', data => {
 		currentTimeEl.innerText = data.currentTime?.toPrecision(3);
-	})
+	});
 }
 
 /**
  * Updates the controls on the page
- * @param {IVbrickVideoEmbed | IVbrickWebcastEmbed} currentEmbed
- * @param {import("../dist/rev-sdk").TVbrickEvent} eventType
+ * @function
+ * @template {import("../dist/rev-sdk").TVbrickEvent} Evt 
+ * @param {IVbrickVideoEmbed | IVbrickWebcastEmbed | IVbrickPlaylistEmbed} currentEmbed
+ * @param {Evt} eventType
+ * @param {import("../dist/rev-sdk").TVbrickMessages[Evt]} data
  */
-function updateControls(currentEmbed, eventType) {
+function updateControls(currentEmbed, eventType, data) {
 	playerStatusEl.innerText = currentEmbed.playerStatus;
 	webcastStatusEl.innerText = currentEmbed.webcastStatus;
 	if(currentEmbed.volume >= 0) {
@@ -152,7 +180,7 @@ function updateControls(currentEmbed, eventType) {
 	if(eventType === 'videoLoaded' || eventType === 'webcastLoaded') {
 		// clear out previous subtitles, leaving only the "None" option
 		subtitlesEl.querySelectorAll('option:not([default])').forEach(el => el.remove());
-		const subtitles = currentEmbed.info.subtitles || currentEmbed.info.subtitles;
+		const subtitles = currentEmbed.info.subtitles;
 		for (let c of subtitles) {
 			const el = document.createElement('option');
 			el.value = c.language;
@@ -164,6 +192,19 @@ function updateControls(currentEmbed, eventType) {
 		subtitlesEl.value = currentEmbed.currentSubtitles.enabled
 			? currentEmbed.currentSubtitles.language || 'captions'
 			: '';
+	}
+	if(eventType === 'playlistLoaded') {
+		// clear out previous playlist items
+		playlistEl.querySelectorAll('option:not([default])').forEach(el => el.remove());
+		for (let vid of /** @type {IVbrickPlaylistEmbed} */(currentEmbed).playlist.videos) {
+			const el = document.createElement('option');
+			el.value = vid.id;
+			el.text = vid.title;
+			playlistEl.appendChild(el);
+		}
+	}
+	if(eventType === 'playlistItem') {
+		playlistEl.value = data.videoId;
 	}
 }
 
