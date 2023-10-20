@@ -158,6 +158,19 @@ var PlaylistLayout = /* @__PURE__ */ ((PlaylistLayout2) => {
   return PlaylistLayout2;
 })(PlaylistLayout || {});
 
+// src/embed/IVbrickTypes.ts
+var VideoPlaybackSidebarButton = /* @__PURE__ */ ((VideoPlaybackSidebarButton2) => {
+  VideoPlaybackSidebarButton2["AI"] = "ai";
+  VideoPlaybackSidebarButton2["CHAPTERS"] = "chapters";
+  VideoPlaybackSidebarButton2["COMMENTS"] = "comments";
+  VideoPlaybackSidebarButton2["INFO"] = "info";
+  VideoPlaybackSidebarButton2["PLAYLIST"] = "playlist";
+  VideoPlaybackSidebarButton2["PULSE"] = "pulse";
+  VideoPlaybackSidebarButton2["REPORTS"] = "reports";
+  VideoPlaybackSidebarButton2["SHARE"] = "share";
+  return VideoPlaybackSidebarButton2;
+})(VideoPlaybackSidebarButton || {});
+
 // src/VbrickSDK.ts
 var TokenType = /* @__PURE__ */ ((TokenType2) => {
   TokenType2["JWT"] = "JWT";
@@ -389,6 +402,10 @@ function getEmbedQuery(config) {
     popupAuth: config.popupAuth != void 0 ? (!!config.popupAuth).toString() : void 0,
     accent: config.accentColor ?? config.accent,
     autoplay: config.autoplay,
+    defaultTheme: config.applyDefaultTheme,
+    defaultSidebar: config.defaultSidebar,
+    fullPlayer: config.fullPlayer,
+    mobileLayoutBreakPoint: config.mobileLayoutBreakPoint,
     forceClosedCaptions: config.forcedCaptions ?? config.forceClosedCaptions,
     loopVideo: config.playInLoop ?? config.loopVideo,
     noCc: config.hideSubtitles ?? config.noCc,
@@ -397,6 +414,7 @@ function getEmbedQuery(config) {
     noFullscreen: config.hideFullscreen ?? config.noFullscreen,
     noPlayBar: config.hidePlayControls ?? config.noPlayBar,
     noSettings: config.hideSettings ?? config.noSettings,
+    sidebarFilterQuery: config.sidebarFilterQuery,
     startAt: config.startAt
   };
 }
@@ -629,6 +647,7 @@ export {
   PlayerStatus,
   PlaylistLayout,
   TokenType,
+  VideoPlaybackSidebarButton,
   WebcastStatus,
   src_default as default,
   embedPlaylist,

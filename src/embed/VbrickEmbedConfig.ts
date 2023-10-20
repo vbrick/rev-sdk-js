@@ -1,4 +1,5 @@
 import { VbrickSDKConfig } from '../VbrickSDK';
+import { VideoPlaybackSidebarButton } from './IVbrickTypes';
 import {PlaylistLayout} from './PlaylistLayout';
 
 /**
@@ -32,7 +33,7 @@ export interface VbrickBaseEmbedConfig extends VbrickSDKConfig {
 	timeoutSeconds?: number;
 
 	autoplay?: boolean;
-	
+
 	/**
 	 * set the volume to upon initial load (for muting or otherwise)
 	 */
@@ -53,6 +54,33 @@ export interface VbrickVideoEmbedConfig extends VbrickBaseEmbedConfig {
 	forcedCaptions?: boolean;
 	hideSettings?: boolean;
 	hideFullscreen?: boolean;
+
+	/**
+	 * shows video player with sidebar.
+	 */
+	fullPlayer?: boolean;
+
+	/**
+	 * provide the sidebar name to be opened by default when video loads.
+	 * enableFullVodPlaybackInEmbed value needs to be true for this to work.
+	 */
+	defaultSidebar?: VideoPlaybackSidebarButton;
+
+	/**
+	 * query to filter sidebar items. esp. use in pulse sidebar.
+	 * enableFullVodPlaybackInEmbed = true and defaultSidebar should have a value to make it work.
+	 */
+	sidebarFilterQuery?: string;
+	/**
+	 * flag to override account theme to default theme.
+	 */
+	applyDefaultTheme?: boolean;
+
+	/**
+	 * In case of enableFullVodPlaybackInEmbed = true, user can provide a mobile breakpoint size
+	 * so that player and sidebar will render nicely together.
+	 */
+	mobileLayoutBreakPoint?: boolean;
 
 	/**
 	 * Starts the video at specified timestamp. must be in the format ##m##s. For example 00m30s.
@@ -95,7 +123,7 @@ export interface VbrickVideoEmbedConfig extends VbrickBaseEmbedConfig {
  */
 export interface VbrickWebcastEmbedConfig extends VbrickBaseEmbedConfig {
 	/**
-	 * Include Chat, QA and Polls widgets in embed (if configured) 
+	 * Include Chat, QA and Polls widgets in embed (if configured)
 	 */
 	showFullWebcast?: boolean;
 
