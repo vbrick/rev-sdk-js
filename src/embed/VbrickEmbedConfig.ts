@@ -58,17 +58,17 @@ export interface VbrickVideoEmbedConfig extends VbrickBaseEmbedConfig {
 	/**
 	 * shows video player with sidebar.
 	 */
-	fullPlayer?: boolean;
+	showFullPlayer?: boolean;
 
 	/**
 	 * provide the sidebar name to be opened by default when video loads.
-	 * enableFullVodPlaybackInEmbed value needs to be true for this to work.
+	 * showFullPlayer value needs to be true for this to work.
 	 */
 	defaultSidebar?: VideoPlaybackSidebarButton;
 
 	/**
 	 * query to filter sidebar items. esp. use in pulse sidebar.
-	 * enableFullVodPlaybackInEmbed = true and defaultSidebar should have a value to make it work.
+	 * showFullPlayer = true and defaultSidebar should have a value to make it work.
 	 */
 	sidebarFilterQuery?: string;
 	/**
@@ -77,10 +77,11 @@ export interface VbrickVideoEmbedConfig extends VbrickBaseEmbedConfig {
 	applyDefaultTheme?: boolean;
 
 	/**
-	 * In case of enableFullVodPlaybackInEmbed = true, user can provide a mobile breakpoint size
+	 * In case of showFullPlayer = true, user can provide a mobile breakpoint size
 	 * so that player and sidebar will render nicely together.
+	 * if not provided then 991 is the default value for mobile layout.
 	 */
-	mobileLayoutBreakPoint?: boolean;
+	mobileLayoutBreakPoint?: number;
 
 	/**
 	 * Starts the video at specified timestamp. must be in the format ##m##s. For example 00m30s.

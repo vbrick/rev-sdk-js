@@ -219,7 +219,7 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
  * parses a config object and converts into query parameters for the iframe embed URL
  * @param config
  */
- export function getEmbedQuery(config: VbrickEmbedConfig): Record<string, undefined | boolean | string> {
+ export function getEmbedQuery(config: VbrickEmbedConfig): Record<string, undefined | boolean | string | number> {
 	return {
 		tk: !!config.token,
 		popupAuth: (config.popupAuth != undefined)
@@ -230,7 +230,7 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 		autoplay: config.autoplay,
 		defaultTheme: config.applyDefaultTheme,
 		defaultSidebar: config.defaultSidebar,
-		fullPlayer: config.fullPlayer,
+		fullPlayer: config.showFullPlayer,
 		mobileLayoutBreakPoint: config.mobileLayoutBreakPoint,
 		forceClosedCaptions: config.forcedCaptions ?? config.forceClosedCaptions,
 		loopVideo: config.playInLoop ?? config.loopVideo,

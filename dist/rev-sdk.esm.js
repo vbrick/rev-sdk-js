@@ -404,7 +404,7 @@ function getEmbedQuery(config) {
     autoplay: config.autoplay,
     defaultTheme: config.applyDefaultTheme,
     defaultSidebar: config.defaultSidebar,
-    fullPlayer: config.fullPlayer,
+    fullPlayer: config.showFullPlayer,
     mobileLayoutBreakPoint: config.mobileLayoutBreakPoint,
     forceClosedCaptions: config.forcedCaptions ?? config.forceClosedCaptions,
     loopVideo: config.playInLoop ?? config.loopVideo,
