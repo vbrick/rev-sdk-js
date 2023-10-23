@@ -48,6 +48,22 @@ export interface IVideoInfo extends IBasicInfo {
 		deviceName?: string;
 	}>;
 }
+
+/**
+ * video sidebar button
+ * @public
+ */
+export enum VideoPlaybackSidebarButton {
+	AI = 'ai',
+	CHAPTERS = 'chapters',
+	COMMENTS = 'comments',
+	INFO = 'info',
+	PLAYLIST = 'playlist',
+	PULSE = 'pulse',
+	REPORTS = 'reports',
+	SHARE = 'share'
+}
+
 /**
  * Event indicating the current webcast status
  * @public

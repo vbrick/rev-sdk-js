@@ -130,6 +130,20 @@ interface IVideoInfo extends IBasicInfo {
     }>;
 }
 /**
+ * video sidebar button
+ * @public
+ */
+declare enum VideoPlaybackSidebarButton {
+    AI = "ai",
+    CHAPTERS = "chapters",
+    COMMENTS = "comments",
+    INFO = "info",
+    PLAYLIST = "playlist",
+    PULSE = "pulse",
+    REPORTS = "reports",
+    SHARE = "share"
+}
+/**
  * Event indicating the current webcast status
  * @public
  */
@@ -532,6 +546,30 @@ interface VbrickVideoEmbedConfig extends VbrickBaseEmbedConfig {
     hideSettings?: boolean;
     hideFullscreen?: boolean;
     /**
+     * shows video player with sidebar.
+     */
+    showFullPlayer?: boolean;
+    /**
+     * provide the sidebar name to be opened by default when video loads.
+     * showFullPlayer value needs to be true for this to work.
+     */
+    defaultSidebar?: VideoPlaybackSidebarButton;
+    /**
+     * query to filter sidebar items. esp. use in pulse sidebar.
+     * showFullPlayer = true and defaultSidebar should have a value to make it work.
+     */
+    sidebarFilterQuery?: string;
+    /**
+     * flag to override account theme to default theme.
+     */
+    applyDefaultTheme?: boolean;
+    /**
+     * In case of showFullPlayer = true, user can provide a mobile breakpoint size
+     * so that player and sidebar will render nicely together.
+     * if not provided then 991 is the default value for mobile layout.
+     */
+    mobileLayoutBreakPoint?: number;
+    /**
      * Starts the video at specified timestamp. must be in the format ##m##s. For example 00m30s.
      */
     startAt?: string;
@@ -681,4 +719,4 @@ declare const revSDK: {
     PlaylistLayout: typeof PlaylistLayout;
 };
 
-export { IBasicInfo, IComment, IListener, IPlaylistInfo, IPlaylistItem, IPlaylistSwitch, IPoll, ISlideEvent, ISubtitles, IVbrickBaseEmbed, IVbrickPlaylistEmbed, IVbrickVideoEmbed, IVbrickWebcastEmbed, IVideoInfo, IWebcastInfo, IWebcastLayout, IWebcastStatusMessage, PlayerStatus, PlaylistLayout, TEmbedMessages, TPlayerMessages, TPollId, TVbrickEvent, TVbrickMessages, TWebcastMessages, TokenType, VbrickBaseEmbedConfig, VbrickEmbedConfig, VbrickPlaylistEmbedConfig, VbrickSDKConfig, VbrickSDKToken, VbrickVideoEmbedConfig, VbrickWebcastEmbedConfig, WebcastStatus, revSDK as default, embedPlaylist, embedVideo, embedWebcast };
+export { IBasicInfo, IComment, IListener, IPlaylistInfo, IPlaylistItem, IPlaylistSwitch, IPoll, ISlideEvent, ISubtitles, IVbrickBaseEmbed, IVbrickPlaylistEmbed, IVbrickVideoEmbed, IVbrickWebcastEmbed, IVideoInfo, IWebcastInfo, IWebcastLayout, IWebcastStatusMessage, PlayerStatus, PlaylistLayout, TEmbedMessages, TPlayerMessages, TPollId, TVbrickEvent, TVbrickMessages, TWebcastMessages, TokenType, VbrickBaseEmbedConfig, VbrickEmbedConfig, VbrickPlaylistEmbedConfig, VbrickSDKConfig, VbrickSDKToken, VbrickVideoEmbedConfig, VbrickWebcastEmbedConfig, VideoPlaybackSidebarButton, WebcastStatus, revSDK as default, embedPlaylist, embedVideo, embedWebcast };
