@@ -39,7 +39,7 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 	public get isLive(): boolean {
 		return !!this.info?.isLive;
 	}
-	
+
 	public get info(): TInfo | undefined {
 		return this._info as TInfo;
 	}
@@ -148,7 +148,7 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 		this.eventBus.on('webcastLoaded', ({status, ...info}: any) => {
 			this._info = info;
 		});
-		
+
 		this.eventBus.on('playerStatusChanged', e => this._playerStatus = e.status);
 		this.eventBus.on('subtitlesChanged', subtitles => {
 			this._currentSubtitles = subtitles;
@@ -167,7 +167,7 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 		}
 	}
 	protected abstract getEmbedUrl(id: string, config: VbrickEmbedConfig);
-	
+
 	public on<T extends TVbrickEvent>(event: T, listener: IListener<T>): void {
 		//ensure internal updates take effect before calling client handlers
 		this.eventBus.on<any>(event, (e: any) => setTimeout(() => listener(e)));
@@ -217,17 +217,21 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 
 /**
  * parses a config object and converts into query parameters for the iframe embed URL
- * @param config 
+ * @param config
  */
- export function getEmbedQuery(config: VbrickEmbedConfig): Record<string, undefined | boolean | string> {
+ export function getEmbedQuery(config: VbrickEmbedConfig): Record<string, undefined | boolean | string | number> {
 	return {
 		tk: !!config.token,
-		popupAuth: !config.token && (config.popupAuth != undefined)
+		popupAuth: (config.popupAuth != undefined)
 			/* popupAuth requires a "true" value if set */
 			? (!!config.popupAuth).toString()
 			: undefined,
 		accent: config.accentColor ?? config.accent,
 		autoplay: config.autoplay,
+		defaultTheme: config.applyDefaultTheme,
+		defaultSidebar: config.defaultSidebar,
+		fullPlayer: config.showFullPlayer,
+		mobileLayoutBreakPoint: config.mobileLayoutBreakPoint,
 		forceClosedCaptions: config.forcedCaptions ?? config.forceClosedCaptions,
 		loopVideo: config.playInLoop ?? config.loopVideo,
 		noCc: config.hideSubtitles ?? config.noCc,
@@ -236,6 +240,7 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 		noFullscreen: config.hideFullscreen ?? config.noFullscreen,
 		noPlayBar: config.hidePlayControls ?? config.noPlayBar,
 		noSettings: config.hideSettings ?? config.noSettings,
+		sidebarFilterQuery: config.sidebarFilterQuery,
 		startAt: config.startAt
 	};
 }

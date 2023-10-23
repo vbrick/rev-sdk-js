@@ -4,11 +4,12 @@
  * @packageDocumentation
  */
 
-import { embedWebcast } from './embed';
-import { embedVideo } from './embed';
+import { embedVideo, embedWebcast, embedPlaylist, PlayerStatus, WebcastStatus, PlaylistLayout } from './embed';
+import {TokenType} from './VbrickSDK';
 
 export * from './embed';
 export * from './VbrickSDK';
+
 
 
 /**
@@ -16,7 +17,12 @@ export * from './VbrickSDK';
  */
 const revSDK = {
     embedWebcast,
-    embedVideo
+    embedVideo,
+    embedPlaylist,
+    TokenType,
+    PlayerStatus,
+    WebcastStatus,
+    PlaylistLayout
 };
 
 export default revSDK;

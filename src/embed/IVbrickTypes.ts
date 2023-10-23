@@ -48,6 +48,22 @@ export interface IVideoInfo extends IBasicInfo {
 		deviceName?: string;
 	}>;
 }
+
+/**
+ * video sidebar button
+ * @public
+ */
+export enum VideoPlaybackSidebarButton {
+	AI = 'ai',
+	CHAPTERS = 'chapters',
+	COMMENTS = 'comments',
+	INFO = 'info',
+	PLAYLIST = 'playlist',
+	PULSE = 'pulse',
+	REPORTS = 'reports',
+	SHARE = 'share'
+}
+
 /**
  * Event indicating the current webcast status
  * @public
@@ -124,4 +140,33 @@ export type TPollId = {
 export interface IWebcastLayout {
 	video?: boolean;
 	presentation?: boolean;
+}
+
+/**
+ * @internal
+ */
+export interface IPlaylistSwitch {
+	videoId: string;
+	autoplay?: boolean;
+}
+
+/**
+ * Video entry in playlist
+ * @public
+ */
+export interface IPlaylistItem {
+	id: string;
+	title: string;
+	ownerProfileImageUri: string | null;
+	ownerFullName: string;
+}
+
+/**
+ * Playlist data emitted when playlist first loaded
+ * @public
+ */
+export interface IPlaylistInfo {
+	id: string;
+	name: string;
+	videos: IPlaylistItem[];
 }
