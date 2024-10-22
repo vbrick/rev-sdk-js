@@ -1,60 +1,36 @@
+[**@vbrick/rev-sdk**](../README.md) • **Docs**
+
+***
+
 [@vbrick/rev-sdk](../README.md) / IVbrickVideoEmbed
 
 # Interface: IVbrickVideoEmbed
 
-## Hierarchy
+## Extends
 
-- [`IVbrickBaseEmbed`](IVbrickBaseEmbed.md)<[`IVideoInfo`](IVideoInfo.md), keyof [`TEmbedMessages`](../README.md#tembedmessages) & [`TPlayerMessages`](../README.md#tplayermessages)\>
-
-  ↳ **`IVbrickVideoEmbed`**
-
-## Table of contents
-
-### Properties
-
-- [currentSubtitles](IVbrickVideoEmbed.md#currentsubtitles)
-- [currentTime](IVbrickVideoEmbed.md#currenttime)
-- [duration](IVbrickVideoEmbed.md#duration)
-- [info](IVbrickVideoEmbed.md#info)
-- [playerStatus](IVbrickVideoEmbed.md#playerstatus)
-- [videoInfo](IVbrickVideoEmbed.md#videoinfo)
-- [volume](IVbrickVideoEmbed.md#volume)
-
-### Methods
-
-- [destroy](IVbrickVideoEmbed.md#destroy)
-- [initialize](IVbrickVideoEmbed.md#initialize)
-- [off](IVbrickVideoEmbed.md#off)
-- [on](IVbrickVideoEmbed.md#on)
-- [pause](IVbrickVideoEmbed.md#pause)
-- [play](IVbrickVideoEmbed.md#play)
-- [seek](IVbrickVideoEmbed.md#seek)
-- [setPlaybackSpeed](IVbrickVideoEmbed.md#setplaybackspeed)
-- [setSubtitles](IVbrickVideoEmbed.md#setsubtitles)
-- [setVolume](IVbrickVideoEmbed.md#setvolume)
-- [updateToken](IVbrickVideoEmbed.md#updatetoken)
+- [`IVbrickBaseEmbed`](IVbrickBaseEmbed.md)\<[`IVideoInfo`](IVideoInfo.md), keyof [`TEmbedMessages`](../type-aliases/TEmbedMessages.md) & [`TPlayerMessages`](../type-aliases/TPlayerMessages.md)\>
 
 ## Properties
 
 ### currentSubtitles
 
-• `Readonly` **currentSubtitles**: [`ISubtitles`](ISubtitles.md)
+> `readonly` **currentSubtitles**: [`ISubtitles`](ISubtitles.md)
 
 Whether subtitles are enabled, and selected language
 
 #### Inherited from
 
-[IVbrickBaseEmbed](IVbrickBaseEmbed.md).[currentSubtitles](IVbrickBaseEmbed.md#currentsubtitles)
+[`IVbrickBaseEmbed`](IVbrickBaseEmbed.md).[`currentSubtitles`](IVbrickBaseEmbed.md#currentsubtitles)
 
 #### Defined in
 
 [embed/IVbrickApi.ts:30](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L30)
 
-___
+***
 
 ### currentTime
 
-• `Readonly` **currentTime**: `number`
+> `readonly` **currentTime**: `number`
 
 Current position in video in seconds
 
@@ -62,11 +38,11 @@ Current position in video in seconds
 
 [embed/IVbrickApi.ts:97](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L97)
 
-___
+***
 
-### duration
+### duration?
 
-• `Optional` `Readonly` **duration**: `number`
+> `readonly` `optional` **duration**: `number`
 
 Duration of video in seconds. Will be undefined for live content
 
@@ -74,47 +50,47 @@ Duration of video in seconds. Will be undefined for live content
 
 [embed/IVbrickApi.ts:102](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L102)
 
-___
+***
 
-### info
+### info?
 
-• `Optional` `Readonly` **info**: [`IVideoInfo`](IVideoInfo.md)
+> `readonly` `optional` **info**: [`IVideoInfo`](IVideoInfo.md)
 
 metadata of the video/webcast
 
 #### Inherited from
 
-[IVbrickBaseEmbed](IVbrickBaseEmbed.md).[info](IVbrickBaseEmbed.md#info)
+[`IVbrickBaseEmbed`](IVbrickBaseEmbed.md).[`info`](IVbrickBaseEmbed.md#info)
 
 #### Defined in
 
 [embed/IVbrickApi.ts:35](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L35)
 
-___
+***
 
 ### playerStatus
 
-• `Readonly` **playerStatus**: [`PlayerStatus`](../enums/PlayerStatus.md)
+> `readonly` **playerStatus**: [`PlayerStatus`](../enumerations/PlayerStatus.md)
 
 video playing, buffering, etc
 
 #### Inherited from
 
-[IVbrickBaseEmbed](IVbrickBaseEmbed.md).[playerStatus](IVbrickBaseEmbed.md#playerstatus)
+[`IVbrickBaseEmbed`](IVbrickBaseEmbed.md).[`playerStatus`](IVbrickBaseEmbed.md#playerstatus)
 
 #### Defined in
 
 [embed/IVbrickApi.ts:20](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L20)
 
-___
+***
 
-### videoInfo
+### ~~videoInfo?~~
 
-• `Optional` `Readonly` **videoInfo**: [`IVideoInfo`](IVideoInfo.md)
+> `readonly` `optional` **videoInfo**: [`IVideoInfo`](IVideoInfo.md)
 
 Contains metadata for the video
 
-**`Deprecated`**
+#### Deprecated
 
 Use `info` instead
 
@@ -122,17 +98,17 @@ Use `info` instead
 
 [embed/IVbrickApi.ts:108](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L108)
 
-___
+***
 
 ### volume
 
-• `Readonly` **volume**: `number`
+> `readonly` **volume**: `number`
 
 Player Volume. 0-1
 
 #### Inherited from
 
-[IVbrickBaseEmbed](IVbrickBaseEmbed.md).[volume](IVbrickBaseEmbed.md#volume)
+[`IVbrickBaseEmbed`](IVbrickBaseEmbed.md).[`volume`](IVbrickBaseEmbed.md#volume)
 
 #### Defined in
 
@@ -140,9 +116,9 @@ Player Volume. 0-1
 
 ## Methods
 
-### destroy
+### destroy()
 
-▸ **destroy**(): `void`
+> **destroy**(): `void`
 
 Removes the embedded content from the DOM.
 
@@ -152,53 +128,50 @@ Removes the embedded content from the DOM.
 
 #### Inherited from
 
-[IVbrickBaseEmbed](IVbrickBaseEmbed.md).[destroy](IVbrickBaseEmbed.md#destroy)
+[`IVbrickBaseEmbed`](IVbrickBaseEmbed.md).[`destroy`](IVbrickBaseEmbed.md#destroy)
 
 #### Defined in
 
 [embed/IVbrickApi.ts:81](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L81)
 
-___
+***
 
-### initialize
+### initialize()
 
-▸ **initialize**(): `Promise`<`void`\>
+> **initialize**(): `Promise`\<`void`\>
 
 returns a promise once the player has completed authentication and load.
 Will reject with an error if authentication/load failed
 
 #### Returns
 
-`Promise`<`void`\>
+`Promise`\<`void`\>
 
 #### Inherited from
 
-[IVbrickBaseEmbed](IVbrickBaseEmbed.md).[initialize](IVbrickBaseEmbed.md#initialize)
+[`IVbrickBaseEmbed`](IVbrickBaseEmbed.md).[`initialize`](IVbrickBaseEmbed.md#initialize)
 
 #### Defined in
 
 [embed/IVbrickApi.ts:41](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L41)
 
-___
+***
 
-### off
+### off()
 
-▸ **off**<`T`\>(`event`, `listener`): `void`
+> **off**\<`T`\>(`event`, `listener`): `void`
 
 Removes an event listener
 
-#### Type parameters
+#### Type Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends keyof [`TEmbedMessages`](../README.md#tembedmessages) \| keyof [`TPlayerMessages`](../README.md#tplayermessages) |
+• **T** *extends* keyof TEmbedMessages \| keyof TPlayerMessages
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `event` | `T` |
-| `listener` | [`IListener`](../README.md#ilistener)<`T`\> |
+• **event**: `T`
+
+• **listener**: [`IListener`](../type-aliases/IListener.md)\<`T`\>
 
 #### Returns
 
@@ -206,32 +179,33 @@ Removes an event listener
 
 #### Inherited from
 
-[IVbrickBaseEmbed](IVbrickBaseEmbed.md).[off](IVbrickBaseEmbed.md#off)
+[`IVbrickBaseEmbed`](IVbrickBaseEmbed.md).[`off`](IVbrickBaseEmbed.md#off)
 
 #### Defined in
 
 [embed/IVbrickApi.ts:76](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L76)
 
-___
+***
 
-### on
+### on()
 
-▸ **on**<`T`\>(`event`, `listener`): `void`
+> **on**\<`T`\>(`event`, `listener`): `void`
 
 Register an event handler. Events are fired at different lifecycle stages of the webcast
 
-#### Type parameters
+#### Type Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends keyof [`TEmbedMessages`](../README.md#tembedmessages) \| keyof [`TPlayerMessages`](../README.md#tplayermessages) |
+• **T** *extends* keyof TEmbedMessages \| keyof TPlayerMessages
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `event` | `T` | name of event |
-| `listener` | [`IListener`](../README.md#ilistener)<`T`\> | callback when event is fired. Keep a reference if you intend to call [['off']](IVbrickBaseEmbed.md) later |
+• **event**: `T`
+
+name of event
+
+• **listener**: [`IListener`](../type-aliases/IListener.md)\<`T`\>
+
+callback when event is fired. Keep a reference if you intend to call [['off']](IVbrickBaseEmbed.md) later
 
 #### Returns
 
@@ -239,17 +213,17 @@ Register an event handler. Events are fired at different lifecycle stages of the
 
 #### Inherited from
 
-[IVbrickBaseEmbed](IVbrickBaseEmbed.md).[on](IVbrickBaseEmbed.md#on)
+[`IVbrickBaseEmbed`](IVbrickBaseEmbed.md).[`on`](IVbrickBaseEmbed.md#on)
 
 #### Defined in
 
 [embed/IVbrickApi.ts:71](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L71)
 
-___
+***
 
-### pause
+### pause()
 
-▸ **pause**(): `void`
+> **pause**(): `void`
 
 Pauses the video if it is playing.
 
@@ -259,17 +233,17 @@ Pauses the video if it is playing.
 
 #### Inherited from
 
-[IVbrickBaseEmbed](IVbrickBaseEmbed.md).[pause](IVbrickBaseEmbed.md#pause)
+[`IVbrickBaseEmbed`](IVbrickBaseEmbed.md).[`pause`](IVbrickBaseEmbed.md#pause)
 
 #### Defined in
 
 [embed/IVbrickApi.ts:51](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L51)
 
-___
+***
 
-### play
+### play()
 
-▸ **play**(): `void`
+> **play**(): `void`
 
 Plays the video if it is paused.
 
@@ -279,25 +253,25 @@ Plays the video if it is paused.
 
 #### Inherited from
 
-[IVbrickBaseEmbed](IVbrickBaseEmbed.md).[play](IVbrickBaseEmbed.md#play)
+[`IVbrickBaseEmbed`](IVbrickBaseEmbed.md).[`play`](IVbrickBaseEmbed.md#play)
 
 #### Defined in
 
 [embed/IVbrickApi.ts:46](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L46)
 
-___
+***
 
-### seek
+### seek()
 
-▸ **seek**(`currentTime`): `void`
+> **seek**(`currentTime`): `void`
 
 sets the current time in the video
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `currentTime` | `number` | value (in seconds) between 0 and video duration |
+• **currentTime**: `number`
+
+value (in seconds) between 0 and video duration
 
 #### Returns
 
@@ -307,19 +281,19 @@ sets the current time in the video
 
 [embed/IVbrickApi.ts:120](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L120)
 
-___
+***
 
-### setPlaybackSpeed
+### setPlaybackSpeed()
 
-▸ **setPlaybackSpeed**(`speed`): `void`
+> **setPlaybackSpeed**(`speed`): `void`
 
 sets playback rate
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `speed` | `number` | 0-16, default is 1 |
+• **speed**: `number`
+
+0-16, default is 1
 
 #### Returns
 
@@ -329,20 +303,20 @@ sets playback rate
 
 [embed/IVbrickApi.ts:114](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L114)
 
-___
+***
 
-### setSubtitles
+### setSubtitles()
 
-▸ **setSubtitles**(`subtitles`): `void`
+> **setSubtitles**(`subtitles`): `void`
 
 Indicates whether the webcast is started, or broadcasting.
 update the current subtitles settings
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `subtitles` | [`ISubtitles`](ISubtitles.md) | enable/disable subtitles and set language (leave language blank to use closed captions encoded into video stream) |
+• **subtitles**: [`ISubtitles`](ISubtitles.md)
+
+enable/disable subtitles and set language (leave language blank to use closed captions encoded into video stream)
 
 #### Returns
 
@@ -350,25 +324,25 @@ update the current subtitles settings
 
 #### Inherited from
 
-[IVbrickBaseEmbed](IVbrickBaseEmbed.md).[setSubtitles](IVbrickBaseEmbed.md#setsubtitles)
+[`IVbrickBaseEmbed`](IVbrickBaseEmbed.md).[`setSubtitles`](IVbrickBaseEmbed.md#setsubtitles)
 
 #### Defined in
 
 [embed/IVbrickApi.ts:64](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L64)
 
-___
+***
 
-### setVolume
+### setVolume()
 
-▸ **setVolume**(`volume`): `void`
+> **setVolume**(`volume`): `void`
 
 Sets player volume
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `volume` | `number` | number 0-1 |
+• **volume**: `number`
+
+number 0-1
 
 #### Returns
 
@@ -376,33 +350,33 @@ Sets player volume
 
 #### Inherited from
 
-[IVbrickBaseEmbed](IVbrickBaseEmbed.md).[setVolume](IVbrickBaseEmbed.md#setvolume)
+[`IVbrickBaseEmbed`](IVbrickBaseEmbed.md).[`setVolume`](IVbrickBaseEmbed.md#setvolume)
 
 #### Defined in
 
 [embed/IVbrickApi.ts:57](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L57)
 
-___
+***
 
-### updateToken
+### updateToken()
 
-▸ **updateToken**(`token`): `Promise`<`void`\>
+> **updateToken**(`token`): `Promise`\<`void`\>
 
 Allows updating the access token if the old one has expired.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `token` | [`VbrickSDKToken`](VbrickSDKToken.md) | New token |
+• **token**: [`VbrickSDKToken`](VbrickSDKToken.md)
+
+New token
 
 #### Returns
 
-`Promise`<`void`\>
+`Promise`\<`void`\>
 
 #### Inherited from
 
-[IVbrickBaseEmbed](IVbrickBaseEmbed.md).[updateToken](IVbrickBaseEmbed.md#updatetoken)
+[`IVbrickBaseEmbed`](IVbrickBaseEmbed.md).[`updateToken`](IVbrickBaseEmbed.md#updatetoken)
 
 #### Defined in
 

@@ -1,26 +1,20 @@
+[**@vbrick/rev-sdk**](../README.md) • **Docs**
+
+***
+
 [@vbrick/rev-sdk](../README.md) / VbrickSDKConfig
 
 # Interface: VbrickSDKConfig
 
-## Hierarchy
+## Extended by
 
-- **`VbrickSDKConfig`**
-
-  ↳ [`VbrickBaseEmbedConfig`](VbrickBaseEmbedConfig.md)
-
-## Table of contents
-
-### Properties
-
-- [baseUrl](VbrickSDKConfig.md#baseurl)
-- [log](VbrickSDKConfig.md#log)
-- [token](VbrickSDKConfig.md#token)
+- [`VbrickBaseEmbedConfig`](VbrickBaseEmbedConfig.md)
 
 ## Properties
 
 ### baseUrl
 
-• **baseUrl**: `string`
+> **baseUrl**: `string`
 
 URL for Rev
 
@@ -28,11 +22,11 @@ URL for Rev
 
 [VbrickSDK.ts:35](https://github.com/vbrick/rev-sdk-js/blob/main/src/VbrickSDK.ts#L35)
 
-___
+***
 
-### log
+### log?
 
-• `Optional` **log**: `boolean`
+> `optional` **log**: `boolean`
 
 If true, sdk will log to console
 
@@ -40,11 +34,11 @@ If true, sdk will log to console
 
 [VbrickSDK.ts:45](https://github.com/vbrick/rev-sdk-js/blob/main/src/VbrickSDK.ts#L45)
 
-___
+***
 
-### token
+### token?
 
-• `Optional` **token**: [`VbrickSDKToken`](VbrickSDKToken.md)
+> `optional` **token**: [`VbrickSDKToken`](VbrickSDKToken.md)
 
 Token for authentication
 

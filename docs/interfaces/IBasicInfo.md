@@ -1,50 +1,43 @@
+[**@vbrick/rev-sdk**](../README.md) • **Docs**
+
+***
+
 [@vbrick/rev-sdk](../README.md) / IBasicInfo
 
 # Interface: IBasicInfo
 
 Basic metadata shared between VOD and Webcast Embeds
 
-## Hierarchy
+## Extended by
 
-- **`IBasicInfo`**
-
-  ↳ [`IVideoInfo`](IVideoInfo.md)
-
-  ↳ [`IWebcastInfo`](IWebcastInfo.md)
-
-## Table of contents
-
-### Properties
-
-- [isLive](IBasicInfo.md#islive)
-- [subtitles](IBasicInfo.md#subtitles)
-- [title](IBasicInfo.md#title)
+- [`IVideoInfo`](IVideoInfo.md)
+- [`IWebcastInfo`](IWebcastInfo.md)
 
 ## Properties
 
 ### isLive
 
-• **isLive**: `boolean`
+> **isLive**: `boolean`
 
 #### Defined in
 
 [embed/IVbrickTypes.ts:20](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickTypes.ts#L20)
 
-___
+***
 
 ### subtitles
 
-• **subtitles**: { `language`: `string`  }[]
+> **subtitles**: `object`[]
 
 #### Defined in
 
 [embed/IVbrickTypes.ts:21](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickTypes.ts#L21)
 
-___
+***
 
 ### title
 
-• **title**: `string`
+> **title**: `string`
 
 #### Defined in
 

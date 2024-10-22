@@ -1,65 +1,59 @@
+[**@vbrick/rev-sdk**](../README.md) • **Docs**
+
+***
+
 [@vbrick/rev-sdk](../README.md) / IPoll
 
 # Interface: IPoll
 
 Details of a Webcast Poll
 
-## Table of contents
-
-### Properties
-
-- [answers](IPoll.md#answers)
-- [multipleChoice](IPoll.md#multiplechoice)
-- [pollId](IPoll.md#pollid)
-- [question](IPoll.md#question)
-- [totalResponses](IPoll.md#totalresponses)
-
 ## Properties
 
 ### answers
 
-• **answers**: { `count?`: `number` ; `text`: `string`  }[]
+> **answers**: `object`[]
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:106](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickTypes.ts#L106)
+[embed/IVbrickTypes.ts:123](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickTypes.ts#L123)
 
-___
+***
 
 ### multipleChoice
 
-• **multipleChoice**: `boolean`
+> **multipleChoice**: `boolean`
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:107](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickTypes.ts#L107)
+[embed/IVbrickTypes.ts:124](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickTypes.ts#L124)
 
-___
+***
 
 ### pollId
 
-• **pollId**: `string`
+> **pollId**: `string`
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:103](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickTypes.ts#L103)
+[embed/IVbrickTypes.ts:120](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickTypes.ts#L120)
 
-___
+***
 
 ### question
 
-• **question**: `string`
+> **question**: `string`
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:104](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickTypes.ts#L104)
+[embed/IVbrickTypes.ts:121](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickTypes.ts#L121)
 
-___
+***
 
-### totalResponses
+### totalResponses?
 
-• `Optional` **totalResponses**: `number`
+> `optional` **totalResponses**: `number`
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:109](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickTypes.ts#L109)
+[embed/IVbrickTypes.ts:126](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickTypes.ts#L126)

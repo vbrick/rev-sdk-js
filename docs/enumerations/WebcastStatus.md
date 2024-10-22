@@ -1,23 +1,16 @@
+[**@vbrick/rev-sdk**](../README.md) • **Docs**
+
+***
+
 [@vbrick/rev-sdk](../README.md) / WebcastStatus
 
 # Enumeration: WebcastStatus
-
-## Table of contents
-
-### Enumeration Members
-
-- [Broadcasting](WebcastStatus.md#broadcasting)
-- [Completed](WebcastStatus.md#completed)
-- [Error](WebcastStatus.md#error)
-- [InProgress](WebcastStatus.md#inprogress)
-- [Loading](WebcastStatus.md#loading)
-- [Scheduled](WebcastStatus.md#scheduled)
 
 ## Enumeration Members
 
 ### Broadcasting
 
-• **Broadcasting** = ``"Broadcasting"``
+> **Broadcasting**: `"Broadcasting"`
 
 Webcast is active with video stream
 
@@ -25,11 +18,11 @@ Webcast is active with video stream
 
 [embed/WebcastStatus.ts:20](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/WebcastStatus.ts#L20)
 
-___
+***
 
 ### Completed
 
-• **Completed** = ``"Completed"``
+> **Completed**: `"Completed"`
 
 Webcast has ended
 
@@ -37,11 +30,11 @@ Webcast has ended
 
 [embed/WebcastStatus.ts:24](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/WebcastStatus.ts#L24)
 
-___
+***
 
 ### Error
 
-• **Error** = ``"Error"``
+> **Error**: `"Error"`
 
 Fatal error embedding webcast
 
@@ -49,11 +42,11 @@ Fatal error embedding webcast
 
 [embed/WebcastStatus.ts:28](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/WebcastStatus.ts#L28)
 
-___
+***
 
 ### InProgress
 
-• **InProgress** = ``"InProgress"``
+> **InProgress**: `"InProgress"`
 
 Webcast is active (but not currently Broadcasting)
 
@@ -61,11 +54,11 @@ Webcast is active (but not currently Broadcasting)
 
 [embed/WebcastStatus.ts:16](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/WebcastStatus.ts#L16)
 
-___
+***
 
 ### Loading
 
-• **Loading** = ``"Loading"``
+> **Loading**: `"Loading"`
 
 Embedded webcast is authenticating
 
@@ -73,11 +66,11 @@ Embedded webcast is authenticating
 
 [embed/WebcastStatus.ts:8](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/WebcastStatus.ts#L8)
 
-___
+***
 
 ### Scheduled
 
-• **Scheduled** = ``"Scheduled"``
+> **Scheduled**: `"Scheduled"`
 
 Embedded webcast is authenticated and waiting for webcast to start
 

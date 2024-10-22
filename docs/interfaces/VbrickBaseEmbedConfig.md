@@ -1,160 +1,148 @@
+[**@vbrick/rev-sdk**](../README.md) • **Docs**
+
+***
+
 [@vbrick/rev-sdk](../README.md) / VbrickBaseEmbedConfig
 
 # Interface: VbrickBaseEmbedConfig
 
 Options when creating the iframe embed for a video/webcast
 
-## Hierarchy
+## Extends
 
 - [`VbrickSDKConfig`](VbrickSDKConfig.md)
 
-  ↳ **`VbrickBaseEmbedConfig`**
+## Extended by
 
-  ↳↳ [`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md)
-
-  ↳↳ [`VbrickWebcastEmbedConfig`](VbrickWebcastEmbedConfig.md)
-
-## Table of contents
-
-### Properties
-
-- [autoplay](VbrickBaseEmbedConfig.md#autoplay)
-- [baseUrl](VbrickBaseEmbedConfig.md#baseurl)
-- [className](VbrickBaseEmbedConfig.md#classname)
-- [height](VbrickBaseEmbedConfig.md#height)
-- [initialVolume](VbrickBaseEmbedConfig.md#initialvolume)
-- [log](VbrickBaseEmbedConfig.md#log)
-- [popupAuth](VbrickBaseEmbedConfig.md#popupauth)
-- [timeoutSeconds](VbrickBaseEmbedConfig.md#timeoutseconds)
-- [token](VbrickBaseEmbedConfig.md#token)
-- [width](VbrickBaseEmbedConfig.md#width)
+- [`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md)
+- [`VbrickWebcastEmbedConfig`](VbrickWebcastEmbedConfig.md)
 
 ## Properties
 
-### autoplay
+### autoplay?
 
-• `Optional` **autoplay**: `boolean`
+> `optional` **autoplay**: `boolean`
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:34](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L34)
+[embed/VbrickEmbedConfig.ts:35](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L35)
 
-___
+***
 
 ### baseUrl
 
-• **baseUrl**: `string`
+> **baseUrl**: `string`
 
 URL for Rev
 
 #### Inherited from
 
-[VbrickSDKConfig](VbrickSDKConfig.md).[baseUrl](VbrickSDKConfig.md#baseurl)
+[`VbrickSDKConfig`](VbrickSDKConfig.md).[`baseUrl`](VbrickSDKConfig.md#baseurl)
 
 #### Defined in
 
 [VbrickSDK.ts:35](https://github.com/vbrick/rev-sdk-js/blob/main/src/VbrickSDK.ts#L35)
 
-___
+***
 
-### className
+### className?
 
-• `Optional` **className**: `string`
+> `optional` **className**: `string`
 
 An optional class to be set on embeds.
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:12](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L12)
+[embed/VbrickEmbedConfig.ts:13](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L13)
 
-___
+***
 
-### height
+### height?
 
-• `Optional` **height**: `string`
+> `optional` **height**: `string`
 
 Optional height to be set on embeds. Default is "100%"
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:22](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L22)
+[embed/VbrickEmbedConfig.ts:23](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L23)
 
-___
+***
 
-### initialVolume
+### initialVolume?
 
-• `Optional` **initialVolume**: `number`
+> `optional` **initialVolume**: `number`
 
 set the volume to upon initial load (for muting or otherwise)
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:39](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L39)
+[embed/VbrickEmbedConfig.ts:40](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L40)
 
-___
+***
 
-### log
+### log?
 
-• `Optional` **log**: `boolean`
+> `optional` **log**: `boolean`
 
 If true, sdk will log to console
 
 #### Inherited from
 
-[VbrickSDKConfig](VbrickSDKConfig.md).[log](VbrickSDKConfig.md#log)
+[`VbrickSDKConfig`](VbrickSDKConfig.md).[`log`](VbrickSDKConfig.md#log)
 
 #### Defined in
 
 [VbrickSDK.ts:45](https://github.com/vbrick/rev-sdk-js/blob/main/src/VbrickSDK.ts#L45)
 
-___
+***
 
-### popupAuth
+### popupAuth?
 
-• `Optional` **popupAuth**: `boolean`
+> `optional` **popupAuth**: `boolean`
 
 For video embeds. If a user needs to log in, go through the login process in a popup window. This is the standard behavior for non-SDK Rev embeded videos
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:27](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L27)
+[embed/VbrickEmbedConfig.ts:28](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L28)
 
-___
+***
 
-### timeoutSeconds
+### timeoutSeconds?
 
-• `Optional` **timeoutSeconds**: `number`
+> `optional` **timeoutSeconds**: `number`
 
 seconds to wait for the embed initialization to complete. default is 30 seconds
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:32](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L32)
+[embed/VbrickEmbedConfig.ts:33](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L33)
 
-___
+***
 
-### token
+### token?
 
-• `Optional` **token**: [`VbrickSDKToken`](VbrickSDKToken.md)
+> `optional` **token**: [`VbrickSDKToken`](VbrickSDKToken.md)
 
 Token for authentication
 
 #### Inherited from
 
-[VbrickSDKConfig](VbrickSDKConfig.md).[token](VbrickSDKConfig.md#token)
+[`VbrickSDKConfig`](VbrickSDKConfig.md).[`token`](VbrickSDKConfig.md#token)
 
 #### Defined in
 
 [VbrickSDK.ts:40](https://github.com/vbrick/rev-sdk-js/blob/main/src/VbrickSDK.ts#L40)
 
-___
+***
 
-### width
+### width?
 
-• `Optional` **width**: `string`
+> `optional` **width**: `string`
 
 Optional width to be set on embeds. Default is "100%"
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:17](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L17)
+[embed/VbrickEmbedConfig.ts:18](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L18)
