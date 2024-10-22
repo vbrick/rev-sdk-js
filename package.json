@@ -11,9 +11,9 @@
   "exports": {
     ".": {
       "types": "./dist/rev-sdk.d.ts",
+      "default": "./dist/rev-sdk.esm.js",
       "import": "./dist/rev-sdk.esm.js",
-      "require": "./dist/rev-sdk.cjs.js",
-      "default": "./dist/rev-sdk.esm.js"
+      "require": "./dist/rev-sdk.cjs.js"
     }
   },
   "browserslist": [
@@ -30,11 +30,11 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^18.11.15",
-    "browserslist-to-esbuild": "^1.2.0",
-    "tsup": "^6.5.0",
-    "typedoc": "^0.23.8",
-    "typedoc-plugin-markdown": "^3.13.4",
-    "typescript": "^4.9.4"
+    "@types/node": "^22.7.7",
+    "browserslist-to-esbuild": "^2.1.1",
+    "tsup": "^8.3.0",
+    "typedoc": "^0.26.10",
+    "typedoc-plugin-markdown": "^4.2.9",
+    "typescript": "^5.6.3"
   }
 }
