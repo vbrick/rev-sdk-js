@@ -11,9 +11,9 @@
   "exports": {
     ".": {
       "types": "./dist/rev-sdk.d.ts",
-      "default": "./dist/rev-sdk.esm.js",
       "import": "./dist/rev-sdk.esm.js",
-      "require": "./dist/rev-sdk.cjs.js"
+      "require": "./dist/rev-sdk.cjs.js",
+      "default": "./dist/rev-sdk.esm.js"
     }
   },
   "browserslist": [

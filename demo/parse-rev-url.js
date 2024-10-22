@@ -12,8 +12,9 @@ export function parseRevUrl(url) {
     if (url.startsWith('<')) {
         url = [].concat(url.match(/src=["']([^"']+)["']/)).slice(1) || '';
     }
-    // will throw if invalid
-    const { searchParams, pathname, hash, origin } = new URL(url);
+    // invalid URLs will have null origin.
+    // This avoids throwing error if just query params or relative URLs are passed
+    const { searchParams, pathname, hash, origin } = new URL(url, 'invalid://null');
 
     var out = {
         revUrl: origin === 'null' ? '' : origin,
