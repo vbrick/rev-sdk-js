@@ -47,7 +47,6 @@ export interface VbrickBaseEmbedConfig extends VbrickSDKConfig {
 export interface VbrickVideoEmbedConfig extends VbrickBaseEmbedConfig {
 	playInLoop?: boolean;
 	hideChapters?: boolean;
-	hideChapterSeek?: boolean;
 	hideChapterNavigation?: boolean;
 	hideChapterMenu?: boolean;
 	hideChapterImages?: boolean;
