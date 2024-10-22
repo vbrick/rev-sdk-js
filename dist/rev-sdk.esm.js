@@ -414,6 +414,9 @@ function getEmbedQuery(config) {
     noFullscreen: config.hideFullscreen ?? config.noFullscreen,
     noPlayBar: config.hidePlayControls ?? config.noPlayBar,
     noSettings: config.hideSettings ?? config.noSettings,
+    noChapterSeek: config.hideChapterNavigation ?? config.noChapterSeek,
+    noChapterDisplay: config.hideChapterImages ?? config.noChapterDisplay,
+    noChapterMenu: config.hideChapterMenu ?? config.noChapterMenu,
     sidebarFilterQuery: config.sidebarFilterQuery,
     startAt: config.startAt,
     // all sidebar tabs are by default true, so only include if explicitly false
