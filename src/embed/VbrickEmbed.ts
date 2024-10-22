@@ -4,7 +4,7 @@ import { getLogger, ILogger } from '../Log';
 import { IVbrickBaseEmbed, PlayerStatus } from './IVbrickApi';
 import { TokenType, VbrickSDKToken } from '../VbrickSDK';
 import { TVbrickEvent, IListener } from './IVbrickEvents';
-import { IBasicInfo, ISubtitles } from './IVbrickTypes';
+import { IBasicInfo, ISubtitles, VideoPlaybackSidebarButton } from './IVbrickTypes';
 import { authenticateAccessToken, authenticateJWT } from './auth';
 
 /**
@@ -241,6 +241,16 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 		noPlayBar: config.hidePlayControls ?? config.noPlayBar,
 		noSettings: config.hideSettings ?? config.noSettings,
 		sidebarFilterQuery: config.sidebarFilterQuery,
-		startAt: config.startAt
+		startAt: config.startAt,
+		// all sidebar tabs are by default true, so only include if explicitly false
+		...config.showFullPlayer && {
+			hideInfo: config.sidebarTabs[VideoPlaybackSidebarButton.INFO] === false || config.hideInfo === true,
+			hideComments: config.sidebarTabs[VideoPlaybackSidebarButton.COMMENTS] === false || config.hideComments === true,
+			hidePulse: config.sidebarTabs[VideoPlaybackSidebarButton.PULSE] === false || config.hidePulse === true,
+			hideReview: config.sidebarTabs[VideoPlaybackSidebarButton.REVIEW] === false || config.hideReview === true,
+			hidePlaylist: config.sidebarTabs[VideoPlaybackSidebarButton.PLAYLIST] === false || config.hidePlaylist === true,
+			hideChapters: config.sidebarTabs[VideoPlaybackSidebarButton.CHAPTERS] === false || config.hideChapters === true,
+			hideAnalytics: config.sidebarTabs[VideoPlaybackSidebarButton.REPORTS] === false || config.hideAnalytics === true,
+		}
 	};
 }
