@@ -141,6 +141,7 @@ declare enum VideoPlaybackSidebarButton {
     PLAYLIST = "playlist",
     PULSE = "pulse",
     REPORTS = "reports",
+    REVIEW = "review",
     SHARE = "share"
 }
 /**
@@ -538,6 +539,10 @@ interface VbrickBaseEmbedConfig extends VbrickSDKConfig {
 interface VbrickVideoEmbedConfig extends VbrickBaseEmbedConfig {
     playInLoop?: boolean;
     hideChapters?: boolean;
+    hideChapterSeek?: boolean;
+    hideChapterNavigation?: boolean;
+    hideChapterMenu?: boolean;
+    hideChapterImages?: boolean;
     hideOverlayControls?: boolean;
     hidePlayControls?: boolean;
     hideSubtitles?: boolean;
@@ -570,6 +575,11 @@ interface VbrickVideoEmbedConfig extends VbrickBaseEmbedConfig {
      */
     mobileLayoutBreakPoint?: number;
     /**
+     * In case of showFullPlayer = true, user can customize the sidebar tabs to include
+     * If not provided or undefined then the default value for each tab is true
+     */
+    sidebarTabs?: Partial<Record<`${VideoPlaybackSidebarButton}`, boolean>>;
+    /**
      * Starts the video at specified timestamp. must be in the format ##m##s. For example 00m30s.
      */
     startAt?: string;
@@ -599,6 +609,24 @@ interface VbrickVideoEmbedConfig extends VbrickBaseEmbedConfig {
     noPlayBar?: boolean;
     /** @deprecated - embed parameter name - alias of hideSettings */
     noSettings?: boolean;
+    /** @deprecated - embed parameter name - alias of hideChapterNavigation */
+    noChapterSeek?: boolean;
+    /** @deprecated - embed parameter name - alias of hideChapterImages */
+    noChapterDisplay?: boolean;
+    /** @deprecated - embed parameter name - alias of hideChapterMenu */
+    noChapterMenu?: boolean;
+    /** @deprecated - embed parameter name - alias for sidebar tab option */
+    hideInfo?: boolean;
+    /** @deprecated - embed parameter name - alias for sidebar tab option */
+    hideComments?: boolean;
+    /** @deprecated - embed parameter name - alias for sidebar tab option */
+    hidePulse?: boolean;
+    /** @deprecated - embed parameter name - alias for sidebar tab option */
+    hideReview?: boolean;
+    /** @deprecated - embed parameter name - alias for sidebar tab option */
+    hidePlaylist?: boolean;
+    /** @deprecated - embed parameter name - alias for sidebar tab option */
+    hideAnalytics?: boolean;
 }
 /**
  * Options available when embedding a webcast
@@ -719,4 +747,4 @@ declare const revSDK: {
     PlaylistLayout: typeof PlaylistLayout;
 };
 
-export { IBasicInfo, IComment, IListener, IPlaylistInfo, IPlaylistItem, IPlaylistSwitch, IPoll, ISlideEvent, ISubtitles, IVbrickBaseEmbed, IVbrickPlaylistEmbed, IVbrickVideoEmbed, IVbrickWebcastEmbed, IVideoInfo, IWebcastInfo, IWebcastLayout, IWebcastStatusMessage, PlayerStatus, PlaylistLayout, TEmbedMessages, TPlayerMessages, TPollId, TVbrickEvent, TVbrickMessages, TWebcastMessages, TokenType, VbrickBaseEmbedConfig, VbrickEmbedConfig, VbrickPlaylistEmbedConfig, VbrickSDKConfig, VbrickSDKToken, VbrickVideoEmbedConfig, VbrickWebcastEmbedConfig, VideoPlaybackSidebarButton, WebcastStatus, revSDK as default, embedPlaylist, embedVideo, embedWebcast };
+export { type IBasicInfo, type IComment, type IListener, type IPlaylistInfo, type IPlaylistItem, type IPlaylistSwitch, type IPoll, type ISlideEvent, type ISubtitles, type IVbrickBaseEmbed, type IVbrickPlaylistEmbed, type IVbrickVideoEmbed, type IVbrickWebcastEmbed, type IVideoInfo, type IWebcastInfo, type IWebcastLayout, type IWebcastStatusMessage, PlayerStatus, PlaylistLayout, type TEmbedMessages, type TPlayerMessages, type TPlaylistMessages, type TPollId, type TVbrickEvent, type TVbrickMessages, type TWebcastMessages, TokenType, type VbrickBaseEmbedConfig, type VbrickEmbedConfig, type VbrickPlaylistEmbedConfig, type VbrickSDKConfig, type VbrickSDKToken, type VbrickVideoEmbedConfig, type VbrickWebcastEmbedConfig, VideoPlaybackSidebarButton, WebcastStatus, revSDK as default, embedPlaylist, embedVideo, embedWebcast };
