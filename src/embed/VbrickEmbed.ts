@@ -26,7 +26,7 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 	public get volume(): number {
 		return this._volume;
 	}
-	private _volume: number;
+	private _volume: number = 1;
 
 	/**
 	 * Whether subtitles are enabled, and selected language
@@ -153,6 +153,8 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 		this.eventBus.on('subtitlesChanged', subtitles => {
 			this._currentSubtitles = subtitles;
 		});
+
+		this.eventBus.on('volumeChanged', e => this._volume = e);
 
 		// allow setting volume on player ready
 		if (this.config.initialVolume != undefined && isFinite(this.config.initialVolume)) {
