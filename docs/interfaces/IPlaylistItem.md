@@ -1,54 +1,49 @@
+[**@vbrick/rev-sdk**](../README.md) • **Docs**
+
+***
+
 [@vbrick/rev-sdk](../README.md) / IPlaylistItem
 
 # Interface: IPlaylistItem
 
 Video entry in playlist
 
-## Table of contents
-
-### Properties
-
-- [id](IPlaylistItem.md#id)
-- [ownerFullName](IPlaylistItem.md#ownerfullname)
-- [ownerProfileImageUri](IPlaylistItem.md#ownerprofileimageuri)
-- [title](IPlaylistItem.md#title)
-
 ## Properties
 
 ### id
 
-• **id**: `string`
+> **id**: `string`
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:142](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickTypes.ts#L142)
+[embed/IVbrickTypes.ts:159](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickTypes.ts#L159)
 
-___
+***
 
 ### ownerFullName
 
-• **ownerFullName**: `string`
+> **ownerFullName**: `string`
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:145](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickTypes.ts#L145)
+[embed/IVbrickTypes.ts:162](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickTypes.ts#L162)
 
-___
+***
 
 ### ownerProfileImageUri
 
-• **ownerProfileImageUri**: `string`
+> **ownerProfileImageUri**: `string`
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:144](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickTypes.ts#L144)
+[embed/IVbrickTypes.ts:161](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickTypes.ts#L161)
 
-___
+***
 
 ### title
 
-• **title**: `string`
+> **title**: `string`
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:143](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickTypes.ts#L143)
+[embed/IVbrickTypes.ts:160](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickTypes.ts#L160)

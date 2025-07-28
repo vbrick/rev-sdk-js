@@ -1,31 +1,28 @@
+[**@vbrick/rev-sdk**](../README.md) • **Docs**
+
+***
+
 [@vbrick/rev-sdk](../README.md) / ISubtitles
 
 # Interface: ISubtitles
 
 The current subtitles language and if enabled or not
 
-## Table of contents
-
-### Properties
-
-- [enabled](ISubtitles.md#enabled)
-- [language](ISubtitles.md#language)
-
 ## Properties
 
 ### enabled
 
-• **enabled**: `boolean`
+> **enabled**: `boolean`
 
 #### Defined in
 
 [embed/IVbrickTypes.ts:11](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickTypes.ts#L11)
 
-___
+***
 
-### language
+### language?
 
-• `Optional` **language**: `string`
+> `optional` **language**: `string`
 
 #### Defined in
 

@@ -1,302 +1,464 @@
+[**@vbrick/rev-sdk**](../README.md) • **Docs**
+
+***
+
 [@vbrick/rev-sdk](../README.md) / VbrickPlaylistEmbedConfig
 
 # Interface: VbrickPlaylistEmbedConfig
 
-## Hierarchy
+## Extends
 
 - [`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md)
 
-  ↳ **`VbrickPlaylistEmbedConfig`**
+## Extended by
 
-  ↳↳ [`VbrickEmbedConfig`](VbrickEmbedConfig.md)
-
-## Table of contents
-
-### Properties
-
-- [accent](VbrickPlaylistEmbedConfig.md#accent)
-- [accentColor](VbrickPlaylistEmbedConfig.md#accentcolor)
-- [autoplay](VbrickPlaylistEmbedConfig.md#autoplay)
-- [baseUrl](VbrickPlaylistEmbedConfig.md#baseurl)
-- [className](VbrickPlaylistEmbedConfig.md#classname)
-- [forceClosedCaptions](VbrickPlaylistEmbedConfig.md#forceclosedcaptions)
-- [forcedCaptions](VbrickPlaylistEmbedConfig.md#forcedcaptions)
-- [height](VbrickPlaylistEmbedConfig.md#height)
-- [hideChapters](VbrickPlaylistEmbedConfig.md#hidechapters)
-- [hideFullscreen](VbrickPlaylistEmbedConfig.md#hidefullscreen)
-- [hideOverlayControls](VbrickPlaylistEmbedConfig.md#hideoverlaycontrols)
-- [hidePlayControls](VbrickPlaylistEmbedConfig.md#hideplaycontrols)
-- [hideSettings](VbrickPlaylistEmbedConfig.md#hidesettings)
-- [hideSubtitles](VbrickPlaylistEmbedConfig.md#hidesubtitles)
-- [hideToolbar](VbrickPlaylistEmbedConfig.md#hidetoolbar)
-- [initialVolume](VbrickPlaylistEmbedConfig.md#initialvolume)
-- [layout](VbrickPlaylistEmbedConfig.md#layout)
-- [log](VbrickPlaylistEmbedConfig.md#log)
-- [logoUrl](VbrickPlaylistEmbedConfig.md#logourl)
-- [loopVideo](VbrickPlaylistEmbedConfig.md#loopvideo)
-- [maxVideos](VbrickPlaylistEmbedConfig.md#maxvideos)
-- [noCc](VbrickPlaylistEmbedConfig.md#nocc)
-- [noCenterButtons](VbrickPlaylistEmbedConfig.md#nocenterbuttons)
-- [noChapters](VbrickPlaylistEmbedConfig.md#nochapters)
-- [noFullscreen](VbrickPlaylistEmbedConfig.md#nofullscreen)
-- [noPlayBar](VbrickPlaylistEmbedConfig.md#noplaybar)
-- [noSettings](VbrickPlaylistEmbedConfig.md#nosettings)
-- [playInLoop](VbrickPlaylistEmbedConfig.md#playinloop)
-- [popupAuth](VbrickPlaylistEmbedConfig.md#popupauth)
-- [startAt](VbrickPlaylistEmbedConfig.md#startat)
-- [timeoutSeconds](VbrickPlaylistEmbedConfig.md#timeoutseconds)
-- [token](VbrickPlaylistEmbedConfig.md#token)
-- [videosPerRow](VbrickPlaylistEmbedConfig.md#videosperrow)
-- [width](VbrickPlaylistEmbedConfig.md#width)
+- [`VbrickEmbedConfig`](VbrickEmbedConfig.md)
 
 ## Properties
 
-### accent
+### ~~accent?~~
 
-• `Optional` **accent**: `string`
+> `optional` **accent**: `string`
 
-**`Deprecated`**
+#### Deprecated
 
 - embed parameter name - alias of accentColor
 
 #### Inherited from
 
-[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[accent](VbrickVideoEmbedConfig.md#accent)
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`accent`](VbrickVideoEmbedConfig.md#accent)
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:73](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L73)
+[embed/VbrickEmbedConfig.ts:112](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L112)
 
-___
+***
 
-### accentColor
+### accentColor?
 
-• `Optional` **accentColor**: `string`
+> `optional` **accentColor**: `string`
 
 Branding Settings. Accent color to use in the player, in HTML #rrggbb format
 
 #### Inherited from
 
-[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[accentColor](VbrickVideoEmbedConfig.md#accentcolor)
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`accentColor`](VbrickVideoEmbedConfig.md#accentcolor)
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:70](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L70)
+[embed/VbrickEmbedConfig.ts:109](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L109)
 
-___
+***
 
-### autoplay
+### applyDefaultTheme?
 
-• `Optional` **autoplay**: `boolean`
+> `optional` **applyDefaultTheme**: `boolean`
+
+flag to override account theme to default theme.
 
 #### Inherited from
 
-[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[autoplay](VbrickVideoEmbedConfig.md#autoplay)
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`applyDefaultTheme`](VbrickVideoEmbedConfig.md#applydefaulttheme)
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:34](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L34)
+[embed/VbrickEmbedConfig.ts:81](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L81)
 
-___
+***
+
+### autoplay?
+
+> `optional` **autoplay**: `boolean`
+
+#### Inherited from
+
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`autoplay`](VbrickVideoEmbedConfig.md#autoplay)
+
+#### Defined in
+
+[embed/VbrickEmbedConfig.ts:35](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L35)
+
+***
 
 ### baseUrl
 
-• **baseUrl**: `string`
+> **baseUrl**: `string`
 
 URL for Rev
 
 #### Inherited from
 
-[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[baseUrl](VbrickVideoEmbedConfig.md#baseurl)
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`baseUrl`](VbrickVideoEmbedConfig.md#baseurl)
 
 #### Defined in
 
 [VbrickSDK.ts:35](https://github.com/vbrick/rev-sdk-js/blob/main/src/VbrickSDK.ts#L35)
 
-___
+***
 
-### className
+### className?
 
-• `Optional` **className**: `string`
+> `optional` **className**: `string`
 
 An optional class to be set on embeds.
 
 #### Inherited from
 
-[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[className](VbrickVideoEmbedConfig.md#classname)
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`className`](VbrickVideoEmbedConfig.md#classname)
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:12](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L12)
+[embed/VbrickEmbedConfig.ts:13](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L13)
 
-___
+***
 
-### forceClosedCaptions
+### defaultSidebar?
 
-• `Optional` **forceClosedCaptions**: `string`
+> `optional` **defaultSidebar**: [`VideoPlaybackSidebarButton`](../enumerations/VideoPlaybackSidebarButton.md)
 
-**`Deprecated`**
+provide the sidebar name to be opened by default when video loads.
+showFullPlayer value needs to be true for this to work.
+
+#### Inherited from
+
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`defaultSidebar`](VbrickVideoEmbedConfig.md#defaultsidebar)
+
+#### Defined in
+
+[embed/VbrickEmbedConfig.ts:71](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L71)
+
+***
+
+### ~~forceClosedCaptions?~~
+
+> `optional` **forceClosedCaptions**: `string`
+
+#### Deprecated
 
 - embed parameter name - alias of forcedCaptions
 
 #### Inherited from
 
-[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[forceClosedCaptions](VbrickVideoEmbedConfig.md#forceclosedcaptions)
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`forceClosedCaptions`](VbrickVideoEmbedConfig.md#forceclosedcaptions)
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:75](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L75)
+[embed/VbrickEmbedConfig.ts:114](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L114)
 
-___
+***
 
-### forcedCaptions
+### forcedCaptions?
 
-• `Optional` **forcedCaptions**: `boolean`
+> `optional` **forcedCaptions**: `boolean`
 
 Use the Close Captions embedded in video stream as Subtitles
 
 #### Inherited from
 
-[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[forcedCaptions](VbrickVideoEmbedConfig.md#forcedcaptions)
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`forcedCaptions`](VbrickVideoEmbedConfig.md#forcedcaptions)
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:53](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L53)
+[embed/VbrickEmbedConfig.ts:58](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L58)
 
-___
+***
 
-### height
+### height?
 
-• `Optional` **height**: `string`
+> `optional` **height**: `string`
 
 Optional height to be set on embeds. Default is "100%"
 
 #### Inherited from
 
-[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[height](VbrickVideoEmbedConfig.md#height)
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`height`](VbrickVideoEmbedConfig.md#height)
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:22](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L22)
+[embed/VbrickEmbedConfig.ts:23](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L23)
 
-___
+***
 
-### hideChapters
+### ~~hideAnalytics?~~
 
-• `Optional` **hideChapters**: `boolean`
+> `optional` **hideAnalytics**: `boolean`
+
+#### Deprecated
+
+- embed parameter name - alias for sidebar tab option
 
 #### Inherited from
 
-[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[hideChapters](VbrickVideoEmbedConfig.md#hidechapters)
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`hideAnalytics`](VbrickVideoEmbedConfig.md#hideanalytics)
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:48](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L48)
+[embed/VbrickEmbedConfig.ts:148](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L148)
 
-___
+***
 
-### hideFullscreen
+### hideChapterImages?
 
-• `Optional` **hideFullscreen**: `boolean`
+> `optional` **hideChapterImages**: `boolean`
 
 #### Inherited from
 
-[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[hideFullscreen](VbrickVideoEmbedConfig.md#hidefullscreen)
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`hideChapterImages`](VbrickVideoEmbedConfig.md#hidechapterimages)
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:55](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L55)
+[embed/VbrickEmbedConfig.ts:53](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L53)
 
-___
+***
 
-### hideOverlayControls
+### hideChapterMenu?
 
-• `Optional` **hideOverlayControls**: `boolean`
+> `optional` **hideChapterMenu**: `boolean`
 
 #### Inherited from
 
-[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[hideOverlayControls](VbrickVideoEmbedConfig.md#hideoverlaycontrols)
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`hideChapterMenu`](VbrickVideoEmbedConfig.md#hidechaptermenu)
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:49](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L49)
+[embed/VbrickEmbedConfig.ts:52](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L52)
 
-___
+***
 
-### hidePlayControls
+### hideChapterNavigation?
 
-• `Optional` **hidePlayControls**: `boolean`
-
-#### Inherited from
-
-[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[hidePlayControls](VbrickVideoEmbedConfig.md#hideplaycontrols)
-
-#### Defined in
-
-[embed/VbrickEmbedConfig.ts:50](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L50)
-
-___
-
-### hideSettings
-
-• `Optional` **hideSettings**: `boolean`
+> `optional` **hideChapterNavigation**: `boolean`
 
 #### Inherited from
 
-[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[hideSettings](VbrickVideoEmbedConfig.md#hidesettings)
-
-#### Defined in
-
-[embed/VbrickEmbedConfig.ts:54](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L54)
-
-___
-
-### hideSubtitles
-
-• `Optional` **hideSubtitles**: `boolean`
-
-#### Inherited from
-
-[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[hideSubtitles](VbrickVideoEmbedConfig.md#hidesubtitles)
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`hideChapterNavigation`](VbrickVideoEmbedConfig.md#hidechapternavigation)
 
 #### Defined in
 
 [embed/VbrickEmbedConfig.ts:51](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L51)
 
-___
+***
 
-### hideToolbar
+### hideChapters?
 
-• `Optional` **hideToolbar**: `boolean`
+> `optional` **hideChapters**: `boolean`
+
+#### Inherited from
+
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`hideChapters`](VbrickVideoEmbedConfig.md#hidechapters)
+
+#### Defined in
+
+[embed/VbrickEmbedConfig.ts:49](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L49)
+
+***
+
+### hideChapterSeek?
+
+> `optional` **hideChapterSeek**: `boolean`
+
+#### Inherited from
+
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`hideChapterSeek`](VbrickVideoEmbedConfig.md#hidechapterseek)
+
+#### Defined in
+
+[embed/VbrickEmbedConfig.ts:50](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L50)
+
+***
+
+### ~~hideComments?~~
+
+> `optional` **hideComments**: `boolean`
+
+#### Deprecated
+
+- embed parameter name - alias for sidebar tab option
+
+#### Inherited from
+
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`hideComments`](VbrickVideoEmbedConfig.md#hidecomments)
+
+#### Defined in
+
+[embed/VbrickEmbedConfig.ts:139](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L139)
+
+***
+
+### hideFullscreen?
+
+> `optional` **hideFullscreen**: `boolean`
+
+#### Inherited from
+
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`hideFullscreen`](VbrickVideoEmbedConfig.md#hidefullscreen)
+
+#### Defined in
+
+[embed/VbrickEmbedConfig.ts:60](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L60)
+
+***
+
+### ~~hideInfo?~~
+
+> `optional` **hideInfo**: `boolean`
+
+#### Deprecated
+
+- embed parameter name - alias for sidebar tab option
+
+#### Inherited from
+
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`hideInfo`](VbrickVideoEmbedConfig.md#hideinfo)
+
+#### Defined in
+
+[embed/VbrickEmbedConfig.ts:137](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L137)
+
+***
+
+### hideOverlayControls?
+
+> `optional` **hideOverlayControls**: `boolean`
+
+#### Inherited from
+
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`hideOverlayControls`](VbrickVideoEmbedConfig.md#hideoverlaycontrols)
+
+#### Defined in
+
+[embed/VbrickEmbedConfig.ts:54](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L54)
+
+***
+
+### hidePlayControls?
+
+> `optional` **hidePlayControls**: `boolean`
+
+#### Inherited from
+
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`hidePlayControls`](VbrickVideoEmbedConfig.md#hideplaycontrols)
+
+#### Defined in
+
+[embed/VbrickEmbedConfig.ts:55](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L55)
+
+***
+
+### ~~hidePlaylist?~~
+
+> `optional` **hidePlaylist**: `boolean`
+
+#### Deprecated
+
+- embed parameter name - alias for sidebar tab option
+
+#### Inherited from
+
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`hidePlaylist`](VbrickVideoEmbedConfig.md#hideplaylist)
+
+#### Defined in
+
+[embed/VbrickEmbedConfig.ts:145](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L145)
+
+***
+
+### ~~hidePulse?~~
+
+> `optional` **hidePulse**: `boolean`
+
+#### Deprecated
+
+- embed parameter name - alias for sidebar tab option
+
+#### Inherited from
+
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`hidePulse`](VbrickVideoEmbedConfig.md#hidepulse)
+
+#### Defined in
+
+[embed/VbrickEmbedConfig.ts:141](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L141)
+
+***
+
+### ~~hideReview?~~
+
+> `optional` **hideReview**: `boolean`
+
+#### Deprecated
+
+- embed parameter name - alias for sidebar tab option
+
+#### Inherited from
+
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`hideReview`](VbrickVideoEmbedConfig.md#hidereview)
+
+#### Defined in
+
+[embed/VbrickEmbedConfig.ts:143](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L143)
+
+***
+
+### hideSettings?
+
+> `optional` **hideSettings**: `boolean`
+
+#### Inherited from
+
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`hideSettings`](VbrickVideoEmbedConfig.md#hidesettings)
+
+#### Defined in
+
+[embed/VbrickEmbedConfig.ts:59](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L59)
+
+***
+
+### hideSubtitles?
+
+> `optional` **hideSubtitles**: `boolean`
+
+#### Inherited from
+
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`hideSubtitles`](VbrickVideoEmbedConfig.md#hidesubtitles)
+
+#### Defined in
+
+[embed/VbrickEmbedConfig.ts:56](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L56)
+
+***
+
+### hideToolbar?
+
+> `optional` **hideToolbar**: `boolean`
 
 Only applicable when layout is 'slider'
 Do not show bottom toolbar, only show the current video. This makes playlist functionality only possible through javascript API.
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:121](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L121)
+[embed/VbrickEmbedConfig.ts:180](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L180)
 
-___
+***
 
-### initialVolume
+### initialVolume?
 
-• `Optional` **initialVolume**: `number`
+> `optional` **initialVolume**: `number`
 
 set the volume to upon initial load (for muting or otherwise)
 
 #### Inherited from
 
-[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[initialVolume](VbrickVideoEmbedConfig.md#initialvolume)
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`initialVolume`](VbrickVideoEmbedConfig.md#initialvolume)
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:39](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L39)
+[embed/VbrickEmbedConfig.ts:40](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L40)
 
-___
+***
 
-### layout
+### layout?
 
-• `Optional` **layout**: ``"row"`` \| ``"grid"`` \| ``"slider"``
+> `optional` **layout**: `"row"` \| `"grid"` \| `"slider"`
 
 Select layout of playlist. Options are:
 - row (aka Filmstrip) - thumbnails of videos along bottom
@@ -305,282 +467,404 @@ Select layout of playlist. Options are:
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:116](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L116)
+[embed/VbrickEmbedConfig.ts:175](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L175)
 
-___
+***
 
-### log
+### log?
 
-• `Optional` **log**: `boolean`
+> `optional` **log**: `boolean`
 
 If true, sdk will log to console
 
 #### Inherited from
 
-[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[log](VbrickVideoEmbedConfig.md#log)
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`log`](VbrickVideoEmbedConfig.md#log)
 
 #### Defined in
 
 [VbrickSDK.ts:45](https://github.com/vbrick/rev-sdk-js/blob/main/src/VbrickSDK.ts#L45)
 
-___
+***
 
-### logoUrl
+### logoUrl?
 
-• `Optional` **logoUrl**: `string`
+> `optional` **logoUrl**: `string`
 
 Branding Settings. Logo image URL
 
 #### Inherited from
 
-[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[logoUrl](VbrickVideoEmbedConfig.md#logourl)
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`logoUrl`](VbrickVideoEmbedConfig.md#logourl)
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:65](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L65)
+[embed/VbrickEmbedConfig.ts:104](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L104)
 
-___
+***
 
-### loopVideo
+### ~~loopVideo?~~
 
-• `Optional` **loopVideo**: `string`
+> `optional` **loopVideo**: `string`
 
-**`Deprecated`**
+#### Deprecated
 
 - embed parameter name - alias of playInLoop
 
 #### Inherited from
 
-[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[loopVideo](VbrickVideoEmbedConfig.md#loopvideo)
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`loopVideo`](VbrickVideoEmbedConfig.md#loopvideo)
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:77](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L77)
+[embed/VbrickEmbedConfig.ts:116](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L116)
 
-___
+***
 
-### maxVideos
+### maxVideos?
 
-• `Optional` **maxVideos**: `number`
+> `optional` **maxVideos**: `number`
 
 Only applicable when layout is 'grid'
 Set the maximum number of videos to include in grid view
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:131](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L131)
+[embed/VbrickEmbedConfig.ts:190](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L190)
 
-___
+***
 
-### noCc
+### mobileLayoutBreakPoint?
 
-• `Optional` **noCc**: `boolean`
+> `optional` **mobileLayoutBreakPoint**: `number`
 
-**`Deprecated`**
+In case of showFullPlayer = true, user can provide a mobile breakpoint size
+so that player and sidebar will render nicely together.
+if not provided then 991 is the default value for mobile layout.
+
+#### Inherited from
+
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`mobileLayoutBreakPoint`](VbrickVideoEmbedConfig.md#mobilelayoutbreakpoint)
+
+#### Defined in
+
+[embed/VbrickEmbedConfig.ts:88](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L88)
+
+***
+
+### ~~noCc?~~
+
+> `optional` **noCc**: `boolean`
+
+#### Deprecated
 
 - embed parameter name - alias of hideSubtitles
 
 #### Inherited from
 
-[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[noCc](VbrickVideoEmbedConfig.md#nocc)
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`noCc`](VbrickVideoEmbedConfig.md#nocc)
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:79](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L79)
+[embed/VbrickEmbedConfig.ts:118](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L118)
 
-___
+***
 
-### noCenterButtons
+### ~~noCenterButtons?~~
 
-• `Optional` **noCenterButtons**: `boolean`
+> `optional` **noCenterButtons**: `boolean`
 
-**`Deprecated`**
+#### Deprecated
 
 - embed parameter name - alias of hideOverlayControls
 
 #### Inherited from
 
-[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[noCenterButtons](VbrickVideoEmbedConfig.md#nocenterbuttons)
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`noCenterButtons`](VbrickVideoEmbedConfig.md#nocenterbuttons)
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:81](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L81)
+[embed/VbrickEmbedConfig.ts:120](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L120)
 
-___
+***
 
-### noChapters
+### ~~noChapterDisplay?~~
 
-• `Optional` **noChapters**: `boolean`
+> `optional` **noChapterDisplay**: `boolean`
 
-**`Deprecated`**
+#### Deprecated
+
+- embed parameter name - alias of hideChapterImages
+
+#### Inherited from
+
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`noChapterDisplay`](VbrickVideoEmbedConfig.md#nochapterdisplay)
+
+#### Defined in
+
+[embed/VbrickEmbedConfig.ts:132](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L132)
+
+***
+
+### ~~noChapterMenu?~~
+
+> `optional` **noChapterMenu**: `boolean`
+
+#### Deprecated
+
+- embed parameter name - alias of hideChapterMenu
+
+#### Inherited from
+
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`noChapterMenu`](VbrickVideoEmbedConfig.md#nochaptermenu)
+
+#### Defined in
+
+[embed/VbrickEmbedConfig.ts:134](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L134)
+
+***
+
+### ~~noChapters?~~
+
+> `optional` **noChapters**: `boolean`
+
+#### Deprecated
 
 - embed parameter name - alias of hideChapters
 
 #### Inherited from
 
-[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[noChapters](VbrickVideoEmbedConfig.md#nochapters)
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`noChapters`](VbrickVideoEmbedConfig.md#nochapters)
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:83](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L83)
+[embed/VbrickEmbedConfig.ts:122](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L122)
 
-___
+***
 
-### noFullscreen
+### ~~noChapterSeek?~~
 
-• `Optional` **noFullscreen**: `boolean`
+> `optional` **noChapterSeek**: `boolean`
 
-**`Deprecated`**
+#### Deprecated
+
+- embed parameter name - alias of hideChapterNavigation
+
+#### Inherited from
+
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`noChapterSeek`](VbrickVideoEmbedConfig.md#nochapterseek)
+
+#### Defined in
+
+[embed/VbrickEmbedConfig.ts:130](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L130)
+
+***
+
+### ~~noFullscreen?~~
+
+> `optional` **noFullscreen**: `boolean`
+
+#### Deprecated
 
 - embed parameter name - alias of hideFullscreen
 
 #### Inherited from
 
-[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[noFullscreen](VbrickVideoEmbedConfig.md#nofullscreen)
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`noFullscreen`](VbrickVideoEmbedConfig.md#nofullscreen)
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:85](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L85)
+[embed/VbrickEmbedConfig.ts:124](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L124)
 
-___
+***
 
-### noPlayBar
+### ~~noPlayBar?~~
 
-• `Optional` **noPlayBar**: `boolean`
+> `optional` **noPlayBar**: `boolean`
 
-**`Deprecated`**
+#### Deprecated
 
 - embed parameter name - alias of hidePlayControls
 
 #### Inherited from
 
-[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[noPlayBar](VbrickVideoEmbedConfig.md#noplaybar)
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`noPlayBar`](VbrickVideoEmbedConfig.md#noplaybar)
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:87](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L87)
+[embed/VbrickEmbedConfig.ts:126](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L126)
 
-___
+***
 
-### noSettings
+### ~~noSettings?~~
 
-• `Optional` **noSettings**: `boolean`
+> `optional` **noSettings**: `boolean`
 
-**`Deprecated`**
+#### Deprecated
 
 - embed parameter name - alias of hideSettings
 
 #### Inherited from
 
-[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[noSettings](VbrickVideoEmbedConfig.md#nosettings)
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`noSettings`](VbrickVideoEmbedConfig.md#nosettings)
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:89](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L89)
+[embed/VbrickEmbedConfig.ts:128](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L128)
 
-___
+***
 
-### playInLoop
+### playInLoop?
 
-• `Optional` **playInLoop**: `boolean`
+> `optional` **playInLoop**: `boolean`
 
 #### Inherited from
 
-[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[playInLoop](VbrickVideoEmbedConfig.md#playinloop)
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`playInLoop`](VbrickVideoEmbedConfig.md#playinloop)
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:47](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L47)
+[embed/VbrickEmbedConfig.ts:48](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L48)
 
-___
+***
 
-### popupAuth
+### popupAuth?
 
-• `Optional` **popupAuth**: `boolean`
+> `optional` **popupAuth**: `boolean`
 
 For video embeds. If a user needs to log in, go through the login process in a popup window. This is the standard behavior for non-SDK Rev embeded videos
 
 #### Inherited from
 
-[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[popupAuth](VbrickVideoEmbedConfig.md#popupauth)
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`popupAuth`](VbrickVideoEmbedConfig.md#popupauth)
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:27](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L27)
+[embed/VbrickEmbedConfig.ts:28](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L28)
 
-___
+***
 
-### startAt
+### showFullPlayer?
 
-• `Optional` **startAt**: `string`
+> `optional` **showFullPlayer**: `boolean`
+
+shows video player with sidebar.
+
+#### Inherited from
+
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`showFullPlayer`](VbrickVideoEmbedConfig.md#showfullplayer)
+
+#### Defined in
+
+[embed/VbrickEmbedConfig.ts:65](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L65)
+
+***
+
+### sidebarFilterQuery?
+
+> `optional` **sidebarFilterQuery**: `string`
+
+query to filter sidebar items. esp. use in pulse sidebar.
+showFullPlayer = true and defaultSidebar should have a value to make it work.
+
+#### Inherited from
+
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`sidebarFilterQuery`](VbrickVideoEmbedConfig.md#sidebarfilterquery)
+
+#### Defined in
+
+[embed/VbrickEmbedConfig.ts:77](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L77)
+
+***
+
+### sidebarTabs?
+
+> `optional` **sidebarTabs**: `Partial`\<`Record`\<`"ai"` \| `"chapters"` \| `"comments"` \| `"info"` \| `"playlist"` \| `"pulse"` \| `"reports"` \| `"review"` \| `"share"`, `boolean`\>\>
+
+In case of showFullPlayer = true, user can customize the sidebar tabs to include
+If not provided or undefined then the default value for each tab is true
+
+#### Inherited from
+
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`sidebarTabs`](VbrickVideoEmbedConfig.md#sidebartabs)
+
+#### Defined in
+
+[embed/VbrickEmbedConfig.ts:94](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L94)
+
+***
+
+### startAt?
+
+> `optional` **startAt**: `string`
 
 Starts the video at specified timestamp. must be in the format ##m##s. For example 00m30s.
 
 #### Inherited from
 
-[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[startAt](VbrickVideoEmbedConfig.md#startat)
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`startAt`](VbrickVideoEmbedConfig.md#startat)
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:60](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L60)
+[embed/VbrickEmbedConfig.ts:99](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L99)
 
-___
+***
 
-### timeoutSeconds
+### timeoutSeconds?
 
-• `Optional` **timeoutSeconds**: `number`
+> `optional` **timeoutSeconds**: `number`
 
 seconds to wait for the embed initialization to complete. default is 30 seconds
 
 #### Inherited from
 
-[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[timeoutSeconds](VbrickVideoEmbedConfig.md#timeoutseconds)
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`timeoutSeconds`](VbrickVideoEmbedConfig.md#timeoutseconds)
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:32](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L32)
+[embed/VbrickEmbedConfig.ts:33](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L33)
 
-___
+***
 
-### token
+### token?
 
-• `Optional` **token**: [`VbrickSDKToken`](VbrickSDKToken.md)
+> `optional` **token**: [`VbrickSDKToken`](VbrickSDKToken.md)
 
 Token for authentication
 
 #### Inherited from
 
-[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[token](VbrickVideoEmbedConfig.md#token)
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`token`](VbrickVideoEmbedConfig.md#token)
 
 #### Defined in
 
 [VbrickSDK.ts:40](https://github.com/vbrick/rev-sdk-js/blob/main/src/VbrickSDK.ts#L40)
 
-___
+***
 
-### videosPerRow
+### videosPerRow?
 
-• `Optional` **videosPerRow**: `number`
+> `optional` **videosPerRow**: `number`
 
 Only applicable when layout is 'grid'
 Set the number of videos in each grid row (valid numbers are between 3 and 5)
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:126](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L126)
+[embed/VbrickEmbedConfig.ts:185](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L185)
 
-___
+***
 
-### width
+### width?
 
-• `Optional` **width**: `string`
+> `optional` **width**: `string`
 
 Optional width to be set on embeds. Default is "100%"
 
 #### Inherited from
 
-[VbrickVideoEmbedConfig](VbrickVideoEmbedConfig.md).[width](VbrickVideoEmbedConfig.md#width)
+[`VbrickVideoEmbedConfig`](VbrickVideoEmbedConfig.md).[`width`](VbrickVideoEmbedConfig.md#width)
 
 #### Defined in
 
-[embed/VbrickEmbedConfig.ts:17](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L17)
+[embed/VbrickEmbedConfig.ts:18](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L18)

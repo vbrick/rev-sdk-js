@@ -61,6 +61,7 @@ export enum VideoPlaybackSidebarButton {
 	PLAYLIST = 'playlist',
 	PULSE = 'pulse',
 	REPORTS = 'reports',
+	REVIEW = 'review',
 	SHARE = 'share'
 }
 

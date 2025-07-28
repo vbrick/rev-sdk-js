@@ -1,50 +1,28 @@
+[**@vbrick/rev-sdk**](../README.md) • **Docs**
+
+***
+
 [@vbrick/rev-sdk](../README.md) / IVbrickBaseEmbed
 
-# Interface: IVbrickBaseEmbed<TInfo, Events\>
+# Interface: IVbrickBaseEmbed\<TInfo, Events\>
 
-## Type parameters
+## Extended by
 
-| Name | Type |
-| :------ | :------ |
-| `TInfo` | extends [`IBasicInfo`](IBasicInfo.md) |
-| `Events` | extends `string` & [`TVbrickEvent`](../README.md#tvbrickevent) = keyof [`TEmbedMessages`](../README.md#tembedmessages) |
+- [`IVbrickVideoEmbed`](IVbrickVideoEmbed.md)
+- [`IVbrickWebcastEmbed`](IVbrickWebcastEmbed.md)
+- [`IVbrickPlaylistEmbed`](IVbrickPlaylistEmbed.md)
 
-## Hierarchy
+## Type Parameters
 
-- **`IVbrickBaseEmbed`**
+• **TInfo** *extends* [`IBasicInfo`](IBasicInfo.md)
 
-  ↳ [`IVbrickVideoEmbed`](IVbrickVideoEmbed.md)
-
-  ↳ [`IVbrickWebcastEmbed`](IVbrickWebcastEmbed.md)
-
-  ↳ [`IVbrickPlaylistEmbed`](IVbrickPlaylistEmbed.md)
-
-## Table of contents
-
-### Properties
-
-- [currentSubtitles](IVbrickBaseEmbed.md#currentsubtitles)
-- [info](IVbrickBaseEmbed.md#info)
-- [playerStatus](IVbrickBaseEmbed.md#playerstatus)
-- [volume](IVbrickBaseEmbed.md#volume)
-
-### Methods
-
-- [destroy](IVbrickBaseEmbed.md#destroy)
-- [initialize](IVbrickBaseEmbed.md#initialize)
-- [off](IVbrickBaseEmbed.md#off)
-- [on](IVbrickBaseEmbed.md#on)
-- [pause](IVbrickBaseEmbed.md#pause)
-- [play](IVbrickBaseEmbed.md#play)
-- [setSubtitles](IVbrickBaseEmbed.md#setsubtitles)
-- [setVolume](IVbrickBaseEmbed.md#setvolume)
-- [updateToken](IVbrickBaseEmbed.md#updatetoken)
+• **Events** *extends* `string` & [`TVbrickEvent`](../type-aliases/TVbrickEvent.md) = keyof [`TEmbedMessages`](../type-aliases/TEmbedMessages.md)
 
 ## Properties
 
 ### currentSubtitles
 
-• `Readonly` **currentSubtitles**: [`ISubtitles`](ISubtitles.md)
+> `readonly` **currentSubtitles**: [`ISubtitles`](ISubtitles.md)
 
 Whether subtitles are enabled, and selected language
 
@@ -52,11 +30,11 @@ Whether subtitles are enabled, and selected language
 
 [embed/IVbrickApi.ts:30](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L30)
 
-___
+***
 
-### info
+### info?
 
-• `Optional` `Readonly` **info**: `TInfo`
+> `readonly` `optional` **info**: `TInfo`
 
 metadata of the video/webcast
 
@@ -64,11 +42,11 @@ metadata of the video/webcast
 
 [embed/IVbrickApi.ts:35](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L35)
 
-___
+***
 
 ### playerStatus
 
-• `Readonly` **playerStatus**: [`PlayerStatus`](../enums/PlayerStatus.md)
+> `readonly` **playerStatus**: [`PlayerStatus`](../enumerations/PlayerStatus.md)
 
 video playing, buffering, etc
 
@@ -76,11 +54,11 @@ video playing, buffering, etc
 
 [embed/IVbrickApi.ts:20](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L20)
 
-___
+***
 
 ### volume
 
-• `Readonly` **volume**: `number`
+> `readonly` **volume**: `number`
 
 Player Volume. 0-1
 
@@ -90,9 +68,9 @@ Player Volume. 0-1
 
 ## Methods
 
-### destroy
+### destroy()
 
-▸ **destroy**(): `void`
+> **destroy**(): `void`
 
 Removes the embedded content from the DOM.
 
@@ -104,43 +82,40 @@ Removes the embedded content from the DOM.
 
 [embed/IVbrickApi.ts:81](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L81)
 
-___
+***
 
-### initialize
+### initialize()
 
-▸ **initialize**(): `Promise`<`void`\>
+> **initialize**(): `Promise`\<`void`\>
 
 returns a promise once the player has completed authentication and load.
 Will reject with an error if authentication/load failed
 
 #### Returns
 
-`Promise`<`void`\>
+`Promise`\<`void`\>
 
 #### Defined in
 
 [embed/IVbrickApi.ts:41](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L41)
 
-___
+***
 
-### off
+### off()
 
-▸ **off**<`T`\>(`event`, `listener`): `void`
+> **off**\<`T`\>(`event`, `listener`): `void`
 
 Removes an event listener
 
-#### Type parameters
+#### Type Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends ``"load"`` \| ``"authChanged"`` \| ``"error"`` \| ``"videoLoaded"`` \| ``"playerStatusChanged"`` \| ``"volumeChanged"`` \| ``"subtitlesChanged"`` \| ``"playbackSpeedChanged"`` \| ``"seeked"`` \| ``"currentTime"`` \| ``"webcastLoaded"`` \| ``"webcastStarted"`` \| ``"broadcastStarted"`` \| ``"broadcastStopped"`` \| ``"webcastEnded"`` \| ``"layoutChanged"`` \| ``"commentAdded"`` \| ``"slideChanged"`` \| ``"pollOpened"`` \| ``"pollClosed"`` \| ``"pollPublished"`` \| ``"pollUnpublished"`` \| ``"playlistLoaded"`` \| ``"playlistItem"`` |
+• **T** *extends* `"load"` \| `"authChanged"` \| `"error"` \| `"videoLoaded"` \| `"playerStatusChanged"` \| `"volumeChanged"` \| `"subtitlesChanged"` \| `"playbackSpeedChanged"` \| `"seeked"` \| `"currentTime"` \| `"webcastLoaded"` \| `"webcastStarted"` \| `"broadcastStarted"` \| `"broadcastStopped"` \| `"webcastEnded"` \| `"layoutChanged"` \| `"commentAdded"` \| `"slideChanged"` \| `"pollOpened"` \| `"pollClosed"` \| `"pollPublished"` \| `"pollUnpublished"` \| `"playlistLoaded"` \| `"playlistItem"`
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `event` | `T` |
-| `listener` | [`IListener`](../README.md#ilistener)<`T`\> |
+• **event**: `T`
+
+• **listener**: [`IListener`](../type-aliases/IListener.md)\<`T`\>
 
 #### Returns
 
@@ -150,26 +125,27 @@ Removes an event listener
 
 [embed/IVbrickApi.ts:76](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L76)
 
-___
+***
 
-### on
+### on()
 
-▸ **on**<`T`\>(`event`, `listener`): `void`
+> **on**\<`T`\>(`event`, `listener`): `void`
 
 Register an event handler. Events are fired at different lifecycle stages of the webcast
 
-#### Type parameters
+#### Type Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends ``"load"`` \| ``"authChanged"`` \| ``"error"`` \| ``"videoLoaded"`` \| ``"playerStatusChanged"`` \| ``"volumeChanged"`` \| ``"subtitlesChanged"`` \| ``"playbackSpeedChanged"`` \| ``"seeked"`` \| ``"currentTime"`` \| ``"webcastLoaded"`` \| ``"webcastStarted"`` \| ``"broadcastStarted"`` \| ``"broadcastStopped"`` \| ``"webcastEnded"`` \| ``"layoutChanged"`` \| ``"commentAdded"`` \| ``"slideChanged"`` \| ``"pollOpened"`` \| ``"pollClosed"`` \| ``"pollPublished"`` \| ``"pollUnpublished"`` \| ``"playlistLoaded"`` \| ``"playlistItem"`` |
+• **T** *extends* `"load"` \| `"authChanged"` \| `"error"` \| `"videoLoaded"` \| `"playerStatusChanged"` \| `"volumeChanged"` \| `"subtitlesChanged"` \| `"playbackSpeedChanged"` \| `"seeked"` \| `"currentTime"` \| `"webcastLoaded"` \| `"webcastStarted"` \| `"broadcastStarted"` \| `"broadcastStopped"` \| `"webcastEnded"` \| `"layoutChanged"` \| `"commentAdded"` \| `"slideChanged"` \| `"pollOpened"` \| `"pollClosed"` \| `"pollPublished"` \| `"pollUnpublished"` \| `"playlistLoaded"` \| `"playlistItem"`
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `event` | `T` | name of event |
-| `listener` | [`IListener`](../README.md#ilistener)<`T`\> | callback when event is fired. Keep a reference if you intend to call [['off']](IVbrickBaseEmbed.md) later |
+• **event**: `T`
+
+name of event
+
+• **listener**: [`IListener`](../type-aliases/IListener.md)\<`T`\>
+
+callback when event is fired. Keep a reference if you intend to call [['off']](IVbrickBaseEmbed.md) later
 
 #### Returns
 
@@ -179,11 +155,11 @@ Register an event handler. Events are fired at different lifecycle stages of the
 
 [embed/IVbrickApi.ts:71](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L71)
 
-___
+***
 
-### pause
+### pause()
 
-▸ **pause**(): `void`
+> **pause**(): `void`
 
 Pauses the video if it is playing.
 
@@ -195,11 +171,11 @@ Pauses the video if it is playing.
 
 [embed/IVbrickApi.ts:51](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L51)
 
-___
+***
 
-### play
+### play()
 
-▸ **play**(): `void`
+> **play**(): `void`
 
 Plays the video if it is paused.
 
@@ -211,20 +187,20 @@ Plays the video if it is paused.
 
 [embed/IVbrickApi.ts:46](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L46)
 
-___
+***
 
-### setSubtitles
+### setSubtitles()
 
-▸ **setSubtitles**(`subtitles`): `void`
+> **setSubtitles**(`subtitles`): `void`
 
 Indicates whether the webcast is started, or broadcasting.
 update the current subtitles settings
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `subtitles` | [`ISubtitles`](ISubtitles.md) | enable/disable subtitles and set language (leave language blank to use closed captions encoded into video stream) |
+• **subtitles**: [`ISubtitles`](ISubtitles.md)
+
+enable/disable subtitles and set language (leave language blank to use closed captions encoded into video stream)
 
 #### Returns
 
@@ -234,19 +210,19 @@ update the current subtitles settings
 
 [embed/IVbrickApi.ts:64](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L64)
 
-___
+***
 
-### setVolume
+### setVolume()
 
-▸ **setVolume**(`volume`): `void`
+> **setVolume**(`volume`): `void`
 
 Sets player volume
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `volume` | `number` | number 0-1 |
+• **volume**: `number`
+
+number 0-1
 
 #### Returns
 
@@ -256,23 +232,23 @@ Sets player volume
 
 [embed/IVbrickApi.ts:57](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L57)
 
-___
+***
 
-### updateToken
+### updateToken()
 
-▸ **updateToken**(`token`): `Promise`<`void`\>
+> **updateToken**(`token`): `Promise`\<`void`\>
 
 Allows updating the access token if the old one has expired.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `token` | [`VbrickSDKToken`](VbrickSDKToken.md) | New token |
+• **token**: [`VbrickSDKToken`](VbrickSDKToken.md)
+
+New token
 
 #### Returns
 
-`Promise`<`void`\>
+`Promise`\<`void`\>
 
 #### Defined in
 

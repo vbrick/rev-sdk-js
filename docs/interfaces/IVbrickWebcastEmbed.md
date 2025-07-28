@@ -1,105 +1,84 @@
+[**@vbrick/rev-sdk**](../README.md) • **Docs**
+
+***
+
 [@vbrick/rev-sdk](../README.md) / IVbrickWebcastEmbed
 
 # Interface: IVbrickWebcastEmbed
 
-## Hierarchy
+## Extends
 
-- [`IVbrickBaseEmbed`](IVbrickBaseEmbed.md)<[`IWebcastInfo`](IWebcastInfo.md), keyof [`TEmbedMessages`](../README.md#tembedmessages) & [`TWebcastMessages`](../README.md#twebcastmessages)\>
-
-  ↳ **`IVbrickWebcastEmbed`**
-
-## Table of contents
-
-### Properties
-
-- [currentSubtitles](IVbrickWebcastEmbed.md#currentsubtitles)
-- [info](IVbrickWebcastEmbed.md#info)
-- [playerStatus](IVbrickWebcastEmbed.md#playerstatus)
-- [volume](IVbrickWebcastEmbed.md#volume)
-- [webcastStatus](IVbrickWebcastEmbed.md#webcaststatus)
-
-### Methods
-
-- [destroy](IVbrickWebcastEmbed.md#destroy)
-- [initialize](IVbrickWebcastEmbed.md#initialize)
-- [off](IVbrickWebcastEmbed.md#off)
-- [on](IVbrickWebcastEmbed.md#on)
-- [pause](IVbrickWebcastEmbed.md#pause)
-- [play](IVbrickWebcastEmbed.md#play)
-- [setSubtitles](IVbrickWebcastEmbed.md#setsubtitles)
-- [setVolume](IVbrickWebcastEmbed.md#setvolume)
-- [updateLayout](IVbrickWebcastEmbed.md#updatelayout)
-- [updateToken](IVbrickWebcastEmbed.md#updatetoken)
+- [`IVbrickBaseEmbed`](IVbrickBaseEmbed.md)\<[`IWebcastInfo`](IWebcastInfo.md), keyof [`TEmbedMessages`](../type-aliases/TEmbedMessages.md) & [`TWebcastMessages`](../type-aliases/TWebcastMessages.md)\>
 
 ## Properties
 
 ### currentSubtitles
 
-• `Readonly` **currentSubtitles**: [`ISubtitles`](ISubtitles.md)
+> `readonly` **currentSubtitles**: [`ISubtitles`](ISubtitles.md)
 
 Whether subtitles are enabled, and selected language
 
 #### Inherited from
 
-[IVbrickBaseEmbed](IVbrickBaseEmbed.md).[currentSubtitles](IVbrickBaseEmbed.md#currentsubtitles)
+[`IVbrickBaseEmbed`](IVbrickBaseEmbed.md).[`currentSubtitles`](IVbrickBaseEmbed.md#currentsubtitles)
 
 #### Defined in
 
 [embed/IVbrickApi.ts:30](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L30)
 
-___
+***
 
-### info
+### info?
 
-• `Optional` `Readonly` **info**: [`IWebcastInfo`](IWebcastInfo.md)
+> `readonly` `optional` **info**: [`IWebcastInfo`](IWebcastInfo.md)
 
 metadata of the video/webcast
 
 #### Inherited from
 
-[IVbrickBaseEmbed](IVbrickBaseEmbed.md).[info](IVbrickBaseEmbed.md#info)
+[`IVbrickBaseEmbed`](IVbrickBaseEmbed.md).[`info`](IVbrickBaseEmbed.md#info)
 
 #### Defined in
 
 [embed/IVbrickApi.ts:35](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L35)
 
-___
+***
 
 ### playerStatus
 
-• `Readonly` **playerStatus**: [`PlayerStatus`](../enums/PlayerStatus.md)
+> `readonly` **playerStatus**: [`PlayerStatus`](../enumerations/PlayerStatus.md)
 
 video playing, buffering, etc
 
 #### Inherited from
 
-[IVbrickBaseEmbed](IVbrickBaseEmbed.md).[playerStatus](IVbrickBaseEmbed.md#playerstatus)
+[`IVbrickBaseEmbed`](IVbrickBaseEmbed.md).[`playerStatus`](IVbrickBaseEmbed.md#playerstatus)
 
 #### Defined in
 
 [embed/IVbrickApi.ts:20](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L20)
 
-___
+***
 
 ### volume
 
-• `Readonly` **volume**: `number`
+> `readonly` **volume**: `number`
 
 Player Volume. 0-1
 
 #### Inherited from
 
-[IVbrickBaseEmbed](IVbrickBaseEmbed.md).[volume](IVbrickBaseEmbed.md#volume)
+[`IVbrickBaseEmbed`](IVbrickBaseEmbed.md).[`volume`](IVbrickBaseEmbed.md#volume)
 
 #### Defined in
 
 [embed/IVbrickApi.ts:25](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L25)
 
-___
+***
 
 ### webcastStatus
 
-• `Readonly` **webcastStatus**: [`WebcastStatus`](../enums/WebcastStatus.md)
+> `readonly` **webcastStatus**: [`WebcastStatus`](../enumerations/WebcastStatus.md)
 
 Indicates whether the webcast is started, or broadcasting.
 
@@ -109,9 +88,9 @@ Indicates whether the webcast is started, or broadcasting.
 
 ## Methods
 
-### destroy
+### destroy()
 
-▸ **destroy**(): `void`
+> **destroy**(): `void`
 
 Removes the embedded content from the DOM.
 
@@ -121,53 +100,50 @@ Removes the embedded content from the DOM.
 
 #### Inherited from
 
-[IVbrickBaseEmbed](IVbrickBaseEmbed.md).[destroy](IVbrickBaseEmbed.md#destroy)
+[`IVbrickBaseEmbed`](IVbrickBaseEmbed.md).[`destroy`](IVbrickBaseEmbed.md#destroy)
 
 #### Defined in
 
 [embed/IVbrickApi.ts:81](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L81)
 
-___
+***
 
-### initialize
+### initialize()
 
-▸ **initialize**(): `Promise`<`void`\>
+> **initialize**(): `Promise`\<`void`\>
 
 returns a promise once the player has completed authentication and load.
 Will reject with an error if authentication/load failed
 
 #### Returns
 
-`Promise`<`void`\>
+`Promise`\<`void`\>
 
 #### Inherited from
 
-[IVbrickBaseEmbed](IVbrickBaseEmbed.md).[initialize](IVbrickBaseEmbed.md#initialize)
+[`IVbrickBaseEmbed`](IVbrickBaseEmbed.md).[`initialize`](IVbrickBaseEmbed.md#initialize)
 
 #### Defined in
 
 [embed/IVbrickApi.ts:41](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L41)
 
-___
+***
 
-### off
+### off()
 
-▸ **off**<`T`\>(`event`, `listener`): `void`
+> **off**\<`T`\>(`event`, `listener`): `void`
 
 Removes an event listener
 
-#### Type parameters
+#### Type Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends keyof [`TEmbedMessages`](../README.md#tembedmessages) \| keyof [`TWebcastMessages`](../README.md#twebcastmessages) |
+• **T** *extends* keyof TEmbedMessages \| keyof TWebcastMessages
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `event` | `T` |
-| `listener` | [`IListener`](../README.md#ilistener)<`T`\> |
+• **event**: `T`
+
+• **listener**: [`IListener`](../type-aliases/IListener.md)\<`T`\>
 
 #### Returns
 
@@ -175,32 +151,33 @@ Removes an event listener
 
 #### Inherited from
 
-[IVbrickBaseEmbed](IVbrickBaseEmbed.md).[off](IVbrickBaseEmbed.md#off)
+[`IVbrickBaseEmbed`](IVbrickBaseEmbed.md).[`off`](IVbrickBaseEmbed.md#off)
 
 #### Defined in
 
 [embed/IVbrickApi.ts:76](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L76)
 
-___
+***
 
-### on
+### on()
 
-▸ **on**<`T`\>(`event`, `listener`): `void`
+> **on**\<`T`\>(`event`, `listener`): `void`
 
 Register an event handler. Events are fired at different lifecycle stages of the webcast
 
-#### Type parameters
+#### Type Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends keyof [`TEmbedMessages`](../README.md#tembedmessages) \| keyof [`TWebcastMessages`](../README.md#twebcastmessages) |
+• **T** *extends* keyof TEmbedMessages \| keyof TWebcastMessages
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `event` | `T` | name of event |
-| `listener` | [`IListener`](../README.md#ilistener)<`T`\> | callback when event is fired. Keep a reference if you intend to call [['off']](IVbrickBaseEmbed.md) later |
+• **event**: `T`
+
+name of event
+
+• **listener**: [`IListener`](../type-aliases/IListener.md)\<`T`\>
+
+callback when event is fired. Keep a reference if you intend to call [['off']](IVbrickBaseEmbed.md) later
 
 #### Returns
 
@@ -208,17 +185,17 @@ Register an event handler. Events are fired at different lifecycle stages of the
 
 #### Inherited from
 
-[IVbrickBaseEmbed](IVbrickBaseEmbed.md).[on](IVbrickBaseEmbed.md#on)
+[`IVbrickBaseEmbed`](IVbrickBaseEmbed.md).[`on`](IVbrickBaseEmbed.md#on)
 
 #### Defined in
 
 [embed/IVbrickApi.ts:71](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L71)
 
-___
+***
 
-### pause
+### pause()
 
-▸ **pause**(): `void`
+> **pause**(): `void`
 
 Pauses the video if it is playing.
 
@@ -228,17 +205,17 @@ Pauses the video if it is playing.
 
 #### Inherited from
 
-[IVbrickBaseEmbed](IVbrickBaseEmbed.md).[pause](IVbrickBaseEmbed.md#pause)
+[`IVbrickBaseEmbed`](IVbrickBaseEmbed.md).[`pause`](IVbrickBaseEmbed.md#pause)
 
 #### Defined in
 
 [embed/IVbrickApi.ts:51](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L51)
 
-___
+***
 
-### play
+### play()
 
-▸ **play**(): `void`
+> **play**(): `void`
 
 Plays the video if it is paused.
 
@@ -248,26 +225,26 @@ Plays the video if it is paused.
 
 #### Inherited from
 
-[IVbrickBaseEmbed](IVbrickBaseEmbed.md).[play](IVbrickBaseEmbed.md#play)
+[`IVbrickBaseEmbed`](IVbrickBaseEmbed.md).[`play`](IVbrickBaseEmbed.md#play)
 
 #### Defined in
 
 [embed/IVbrickApi.ts:46](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L46)
 
-___
+***
 
-### setSubtitles
+### setSubtitles()
 
-▸ **setSubtitles**(`subtitles`): `void`
+> **setSubtitles**(`subtitles`): `void`
 
 Indicates whether the webcast is started, or broadcasting.
 update the current subtitles settings
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `subtitles` | [`ISubtitles`](ISubtitles.md) | enable/disable subtitles and set language (leave language blank to use closed captions encoded into video stream) |
+• **subtitles**: [`ISubtitles`](ISubtitles.md)
+
+enable/disable subtitles and set language (leave language blank to use closed captions encoded into video stream)
 
 #### Returns
 
@@ -275,25 +252,25 @@ update the current subtitles settings
 
 #### Inherited from
 
-[IVbrickBaseEmbed](IVbrickBaseEmbed.md).[setSubtitles](IVbrickBaseEmbed.md#setsubtitles)
+[`IVbrickBaseEmbed`](IVbrickBaseEmbed.md).[`setSubtitles`](IVbrickBaseEmbed.md#setsubtitles)
 
 #### Defined in
 
 [embed/IVbrickApi.ts:64](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L64)
 
-___
+***
 
-### setVolume
+### setVolume()
 
-▸ **setVolume**(`volume`): `void`
+> **setVolume**(`volume`): `void`
 
 Sets player volume
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `volume` | `number` | number 0-1 |
+• **volume**: `number`
+
+number 0-1
 
 #### Returns
 
@@ -301,26 +278,26 @@ Sets player volume
 
 #### Inherited from
 
-[IVbrickBaseEmbed](IVbrickBaseEmbed.md).[setVolume](IVbrickBaseEmbed.md#setvolume)
+[`IVbrickBaseEmbed`](IVbrickBaseEmbed.md).[`setVolume`](IVbrickBaseEmbed.md#setvolume)
 
 #### Defined in
 
 [embed/IVbrickApi.ts:57](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L57)
 
-___
+***
 
-### updateLayout
+### updateLayout()
 
-▸ **updateLayout**(`layout`): `void`
+> **updateLayout**(`layout`): `void`
 
 Change the visibility of video/slides. Only applicable when the "showFullWebcast" config
 flag is enabled and the event includes slides
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `layout` | [`IWebcastLayout`](IWebcastLayout.md) | set if video/slides are displayed |
+• **layout**: [`IWebcastLayout`](IWebcastLayout.md)
+
+set if video/slides are displayed
 
 #### Returns
 
@@ -330,27 +307,27 @@ flag is enabled and the event includes slides
 
 [embed/IVbrickApi.ts:137](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickApi.ts#L137)
 
-___
+***
 
-### updateToken
+### updateToken()
 
-▸ **updateToken**(`token`): `Promise`<`void`\>
+> **updateToken**(`token`): `Promise`\<`void`\>
 
 Allows updating the access token if the old one has expired.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `token` | [`VbrickSDKToken`](VbrickSDKToken.md) | New token |
+• **token**: [`VbrickSDKToken`](VbrickSDKToken.md)
+
+New token
 
 #### Returns
 
-`Promise`<`void`\>
+`Promise`\<`void`\>
 
 #### Inherited from
 
-[IVbrickBaseEmbed](IVbrickBaseEmbed.md).[updateToken](IVbrickBaseEmbed.md#updatetoken)
+[`IVbrickBaseEmbed`](IVbrickBaseEmbed.md).[`updateToken`](IVbrickBaseEmbed.md#updatetoken)
 
 #### Defined in
 

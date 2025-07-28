@@ -4,7 +4,7 @@ import { getLogger, ILogger } from '../Log';
 import { IVbrickBaseEmbed, PlayerStatus } from './IVbrickApi';
 import { TokenType, VbrickSDKToken } from '../VbrickSDK';
 import { TVbrickEvent, IListener } from './IVbrickEvents';
-import { IBasicInfo, ISubtitles } from './IVbrickTypes';
+import { IBasicInfo, ISubtitles, VideoPlaybackSidebarButton } from './IVbrickTypes';
 import { authenticateAccessToken, authenticateJWT } from './auth';
 
 /**
@@ -26,7 +26,7 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 	public get volume(): number {
 		return this._volume;
 	}
-	private _volume: number;
+	private _volume: number = 1;
 
 	/**
 	 * Whether subtitles are enabled, and selected language
@@ -154,6 +154,8 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 			this._currentSubtitles = subtitles;
 		});
 
+		this.eventBus.on('volumeChanged', e => this._volume = e);
+
 		// allow setting volume on player ready
 		if (this.config.initialVolume != undefined && isFinite(this.config.initialVolume)) {
 			const volumeCallback: IListener<'playerStatusChanged'> = (evt) => {
@@ -240,7 +242,20 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 		noFullscreen: config.hideFullscreen ?? config.noFullscreen,
 		noPlayBar: config.hidePlayControls ?? config.noPlayBar,
 		noSettings: config.hideSettings ?? config.noSettings,
+		noChapterSeek: config.hideChapterNavigation ?? config.noChapterSeek,
+		noChapterDisplay: config.hideChapterImages ?? config.noChapterDisplay,
+		noChapterMenu: config.hideChapterMenu ?? config.noChapterMenu,
 		sidebarFilterQuery: config.sidebarFilterQuery,
-		startAt: config.startAt
+		startAt: config.startAt,
+		// all sidebar tabs are by default true, so only include if explicitly false
+		...config.showFullPlayer && {
+			hideInfo: config.sidebarTabs[VideoPlaybackSidebarButton.INFO] === false || config.hideInfo === true,
+			hideComments: config.sidebarTabs[VideoPlaybackSidebarButton.COMMENTS] === false || config.hideComments === true,
+			hidePulse: config.sidebarTabs[VideoPlaybackSidebarButton.PULSE] === false || config.hidePulse === true,
+			hideReview: config.sidebarTabs[VideoPlaybackSidebarButton.REVIEW] === false || config.hideReview === true,
+			hidePlaylist: config.sidebarTabs[VideoPlaybackSidebarButton.PLAYLIST] === false || config.hidePlaylist === true,
+			hideChapters: config.sidebarTabs[VideoPlaybackSidebarButton.CHAPTERS] === false || config.hideChapters === true,
+			hideAnalytics: config.sidebarTabs[VideoPlaybackSidebarButton.REPORTS] === false || config.hideAnalytics === true,
+		}
 	};
 }

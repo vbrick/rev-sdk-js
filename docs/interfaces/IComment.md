@@ -1,65 +1,59 @@
+[**@vbrick/rev-sdk**](../README.md) • **Docs**
+
+***
+
 [@vbrick/rev-sdk](../README.md) / IComment
 
 # Interface: IComment
 
 Fired when a new comment has been added to Chat
 
-## Table of contents
-
-### Properties
-
-- [comment](IComment.md#comment)
-- [date](IComment.md#date)
-- [firstname](IComment.md#firstname)
-- [lastname](IComment.md#lastname)
-- [userId](IComment.md#userid)
-
 ## Properties
 
 ### comment
 
-• **comment**: `string`
+> **comment**: `string`
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:81](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickTypes.ts#L81)
+[embed/IVbrickTypes.ts:98](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickTypes.ts#L98)
 
-___
+***
 
 ### date
 
-• **date**: `string`
+> **date**: `string`
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:82](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickTypes.ts#L82)
+[embed/IVbrickTypes.ts:99](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickTypes.ts#L99)
 
-___
+***
 
-### firstname
+### firstname?
 
-• `Optional` **firstname**: `string`
-
-#### Defined in
-
-[embed/IVbrickTypes.ts:84](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickTypes.ts#L84)
-
-___
-
-### lastname
-
-• `Optional` **lastname**: `string`
+> `optional` **firstname**: `string`
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:85](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickTypes.ts#L85)
+[embed/IVbrickTypes.ts:101](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickTypes.ts#L101)
 
-___
+***
+
+### lastname?
+
+> `optional` **lastname**: `string`
+
+#### Defined in
+
+[embed/IVbrickTypes.ts:102](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickTypes.ts#L102)
+
+***
 
 ### userId
 
-• **userId**: `string`
+> **userId**: `string`
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:83](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickTypes.ts#L83)
+[embed/IVbrickTypes.ts:100](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickTypes.ts#L100)

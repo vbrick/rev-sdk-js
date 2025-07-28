@@ -1,32 +1,29 @@
+[**@vbrick/rev-sdk**](../README.md) • **Docs**
+
+***
+
 [@vbrick/rev-sdk](../README.md) / IWebcastLayout
 
 # Interface: IWebcastLayout
 
 Details of if Video and/or Slides are currently displayed
 
-## Table of contents
-
-### Properties
-
-- [presentation](IWebcastLayout.md#presentation)
-- [video](IWebcastLayout.md#video)
-
 ## Properties
 
-### presentation
+### presentation?
 
-• `Optional` **presentation**: `boolean`
-
-#### Defined in
-
-[embed/IVbrickTypes.ts:126](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickTypes.ts#L126)
-
-___
-
-### video
-
-• `Optional` **video**: `boolean`
+> `optional` **presentation**: `boolean`
 
 #### Defined in
 
-[embed/IVbrickTypes.ts:125](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickTypes.ts#L125)
+[embed/IVbrickTypes.ts:143](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickTypes.ts#L143)
+
+***
+
+### video?
+
+> `optional` **video**: `boolean`
+
+#### Defined in
+
+[embed/IVbrickTypes.ts:142](https://github.com/vbrick/rev-sdk-js/blob/main/src/embed/IVbrickTypes.ts#L142)

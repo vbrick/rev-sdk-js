@@ -1,20 +1,16 @@
+[**@vbrick/rev-sdk**](../README.md) • **Docs**
+
+***
+
 [@vbrick/rev-sdk](../README.md) / VbrickSDKToken
 
 # Interface: VbrickSDKToken
-
-## Table of contents
-
-### Properties
-
-- [issuer](VbrickSDKToken.md#issuer)
-- [type](VbrickSDKToken.md#type)
-- [value](VbrickSDKToken.md#value)
 
 ## Properties
 
 ### issuer
 
-• **issuer**: `string`
+> **issuer**: `string`
 
 The issuer for the token
 
@@ -22,21 +18,21 @@ The issuer for the token
 
 [VbrickSDK.ts:25](https://github.com/vbrick/rev-sdk-js/blob/main/src/VbrickSDK.ts#L25)
 
-___
+***
 
 ### type
 
-• **type**: [`TokenType`](../enums/TokenType.md)
+> **type**: [`TokenType`](../enumerations/TokenType.md)
 
 #### Defined in
 
 [VbrickSDK.ts:15](https://github.com/vbrick/rev-sdk-js/blob/main/src/VbrickSDK.ts#L15)
 
-___
+***
 
 ### value
 
-• **value**: `string`
+> **value**: `string`
 
 String containing the token value
 
