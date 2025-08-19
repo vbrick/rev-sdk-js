@@ -168,7 +168,7 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 			this.eventBus.on('playerStatusChanged', volumeCallback);
 		}
 	}
-	protected abstract getEmbedUrl(id: string, config: VbrickEmbedConfig);
+	protected abstract getEmbedUrl(id: string, config: VbrickEmbedConfig): string;
 
 	public on<T extends TVbrickEvent>(event: T, listener: IListener<T>): void {
 		//ensure internal updates take effect before calling client handlers
