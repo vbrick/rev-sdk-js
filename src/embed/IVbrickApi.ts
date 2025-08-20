@@ -11,7 +11,10 @@ export type { TVbrickEvent, IListener, TEmbedMessages, TPlayerMessages, TWebcast
 export * from './IVbrickTypes';
 
 /**
+ * This is the core player class returned by `embedVideo`, `embedWebcast` and `embedPlaylist`. 
  * @public
+ * @group Player
+ * @category Base
  */
 export interface IVbrickBaseEmbed<TInfo extends IBasicInfo, Events extends string & TVbrickEvent = keyof TEmbedMessages> {
 	/**
@@ -89,6 +92,8 @@ export interface IVbrickBaseEmbed<TInfo extends IBasicInfo, Events extends strin
 
 /**
  * @public
+ * @group Player
+ * @category VOD
  */
 export interface IVbrickVideoEmbed extends IVbrickBaseEmbed<IVideoInfo, keyof (TEmbedMessages & TPlayerMessages)> {
 	/**
@@ -127,6 +132,8 @@ export interface IVbrickVideoEmbed extends IVbrickBaseEmbed<IVideoInfo, keyof (T
 
 /**
  * @public
+ * @group Player
+ * @category Webcast
  */
 export interface IVbrickWebcastEmbed extends IVbrickBaseEmbed<IWebcastInfo, keyof (TEmbedMessages & TWebcastMessages)> {
 	/**
@@ -142,6 +149,11 @@ export interface IVbrickWebcastEmbed extends IVbrickBaseEmbed<IWebcastInfo, keyo
 	updateLayout(layout: IWebcastLayout): void;
 }
 
+/**
+ * @public
+ * @group Player
+ * @category Playlist
+ */
 export interface IVbrickPlaylistEmbed extends IVbrickBaseEmbed<IVideoInfo, keyof (TEmbedMessages & TPlayerMessages & TPlaylistMessages)> {
 	readonly playlist: IPlaylistInfo;
 	/**

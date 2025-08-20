@@ -14,6 +14,8 @@ export * from './VbrickSDK';
 
 /**
  * @public
+ * @group Core API
+ * @category Core
  */
 const revSDK = {
     embedWebcast,

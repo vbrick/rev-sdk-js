@@ -5,6 +5,8 @@ import {PlaylistLayout} from './PlaylistLayout';
 /**
  * Options when creating the iframe embed for a video/webcast
  * @public
+ * @group Configuration
+ * @category Base
  */
 export interface VbrickBaseEmbedConfig extends VbrickSDKConfig {
 	/**
@@ -43,6 +45,8 @@ export interface VbrickBaseEmbedConfig extends VbrickSDKConfig {
 /**
  * Options available when embedding a VOD/video
  * @public
+ * @group Configuration
+ * @category VOD
  */
 export interface VbrickVideoEmbedConfig extends VbrickBaseEmbedConfig {
 	playInLoop?: boolean;
@@ -150,6 +154,8 @@ export interface VbrickVideoEmbedConfig extends VbrickBaseEmbedConfig {
 /**
  * Options available when embedding a webcast
  * @public
+ * @group Configuration
+ * @category Webcast
  */
 export interface VbrickWebcastEmbedConfig extends VbrickBaseEmbedConfig {
 	/**
@@ -163,6 +169,8 @@ export interface VbrickWebcastEmbedConfig extends VbrickBaseEmbedConfig {
 
 /**
  * @public
+ * @group Configuration
+ * @category Playlist
  */
 export interface VbrickPlaylistEmbedConfig extends VbrickVideoEmbedConfig {
 	/**
@@ -193,5 +201,7 @@ export interface VbrickPlaylistEmbedConfig extends VbrickVideoEmbedConfig {
 /**
  * Options available when embedding a VOD/video or webcast
  * @public
+ * @group Configuration
+ * @category Base
  */
 export interface VbrickEmbedConfig extends VbrickVideoEmbedConfig, VbrickWebcastEmbedConfig, VbrickPlaylistEmbedConfig {}
