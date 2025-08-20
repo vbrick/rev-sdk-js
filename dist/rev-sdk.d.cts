@@ -1,5 +1,7 @@
 /**
  * @public
+ * @group Enums
+ * @category Webcast
  */
 declare enum WebcastStatus {
     /**
@@ -30,6 +32,8 @@ declare enum WebcastStatus {
 
 /**
  * @public
+ * @group Enums
+ * @category Base
  */
 declare enum PlayerStatus {
     Initializing = "Initializing",
@@ -43,6 +47,8 @@ declare enum PlayerStatus {
 
 /**
  * @public
+ * @group Enums
+ * @category Base
  */
 declare enum TokenType {
     JWT = "JWT",
@@ -51,6 +57,8 @@ declare enum TokenType {
 }
 /**
  * @public
+ * @group Configuration
+ * @category Base
  */
 interface VbrickSDKToken {
     type: TokenType;
@@ -65,6 +73,8 @@ interface VbrickSDKToken {
 }
 /**
  * @public
+ * @group Configuration
+ * @category Base
  */
 interface VbrickSDKConfig {
     /**
@@ -84,6 +94,8 @@ interface VbrickSDKConfig {
 /**
  * The current subtitles language and if enabled or not
  * @public
+ * @group Metadata
+ * @category Base
  */
 interface ISubtitles {
     language?: string;
@@ -92,6 +104,8 @@ interface ISubtitles {
 /**
  * Basic metadata shared between VOD and Webcast Embeds
  * @public
+ * @group Metadata
+ * @category Base
  */
 interface IBasicInfo {
     title: string;
@@ -103,6 +117,8 @@ interface IBasicInfo {
 /**
  * Video Metadata
  * @public
+ * @group Metadata
+ * @category VOD
  */
 interface IVideoInfo extends IBasicInfo {
     videoId: string;
@@ -132,6 +148,8 @@ interface IVideoInfo extends IBasicInfo {
 /**
  * video sidebar button
  * @public
+ * @group Enums
+ * @category VOD
  */
 declare enum VideoPlaybackSidebarButton {
     AI = "ai",
@@ -147,6 +165,8 @@ declare enum VideoPlaybackSidebarButton {
 /**
  * Event indicating the current webcast status
  * @public
+ * @group Events
+ * @category Webcast
  */
 type IWebcastStatusMessage<T extends WebcastStatus = WebcastStatus> = {
     status: T;
@@ -155,6 +175,8 @@ type IWebcastStatusMessage<T extends WebcastStatus = WebcastStatus> = {
 /**
  * Webcast Metadata
  * @public
+ * @group Metadata
+ * @category Webcast
  */
 interface IWebcastInfo extends IBasicInfo {
     webcastId: string;
@@ -171,6 +193,8 @@ interface IWebcastInfo extends IBasicInfo {
 /**
  * Fired when a new comment has been added to Chat
  * @public
+ * @group Events
+ * @category Webcast
  */
 interface IComment {
     comment: string;
@@ -182,6 +206,8 @@ interface IComment {
 /**
  * Details of the current slide on a Webcast slide change event
  * @public
+ * @group Events
+ * @category Webcast
  */
 interface ISlideEvent {
     slideNumber: number;
@@ -190,6 +216,8 @@ interface ISlideEvent {
 /**
  * Details of a Webcast Poll
  * @public
+ * @group Events
+ * @category Webcast
  */
 interface IPoll {
     pollId: string;
@@ -204,6 +232,8 @@ interface IPoll {
 /**
  * The Webcast Poll that has been Closed/Unpublished
  * @public
+ * @group Events
+ * @category Webcast
  */
 type TPollId = {
     pollId: string;
@@ -211,6 +241,8 @@ type TPollId = {
 /**
  * Details of if Video and/or Slides are currently displayed
  * @public
+ * @group Events
+ * @category Webcast
  */
 interface IWebcastLayout {
     video?: boolean;
@@ -226,6 +258,8 @@ interface IPlaylistSwitch {
 /**
  * Video entry in playlist
  * @public
+ * @group Metadata
+ * @category Playlist
  */
 interface IPlaylistItem {
     id: string;
@@ -236,6 +270,8 @@ interface IPlaylistItem {
 /**
  * Playlist data emitted when playlist first loaded
  * @public
+ * @group Metadata
+ * @category Playlist
  */
 interface IPlaylistInfo {
     id: string;
@@ -246,6 +282,8 @@ interface IPlaylistInfo {
 /**
  * Authentication/load events
  * @public
+ * @group Events
+ * @category Base
  */
 type TEmbedMessages = {
     /** Fired on initial embed load */
@@ -271,6 +309,8 @@ type TEmbedMessages = {
 /**
  * Video Player events
  * @public
+ * @group Events
+ * @category Base
  */
 type TPlayerMessages = {
     /**
@@ -296,6 +336,8 @@ type TPlayerMessages = {
 /**
  * Webcast events
  * @public
+ * @group Events
+ * @category Webcast
  */
 type TWebcastMessages = {
     /**
@@ -328,6 +370,8 @@ type TWebcastMessages = {
 /**
  * Playlist events
  * @public
+ * @group Events
+ * @category Playlist
  */
 type TPlaylistMessages = {
     playlistLoaded: IPlaylistInfo;
@@ -339,21 +383,29 @@ type TPlaylistMessages = {
 /**
  * All supported events and their corresponding listener callback payload
  * @public
+ * @group Events
+ * @category Base
  */
 type TVbrickMessages = TEmbedMessages & TPlayerMessages & TWebcastMessages & TPlaylistMessages;
 /**
  * Events emitted by Vbrick Embed
  * @public
+ * @group Events
+ * @category Base
  */
 type TVbrickEvent = Extract<keyof TVbrickMessages, string>;
 /**
  * Event callback parameters for the specified event
  * @public
+ * @group Events
+ * @category Base
  */
 type IListener<TEvent extends string & keyof TVbrickMessages> = TVbrickMessages[TEvent] extends void ? () => void : (data: TVbrickMessages[TEvent]) => void;
 
 /**
  * @public
+ * @group Enums
+ * @category Playlist
  */
 declare enum PlaylistLayout {
     Filmstrip = "row",
@@ -362,7 +414,10 @@ declare enum PlaylistLayout {
 }
 
 /**
+ * This is the core player class returned by `embedVideo`, `embedWebcast` and `embedPlaylist`.
  * @public
+ * @group Player
+ * @category Base
  */
 interface IVbrickBaseEmbed<TInfo extends IBasicInfo, Events extends string & TVbrickEvent = keyof TEmbedMessages> {
     /**
@@ -427,6 +482,8 @@ interface IVbrickBaseEmbed<TInfo extends IBasicInfo, Events extends string & TVb
 }
 /**
  * @public
+ * @group Player
+ * @category VOD
  */
 interface IVbrickVideoEmbed extends IVbrickBaseEmbed<IVideoInfo, keyof (TEmbedMessages & TPlayerMessages)> {
     /**
@@ -443,6 +500,10 @@ interface IVbrickVideoEmbed extends IVbrickBaseEmbed<IVideoInfo, keyof (TEmbedMe
      */
     readonly videoInfo?: IVideoInfo;
     /**
+     * The current playback speed
+     */
+    readonly playbackSpeed: number;
+    /**
      * sets playback rate
      * @param speed - 0-16, default is 1
      */
@@ -455,6 +516,8 @@ interface IVbrickVideoEmbed extends IVbrickBaseEmbed<IVideoInfo, keyof (TEmbedMe
 }
 /**
  * @public
+ * @group Player
+ * @category Webcast
  */
 interface IVbrickWebcastEmbed extends IVbrickBaseEmbed<IWebcastInfo, keyof (TEmbedMessages & TWebcastMessages)> {
     /**
@@ -468,14 +531,31 @@ interface IVbrickWebcastEmbed extends IVbrickBaseEmbed<IWebcastInfo, keyof (TEmb
      */
     updateLayout(layout: IWebcastLayout): void;
 }
+/**
+ * @public
+ * @group Player
+ * @category Playlist
+ */
 interface IVbrickPlaylistEmbed extends IVbrickBaseEmbed<IVideoInfo, keyof (TEmbedMessages & TPlayerMessages & TPlaylistMessages)> {
     readonly playlist: IPlaylistInfo;
+    /**
+     * index of current video in the playlist videos array
+     */
+    readonly currentIndex: number;
     /**
      * Load a new video in the playlist. A 'videoInfo' event will be emitted once the new video has loaded
      * @param videoId  - specify video to show. It must exist in the playlist
      * @param autoplay - whether to automatically start playback on video load. Default is true
      */
     switchVideo(videoId: string, autoplay?: boolean): void;
+    /**
+     * Switch to previous video in playlist
+     */
+    previous(): void;
+    /**
+     * Switch to next video in playlist
+     */
+    next(): void;
     /**
      * Current position in video in seconds
      */
@@ -504,6 +584,8 @@ interface IVbrickPlaylistEmbed extends IVbrickBaseEmbed<IVideoInfo, keyof (TEmbe
 /**
  * Options when creating the iframe embed for a video/webcast
  * @public
+ * @group Configuration
+ * @category Base
  */
 interface VbrickBaseEmbedConfig extends VbrickSDKConfig {
     /**
@@ -535,6 +617,8 @@ interface VbrickBaseEmbedConfig extends VbrickSDKConfig {
 /**
  * Options available when embedding a VOD/video
  * @public
+ * @group Configuration
+ * @category VOD
  */
 interface VbrickVideoEmbedConfig extends VbrickBaseEmbedConfig {
     playInLoop?: boolean;
@@ -630,6 +714,8 @@ interface VbrickVideoEmbedConfig extends VbrickBaseEmbedConfig {
 /**
  * Options available when embedding a webcast
  * @public
+ * @group Configuration
+ * @category Webcast
  */
 interface VbrickWebcastEmbedConfig extends VbrickBaseEmbedConfig {
     /**
@@ -641,6 +727,8 @@ interface VbrickWebcastEmbedConfig extends VbrickBaseEmbedConfig {
 }
 /**
  * @public
+ * @group Configuration
+ * @category Playlist
  */
 interface VbrickPlaylistEmbedConfig extends VbrickVideoEmbedConfig {
     /**
@@ -669,6 +757,8 @@ interface VbrickPlaylistEmbedConfig extends VbrickVideoEmbedConfig {
 /**
  * Options available when embedding a VOD/video or webcast
  * @public
+ * @group Configuration
+ * @category Base
  */
 interface VbrickEmbedConfig extends VbrickVideoEmbedConfig, VbrickWebcastEmbedConfig, VbrickPlaylistEmbedConfig {
 }
@@ -676,6 +766,8 @@ interface VbrickEmbedConfig extends VbrickVideoEmbedConfig, VbrickWebcastEmbedCo
 /**
  * Embed a VOD/video on a page, with optional token-based authentication. Returns a VbrickEmbed object for interacting with playback and receiving events.
  * @public
+ * @group Core API
+ * @category Core
  * @param element - Container element where the embed content will be rendered. Either an HTMLElement or a CSS Selector string.
  * @param videoId - ID of the video to embed
  * @param config - A configuration object
@@ -685,6 +777,8 @@ declare function embedVideo(element: HTMLElement | string, videoId: string, conf
 /**
  * Embeds a webcast on the page
  * @public
+ * @group Core API
+ * @category Core
  * @param element - Either a CSS selector string or HTML Element where the embed content will be rendered
  * @param webcastId - ID of the webcast to embed
  * @param config - A configuration object
@@ -707,6 +801,8 @@ declare function embedWebcast(element: HTMLElement | string, webcastId: string, 
 /**
  * Embeds a playlist on the page
  * @public
+ * @group Core API
+ * @category Core
  * @param element - Either a CSS selector string or HTML Element where the embed content will be rendered
  * @param playlistId - ID of the playlist to embed
  * @param config - A configuration object
@@ -735,6 +831,8 @@ declare function embedPlaylist(element: HTMLElement | string, playlistId: string
 
 /**
  * @public
+ * @group Core API
+ * @category Core
  */
 declare const revSDK: {
     embedWebcast: typeof embedWebcast;
