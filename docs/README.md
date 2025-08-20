@@ -1,4 +1,4 @@
-**@vbrick/rev-sdk** • **Docs**
+**@vbrick/rev-sdk**
 
 ***
 
@@ -6,55 +6,56 @@
 
 A javascript SDK for embedding or calling rev APIs
 
-## Enumerations
+## Core
 
-- [PlayerStatus](enumerations/PlayerStatus.md)
-- [PlaylistLayout](enumerations/PlaylistLayout.md)
-- [TokenType](enumerations/TokenType.md)
-- [VideoPlaybackSidebarButton](enumerations/VideoPlaybackSidebarButton.md)
-- [WebcastStatus](enumerations/WebcastStatus.md)
+- [revSDK](Core/revSDK.md)
+- [embedPlaylist](Core/embedPlaylist.md)
+- [embedVideo](Core/embedVideo.md)
+- [embedWebcast](Core/embedWebcast.md)
 
-## Interfaces
+## VOD
 
-- [IBasicInfo](interfaces/IBasicInfo.md)
-- [IComment](interfaces/IComment.md)
-- [IPlaylistInfo](interfaces/IPlaylistInfo.md)
-- [IPlaylistItem](interfaces/IPlaylistItem.md)
-- [IPoll](interfaces/IPoll.md)
-- [ISlideEvent](interfaces/ISlideEvent.md)
-- [ISubtitles](interfaces/ISubtitles.md)
-- [IVbrickBaseEmbed](interfaces/IVbrickBaseEmbed.md)
-- [IVbrickPlaylistEmbed](interfaces/IVbrickPlaylistEmbed.md)
-- [IVbrickVideoEmbed](interfaces/IVbrickVideoEmbed.md)
-- [IVbrickWebcastEmbed](interfaces/IVbrickWebcastEmbed.md)
-- [IVideoInfo](interfaces/IVideoInfo.md)
-- [IWebcastInfo](interfaces/IWebcastInfo.md)
-- [IWebcastLayout](interfaces/IWebcastLayout.md)
-- [VbrickBaseEmbedConfig](interfaces/VbrickBaseEmbedConfig.md)
-- [VbrickEmbedConfig](interfaces/VbrickEmbedConfig.md)
-- [VbrickPlaylistEmbedConfig](interfaces/VbrickPlaylistEmbedConfig.md)
-- [VbrickSDKConfig](interfaces/VbrickSDKConfig.md)
-- [VbrickSDKToken](interfaces/VbrickSDKToken.md)
-- [VbrickVideoEmbedConfig](interfaces/VbrickVideoEmbedConfig.md)
-- [VbrickWebcastEmbedConfig](interfaces/VbrickWebcastEmbedConfig.md)
+- [VideoPlaybackSidebarButton](VOD/VideoPlaybackSidebarButton.md)
+- [IVbrickVideoEmbed](VOD/IVbrickVideoEmbed.md)
+- [IVideoInfo](VOD/IVideoInfo.md)
+- [VbrickVideoEmbedConfig](VOD/VbrickVideoEmbedConfig.md)
 
-## Type Aliases
+## Playlist
 
-- [IListener](type-aliases/IListener.md)
-- [IWebcastStatusMessage](type-aliases/IWebcastStatusMessage.md)
-- [TEmbedMessages](type-aliases/TEmbedMessages.md)
-- [TPlayerMessages](type-aliases/TPlayerMessages.md)
-- [TPollId](type-aliases/TPollId.md)
-- [TVbrickEvent](type-aliases/TVbrickEvent.md)
-- [TVbrickMessages](type-aliases/TVbrickMessages.md)
-- [TWebcastMessages](type-aliases/TWebcastMessages.md)
+- [PlaylistLayout](Playlist/PlaylistLayout.md)
+- [IPlaylistInfo](Playlist/IPlaylistInfo.md)
+- [IPlaylistItem](Playlist/IPlaylistItem.md)
+- [IVbrickPlaylistEmbed](Playlist/IVbrickPlaylistEmbed.md)
+- [VbrickPlaylistEmbedConfig](Playlist/VbrickPlaylistEmbedConfig.md)
+- [TPlaylistMessages](Playlist/TPlaylistMessages.md)
 
-## Variables
+## Webcast
 
-- [default](variables/default.md)
+- [WebcastStatus](Webcast/WebcastStatus.md)
+- [IComment](Webcast/IComment.md)
+- [IPoll](Webcast/IPoll.md)
+- [ISlideEvent](Webcast/ISlideEvent.md)
+- [IVbrickWebcastEmbed](Webcast/IVbrickWebcastEmbed.md)
+- [IWebcastInfo](Webcast/IWebcastInfo.md)
+- [IWebcastLayout](Webcast/IWebcastLayout.md)
+- [VbrickWebcastEmbedConfig](Webcast/VbrickWebcastEmbedConfig.md)
+- [IWebcastStatusMessage](Webcast/IWebcastStatusMessage.md)
+- [TPollId](Webcast/TPollId.md)
+- [TWebcastMessages](Webcast/TWebcastMessages.md)
 
-## Functions
+## Base
 
-- [embedPlaylist](functions/embedPlaylist.md)
-- [embedVideo](functions/embedVideo.md)
-- [embedWebcast](functions/embedWebcast.md)
+- [PlayerStatus](Base/PlayerStatus.md)
+- [TokenType](Base/TokenType.md)
+- [IBasicInfo](Base/IBasicInfo.md)
+- [ISubtitles](Base/ISubtitles.md)
+- [IVbrickBaseEmbed](Base/IVbrickBaseEmbed.md)
+- [VbrickBaseEmbedConfig](Base/VbrickBaseEmbedConfig.md)
+- [VbrickEmbedConfig](Base/VbrickEmbedConfig.md)
+- [VbrickSDKConfig](Base/VbrickSDKConfig.md)
+- [VbrickSDKToken](Base/VbrickSDKToken.md)
+- [IListener](Base/IListener.md)
+- [TEmbedMessages](Base/TEmbedMessages.md)
+- [TPlayerMessages](Base/TPlayerMessages.md)
+- [TVbrickEvent](Base/TVbrickEvent.md)
+- [TVbrickMessages](Base/TVbrickMessages.md)
