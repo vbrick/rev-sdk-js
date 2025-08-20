@@ -4,6 +4,8 @@ import { IVideoInfo, ISubtitles, IWebcastInfo, IWebcastStatusMessage, IWebcastLa
 /**
  * Authentication/load events 
  * @public
+ * @group Events
+ * @category Base
  */
 export type TEmbedMessages = {
 	/** Fired on initial embed load */
@@ -28,6 +30,8 @@ export type TEmbedMessages = {
 /**
  * Video Player events
  * @public
+ * @group Events
+ * @category Base
  */
 export type TPlayerMessages = {
 	/**
@@ -54,6 +58,8 @@ export type TPlayerMessages = {
 /**
  * Webcast events
  * @public
+ * @group Events
+ * @category Webcast
  */
 export type TWebcastMessages = {
 	/**
@@ -87,6 +93,8 @@ export type TWebcastMessages = {
 /**
  * Playlist events
  * @public
+ * @group Events
+ * @category Playlist
  */
 export type TPlaylistMessages = {
 	playlistLoaded: IPlaylistInfo;
@@ -99,18 +107,24 @@ export type TPlaylistMessages = {
 /**
  * All supported events and their corresponding listener callback payload 
  * @public
+ * @group Events
+ * @category Base
  */
 export type TVbrickMessages = TEmbedMessages & TPlayerMessages & TWebcastMessages & TPlaylistMessages;
 
 /**
  * Events emitted by Vbrick Embed
  * @public
+ * @group Events
+ * @category Base
  */
 export type TVbrickEvent = Extract<keyof TVbrickMessages, string>;
 
 /**
  * Event callback parameters for the specified event
  * @public
+ * @group Events
+ * @category Base
  */
 export type IListener<TEvent extends string & keyof TVbrickMessages> = TVbrickMessages[TEvent] extends void
 	? () => void
@@ -146,7 +160,9 @@ export type TPlayerMethod =
 export type TWebcastMethod =
 	['updateLayout', IWebcastLayout];
 
-
+/**
+ * @internal
+ */
 export type TPlaylistMethod =
 	['switchVideo', IPlaylistSwitch];
 

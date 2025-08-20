@@ -1,5 +1,16 @@
 # Changelog
 
+## Version 0.7
+
+* Track playbackSpeed and volume on player object
+* Support embed configuration chapter options
+* Minor styling updates to demo page
+* Update dependencies
+
+## Version 0.6
+
+* Added sidebar configuration compatibility
+
 ## Version 0.5
 
 ### Features

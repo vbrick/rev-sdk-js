@@ -1,10 +1,6 @@
 # Rev JavaScript SDK
 
-This is Vbrick's JavaScript SDK library that enables you to embed Vbrick Rev webcasts and videos (also known as Video on Demand or VOD) on your website, portal, or any web-based application using JavaScript code. The SDK currently supports interaction with the webcast and video player. We will support full webcast and video features including slides, chats, Q&A, polls, and other video functionality, etc via this SDK in the future.
-
-## NOTE - Breaking Changes
-
-This library will soon add REST API functionality. This may introduce breaking changes, which will be outlined in the [Changelog](CHANGELOG.md)
+This is Vbrick's JavaScript SDK library that enables you to embed Vbrick Rev webcasts and videos (also known as Video on Demand or VOD) on your website, portal, or any web-based application using JavaScript code. The SDK supports interaction with the webcast, video and playlist embedded players.
 
 ## Demo Page
 

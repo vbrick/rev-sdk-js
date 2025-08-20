@@ -5,6 +5,8 @@ import {PlaylistLayout} from './PlaylistLayout';
 /**
  * Options when creating the iframe embed for a video/webcast
  * @public
+ * @group Configuration
+ * @category Base
  */
 export interface VbrickBaseEmbedConfig extends VbrickSDKConfig {
 	/**
@@ -43,10 +45,15 @@ export interface VbrickBaseEmbedConfig extends VbrickSDKConfig {
 /**
  * Options available when embedding a VOD/video
  * @public
+ * @group Configuration
+ * @category VOD
  */
 export interface VbrickVideoEmbedConfig extends VbrickBaseEmbedConfig {
 	playInLoop?: boolean;
 	hideChapters?: boolean;
+	hideChapterNavigation?: boolean;
+	hideChapterMenu?: boolean;
+	hideChapterImages?: boolean;
 	hideOverlayControls?: boolean;
 	hidePlayControls?: boolean;
 	hideSubtitles?: boolean;
@@ -84,6 +91,12 @@ export interface VbrickVideoEmbedConfig extends VbrickBaseEmbedConfig {
 	mobileLayoutBreakPoint?: number;
 
 	/**
+	 * In case of showFullPlayer = true, user can customize the sidebar tabs to include
+	 * If not provided or undefined then the default value for each tab is true
+	 */
+	sidebarTabs?: Partial<Record<`${VideoPlaybackSidebarButton}`, boolean>>
+
+	/**
 	 * Starts the video at specified timestamp. must be in the format ##m##s. For example 00m30s.
 	 */
 	startAt?: string;
@@ -116,11 +129,33 @@ export interface VbrickVideoEmbedConfig extends VbrickBaseEmbedConfig {
 	noPlayBar?: boolean;
 	/** @deprecated - embed parameter name - alias of hideSettings */
 	noSettings?: boolean;
+	/** @deprecated - embed parameter name - alias of hideChapterNavigation */
+	noChapterSeek?: boolean;
+	/** @deprecated - embed parameter name - alias of hideChapterImages */
+	noChapterDisplay?: boolean;
+	/** @deprecated - embed parameter name - alias of hideChapterMenu */
+	noChapterMenu?: boolean;
+
+	/** @deprecated - embed parameter name - alias for sidebar tab option */
+	hideInfo?: boolean;
+	/** @deprecated - embed parameter name - alias for sidebar tab option */
+	hideComments?: boolean;
+	/** @deprecated - embed parameter name - alias for sidebar tab option */
+	hidePulse?: boolean;
+	/** @deprecated - embed parameter name - alias for sidebar tab option */
+	hideReview?: boolean;
+	/** @deprecated - embed parameter name - alias for sidebar tab option */
+	hidePlaylist?: boolean;
+	// hideChapters?: boolean;
+	/** @deprecated - embed parameter name - alias for sidebar tab option */
+	hideAnalytics?: boolean;
 }
 
 /**
  * Options available when embedding a webcast
  * @public
+ * @group Configuration
+ * @category Webcast
  */
 export interface VbrickWebcastEmbedConfig extends VbrickBaseEmbedConfig {
 	/**
@@ -134,6 +169,8 @@ export interface VbrickWebcastEmbedConfig extends VbrickBaseEmbedConfig {
 
 /**
  * @public
+ * @group Configuration
+ * @category Playlist
  */
 export interface VbrickPlaylistEmbedConfig extends VbrickVideoEmbedConfig {
 	/**
@@ -164,5 +201,7 @@ export interface VbrickPlaylistEmbedConfig extends VbrickVideoEmbedConfig {
 /**
  * Options available when embedding a VOD/video or webcast
  * @public
+ * @group Configuration
+ * @category Base
  */
 export interface VbrickEmbedConfig extends VbrickVideoEmbedConfig, VbrickWebcastEmbedConfig, VbrickPlaylistEmbedConfig {}

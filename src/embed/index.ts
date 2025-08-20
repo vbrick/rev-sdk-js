@@ -12,6 +12,8 @@ export * from './VbrickEmbedConfig';
 /**
  * Embed a VOD/video on a page, with optional token-based authentication. Returns a VbrickEmbed object for interacting with playback and receiving events.
  * @public
+ * @group Core API
+ * @category Core
  * @param element - Container element where the embed content will be rendered. Either an HTMLElement or a CSS Selector string.
  * @param videoId - ID of the video to embed
  * @param config - A configuration object
@@ -34,6 +36,8 @@ export function embedVideo(
 /**
  * Embeds a webcast on the page
  * @public
+ * @group Core API
+ * @category Core
  * @param element - Either a CSS selector string or HTML Element where the embed content will be rendered
  * @param webcastId - ID of the webcast to embed
  * @param config - A configuration object
@@ -69,6 +73,8 @@ export function embedWebcast(
 /**
  * Embeds a playlist on the page
  * @public
+ * @group Core API
+ * @category Core
  * @param element - Either a CSS selector string or HTML Element where the embed content will be rendered
  * @param playlistId - ID of the playlist to embed
  * @param config - A configuration object

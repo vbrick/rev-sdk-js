@@ -1,6 +1,6 @@
 {
   "name": "@vbrick/rev-sdk",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Client SDK for Vbrick Rev",
   "author": "Vbrick Systems",
   "repository": "github:vbrick/rev-sdk-js",
@@ -26,15 +26,16 @@
     "build:clean": "rm -rf dist",
     "build": "tsup",
     "build:watch": "tsup --watch",
-    "doc": "npx typedoc --readme none"
+    "doc": "typedoc"
   },
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^18.11.15",
-    "browserslist-to-esbuild": "^1.2.0",
-    "tsup": "^6.5.0",
-    "typedoc": "^0.23.8",
-    "typedoc-plugin-markdown": "^3.13.4",
-    "typescript": "^4.9.4"
+    "@types/node": "^24.3.0",
+    "browserslist-to-esbuild": "^2.1.1",
+    "tsup": "^8.5.0",
+    "typedoc": "^0.28.10",
+    "typedoc-plugin-markdown": "^4.8.1",
+    "typedoc-plugin-rename-defaults": "^0.7.3",
+    "typescript": "^5.9.2"
   }
 }

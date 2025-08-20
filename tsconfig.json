@@ -1,7 +1,7 @@
 {
 	"compilerOptions": {
-		"target": "es2015",
-		"module": "esnext",
+		"target": "es2020",
+		"module": "es2020",
 		"moduleResolution": "node",
 		"sourceMap": true,
 		"declaration": true,
@@ -9,10 +9,8 @@
 		"declarationMap": true,
 		"emitDecoratorMetadata": false,
 		"experimentalDecorators": true,
-		"lib": [ "es2015", "dom", "es7", "es2017", "es2018", "es2019" ],
 		// "noEmit": true,
-		"noImplicitAny": false,
-		"suppressImplicitAnyIndexErrors": true,
+		"noImplicitAny": true,
 		"baseUrl": ".",
 		"paths": {
 
@@ -24,6 +22,7 @@
 		"allowSyntheticDefaultImports": true,
 		"incremental": false,
 		"resolveJsonModule": true,
+		"isolatedModules": true
 		// "outDir": "./out-tsc/app",
 		// "declaration": false
 	},

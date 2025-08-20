@@ -167,6 +167,7 @@ var VideoPlaybackSidebarButton = /* @__PURE__ */ ((VideoPlaybackSidebarButton2) 
   VideoPlaybackSidebarButton2["PLAYLIST"] = "playlist";
   VideoPlaybackSidebarButton2["PULSE"] = "pulse";
   VideoPlaybackSidebarButton2["REPORTS"] = "reports";
+  VideoPlaybackSidebarButton2["REVIEW"] = "review";
   VideoPlaybackSidebarButton2["SHARE"] = "share";
   return VideoPlaybackSidebarButton2;
 })(VideoPlaybackSidebarButton || {});
@@ -181,9 +182,8 @@ var TokenType = /* @__PURE__ */ ((TokenType2) => {
 
 // src/embed/auth.ts
 function authenticateAccessToken(config) {
-  var _a;
   return Promise.resolve({
-    accessToken: (_a = config.token) == null ? void 0 : _a.value
+    accessToken: config.token?.value
   });
 }
 function authenticateGuestToken(webcastId, config) {
@@ -236,6 +236,7 @@ var VbrickEmbed = class {
     this.config = config;
     this.container = container;
     this._playerStatus = "Initializing" /* Initializing */;
+    this._volume = 1;
     this._currentSubtitles = { enabled: false };
     this.iframeUrl = this.getEmbedUrl(id, this.config);
     this.logger = getLogger(this.config);
@@ -259,8 +260,7 @@ var VbrickEmbed = class {
     return this._currentSubtitles;
   }
   get isLive() {
-    var _a;
-    return !!((_a = this.info) == null ? void 0 : _a.isLive);
+    return !!this.info?.isLive;
   }
   get info() {
     return this._info;
@@ -346,6 +346,7 @@ var VbrickEmbed = class {
     this.eventBus.on("subtitlesChanged", (subtitles) => {
       this._currentSubtitles = subtitles;
     });
+    this.eventBus.on("volumeChanged", (e) => this._volume = e);
     if (this.config.initialVolume != void 0 && isFinite(this.config.initialVolume)) {
       const volumeCallback = (evt) => {
         if (evt.status !== "Playing" /* Playing */) {
@@ -378,11 +379,10 @@ var VbrickEmbed = class {
     return iframe;
   }
   destroy() {
-    var _a;
     this.iframe.remove();
     this.eventBus.destroy();
     this.init = void 0;
-    (_a = this.unsubscribes) == null ? void 0 : _a.forEach((fn) => fn());
+    this.unsubscribes?.forEach((fn) => fn());
   }
   async updateToken(newToken) {
     this.config.token = newToken;
@@ -414,8 +414,21 @@ function getEmbedQuery(config) {
     noFullscreen: config.hideFullscreen ?? config.noFullscreen,
     noPlayBar: config.hidePlayControls ?? config.noPlayBar,
     noSettings: config.hideSettings ?? config.noSettings,
+    noChapterSeek: config.hideChapterNavigation ?? config.noChapterSeek,
+    noChapterDisplay: config.hideChapterImages ?? config.noChapterDisplay,
+    noChapterMenu: config.hideChapterMenu ?? config.noChapterMenu,
     sidebarFilterQuery: config.sidebarFilterQuery,
-    startAt: config.startAt
+    startAt: config.startAt,
+    // all sidebar tabs are by default true, so only include if explicitly false
+    ...config.showFullPlayer && {
+      hideInfo: config.sidebarTabs["info" /* INFO */] === false || config.hideInfo === true,
+      hideComments: config.sidebarTabs["comments" /* COMMENTS */] === false || config.hideComments === true,
+      hidePulse: config.sidebarTabs["pulse" /* PULSE */] === false || config.hidePulse === true,
+      hideReview: config.sidebarTabs["review" /* REVIEW */] === false || config.hideReview === true,
+      hidePlaylist: config.sidebarTabs["playlist" /* PLAYLIST */] === false || config.hidePlaylist === true,
+      hideChapters: config.sidebarTabs["chapters" /* CHAPTERS */] === false || config.hideChapters === true,
+      hideAnalytics: config.sidebarTabs["reports" /* REPORTS */] === false || config.hideAnalytics === true
+    }
   };
 }
 
@@ -423,6 +436,7 @@ function getEmbedQuery(config) {
 var VbrickVideoEmbed = class extends VbrickEmbed {
   constructor(id, config, container) {
     super(id, config, container);
+    this._playbackSpeed = 1;
   }
   /**
    * Current position in video in seconds
@@ -434,8 +448,13 @@ var VbrickVideoEmbed = class extends VbrickEmbed {
    * Duration of video in seconds. Will be undefined for live content
    */
   get duration() {
-    var _a;
-    return (_a = this.info) == null ? void 0 : _a.duration;
+    return this.info?.duration;
+  }
+  /**
+   * Current playback speed
+   */
+  get playbackSpeed() {
+    return this._playbackSpeed;
   }
   /**
    * Contains metadata for the video
@@ -470,6 +489,9 @@ var VbrickVideoEmbed = class extends VbrickEmbed {
     super.initializeEmbed();
     this.eventBus.on("currentTime", (e) => {
       this._currentTime = e.currentTime;
+    });
+    this.eventBus.on("playbackSpeedChanged", (e) => {
+      this._playbackSpeed = e;
     });
   }
   getEmbedUrl(id, config) {
@@ -541,15 +563,13 @@ var VbrickPlaylistEmbed = class extends VbrickVideoEmbed {
   initializeEmbed() {
     super.initializeEmbed();
     this.eventBus.on("playlistLoaded", (playlist) => {
-      var _a, _b;
       this._playlist = playlist;
-      if ((_a = this.info) == null ? void 0 : _a.videoId) {
-        this._index = getPlaylistIndex(this.playlist, (_b = this.info) == null ? void 0 : _b.videoId) ?? 0;
+      if (this.info?.videoId) {
+        this._index = getPlaylistIndex(this.playlist, this.info?.videoId) ?? 0;
       }
     });
     this.eventBus.on("videoLoaded", (video) => {
-      var _a;
-      if (!((_a = this.playlist) == null ? void 0 : _a.videos)) {
+      if (!this.playlist?.videos) {
         return;
       }
       this._index = getPlaylistIndex(this.playlist, video.videoId) ?? 0;
@@ -599,8 +619,7 @@ function resolveConfig(configuration) {
   return cfg;
 }
 function validateConfig(cfg) {
-  var _a;
-  if (!((_a = cfg.baseUrl) == null ? void 0 : _a.match(/^https?:\/\//))) {
+  if (!cfg.baseUrl?.match(/^https?:\/\//)) {
     throw new Error("Rev SDK Error: baseUrl invalid");
   }
   cfg.baseUrl = new URL(cfg.baseUrl).origin;

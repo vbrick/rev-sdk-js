@@ -171,8 +171,8 @@ function addPlayerControls() {
  * @param {import("../dist/rev-sdk").TVbrickMessages[Evt]} data
  */
 function updateControls(currentEmbed, eventType, data) {
-	playerStatusEl.innerText = currentEmbed.playerStatus;
-	webcastStatusEl.innerText = currentEmbed.webcastStatus;
+	playerStatusEl.innerText = currentEmbed.playerStatus || '';
+	webcastStatusEl.innerText = currentEmbed.webcastStatus || '';
 	if(currentEmbed.volume >= 0) {
 		volumeSlider.value = currentEmbed.volume;
 	}
