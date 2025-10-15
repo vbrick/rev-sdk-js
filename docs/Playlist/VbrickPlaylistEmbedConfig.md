@@ -6,7 +6,7 @@
 
 # Interface: VbrickPlaylistEmbedConfig
 
-Defined in: [embed/VbrickEmbedConfig.ts:175](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L175)
+Defined in: [embed/VbrickEmbedConfig.ts:182](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L182)
 
 ## Extends
 
@@ -22,7 +22,7 @@ Defined in: [embed/VbrickEmbedConfig.ts:175](https://github.com/lukeselden/rev-s
 
 > `optional` **accent**: `string`
 
-Defined in: [embed/VbrickEmbedConfig.ts:115](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L115)
+Defined in: [embed/VbrickEmbedConfig.ts:122](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L122)
 
 #### Deprecated
 
@@ -38,7 +38,7 @@ Defined in: [embed/VbrickEmbedConfig.ts:115](https://github.com/lukeselden/rev-s
 
 > `optional` **accentColor**: `string`
 
-Defined in: [embed/VbrickEmbedConfig.ts:112](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L112)
+Defined in: [embed/VbrickEmbedConfig.ts:119](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L119)
 
 Branding Settings. Accent color to use in the player, in HTML #rrggbb format
 
@@ -52,7 +52,7 @@ Branding Settings. Accent color to use in the player, in HTML #rrggbb format
 
 > `optional` **applyDefaultTheme**: `boolean`
 
-Defined in: [embed/VbrickEmbedConfig.ts:84](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L84)
+Defined in: [embed/VbrickEmbedConfig.ts:91](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L91)
 
 flag to override account theme to default theme.
 
@@ -66,7 +66,7 @@ flag to override account theme to default theme.
 
 > `optional` **autoplay**: `boolean`
 
-Defined in: [embed/VbrickEmbedConfig.ts:37](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L37)
+Defined in: [embed/VbrickEmbedConfig.ts:44](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L44)
 
 #### Inherited from
 
@@ -106,7 +106,7 @@ An optional class to be set on embeds.
 
 > `optional` **defaultSidebar**: [`VideoPlaybackSidebarButton`](../VOD/VideoPlaybackSidebarButton.md)
 
-Defined in: [embed/VbrickEmbedConfig.ts:74](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L74)
+Defined in: [embed/VbrickEmbedConfig.ts:81](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L81)
 
 provide the sidebar name to be opened by default when video loads.
 showFullPlayer value needs to be true for this to work.
@@ -121,7 +121,7 @@ showFullPlayer value needs to be true for this to work.
 
 > `optional` **forceClosedCaptions**: `string`
 
-Defined in: [embed/VbrickEmbedConfig.ts:117](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L117)
+Defined in: [embed/VbrickEmbedConfig.ts:124](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L124)
 
 #### Deprecated
 
@@ -137,7 +137,7 @@ Defined in: [embed/VbrickEmbedConfig.ts:117](https://github.com/lukeselden/rev-s
 
 > `optional` **forcedCaptions**: `boolean`
 
-Defined in: [embed/VbrickEmbedConfig.ts:61](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L61)
+Defined in: [embed/VbrickEmbedConfig.ts:68](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L68)
 
 Use the Close Captions embedded in video stream as Subtitles
 
@@ -165,7 +165,7 @@ Optional height to be set on embeds. Default is "100%"
 
 > `optional` **hideAnalytics**: `boolean`
 
-Defined in: [embed/VbrickEmbedConfig.ts:151](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L151)
+Defined in: [embed/VbrickEmbedConfig.ts:158](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L158)
 
 #### Deprecated
 
@@ -181,7 +181,7 @@ Defined in: [embed/VbrickEmbedConfig.ts:151](https://github.com/lukeselden/rev-s
 
 > `optional` **hideChapterImages**: `boolean`
 
-Defined in: [embed/VbrickEmbedConfig.ts:56](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L56)
+Defined in: [embed/VbrickEmbedConfig.ts:63](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L63)
 
 #### Inherited from
 
@@ -193,7 +193,7 @@ Defined in: [embed/VbrickEmbedConfig.ts:56](https://github.com/lukeselden/rev-sd
 
 > `optional` **hideChapterMenu**: `boolean`
 
-Defined in: [embed/VbrickEmbedConfig.ts:55](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L55)
+Defined in: [embed/VbrickEmbedConfig.ts:62](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L62)
 
 #### Inherited from
 
@@ -205,7 +205,7 @@ Defined in: [embed/VbrickEmbedConfig.ts:55](https://github.com/lukeselden/rev-sd
 
 > `optional` **hideChapterNavigation**: `boolean`
 
-Defined in: [embed/VbrickEmbedConfig.ts:54](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L54)
+Defined in: [embed/VbrickEmbedConfig.ts:61](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L61)
 
 #### Inherited from
 
@@ -217,7 +217,7 @@ Defined in: [embed/VbrickEmbedConfig.ts:54](https://github.com/lukeselden/rev-sd
 
 > `optional` **hideChapters**: `boolean`
 
-Defined in: [embed/VbrickEmbedConfig.ts:53](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L53)
+Defined in: [embed/VbrickEmbedConfig.ts:60](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L60)
 
 #### Inherited from
 
@@ -229,7 +229,7 @@ Defined in: [embed/VbrickEmbedConfig.ts:53](https://github.com/lukeselden/rev-sd
 
 > `optional` **hideComments**: `boolean`
 
-Defined in: [embed/VbrickEmbedConfig.ts:142](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L142)
+Defined in: [embed/VbrickEmbedConfig.ts:149](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L149)
 
 #### Deprecated
 
@@ -245,7 +245,7 @@ Defined in: [embed/VbrickEmbedConfig.ts:142](https://github.com/lukeselden/rev-s
 
 > `optional` **hideFullscreen**: `boolean`
 
-Defined in: [embed/VbrickEmbedConfig.ts:63](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L63)
+Defined in: [embed/VbrickEmbedConfig.ts:70](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L70)
 
 #### Inherited from
 
@@ -257,7 +257,7 @@ Defined in: [embed/VbrickEmbedConfig.ts:63](https://github.com/lukeselden/rev-sd
 
 > `optional` **hideInfo**: `boolean`
 
-Defined in: [embed/VbrickEmbedConfig.ts:140](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L140)
+Defined in: [embed/VbrickEmbedConfig.ts:147](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L147)
 
 #### Deprecated
 
@@ -273,7 +273,7 @@ Defined in: [embed/VbrickEmbedConfig.ts:140](https://github.com/lukeselden/rev-s
 
 > `optional` **hideOverlayControls**: `boolean`
 
-Defined in: [embed/VbrickEmbedConfig.ts:57](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L57)
+Defined in: [embed/VbrickEmbedConfig.ts:64](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L64)
 
 #### Inherited from
 
@@ -285,7 +285,7 @@ Defined in: [embed/VbrickEmbedConfig.ts:57](https://github.com/lukeselden/rev-sd
 
 > `optional` **hidePlayControls**: `boolean`
 
-Defined in: [embed/VbrickEmbedConfig.ts:58](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L58)
+Defined in: [embed/VbrickEmbedConfig.ts:65](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L65)
 
 #### Inherited from
 
@@ -297,7 +297,7 @@ Defined in: [embed/VbrickEmbedConfig.ts:58](https://github.com/lukeselden/rev-sd
 
 > `optional` **hidePlaylist**: `boolean`
 
-Defined in: [embed/VbrickEmbedConfig.ts:148](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L148)
+Defined in: [embed/VbrickEmbedConfig.ts:155](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L155)
 
 #### Deprecated
 
@@ -313,7 +313,7 @@ Defined in: [embed/VbrickEmbedConfig.ts:148](https://github.com/lukeselden/rev-s
 
 > `optional` **hidePulse**: `boolean`
 
-Defined in: [embed/VbrickEmbedConfig.ts:144](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L144)
+Defined in: [embed/VbrickEmbedConfig.ts:151](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L151)
 
 #### Deprecated
 
@@ -329,7 +329,7 @@ Defined in: [embed/VbrickEmbedConfig.ts:144](https://github.com/lukeselden/rev-s
 
 > `optional` **hideReview**: `boolean`
 
-Defined in: [embed/VbrickEmbedConfig.ts:146](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L146)
+Defined in: [embed/VbrickEmbedConfig.ts:153](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L153)
 
 #### Deprecated
 
@@ -345,7 +345,7 @@ Defined in: [embed/VbrickEmbedConfig.ts:146](https://github.com/lukeselden/rev-s
 
 > `optional` **hideSettings**: `boolean`
 
-Defined in: [embed/VbrickEmbedConfig.ts:62](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L62)
+Defined in: [embed/VbrickEmbedConfig.ts:69](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L69)
 
 #### Inherited from
 
@@ -357,7 +357,7 @@ Defined in: [embed/VbrickEmbedConfig.ts:62](https://github.com/lukeselden/rev-sd
 
 > `optional` **hideSubtitles**: `boolean`
 
-Defined in: [embed/VbrickEmbedConfig.ts:59](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L59)
+Defined in: [embed/VbrickEmbedConfig.ts:66](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L66)
 
 #### Inherited from
 
@@ -369,7 +369,7 @@ Defined in: [embed/VbrickEmbedConfig.ts:59](https://github.com/lukeselden/rev-sd
 
 > `optional` **hideToolbar**: `boolean`
 
-Defined in: [embed/VbrickEmbedConfig.ts:187](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L187)
+Defined in: [embed/VbrickEmbedConfig.ts:194](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L194)
 
 Only applicable when layout is 'slider'
 Do not show bottom toolbar, only show the current video. This makes playlist functionality only possible through javascript API.
@@ -380,7 +380,7 @@ Do not show bottom toolbar, only show the current video. This makes playlist fun
 
 > `optional` **initialVolume**: `number`
 
-Defined in: [embed/VbrickEmbedConfig.ts:42](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L42)
+Defined in: [embed/VbrickEmbedConfig.ts:49](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L49)
 
 set the volume to upon initial load (for muting or otherwise)
 
@@ -394,7 +394,7 @@ set the volume to upon initial load (for muting or otherwise)
 
 > `optional` **layout**: `"row"` \| `"grid"` \| `"slider"`
 
-Defined in: [embed/VbrickEmbedConfig.ts:182](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L182)
+Defined in: [embed/VbrickEmbedConfig.ts:189](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L189)
 
 Select layout of playlist. Options are:
 - row (aka Filmstrip) - thumbnails of videos along bottom
@@ -421,7 +421,7 @@ If true, sdk will log to console
 
 > `optional` **logoUrl**: `string`
 
-Defined in: [embed/VbrickEmbedConfig.ts:107](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L107)
+Defined in: [embed/VbrickEmbedConfig.ts:114](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L114)
 
 Branding Settings. Logo image URL
 
@@ -435,7 +435,7 @@ Branding Settings. Logo image URL
 
 > `optional` **loopVideo**: `string`
 
-Defined in: [embed/VbrickEmbedConfig.ts:119](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L119)
+Defined in: [embed/VbrickEmbedConfig.ts:126](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L126)
 
 #### Deprecated
 
@@ -451,7 +451,7 @@ Defined in: [embed/VbrickEmbedConfig.ts:119](https://github.com/lukeselden/rev-s
 
 > `optional` **maxVideos**: `number`
 
-Defined in: [embed/VbrickEmbedConfig.ts:197](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L197)
+Defined in: [embed/VbrickEmbedConfig.ts:204](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L204)
 
 Only applicable when layout is 'grid'
 Set the maximum number of videos to include in grid view
@@ -462,7 +462,7 @@ Set the maximum number of videos to include in grid view
 
 > `optional` **mobileLayoutBreakPoint**: `number`
 
-Defined in: [embed/VbrickEmbedConfig.ts:91](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L91)
+Defined in: [embed/VbrickEmbedConfig.ts:98](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L98)
 
 In case of showFullPlayer = true, user can provide a mobile breakpoint size
 so that player and sidebar will render nicely together.
@@ -478,7 +478,7 @@ if not provided then 991 is the default value for mobile layout.
 
 > `optional` **noCc**: `boolean`
 
-Defined in: [embed/VbrickEmbedConfig.ts:121](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L121)
+Defined in: [embed/VbrickEmbedConfig.ts:128](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L128)
 
 #### Deprecated
 
@@ -494,7 +494,7 @@ Defined in: [embed/VbrickEmbedConfig.ts:121](https://github.com/lukeselden/rev-s
 
 > `optional` **noCenterButtons**: `boolean`
 
-Defined in: [embed/VbrickEmbedConfig.ts:123](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L123)
+Defined in: [embed/VbrickEmbedConfig.ts:130](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L130)
 
 #### Deprecated
 
@@ -510,7 +510,7 @@ Defined in: [embed/VbrickEmbedConfig.ts:123](https://github.com/lukeselden/rev-s
 
 > `optional` **noChapterDisplay**: `boolean`
 
-Defined in: [embed/VbrickEmbedConfig.ts:135](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L135)
+Defined in: [embed/VbrickEmbedConfig.ts:142](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L142)
 
 #### Deprecated
 
@@ -526,7 +526,7 @@ Defined in: [embed/VbrickEmbedConfig.ts:135](https://github.com/lukeselden/rev-s
 
 > `optional` **noChapterMenu**: `boolean`
 
-Defined in: [embed/VbrickEmbedConfig.ts:137](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L137)
+Defined in: [embed/VbrickEmbedConfig.ts:144](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L144)
 
 #### Deprecated
 
@@ -542,7 +542,7 @@ Defined in: [embed/VbrickEmbedConfig.ts:137](https://github.com/lukeselden/rev-s
 
 > `optional` **noChapters**: `boolean`
 
-Defined in: [embed/VbrickEmbedConfig.ts:125](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L125)
+Defined in: [embed/VbrickEmbedConfig.ts:132](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L132)
 
 #### Deprecated
 
@@ -558,7 +558,7 @@ Defined in: [embed/VbrickEmbedConfig.ts:125](https://github.com/lukeselden/rev-s
 
 > `optional` **noChapterSeek**: `boolean`
 
-Defined in: [embed/VbrickEmbedConfig.ts:133](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L133)
+Defined in: [embed/VbrickEmbedConfig.ts:140](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L140)
 
 #### Deprecated
 
@@ -574,7 +574,7 @@ Defined in: [embed/VbrickEmbedConfig.ts:133](https://github.com/lukeselden/rev-s
 
 > `optional` **noFullscreen**: `boolean`
 
-Defined in: [embed/VbrickEmbedConfig.ts:127](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L127)
+Defined in: [embed/VbrickEmbedConfig.ts:134](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L134)
 
 #### Deprecated
 
@@ -586,11 +586,32 @@ Defined in: [embed/VbrickEmbedConfig.ts:127](https://github.com/lukeselden/rev-s
 
 ***
 
+### noLocalNetworkAccess?
+
+> `optional` **noLocalNetworkAccess**: `boolean`
+
+Defined in: [embed/VbrickEmbedConfig.ts:32](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L32)
+
+do not add the 'local-network-access' Permissions-Policy iframe "allow" attribute.
+This may block ECDN / User Location Services functionality from working properly.
+
+#### Default
+
+```ts
+false
+```
+
+#### Inherited from
+
+[`VbrickVideoEmbedConfig`](../VOD/VbrickVideoEmbedConfig.md).[`noLocalNetworkAccess`](../VOD/VbrickVideoEmbedConfig.md#nolocalnetworkaccess)
+
+***
+
 ### ~~noPlayBar?~~
 
 > `optional` **noPlayBar**: `boolean`
 
-Defined in: [embed/VbrickEmbedConfig.ts:129](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L129)
+Defined in: [embed/VbrickEmbedConfig.ts:136](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L136)
 
 #### Deprecated
 
@@ -606,7 +627,7 @@ Defined in: [embed/VbrickEmbedConfig.ts:129](https://github.com/lukeselden/rev-s
 
 > `optional` **noSettings**: `boolean`
 
-Defined in: [embed/VbrickEmbedConfig.ts:131](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L131)
+Defined in: [embed/VbrickEmbedConfig.ts:138](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L138)
 
 #### Deprecated
 
@@ -622,7 +643,7 @@ Defined in: [embed/VbrickEmbedConfig.ts:131](https://github.com/lukeselden/rev-s
 
 > `optional` **playInLoop**: `boolean`
 
-Defined in: [embed/VbrickEmbedConfig.ts:52](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L52)
+Defined in: [embed/VbrickEmbedConfig.ts:59](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L59)
 
 #### Inherited from
 
@@ -634,7 +655,7 @@ Defined in: [embed/VbrickEmbedConfig.ts:52](https://github.com/lukeselden/rev-sd
 
 > `optional` **popupAuth**: `boolean`
 
-Defined in: [embed/VbrickEmbedConfig.ts:30](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L30)
+Defined in: [embed/VbrickEmbedConfig.ts:37](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L37)
 
 For video embeds. If a user needs to log in, go through the login process in a popup window. This is the standard behavior for non-SDK Rev embeded videos
 
@@ -648,7 +669,7 @@ For video embeds. If a user needs to log in, go through the login process in a p
 
 > `optional` **showFullPlayer**: `boolean`
 
-Defined in: [embed/VbrickEmbedConfig.ts:68](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L68)
+Defined in: [embed/VbrickEmbedConfig.ts:75](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L75)
 
 shows video player with sidebar.
 
@@ -662,7 +683,7 @@ shows video player with sidebar.
 
 > `optional` **sidebarFilterQuery**: `string`
 
-Defined in: [embed/VbrickEmbedConfig.ts:80](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L80)
+Defined in: [embed/VbrickEmbedConfig.ts:87](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L87)
 
 query to filter sidebar items. esp. use in pulse sidebar.
 showFullPlayer = true and defaultSidebar should have a value to make it work.
@@ -677,7 +698,7 @@ showFullPlayer = true and defaultSidebar should have a value to make it work.
 
 > `optional` **sidebarTabs**: `Partial`\<`Record`\<`` `${VideoPlaybackSidebarButton}` ``, `boolean`\>\>
 
-Defined in: [embed/VbrickEmbedConfig.ts:97](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L97)
+Defined in: [embed/VbrickEmbedConfig.ts:104](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L104)
 
 In case of showFullPlayer = true, user can customize the sidebar tabs to include
 If not provided or undefined then the default value for each tab is true
@@ -692,7 +713,7 @@ If not provided or undefined then the default value for each tab is true
 
 > `optional` **startAt**: `string`
 
-Defined in: [embed/VbrickEmbedConfig.ts:102](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L102)
+Defined in: [embed/VbrickEmbedConfig.ts:109](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L109)
 
 Starts the video at specified timestamp. must be in the format ##m##s. For example 00m30s.
 
@@ -706,7 +727,7 @@ Starts the video at specified timestamp. must be in the format ##m##s. For examp
 
 > `optional` **timeoutSeconds**: `number`
 
-Defined in: [embed/VbrickEmbedConfig.ts:35](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L35)
+Defined in: [embed/VbrickEmbedConfig.ts:42](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L42)
 
 seconds to wait for the embed initialization to complete. default is 30 seconds
 
@@ -734,7 +755,7 @@ Token for authentication
 
 > `optional` **videosPerRow**: `number`
 
-Defined in: [embed/VbrickEmbedConfig.ts:192](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L192)
+Defined in: [embed/VbrickEmbedConfig.ts:199](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L199)
 
 Only applicable when layout is 'grid'
 Set the number of videos in each grid row (valid numbers are between 3 and 5)

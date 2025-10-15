@@ -6,7 +6,7 @@
 
 # Interface: VbrickWebcastEmbedConfig
 
-Defined in: [embed/VbrickEmbedConfig.ts:160](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L160)
+Defined in: [embed/VbrickEmbedConfig.ts:167](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L167)
 
 Options available when embedding a webcast
 
@@ -24,7 +24,7 @@ Options available when embedding a webcast
 
 > `optional` **autoplay**: `boolean`
 
-Defined in: [embed/VbrickEmbedConfig.ts:37](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L37)
+Defined in: [embed/VbrickEmbedConfig.ts:44](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L44)
 
 #### Inherited from
 
@@ -64,7 +64,7 @@ An optional class to be set on embeds.
 
 > `optional` **enableFullRev**: `boolean`
 
-Defined in: [embed/VbrickEmbedConfig.ts:167](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L167)
+Defined in: [embed/VbrickEmbedConfig.ts:174](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L174)
 
 #### Deprecated
 
@@ -90,7 +90,7 @@ Optional height to be set on embeds. Default is "100%"
 
 > `optional` **initialVolume**: `number`
 
-Defined in: [embed/VbrickEmbedConfig.ts:42](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L42)
+Defined in: [embed/VbrickEmbedConfig.ts:49](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L49)
 
 set the volume to upon initial load (for muting or otherwise)
 
@@ -114,11 +114,32 @@ If true, sdk will log to console
 
 ***
 
+### noLocalNetworkAccess?
+
+> `optional` **noLocalNetworkAccess**: `boolean`
+
+Defined in: [embed/VbrickEmbedConfig.ts:32](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L32)
+
+do not add the 'local-network-access' Permissions-Policy iframe "allow" attribute.
+This may block ECDN / User Location Services functionality from working properly.
+
+#### Default
+
+```ts
+false
+```
+
+#### Inherited from
+
+[`VbrickBaseEmbedConfig`](../Base/VbrickBaseEmbedConfig.md).[`noLocalNetworkAccess`](../Base/VbrickBaseEmbedConfig.md#nolocalnetworkaccess)
+
+***
+
 ### popupAuth?
 
 > `optional` **popupAuth**: `boolean`
 
-Defined in: [embed/VbrickEmbedConfig.ts:30](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L30)
+Defined in: [embed/VbrickEmbedConfig.ts:37](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L37)
 
 For video embeds. If a user needs to log in, go through the login process in a popup window. This is the standard behavior for non-SDK Rev embeded videos
 
@@ -132,7 +153,7 @@ For video embeds. If a user needs to log in, go through the login process in a p
 
 > `optional` **showFullWebcast**: `boolean`
 
-Defined in: [embed/VbrickEmbedConfig.ts:164](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L164)
+Defined in: [embed/VbrickEmbedConfig.ts:171](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L171)
 
 Include Chat, QA and Polls widgets in embed (if configured)
 
@@ -142,7 +163,7 @@ Include Chat, QA and Polls widgets in embed (if configured)
 
 > `optional` **timeoutSeconds**: `number`
 
-Defined in: [embed/VbrickEmbedConfig.ts:35](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L35)
+Defined in: [embed/VbrickEmbedConfig.ts:42](https://github.com/lukeselden/rev-sdk-js/blob/main/src/embed/VbrickEmbedConfig.ts#L42)
 
 seconds to wait for the embed initialization to complete. default is 30 seconds
 
