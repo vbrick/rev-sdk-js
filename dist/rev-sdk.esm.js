@@ -368,7 +368,7 @@ var VbrickEmbed = class {
     const iframe = document.createElement("iframe");
     iframe.setAttribute("frameborder", "0");
     iframe.setAttribute("allowFullScreen", "");
-    iframe.allow = "autoplay";
+    iframe.allow = `autoplay${this.config.noLocalNetworkAccess ? "" : "; local-network-access"}`;
     iframe.width = this.config.width || "100%";
     iframe.height = this.config.height || "100%";
     iframe.src = this.iframeUrl;

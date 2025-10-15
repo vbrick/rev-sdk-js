@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 1.0
+
+* Default to adding `local-network-access` Permission Policy, needed for Vbrick's [ECDN](https://vbrick.com/glossary/enterprise-content-delivery-network-ecdn/) functionality in Chrome/Edge version 142. See [Local Network Access](https://developer.chrome.com/blog/local-network-access). In the unlikely case that this interferes with embed loading you can use the old legacy behavior by passing `noLocalNetworkAccess: true` in the player config.
+
 ## Version 0.7
 
 * Track playbackSpeed and volume on player object
