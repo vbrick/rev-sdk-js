@@ -25,6 +25,13 @@ export interface VbrickBaseEmbedConfig extends VbrickSDKConfig {
 	height?: string;
 
 	/**
+	 * do not add the 'local-network-access' Permissions-Policy iframe "allow" attribute.
+	 * This may block ECDN / User Location Services functionality from working properly.
+	 * @default false
+	 */
+	noLocalNetworkAccess?: boolean;
+
+	/**
 	 * For video embeds. If a user needs to log in, go through the login process in a popup window. This is the standard behavior for non-SDK Rev embeded videos
 	 */
 	popupAuth?: boolean;
