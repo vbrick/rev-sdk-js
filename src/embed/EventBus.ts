@@ -38,7 +38,7 @@ export class EventBus {
 	public awaitEvent(event: TVbrickEvent | TVbrickEvent[], failEvent: TVbrickEvent = 'error', timeout: number = DEFAULT_TIMEOUT): Promise<any> {
 		const events = Array.isArray(event) ? event : [event];
 		return new Promise((resolve, reject) => {
-			const handler = (fn: (e: any) => void) => e => {
+			const handler = (fn: (e: any) => void) => (e: any) => {
 				fn(e);
 				offHandlers.forEach(h => h());
 			};
@@ -120,7 +120,7 @@ export class EventBus {
 		handlers.forEach(h => h(data));
 	}
 	private getHandlers(event: string): IListener<any>[] {
-		const h = this.eventHandlers;
+		const h: Record<string, IListener<any>[]> = this.eventHandlers;
 		if(!h[event]) {
 			h[event] = [];
 		}

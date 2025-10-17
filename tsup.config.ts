@@ -9,7 +9,7 @@ export default defineConfig([
         },
         format: ['esm', 'cjs', 'iife'],
         platform: 'browser',
-        target: [...browserslistToEsbuild(), 'node16'] as Options['target'],
+        target: [...browserslistToEsbuild(), 'node18'] as Options['target'],
         outExtension({ format, pkgType}) {
             switch (format) {
                 case 'cjs': return { js: '.cjs.js', dts: '.d.ts' }

@@ -1,13 +1,15 @@
 /**
  * This file handles parsing/updating the form on the demo page.
  * 
+ * @import {VbrickEmbedConfig, VbrickVideoEmbedConfig} from '../dist/rev-sdk'
+ * 
  * @typedef {object} RevSDKDemoSettings
  * Holds the parameters necessary for calling the Rev SDK's embedVideo/embedWebcast functions
  * @property {string} baseUrl
  * @property {string} videoId
  * @property {string} webcastId
  * @property {string} playlistId
- * @property {import("../dist").VbrickEmbedConfig} config
+ * @property {VbrickEmbedConfig} config
  * 
  * @typedef {object} DemoForm
  * The fields in this page's form
@@ -17,13 +19,14 @@
  * @property {string} webcastId - ID of Webcast
  * @property {string} playlistId - ID of Webcast
  * @property {'vod' | 'webcast' | 'playlist'} embedType - what kind of content is being embedded
- * @property {import("../dist").TokenType} tokenType - type of passed in token
+ * @property {TokenType} tokenType - type of passed in token
  * @property {string} tokenValue - value of token
  * @property {'vbrick' | 'vbrick_rev'} tokenIssuer
  * @property {string} config - JSON string of additional config options.
  */
 
 import { TokenType } from "../dist/rev-sdk.esm.js";
+import { parseRevUrl } from "./parse-rev-url.js";
 import { readParams, storeParams, tryParse, stringifyJson } from "./utils.js";
 
 
@@ -147,7 +150,7 @@ function getConfig(formData) {
 /** Form event handlers */
 
 function onSourceUrlChanged(form, sourceUrl) {
-	const settings = parseRevUrl(sourceUrl);
+	const settings = parseRevUrlForForm(sourceUrl);
 	if (!(settings.videoId || settings.webcastId || settings.playlistId)) {
 		return;
 	}
@@ -229,16 +232,12 @@ export function writeFormData(form, values) {
  * @param {string} url
  * @returns {Partial<DemoForm>}
  */
-export function parseRevUrl(url) {
-	url = url.trim();
-	// attempt to read src parameter if embed code is pasted in
-	if (url.startsWith('<')) {
-		url = url.match(/src="([^"]+)"/)?.[1];
-	}
+export function parseRevUrlForForm(url) {
+	/** @type {import("./parse-rev-url.js").ParseResult | undefined} */
+	let parseResult = undefined;
 
-	let urlObj;
 	try {
-		urlObj = new URL(url);
+		parseResult = parseRevUrl(url);
 	} catch (err) {
 		return {
 			config: '{}'
@@ -246,55 +245,24 @@ export function parseRevUrl(url) {
 	}
 
 	const {
-		searchParams,
-		pathname,
-		hash,
-		origin: baseUrl
-	} = urlObj;
+		webcastId = '',
+		videoId = '',
+		playlistId = '',
+		revUrl: baseUrl = '',
+		params
+	} = parseResult;
 
 	/** @type {Partial<DemoForm>} */
 	const result = {
-		webcastId: '',
-		videoId: '',
-		playlistId: '',
+		webcastId,
+		videoId,
+		playlistId,
 		baseUrl,
 		config: '{}'
 	};
 
-	// matches an id in the url path
-	const guidInPath = (/[0-9a-f-]{36}/i.exec(pathname) || [])[0];
-
-	if (searchParams.has('id')) {
-		result.videoId = searchParams.get('id');
-	} else if (pathname.includes('sharevideo')) {
-		result.videoId = guidInPath;
-	} else if (pathname.includes('embed/webcast')) {
-		// embed code url
-		result.webcastId = guidInPath;
-	} else if (pathname.includes('public/events')) {
-		result.webcastId = guidInPath;
-	} else if (searchParams.has('playlist')) {
-		result.playlistId = searchParams.get('playlist');
-	}
-	else if (hash) {
-		const contentMatch = /\/(?<area>videos|events|playlists|playlist)\/(?<id>[0-9a-f-]{36}|featured)/.exec(hash);
-		if (contentMatch) {
-			const { id, area } = contentMatch.groups;
-			const key = {
-				videos: 'videoId',
-				events: 'webcastId',
-				playlists: 'playlistId',
-				playlist: 'playlistId'
-			}[area];
-
-			result[key] = id;
-		}
-	} else {
-		// just base URL passed
-	}
-
 	// add additional config options passed
-	/** @type {Record<string, keyof import("../dist/rev-sdk").VbrickVideoEmbedConfig>} */
+	/** @type {Record<string, keyof VbrickEmbedConfig>} */
 	const queryConfigMap = {
 		accent: 'accentColor',
 		autoplay: 'autoplay',
@@ -314,7 +282,8 @@ export function parseRevUrl(url) {
 		maxRow: 'videosPerRow',
 		maxVideos: 'maxVideos'
 	};
-	const config = Array.from(searchParams.entries()).reduce((config, [key, value]) => {
+
+	const config = Object.entries(params).reduce((config, [key, value]) => {
 		const configKey = queryConfigMap[key];
 		if (configKey) {
 			config[configKey] = value === '' ? true : value;
@@ -331,15 +300,15 @@ export function parseRevUrl(url) {
 		result.embedType = 'playlist';
 	}
 
-	if (searchParams.get('token')) {
-		result.tokenValue = searchParams.get('token');
+	if (params.token && typeof params.token === 'string') {
+		result.tokenValue = params.token;
 		if (result.webcastId) {
 			result.tokenType = 'GuestRegistraion';
 			result.tokenIssuer = 'vbrick_rev';
 		}
 	}
-	if (searchParams.get('jwt_token')) {
-		result.tokenValue = searchParams.get('jwt_token');
+	if (params['jwt_token'] && typeof params['jwt_token'] === 'string') {
+		result.tokenValue = params['jwt_token'];
 		result.tokenType = 'JWT';
 		result.tokenIssuer = '';
 	}

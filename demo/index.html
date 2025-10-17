@@ -3,7 +3,11 @@
 <html>
 
 <head>
+	<meta charset="UTF-8">
 	<style>
+		body {
+			font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+		}
 		#embed {
 			height: 404px;
 			width: 720px;
@@ -47,6 +51,10 @@
 		#demo {
 			display: flex;
 			gap: 20px;
+			flex-wrap: wrap;
+		}
+		#demo > * {
+			flex: 1 1 404px;
 		}
 
 		.is-full-webcast #demo {
@@ -63,11 +71,32 @@
 		.is-full-webcast #controls {
 			flex: 1 1 auto;
 		}
+		#control-bar {
+			padding: 10px 20px;
+			display: flex;
+			gap: 10px;
+			flex-direction: column;
+		}
+		.controls-row {
+			display: grid;
+			gap: 1ex;
+			grid-template-columns: repeat(auto-fit, minmax(10em, 1fr));
+		}
+		label {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.5ex;
+			flex-wrap: wrap;
+		}
+		label > *:not([type="checkbox"], [type="radio"]) {
+			flex: 1;
+			max-width: 100%;
+		}
 	</style>
 </head>
 
 <body>
-	<h1>Vbrick SDK Embed Test</h1>
+	<h1><a href="https://github.com/vbrick/rev-sdk-js" target="_blank">Vbrick Embed SDK</a> Test Page</h1>
 	<div id="demo">
 		<div id="embed"></div>
 
@@ -111,8 +140,7 @@
 						<div class="radio-grid">
 							<label><input type="radio" name="tokenType" value="" checked>None</label><em>Public (no authentication) or via popup authentication</em>
 							<label><input type="radio" name="tokenType" value="AccessToken">Access Token</label>
-							<em>(generated via the <a href="https://revdocs.vbrick.com/reference/authenticateuser"
-									target="revdocs">API Key</a>, <a
+							<em>(generated via the <a
 									href="https://revdocs.vbrick.com/reference/loginuser" target="revdocs">Username</a>, <a href="https://revdocs.vbrick.com/reference/jwtauthenticate" target="revdocs">JWT</a> 
 								or <a href="https://revdocs.vbrick.com/reference/token" target="revdocs">OAuth</a> APIs)</em>
 
@@ -144,26 +172,32 @@
 						</div>
 					</div>
 				</form>
-				<div>
+				<section id="control-bar">
+				<div class="controls-row">
 					<div><b>Webcast Status: </b><span id="webcastStatus"></span></div>
 					<div><b>Player Status: </b><span id="playerStatus"></span></div>
 					<div><b>Current Time: </b><span id="currentTime"></span></div>
 				</div>
-				<div>
-					<button id="playButton">Play</button>
-					<button id="pauseButton">Pause</button>
-					<label for="volumeSlider">Volume: <input type="range" id="volumeSlider" min="0" max="1"  step="0.01" /></label>
+				<div class="controls-row">
+					<div>
+						<button id="playButton">&#x25b6;&#xfe0e; Play</button>
+						<button id="pauseButton">&#x23f8;&#xfe0e; Pause</button>
+					</div>
+					<label for="volumeSlider">&#x1F50A;&#xfe0e; Volume: <input type="range" id="volumeSlider" min="0" max="1"  step="0.01" /></label>
 					<label for="subtitles">Subtitles: <select id="subtitles">
 						<option value="" default>None</option>
 					</select></label>
 				</div>
-				<div id="playlist-controls">
+				<div class="controls-row">
+					<div>
+						<button id="playlistPrev">&#x23ee;&#xfe0e; Previous</button>
+						<button id="playlistNext">&#x23ed;&#xfe0e; Next</button>
+					</div>
 					<label for="playlistSelect">Playlist: <select id="playlistSelect">
 						<option value="" default>None</option>
 					</select></label>
-					<button id="playlistPrev">Previous</button>
-					<button id="playlistNext">Next</button>
 				</div>
+				</section>
 			</div>
 		</div>
 	</div>

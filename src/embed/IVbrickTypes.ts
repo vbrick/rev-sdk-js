@@ -4,6 +4,8 @@ import { WebcastStatus } from './WebcastStatus';
 /**
  * The current subtitles language and if enabled or not
  * @public
+ * @group Metadata
+ * @category Base
  */
 
 export interface ISubtitles {
@@ -13,6 +15,8 @@ export interface ISubtitles {
 /**
  * Basic metadata shared between VOD and Webcast Embeds
  * @public
+ * @group Metadata
+ * @category Base
  */
 
 export interface IBasicInfo {
@@ -23,6 +27,8 @@ export interface IBasicInfo {
 /**
  * Video Metadata
  * @public
+ * @group Metadata
+ * @category VOD
  */
 
 export interface IVideoInfo extends IBasicInfo {
@@ -48,9 +54,30 @@ export interface IVideoInfo extends IBasicInfo {
 		deviceName?: string;
 	}>;
 }
+
+/**
+ * video sidebar button
+ * @public
+ * @group Enums
+ * @category VOD
+ */
+export enum VideoPlaybackSidebarButton {
+	AI = 'ai',
+	CHAPTERS = 'chapters',
+	COMMENTS = 'comments',
+	INFO = 'info',
+	PLAYLIST = 'playlist',
+	PULSE = 'pulse',
+	REPORTS = 'reports',
+	REVIEW = 'review',
+	SHARE = 'share'
+}
+
 /**
  * Event indicating the current webcast status
  * @public
+ * @group Events
+ * @category Webcast
  */
 
 export type IWebcastStatusMessage<T extends WebcastStatus = WebcastStatus> = {
@@ -60,6 +87,8 @@ export type IWebcastStatusMessage<T extends WebcastStatus = WebcastStatus> = {
 /**
  * Webcast Metadata
  * @public
+ * @group Metadata
+ * @category Webcast
  */
 
 export interface IWebcastInfo extends IBasicInfo {
@@ -75,6 +104,8 @@ export interface IWebcastInfo extends IBasicInfo {
 /**
  * Fired when a new comment has been added to Chat
  * @public
+ * @group Events
+ * @category Webcast
  */
 
 export interface IComment {
@@ -87,6 +118,8 @@ export interface IComment {
 /**
  * Details of the current slide on a Webcast slide change event
  * @public
+ * @group Events
+ * @category Webcast
  */
 
 export interface ISlideEvent {
@@ -96,6 +129,8 @@ export interface ISlideEvent {
 /**
  * Details of a Webcast Poll
  * @public
+ * @group Events
+ * @category Webcast
  */
 
 export interface IPoll {
@@ -111,6 +146,8 @@ export interface IPoll {
 /**
  * The Webcast Poll that has been Closed/Unpublished
  * @public
+ * @group Events
+ * @category Webcast
  */
 
 export type TPollId = {
@@ -119,6 +156,8 @@ export type TPollId = {
 /**
  * Details of if Video and/or Slides are currently displayed
  * @public
+ * @group Events
+ * @category Webcast
  */
 
 export interface IWebcastLayout {
@@ -137,6 +176,8 @@ export interface IPlaylistSwitch {
 /**
  * Video entry in playlist
  * @public
+ * @group Metadata
+ * @category Playlist
  */
 export interface IPlaylistItem {
 	id: string;
@@ -148,6 +189,8 @@ export interface IPlaylistItem {
 /**
  * Playlist data emitted when playlist first loaded
  * @public
+ * @group Metadata
+ * @category Playlist
  */
 export interface IPlaylistInfo {
 	id: string;

@@ -25,6 +25,14 @@ export class VbrickVideoEmbed extends VbrickEmbed<IVideoInfo> implements IVbrick
 	}
 
 	/**
+	 * Current playback speed
+	 */
+	public get playbackSpeed(): number {
+		return this._playbackSpeed;
+	}
+	private _playbackSpeed: number = 1;
+
+	/**
 	 * Contains metadata for the video
 	 * @deprecated Use `info` instead
 	 */
@@ -69,6 +77,9 @@ export class VbrickVideoEmbed extends VbrickEmbed<IVideoInfo> implements IVbrick
 		this.eventBus.on('currentTime', e => {
 			this._currentTime = e.currentTime;
 			// update duration in videoInfo?
+		});
+		this.eventBus.on('playbackSpeedChanged', e => {
+			this._playbackSpeed = e;
 		});
 	}
 	protected getEmbedUrl(id: string, config: VbrickEmbedConfig): string {

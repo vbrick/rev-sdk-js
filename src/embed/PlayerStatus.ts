@@ -1,5 +1,7 @@
 /**
  * @public
+ * @group Enums
+ * @category Base
  */
 export enum PlayerStatus {
 	Initializing = 'Initializing',

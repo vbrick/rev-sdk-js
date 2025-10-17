@@ -4,7 +4,7 @@ import { getLogger, ILogger } from '../Log';
 import { IVbrickBaseEmbed, PlayerStatus } from './IVbrickApi';
 import { TokenType, VbrickSDKToken } from '../VbrickSDK';
 import { TVbrickEvent, IListener } from './IVbrickEvents';
-import { IBasicInfo, ISubtitles } from './IVbrickTypes';
+import { IBasicInfo, ISubtitles, VideoPlaybackSidebarButton } from './IVbrickTypes';
 import { authenticateAccessToken, authenticateJWT } from './auth';
 
 /**
@@ -26,7 +26,7 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 	public get volume(): number {
 		return this._volume;
 	}
-	private _volume: number;
+	private _volume: number = 1;
 
 	/**
 	 * Whether subtitles are enabled, and selected language
@@ -39,7 +39,7 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 	public get isLive(): boolean {
 		return !!this.info?.isLive;
 	}
-	
+
 	public get info(): TInfo | undefined {
 		return this._info as TInfo;
 	}
@@ -148,11 +148,13 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 		this.eventBus.on('webcastLoaded', ({status, ...info}: any) => {
 			this._info = info;
 		});
-		
+
 		this.eventBus.on('playerStatusChanged', e => this._playerStatus = e.status);
 		this.eventBus.on('subtitlesChanged', subtitles => {
 			this._currentSubtitles = subtitles;
 		});
+
+		this.eventBus.on('volumeChanged', e => this._volume = e);
 
 		// allow setting volume on player ready
 		if (this.config.initialVolume != undefined && isFinite(this.config.initialVolume)) {
@@ -166,8 +168,8 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 			this.eventBus.on('playerStatusChanged', volumeCallback);
 		}
 	}
-	protected abstract getEmbedUrl(id: string, config: VbrickEmbedConfig);
-	
+	protected abstract getEmbedUrl(id: string, config: VbrickEmbedConfig): string;
+
 	public on<T extends TVbrickEvent>(event: T, listener: IListener<T>): void {
 		//ensure internal updates take effect before calling client handlers
 		this.eventBus.on<any>(event, (e: any) => setTimeout(() => listener(e)));
@@ -181,7 +183,7 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 		const iframe = document.createElement('iframe');
 		iframe.setAttribute('frameborder', '0');
 		iframe.setAttribute('allowFullScreen', '')
-		iframe.allow = 'autoplay';
+		iframe.allow = `autoplay${this.config.noLocalNetworkAccess ? '' : '; local-network-access'}`;
 		iframe.width = this.config.width || '100%';
 		iframe.height = this.config.height || '100%';
 		iframe.src = this.iframeUrl;
@@ -217,9 +219,9 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 
 /**
  * parses a config object and converts into query parameters for the iframe embed URL
- * @param config 
+ * @param config
  */
- export function getEmbedQuery(config: VbrickEmbedConfig): Record<string, undefined | boolean | string> {
+ export function getEmbedQuery(config: VbrickEmbedConfig): Record<string, undefined | boolean | string | number> {
 	return {
 		tk: !!config.token,
 		popupAuth: (config.popupAuth != undefined)
@@ -228,6 +230,10 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 			: undefined,
 		accent: config.accentColor ?? config.accent,
 		autoplay: config.autoplay,
+		defaultTheme: config.applyDefaultTheme,
+		defaultSidebar: config.defaultSidebar,
+		fullPlayer: config.showFullPlayer,
+		mobileLayoutBreakPoint: config.mobileLayoutBreakPoint,
 		forceClosedCaptions: config.forcedCaptions ?? config.forceClosedCaptions,
 		loopVideo: config.playInLoop ?? config.loopVideo,
 		noCc: config.hideSubtitles ?? config.noCc,
@@ -236,6 +242,20 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 		noFullscreen: config.hideFullscreen ?? config.noFullscreen,
 		noPlayBar: config.hidePlayControls ?? config.noPlayBar,
 		noSettings: config.hideSettings ?? config.noSettings,
-		startAt: config.startAt
+		noChapterSeek: config.hideChapterNavigation ?? config.noChapterSeek,
+		noChapterDisplay: config.hideChapterImages ?? config.noChapterDisplay,
+		noChapterMenu: config.hideChapterMenu ?? config.noChapterMenu,
+		sidebarFilterQuery: config.sidebarFilterQuery,
+		startAt: config.startAt,
+		// all sidebar tabs are by default true, so only include if explicitly false
+		...config.showFullPlayer && {
+			hideInfo: config.sidebarTabs[VideoPlaybackSidebarButton.INFO] === false || config.hideInfo === true,
+			hideComments: config.sidebarTabs[VideoPlaybackSidebarButton.COMMENTS] === false || config.hideComments === true,
+			hidePulse: config.sidebarTabs[VideoPlaybackSidebarButton.PULSE] === false || config.hidePulse === true,
+			hideReview: config.sidebarTabs[VideoPlaybackSidebarButton.REVIEW] === false || config.hideReview === true,
+			hidePlaylist: config.sidebarTabs[VideoPlaybackSidebarButton.PLAYLIST] === false || config.hidePlaylist === true,
+			hideChapters: config.sidebarTabs[VideoPlaybackSidebarButton.CHAPTERS] === false || config.hideChapters === true,
+			hideAnalytics: config.sidebarTabs[VideoPlaybackSidebarButton.REPORTS] === false || config.hideAnalytics === true,
+		}
 	};
 }

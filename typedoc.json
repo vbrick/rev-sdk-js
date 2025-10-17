@@ -1,12 +1,15 @@
 {
 	"$schema": "https://typedoc.org/schema.json",
 	"entryPoints": ["src/"],
-	"entryPointStrategy": "Resolve",
+	"entryPointStrategy": "resolve",
 	"out": "docs",
-	"plugin": "typedoc-plugin-markdown",
+	"plugin": ["typedoc-plugin-markdown", "typedoc-plugin-rename-defaults"],
 	"gitRevision": "main",
-	"gitRemote": "upstream",
+	"gitRemote": "origin",
+	"readme": "none",
 	"excludeInternal": true,
 	"excludePrivate": true,
-	"excludeProtected": true
+	"excludeProtected": true,
+	"router": "category",
+	"categoryOrder": ["Core", "VOD", "Playlist", "Webcast", "Base"]
 }

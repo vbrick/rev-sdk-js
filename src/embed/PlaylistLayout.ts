@@ -1,5 +1,7 @@
 /**
  * @public
+ * @group Enums
+ * @category Playlist
  */
 export enum PlaylistLayout {
     Filmstrip = 'row',
