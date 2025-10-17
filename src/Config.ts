@@ -12,4 +12,5 @@ function validateConfig(cfg: VbrickSDKConfig): void {
 	if(!cfg.baseUrl?.match(/^https?:\/\//)) {
 		throw new Error('Rev SDK Error: baseUrl invalid');
 	}
+	cfg.baseUrl = new URL(cfg.baseUrl).origin;
 }

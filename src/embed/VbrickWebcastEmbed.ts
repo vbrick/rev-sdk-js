@@ -6,6 +6,10 @@ import { getEmbedUrl } from '../util';
 import { IWebcastInfo, IWebcastLayout } from "./IVbrickTypes";
 import { getEmbedQuery, VbrickEmbed } from './VbrickEmbed';
 
+function isFullWebcastEnabled(config: VbrickWebcastEmbedConfig) {
+	return config.showFullWebcast ?? config.enableFullRev;
+}
+
 export class VbrickWebcastEmbed extends VbrickEmbed<IWebcastInfo> implements IVbrickWebcastEmbed {
 
 	public get webcastStatus() {
@@ -41,7 +45,7 @@ export class VbrickWebcastEmbed extends VbrickEmbed<IWebcastInfo> implements IVb
 		this.eventBus.on('webcastLoaded', e => {
 			this._webcastStatus = e.status;
 			// start initially with hidden slides
-			if (this.config.showFullWebcast) {
+			if (isFullWebcastEnabled(this.config)) {
 				this.updateLayout({ video: true, presentation: false });
 			}
 		});
@@ -56,7 +60,7 @@ export class VbrickWebcastEmbed extends VbrickEmbed<IWebcastInfo> implements IVb
 	}
 	protected getEmbedUrl(id: string, config: VbrickEmbedConfig): string {
 		return getEmbedUrl(config.baseUrl, `/embed/webcast/${id}`, {
-			enableFullRev: config.showFullWebcast,
+			enableFullRev: isFullWebcastEnabled(config),
 			...getEmbedQuery(config)
 		});
 	}

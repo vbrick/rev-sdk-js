@@ -1,16 +1,20 @@
 import { WebcastStatus } from './WebcastStatus';
 import { PlayerStatus } from './PlayerStatus';
 import { VbrickSDKToken } from '../VbrickSDK';
-import { TVbrickEvent, IListener, TEmbedMessages, TPlayerMessages, TWebcastMessages } from './IVbrickEvents';
-import { IVideoInfo, IWebcastInfo, IWebcastLayout, ISubtitles, IBasicInfo } from "./IVbrickTypes";
+import { TVbrickEvent, IListener, TEmbedMessages, TPlayerMessages, TWebcastMessages, TPlaylistMessages } from './IVbrickEvents';
+import { IVideoInfo, IWebcastInfo, IWebcastLayout, ISubtitles, IBasicInfo, IPlaylistInfo } from "./IVbrickTypes";
 
 export { WebcastStatus } from './WebcastStatus';
 export { PlayerStatus } from './PlayerStatus';
-export { TVbrickEvent, IListener, TEmbedMessages, TPlayerMessages, TWebcastMessages, TVbrickMessages } from './IVbrickEvents';
+export { PlaylistLayout } from './PlaylistLayout';
+export type { TVbrickEvent, IListener, TEmbedMessages, TPlayerMessages, TWebcastMessages, TPlaylistMessages, TVbrickMessages } from './IVbrickEvents';
 export * from './IVbrickTypes';
 
 /**
+ * This is the core player class returned by `embedVideo`, `embedWebcast` and `embedPlaylist`. 
  * @public
+ * @group Player
+ * @category Base
  */
 export interface IVbrickBaseEmbed<TInfo extends IBasicInfo, Events extends string & TVbrickEvent = keyof TEmbedMessages> {
 	/**
@@ -31,7 +35,13 @@ export interface IVbrickBaseEmbed<TInfo extends IBasicInfo, Events extends strin
 	/**
 	 * metadata of the video/webcast
 	 */
-	readonly info: TInfo;
+	readonly info?: TInfo;
+
+	/**
+	 * returns a promise once the player has completed authentication and load.
+	 * Will reject with an error if authentication/load failed
+	 */
+	initialize(): Promise<void>;
 
 	/**
 	 * Plays the video if it is paused.
@@ -59,7 +69,7 @@ export interface IVbrickBaseEmbed<TInfo extends IBasicInfo, Events extends strin
 	/**
 	 * Register an event handler. Events are fired at different lifecycle stages of the webcast
 	 * @param event - name of event
-	 * @param listener - callback when event is fired. Keep a reference if you intend to call {@link IVbrickBaseEmbed.off} later
+	 * @param listener - callback when event is fired. Keep a reference if you intend to call {@link IVbrickBaseEmbed['off']} later
 	 */
 	on<T extends Events>(event: T, listener: IListener<T>): void;
 
@@ -82,6 +92,8 @@ export interface IVbrickBaseEmbed<TInfo extends IBasicInfo, Events extends strin
 
 /**
  * @public
+ * @group Player
+ * @category VOD
  */
 export interface IVbrickVideoEmbed extends IVbrickBaseEmbed<IVideoInfo, keyof (TEmbedMessages & TPlayerMessages)> {
 	/**
@@ -98,7 +110,12 @@ export interface IVbrickVideoEmbed extends IVbrickBaseEmbed<IVideoInfo, keyof (T
 	 * Contains metadata for the video
 	 * @deprecated Use `info` instead
 	 */
-	readonly videoInfo: IVideoInfo;
+	readonly videoInfo?: IVideoInfo;
+
+	/**
+	 * The current playback speed
+	 */
+	readonly playbackSpeed: number;
 
 	/**
 	 * sets playback rate 
@@ -115,6 +132,8 @@ export interface IVbrickVideoEmbed extends IVbrickBaseEmbed<IVideoInfo, keyof (T
 
 /**
  * @public
+ * @group Player
+ * @category Webcast
  */
 export interface IVbrickWebcastEmbed extends IVbrickBaseEmbed<IWebcastInfo, keyof (TEmbedMessages & TWebcastMessages)> {
 	/**
@@ -128,4 +147,63 @@ export interface IVbrickWebcastEmbed extends IVbrickBaseEmbed<IWebcastInfo, keyo
 	 * @param layout  - set if video/slides are displayed
 	 */
 	updateLayout(layout: IWebcastLayout): void;
+}
+
+/**
+ * @public
+ * @group Player
+ * @category Playlist
+ */
+export interface IVbrickPlaylistEmbed extends IVbrickBaseEmbed<IVideoInfo, keyof (TEmbedMessages & TPlayerMessages & TPlaylistMessages)> {
+	readonly playlist: IPlaylistInfo;
+	/**
+	 * index of current video in the playlist videos array
+	 */
+	readonly currentIndex: number;
+	
+	/**
+	 * Load a new video in the playlist. A 'videoInfo' event will be emitted once the new video has loaded
+	 * @param videoId  - specify video to show. It must exist in the playlist
+	 * @param autoplay - whether to automatically start playback on video load. Default is true
+	 */
+	switchVideo(videoId: string, autoplay?: boolean): void;
+
+	/**
+	 * Switch to previous video in playlist
+	 */
+	previous(): void;
+
+	/**
+	 * Switch to next video in playlist
+	 */
+	next(): void;
+
+
+	/**
+	 * Current position in video in seconds
+	 */
+	readonly currentTime: number;
+
+	/**
+	 * Duration of video in seconds. Will be undefined for live content
+	 */
+	readonly duration?: number;
+
+	/**
+	 * Contains metadata for the video
+	 * @deprecated Use `info` instead
+	 */
+	readonly videoInfo?: IVideoInfo;
+
+	/**
+	 * sets playback rate 
+	 * @param speed - 0-16, default is 1
+	 */
+	setPlaybackSpeed(speed: number): void;
+
+	/**
+	 * sets the current time in the video
+	 * @param currentTime - value (in seconds) between 0 and video duration
+	 */
+	seek(currentTime: number): void;
 }

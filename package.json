@@ -1,6 +1,6 @@
 {
   "name": "@vbrick/rev-sdk",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "description": "Client SDK for Vbrick Rev",
   "author": "Vbrick Systems",
   "repository": "github:vbrick/rev-sdk-js",
@@ -8,29 +8,34 @@
   "module": "dist/rev-sdk.esm.js",
   "browser": "dist/rev-sdk.js",
   "types": "dist/rev-sdk.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/rev-sdk.d.ts",
+      "import": "./dist/rev-sdk.esm.js",
+      "require": "./dist/rev-sdk.cjs.js",
+      "default": "./dist/rev-sdk.esm.js"
+    }
+  },
   "browserslist": [
     "defaults",
     "not IE 11"
   ],
   "scripts": {
-    "prepublishOnly": "(npm run build) && (npm run dts)",
+    "prepublishOnly": "(npm run build:clean) && (npm run build) && (npm run doc)",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node --max_old_space_size=4096 node_modules/webpack/bin/webpack --config ./webpack.config.js --progress",
-    "build:watch": "node --max_old_space_size=4096 node_modules/webpack/bin/webpack --config ./webpack.config.js --progress --watch",
-    "dts": "npx @microsoft/api-extractor run",
-    "doc": "npx typedoc --readme none"
+    "build:clean": "rm -rf dist",
+    "build": "tsup",
+    "build:watch": "tsup --watch",
+    "doc": "typedoc"
   },
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.18.9",
-    "@babel/preset-env": "^7.18.9",
-    "babel-loader": "^8.2.5",
-    "core-js": "^3.23.5",
-    "ts-loader": "^9.3.1",
-    "typedoc": "^0.23.8",
-    "typedoc-plugin-markdown": "^3.13.4",
-    "typescript": "^4.7.4",
-    "webpack": "^5.73.0",
-    "webpack-cli": "^4.10.0"
+    "@types/node": "^24.3.0",
+    "browserslist-to-esbuild": "^2.1.1",
+    "tsup": "^8.5.0",
+    "typedoc": "^0.28.10",
+    "typedoc-plugin-markdown": "^4.8.1",
+    "typedoc-plugin-rename-defaults": "^0.7.3",
+    "typescript": "^5.9.2"
   }
 }

@@ -1,5 +1,5 @@
 import { VbrickSDKConfig } from "../VbrickSDK";
-import { TVbrickEvent, IListener, TPlayerMethod, TAuthMethods, TWebcastMethod, TVbrickMessages } from './IVbrickEvents';
+import { TVbrickEvent, IListener, TPlayerMethod, TAuthMethods, TWebcastMethod, TVbrickMessages, TPlaylistMethod } from './IVbrickEvents';
 
 // default to 30 second timeout on authentication/SDK communication
 const DEFAULT_TIMEOUT = 30 * 1000;
@@ -38,7 +38,7 @@ export class EventBus {
 	public awaitEvent(event: TVbrickEvent | TVbrickEvent[], failEvent: TVbrickEvent = 'error', timeout: number = DEFAULT_TIMEOUT): Promise<any> {
 		const events = Array.isArray(event) ? event : [event];
 		return new Promise((resolve, reject) => {
-			const handler = (fn: (e: any) => void) => e => {
+			const handler = (fn: (e: any) => void) => (e: any) => {
 				fn(e);
 				offHandlers.forEach(h => h());
 			};
@@ -70,7 +70,7 @@ export class EventBus {
 	}
 
 	/** Posts a message to the embed */
-	public publish(...[event, msg = undefined]: TAuthMethods | TPlayerMethod | TWebcastMethod): void {
+	public publish(...[event, msg = undefined]: TAuthMethods | TPlayerMethod | TWebcastMethod | TPlaylistMethod): void {
 		this.shouldLog && console.log('rev client posting message. ', event);
 		this.win.postMessage({
 			app: 'vbrick',
@@ -120,7 +120,7 @@ export class EventBus {
 		handlers.forEach(h => h(data));
 	}
 	private getHandlers(event: string): IListener<any>[] {
-		const h = this.eventHandlers;
+		const h: Record<string, IListener<any>[]> = this.eventHandlers;
 		if(!h[event]) {
 			h[event] = [];
 		}

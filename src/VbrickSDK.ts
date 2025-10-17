@@ -1,6 +1,8 @@
 
 /**
  * @public
+ * @group Enums
+ * @category Base
  */
 export enum TokenType {
 	JWT = 'JWT',
@@ -10,6 +12,8 @@ export enum TokenType {
 
 /**
  * @public
+ * @group Configuration
+ * @category Base
  */
 export interface VbrickSDKToken {
 	type: TokenType;
@@ -27,6 +31,8 @@ export interface VbrickSDKToken {
 
 /**
  * @public
+ * @group Configuration
+ * @category Base
  */
 export interface VbrickSDKConfig {
 	/**

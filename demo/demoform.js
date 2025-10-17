@@ -1,12 +1,15 @@
 /**
  * This file handles parsing/updating the form on the demo page.
  * 
+ * @import {VbrickEmbedConfig, VbrickVideoEmbedConfig} from '../dist/rev-sdk'
+ * 
  * @typedef {object} RevSDKDemoSettings
  * Holds the parameters necessary for calling the Rev SDK's embedVideo/embedWebcast functions
  * @property {string} baseUrl
  * @property {string} videoId
  * @property {string} webcastId
- * @property {import("../dist").VbrickEmbedConfig} config
+ * @property {string} playlistId
+ * @property {VbrickEmbedConfig} config
  * 
  * @typedef {object} DemoForm
  * The fields in this page's form
@@ -14,13 +17,16 @@
  * @property {string} baseUrl - URL/origin of Rev tenant
  * @property {string} videoId - ID of Video/VOD
  * @property {string} webcastId - ID of Webcast
- * @property {'vod' | 'webcast'} embedType - what kind of content is being embedded
- * @property {import("../dist").TokenType} tokenType - type of passed in token
+ * @property {string} playlistId - ID of Webcast
+ * @property {'vod' | 'webcast' | 'playlist'} embedType - what kind of content is being embedded
+ * @property {TokenType} tokenType - type of passed in token
  * @property {string} tokenValue - value of token
  * @property {'vbrick' | 'vbrick_rev'} tokenIssuer
  * @property {string} config - JSON string of additional config options.
  */
 
+import { TokenType } from "../dist/rev-sdk.esm.js";
+import { parseRevUrl } from "./parse-rev-url.js";
 import { readParams, storeParams, tryParse, stringifyJson } from "./utils.js";
 
 
@@ -48,6 +54,9 @@ export function init(formDefaults, render) {
 		switch (evt.target.name) {
 			case 'tokenType':
 				onTokenTypeChanged(form);
+				return;
+			case 'tokenValue':
+				onTokenValueChanged(form);
 				return;
 			case 'sourceUrl':
 				onSourceUrlChanged(form, form.elements.sourceUrl.value);
@@ -106,6 +115,7 @@ function getConfig(formData) {
 		embedType,
 		videoId,
 		webcastId,
+		playlistId,
 		baseUrl
 	} = formData
 
@@ -117,7 +127,7 @@ function getConfig(formData) {
 			...tryParse(config),
 			token: tokenValue
 				? {
-					type: tokenType,
+					type: tokenType || TokenType.ACCESS_TOKEN,
 					value: tokenValue,
 					issuer: tokenIssuer
 				}
@@ -128,8 +138,10 @@ function getConfig(formData) {
 	// read the form radio toggle to only return expected ID
 	if (embedType === 'vod') {
 		data.videoId = videoId;
-	} else {
+	} else if (embedType === 'webcast') {
 		data.webcastId = webcastId;
+	} else if (embedType === 'playlist') {
+		data.playlistId = playlistId;
 	}
 
 	return data;
@@ -138,8 +150,8 @@ function getConfig(formData) {
 /** Form event handlers */
 
 function onSourceUrlChanged(form, sourceUrl) {
-	const settings = parseRevUrl(sourceUrl);
-	if (!settings.videoId && !settings.webcastId) {
+	const settings = parseRevUrlForForm(sourceUrl);
+	if (!(settings.videoId || settings.webcastId || settings.playlistId)) {
 		return;
 	}
 
@@ -155,18 +167,33 @@ export function onTokenTypeChanged(form) {
 	onEmbedTypeChanged(form);
 
 	form.elements.tokenIssuer.value = {
-		AccessToken: 'vbrick',
-		JWT: '',
-		GuestRegistration: 'vbrick_rev'
+		[TokenType.ACCESS_TOKEN]: 'vbrick',
+		[TokenType.JWT]: '',
+		[TokenType.GUEST_REGISTRATION]: 'vbrick_rev'
 	}[form.elements.tokenType.value || ''] || '';
+}
+
+/**
+ * If any value set on token then default to access token type
+ */
+export function onTokenValueChanged(form) {
+	const tokenTypeEl = form.elements.tokenType;
+	const hasValue = !!form.elements.tokenValue.value;
+	
+	// if none type then default to access token type
+	if (hasValue && tokenTypeEl.value === '') {
+		tokenTypeEl.value = TokenType.ACCESS_TOKEN;
+		onTokenTypeChanged(form);
+	}
 }
 /**
  * update which type of ID is editable when the embed type is updated
  */
 function onEmbedTypeChanged(form) {
-	const isVOD = form.elements.embedType.value === 'vod';
-	form.elements.webcastId.disabled = isVOD;
-	form.elements.videoId.disabled = !isVOD;
+	const embedType = form.elements.embedType.value;
+	form.elements.videoId.disabled    = embedType !== 'vod';
+	form.elements.webcastId.disabled  = embedType !== 'webcast';
+	form.elements.playlistId.disabled = embedType !== 'playlist';
 }
 
 /**
@@ -205,16 +232,12 @@ export function writeFormData(form, values) {
  * @param {string} url
  * @returns {Partial<DemoForm>}
  */
-export function parseRevUrl(url) {
-	url = url.trim();
-	// attempt to read src parameter if embed code is pasted in
-	if (url.startsWith('<')) {
-		url = url.match(/src="([^"]+)"/)?.[1];
-	}
+export function parseRevUrlForForm(url) {
+	/** @type {import("./parse-rev-url.js").ParseResult | undefined} */
+	let parseResult = undefined;
 
-	let urlObj;
 	try {
-		urlObj = new URL(url);
+		parseResult = parseRevUrl(url);
 	} catch (err) {
 		return {
 			config: '{}'
@@ -222,50 +245,24 @@ export function parseRevUrl(url) {
 	}
 
 	const {
-		searchParams,
-		pathname,
-		hash,
-		origin: baseUrl
-	} = urlObj;
+		webcastId = '',
+		videoId = '',
+		playlistId = '',
+		revUrl: baseUrl = '',
+		params
+	} = parseResult;
 
 	/** @type {Partial<DemoForm>} */
 	const result = {
-		webcastId: '',
-		videoId: '',
+		webcastId,
+		videoId,
+		playlistId,
 		baseUrl,
 		config: '{}'
 	};
 
-	// matches an id in the url path
-	const guidInPath = (/[0-9a-f-]{36}/i.exec(pathname) || [])[0];
-
-	if (searchParams.has('id')) {
-		result.videoId = searchParams.get('id');
-	} else if (pathname.includes('sharevideo')) {
-		result.videoId = guidInPath;
-	} else if (pathname.includes('embed/webcast')) {
-		// embed code url
-		result.webcastId = guidInPath;
-	} else if (pathname.includes('public/events')) {
-		result.webcastId = guidInPath;
-	}
-	else if (hash) {
-		const contentMatch = /\/(?<area>videos|events)\/(?<id>[0-9a-f-]{36})/.exec(hash);
-		if (contentMatch) {
-			const { id, area } = contentMatch.groups;
-
-			const key = area === 'events'
-				? 'webcastId'
-				: 'videoId';
-
-			result[key] = id;
-		}
-	} else {
-		// just base URL passed
-	}
-
 	// add additional config options passed
-	/** @type {Record<string, keyof import("../dist/rev-sdk").VbrickVideoEmbedConfig>} */
+	/** @type {Record<string, keyof VbrickEmbedConfig>} */
 	const queryConfigMap = {
 		accent: 'accentColor',
 		autoplay: 'autoplay',
@@ -279,9 +276,14 @@ export function parseRevUrl(url) {
 		noSettings: 'hideSettings',
 		startAt: 'startAt',
 		popupAuth: 'popupAuth',
-		enableFullRev: 'showFullWebcast'
+		enableFullRev: 'showFullWebcast',
+		layout: 'layout',
+		noToolbar: 'hideToolbar',
+		maxRow: 'videosPerRow',
+		maxVideos: 'maxVideos'
 	};
-	const config = Array.from(searchParams.entries()).reduce((config, [key, value]) => {
+
+	const config = Object.entries(params).reduce((config, [key, value]) => {
 		const configKey = queryConfigMap[key];
 		if (configKey) {
 			config[configKey] = value === '' ? true : value;
@@ -290,17 +292,23 @@ export function parseRevUrl(url) {
 	}, {});
 
 	result.config = stringifyJson(config, true);
-	result.embedType = result.videoId ? 'vod' : 'webcast';
+	if (result.videoId) {
+		result.embedType = 'vod';
+	} else if (result.webcastId) {
+		result.embedType = 'webcast';
+	} else if (result.playlistId) {
+		result.embedType = 'playlist';
+	}
 
-	if (searchParams.get('token')) {
-		result.tokenValue = searchParams.get('token');
+	if (params.token && typeof params.token === 'string') {
+		result.tokenValue = params.token;
 		if (result.webcastId) {
 			result.tokenType = 'GuestRegistraion';
 			result.tokenIssuer = 'vbrick_rev';
 		}
 	}
-	if (searchParams.get('jwt_token')) {
-		result.tokenValue = searchParams.get('jwt_token');
+	if (params['jwt_token'] && typeof params['jwt_token'] === 'string') {
+		result.tokenValue = params['jwt_token'];
 		result.tokenType = 'JWT';
 		result.tokenIssuer = '';
 	}
