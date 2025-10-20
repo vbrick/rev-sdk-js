@@ -20,15 +20,23 @@ export class VbrickVideoEmbed extends VbrickEmbed<IVideoInfo> implements IVbrick
 	/**
 	 * Duration of video in seconds. Will be undefined for live content
 	 */
-	public get duration(): number {
+	public get duration(): number | undefined {
 		return this.info?.duration;
 	}
+
+	/**
+	 * Current playback speed
+	 */
+	public get playbackSpeed(): number {
+		return this._playbackSpeed;
+	}
+	private _playbackSpeed: number = 1;
 
 	/**
 	 * Contains metadata for the video
 	 * @deprecated Use `info` instead
 	 */
-	public get videoInfo(): IVideoInfo {
+	public get videoInfo(): IVideoInfo | undefined {
 		return this.info;
 	}
 
@@ -69,6 +77,9 @@ export class VbrickVideoEmbed extends VbrickEmbed<IVideoInfo> implements IVbrick
 		this.eventBus.on('currentTime', e => {
 			this._currentTime = e.currentTime;
 			// update duration in videoInfo?
+		});
+		this.eventBus.on('playbackSpeedChanged', e => {
+			this._playbackSpeed = e;
 		});
 	}
 	protected getEmbedUrl(id: string, config: VbrickEmbedConfig): string {

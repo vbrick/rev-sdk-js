@@ -1,5 +1,7 @@
 /**
  * @public
+ * @group Enums
+ * @category Webcast
  */
 export enum WebcastStatus {
 	/**
