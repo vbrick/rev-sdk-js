@@ -69,7 +69,7 @@ function parseSearch(urlOrParams, out = {}) {
             if (idKey) {
                 out[idKey] = value;
             } else {
-                out.params[key] = value;
+                out.params[key] = value === '' ? true : value;
             }
         });
     return out;

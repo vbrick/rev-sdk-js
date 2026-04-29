@@ -1,5 +1,11 @@
 # Changelog
 
+## Version 1.1
+
+* Include addional configuration options: `hideVolumeControl`, `allowSpeedChanges`, `viewContext`.
+* Include `language` configuration option to specify preferred language to show when using the `forceClosedCaptions` option to show subtitles on player load.
+* **(BETA)** Allow passing in `placeholder: 'inline'` to defer full load of the embed until play button is clicked (similar to the [`Pop-out player` embed option](https://revdocs.vbrick.com/docs/embed-a-video#:~:text=at%20what%20size-,Pop%2Dout%20player,-%2D%20This%20is%20toggled)). Consider inscreasing the `timeoutSeconds` value when using this option.
+
 ## Version 1.0
 
 * Default to adding `local-network-access` Permission Policy, needed for Vbrick's [ECDN](https://vbrick.com/glossary/enterprise-content-delivery-network-ecdn/) functionality in Chrome/Edge version 142. See [Local Network Access](https://developer.chrome.com/blog/local-network-access). In the unlikely case that this interferes with embed loading you can use the old legacy behavior by passing `noLocalNetworkAccess: true` in the player config.

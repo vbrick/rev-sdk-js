@@ -45,11 +45,11 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 	}
 	private _info?: TInfo;
 
-	protected iframe: HTMLIFrameElement;
+	protected iframe!: HTMLIFrameElement;
 	protected readonly iframeUrl: string;
-	protected eventBus: EventBus;
+	protected eventBus!: EventBus;
 	private init?: Promise<any>;
-	private unsubscribes: Array<() => void>;
+	private unsubscribes?: Array<() => void>;
 	protected logger: ILogger;
 
 	constructor(
@@ -163,7 +163,7 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 					return;
 				}
 				this.eventBus.off('playerStatusChanged', volumeCallback);
-				this.setVolume(this.config.initialVolume);
+				this.setVolume(this.config.initialVolume!);
 			};
 			this.eventBus.on('playerStatusChanged', volumeCallback);
 		}
@@ -229,13 +229,14 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 			? (!!config.popupAuth).toString()
 			: undefined,
 		accent: config.accentColor ?? config.accent,
+		allowSpeedChanges: config.allowSpeedChanges,
 		autoplay: config.autoplay,
 		defaultTheme: config.applyDefaultTheme,
 		defaultSidebar: config.defaultSidebar,
 		fullPlayer: config.showFullPlayer,
-		mobileLayoutBreakPoint: config.mobileLayoutBreakPoint,
 		forceClosedCaptions: config.forcedCaptions ?? config.forceClosedCaptions,
 		loopVideo: config.playInLoop ?? config.loopVideo,
+		mobileLayoutBreakPoint: config.mobileLayoutBreakPoint,
 		noCc: config.hideSubtitles ?? config.noCc,
 		noCenterButtons: config.hideOverlayControls ?? config.noCenterButtons,
 		noChapters: config.hideChapters ?? config.noChapters,
@@ -245,17 +246,21 @@ export abstract class VbrickEmbed<TInfo extends IBasicInfo> implements IVbrickBa
 		noChapterSeek: config.hideChapterNavigation ?? config.noChapterSeek,
 		noChapterDisplay: config.hideChapterImages ?? config.noChapterDisplay,
 		noChapterMenu: config.hideChapterMenu ?? config.noChapterMenu,
+		noVolumeControl: config.hideVolumeControl ?? config.noVolumeControl,
+		placeholder: config.placeholder,
 		sidebarFilterQuery: config.sidebarFilterQuery,
 		startAt: config.startAt,
+		subtitles: config.language ?? config.subtitles,
+		viewContext: config.viewContext,
 		// all sidebar tabs are by default true, so only include if explicitly false
 		...config.showFullPlayer && {
-			hideInfo: config.sidebarTabs[VideoPlaybackSidebarButton.INFO] === false || config.hideInfo === true,
-			hideComments: config.sidebarTabs[VideoPlaybackSidebarButton.COMMENTS] === false || config.hideComments === true,
-			hidePulse: config.sidebarTabs[VideoPlaybackSidebarButton.PULSE] === false || config.hidePulse === true,
-			hideReview: config.sidebarTabs[VideoPlaybackSidebarButton.REVIEW] === false || config.hideReview === true,
-			hidePlaylist: config.sidebarTabs[VideoPlaybackSidebarButton.PLAYLIST] === false || config.hidePlaylist === true,
-			hideChapters: config.sidebarTabs[VideoPlaybackSidebarButton.CHAPTERS] === false || config.hideChapters === true,
-			hideAnalytics: config.sidebarTabs[VideoPlaybackSidebarButton.REPORTS] === false || config.hideAnalytics === true,
+			hideInfo: config.sidebarTabs?.[VideoPlaybackSidebarButton.INFO] === false || config.hideInfo === true,
+			hideComments: config.sidebarTabs?.[VideoPlaybackSidebarButton.COMMENTS] === false || config.hideComments === true,
+			hidePulse: config.sidebarTabs?.[VideoPlaybackSidebarButton.PULSE] === false || config.hidePulse === true,
+			hideReview: config.sidebarTabs?.[VideoPlaybackSidebarButton.REVIEW] === false || config.hideReview === true,
+			hidePlaylist: config.sidebarTabs?.[VideoPlaybackSidebarButton.PLAYLIST] === false || config.hidePlaylist === true,
+			hideChapters: config.sidebarTabs?.[VideoPlaybackSidebarButton.CHAPTERS] === false || config.hideChapters === true,
+			hideAnalytics: config.sidebarTabs?.[VideoPlaybackSidebarButton.REPORTS] === false || config.hideAnalytics === true,
 		}
 	};
 }

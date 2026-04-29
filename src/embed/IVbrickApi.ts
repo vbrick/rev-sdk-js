@@ -155,7 +155,7 @@ export interface IVbrickWebcastEmbed extends IVbrickBaseEmbed<IWebcastInfo, keyo
  * @category Playlist
  */
 export interface IVbrickPlaylistEmbed extends IVbrickBaseEmbed<IVideoInfo, keyof (TEmbedMessages & TPlayerMessages & TPlaylistMessages)> {
-	readonly playlist: IPlaylistInfo;
+	readonly playlist?: IPlaylistInfo;
 	/**
 	 * index of current video in the playlist videos array
 	 */

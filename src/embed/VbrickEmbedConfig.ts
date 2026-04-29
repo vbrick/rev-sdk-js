@@ -24,6 +24,9 @@ export interface VbrickBaseEmbedConfig extends VbrickSDKConfig {
 	 */
 	height?: string;
 
+	/** Analytics label for when videos viewed via this embed. Default: "Embedded"  */
+	viewContext?: string;
+
 	/**
 	 * do not add the 'local-network-access' Permissions-Policy iframe "allow" attribute.
 	 * This may block ECDN / User Location Services functionality from working properly.
@@ -64,10 +67,25 @@ export interface VbrickVideoEmbedConfig extends VbrickBaseEmbedConfig {
 	hideOverlayControls?: boolean;
 	hidePlayControls?: boolean;
 	hideSubtitles?: boolean;
-	/** Use the Close Captions embedded in video stream as Subtitles */
+	/** Show subtitles by default, instead of only when selected from menu  */
 	forcedCaptions?: boolean;
+	/**
+	 * set preferred subtitles language (match to "language" value of `ISubtitles`). Default is "auto", which uses browser hints.
+	 */
+	language?: string;
 	hideSettings?: boolean;
 	hideFullscreen?: boolean;
+	hideVolumeControl?: boolean;
+	/**
+	 * allow changing of playback rate
+	 */
+	allowSpeedChanges?: boolean;
+
+	/**
+	 * If placeholder is set to 'inline' then embed will only show a preview image instead of loading the entire player. This is similar to the "Pop-out player" embed option.
+	 * TIP: If you use this option consider setting the "timeoutSeconds" to a higher value, to avoid an error while waiting for the embed to complete loading
+	 */
+	placeholder?: 'inline';
 
 	/**
 	 * shows video player with sidebar.
@@ -109,11 +127,6 @@ export interface VbrickVideoEmbedConfig extends VbrickBaseEmbedConfig {
 	startAt?: string;
 
 	/**
-	 * Branding Settings. Logo image URL
-	 */
-	logoUrl?: string;
-
-	/**
 	 * Branding Settings. Accent color to use in the player, in HTML #rrggbb format
 	 */
 	accentColor?: string;
@@ -142,6 +155,10 @@ export interface VbrickVideoEmbedConfig extends VbrickBaseEmbedConfig {
 	noChapterDisplay?: boolean;
 	/** @deprecated - embed parameter name - alias of hideChapterMenu */
 	noChapterMenu?: boolean;
+	/** @deprecated - embed parameter name - alias of hideVolumeControl */
+	noVolumeControl?: boolean;
+	/** @deprecated - embed parameter name - alias for language */
+	subtitles?: string;
 
 	/** @deprecated - embed parameter name - alias for sidebar tab option */
 	hideInfo?: boolean;

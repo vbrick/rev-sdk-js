@@ -434,13 +434,14 @@ var revSdk = (() => {
       tk: !!config.token,
       popupAuth: config.popupAuth != void 0 ? (!!config.popupAuth).toString() : void 0,
       accent: config.accentColor ?? config.accent,
+      allowSpeedChanges: config.allowSpeedChanges,
       autoplay: config.autoplay,
       defaultTheme: config.applyDefaultTheme,
       defaultSidebar: config.defaultSidebar,
       fullPlayer: config.showFullPlayer,
-      mobileLayoutBreakPoint: config.mobileLayoutBreakPoint,
       forceClosedCaptions: config.forcedCaptions ?? config.forceClosedCaptions,
       loopVideo: config.playInLoop ?? config.loopVideo,
+      mobileLayoutBreakPoint: config.mobileLayoutBreakPoint,
       noCc: config.hideSubtitles ?? config.noCc,
       noCenterButtons: config.hideOverlayControls ?? config.noCenterButtons,
       noChapters: config.hideChapters ?? config.noChapters,
@@ -450,17 +451,21 @@ var revSdk = (() => {
       noChapterSeek: config.hideChapterNavigation ?? config.noChapterSeek,
       noChapterDisplay: config.hideChapterImages ?? config.noChapterDisplay,
       noChapterMenu: config.hideChapterMenu ?? config.noChapterMenu,
+      noVolumeControl: config.hideVolumeControl ?? config.noVolumeControl,
+      placeholder: config.placeholder,
       sidebarFilterQuery: config.sidebarFilterQuery,
       startAt: config.startAt,
+      subtitles: config.language ?? config.subtitles,
+      viewContext: config.viewContext,
       // all sidebar tabs are by default true, so only include if explicitly false
       ...config.showFullPlayer && {
-        hideInfo: config.sidebarTabs["info" /* INFO */] === false || config.hideInfo === true,
-        hideComments: config.sidebarTabs["comments" /* COMMENTS */] === false || config.hideComments === true,
-        hidePulse: config.sidebarTabs["pulse" /* PULSE */] === false || config.hidePulse === true,
-        hideReview: config.sidebarTabs["review" /* REVIEW */] === false || config.hideReview === true,
-        hidePlaylist: config.sidebarTabs["playlist" /* PLAYLIST */] === false || config.hidePlaylist === true,
-        hideChapters: config.sidebarTabs["chapters" /* CHAPTERS */] === false || config.hideChapters === true,
-        hideAnalytics: config.sidebarTabs["reports" /* REPORTS */] === false || config.hideAnalytics === true
+        hideInfo: config.sidebarTabs?.["info" /* INFO */] === false || config.hideInfo === true,
+        hideComments: config.sidebarTabs?.["comments" /* COMMENTS */] === false || config.hideComments === true,
+        hidePulse: config.sidebarTabs?.["pulse" /* PULSE */] === false || config.hidePulse === true,
+        hideReview: config.sidebarTabs?.["review" /* REVIEW */] === false || config.hideReview === true,
+        hidePlaylist: config.sidebarTabs?.["playlist" /* PLAYLIST */] === false || config.hidePlaylist === true,
+        hideChapters: config.sidebarTabs?.["chapters" /* CHAPTERS */] === false || config.hideChapters === true,
+        hideAnalytics: config.sidebarTabs?.["reports" /* REPORTS */] === false || config.hideAnalytics === true
       }
     };
   }
@@ -598,7 +603,7 @@ var revSdk = (() => {
       this.eventBus.on("playlistLoaded", (playlist) => {
         this._playlist = playlist;
         if (this.info?.videoId) {
-          this._index = getPlaylistIndex(this.playlist, this.info?.videoId) ?? 0;
+          this._index = getPlaylistIndex(playlist, this.info?.videoId) ?? 0;
         }
       });
       this.eventBus.on("videoLoaded", (video) => {
@@ -613,11 +618,11 @@ var revSdk = (() => {
       });
     }
     previous() {
-      const vid = wrapAt(this.playlist.videos, this._index - 1);
+      const vid = wrapAt(this.playlist?.videos || [], this._index - 1);
       this.switchVideo(vid.id, true);
     }
     next() {
-      const vid = wrapAt(this.playlist.videos, this._index + 1);
+      const vid = wrapAt(this.playlist?.videos || [], this._index + 1);
       this.switchVideo(vid.id, true);
     }
     switchVideo(videoId, autoplay) {

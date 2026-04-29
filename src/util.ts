@@ -9,7 +9,7 @@ export function isString (val: any): boolean {
  * @internal
  */
 export function lookupElement(element: string | HTMLElement): HTMLElement {
-	const el: HTMLElement = element instanceof HTMLElement ? element : document.querySelector(element);
+	const el: HTMLElement | null = element instanceof HTMLElement ? element : document.querySelector(element);
 
 	if(!el) {
 		throw new Error('Rev SDK Error: Could not resolve element');

@@ -1,7 +1,7 @@
 /**
  * This file handles parsing/updating the form on the demo page.
  * 
- * @import {VbrickEmbedConfig, VbrickVideoEmbedConfig} from '../dist/rev-sdk'
+ * @import {VbrickEmbedConfig, VbrickVideoEmbedConfig, VideoPlaybackSidebarButton} from '../dist/rev-sdk'
  * 
  * @typedef {object} RevSDKDemoSettings
  * Holds the parameters necessary for calling the Rev SDK's embedVideo/embedWebcast functions
@@ -274,23 +274,48 @@ export function parseRevUrlForForm(url) {
 		noFullscreen: 'hideFullscreen',
 		noPlayBar: 'hidePlayControls',
 		noSettings: 'hideSettings',
-		placeholder: 'popOut',
-		startAt: 'startAt',
-		popupAuth: 'popupAuth',
+		noChapterSeek: 'hideChapterNavigation',
+		noChapterDisplay: 'hideChapterImages',
+		noChapterMenu: 'hideChapterMenu',
+		noVolumeControl: 'hideVolumeControl',
+		subtitles: 'language',
 		enableFullRev: 'showFullWebcast',
 		layout: 'layout',
 		noToolbar: 'hideToolbar',
-		maxRow: 'videosPerRow',
-		maxVideos: 'maxVideos'
+		maxRow: 'videosPerRow'
 	};
 
-	const config = Object.entries(params).reduce((config, [key, value]) => {
-		const configKey = queryConfigMap[key];
-		if (configKey) {
-			config[configKey] = value === '' ? true : value;
-		}
-		return config;
-	}, {});
+	/** @type {Partial<Record<keyof VbrickEmbedConfig, `${VideoPlaybackSidebarButton}`>} */
+	const sidebarConfigMap = {
+		hideInfo: 'info',
+		hideComments: 'comments',
+		hidePulse: 'pulse',
+		hideReview: 'review',
+		hidePlaylist: 'playlist',
+		hideAnalytics: 'reports',
+		hideChapters: 'chapters'
+	}
+
+	// query params that aren't based on config settings
+	const noConfigKeys = ['tk', 'id', 'playlist'];
+
+	const config = Object.entries(params)
+		.filter(([key]) => !noConfigKeys.includes(key))
+		.reduce((config, [key, value]) => {
+			const val = value === '' ? true : value;
+			if (queryConfigMap[key]) {
+				config[queryConfigMap[key]] = val;
+			} else if (sidebarConfigMap[key]) {
+				config.sidebarTabs ??= {};
+				config.sidebarTabs[sidebarConfigMap[key]] = !val;
+			} else if (key === 'placeholder') {
+				// special case - must be a string value
+				config[key] = value === true ? 'inline' : value;
+			} else {
+				config[key] = val;
+			}
+			return config;
+		}, {});
 
 	result.config = stringifyJson(config, true);
 	if (result.videoId) {

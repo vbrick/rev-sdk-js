@@ -5,10 +5,10 @@ import { VbrickPlaylistEmbedConfig } from "./VbrickEmbedConfig";
 import { getEmbedQuery } from "./VbrickEmbed";
 
 export class VbrickPlaylistEmbed extends VbrickVideoEmbed implements IVbrickPlaylistEmbed {
-    public get playlist(): IPlaylistInfo {
+    public get playlist(): IPlaylistInfo | undefined {
         return this._playlist;
     }
-    private _playlist: IPlaylistInfo;
+    private _playlist?: IPlaylistInfo;
 
     public get currentIndex(): number {
         return this._index;
@@ -28,7 +28,7 @@ export class VbrickPlaylistEmbed extends VbrickVideoEmbed implements IVbrickPlay
         this.eventBus.on('playlistLoaded', playlist => {
             this._playlist = playlist;
             if (this.info?.videoId) {
-                this._index = getPlaylistIndex(this.playlist, this.info?.videoId) ?? 0;
+                this._index = getPlaylistIndex(playlist, this.info?.videoId) ?? 0;
             }
         });
         this.eventBus.on('videoLoaded', video => {
@@ -43,16 +43,16 @@ export class VbrickPlaylistEmbed extends VbrickVideoEmbed implements IVbrickPlay
     }
 
     public previous() {
-        const vid = wrapAt(this.playlist.videos, this._index - 1);
+        const vid = wrapAt(this.playlist?.videos || [], this._index - 1);
         this.switchVideo(vid.id, true);
     }
 
     public next() {
-        const vid = wrapAt(this.playlist.videos, this._index + 1);
+        const vid = wrapAt(this.playlist?.videos || [], this._index + 1);
         this.switchVideo(vid.id, true);
     }
 
-    switchVideo(videoId?: string, autoplay?: boolean | undefined): void {
+    switchVideo(videoId: string, autoplay?: boolean | undefined): void {
         this.eventBus.publish('switchVideo', { videoId, autoplay });
     }
 

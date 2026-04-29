@@ -20,7 +20,7 @@ export class EventBus {
 		iframe: HTMLIFrameElement,
 		config: VbrickSDKConfig
 	){
-		this.win = iframe.contentWindow;
+		this.win = iframe.contentWindow!;
 		this.msgListener = this.handleMessage.bind(this);
 
 		globalThis.addEventListener('message', this.msgListener);
@@ -89,7 +89,7 @@ export class EventBus {
 	}
 
 	/** Fires local event handlers */
-	public emitLocalEvent<T extends TVbrickEvent>(event: T, msg: TVbrickMessages[T] = undefined): void {
+	public emitLocalEvent<T extends TVbrickEvent>(event: T, msg: TVbrickMessages[T] | undefined = undefined): void {
 		this.callHandlers(event, msg);
 	}
 
